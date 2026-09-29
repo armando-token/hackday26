@@ -1,16 +1,40 @@
 <p align="center">
-  <img src="docs/hackday26-repo-cover.jpg?v=4" alt="Controlnautas × Muse AI — engineer asks Muse AI on phone for PLC specs and live price/stock; API returns quote" width="100%" />
+  <img src="docs/hackday26-repo-cover.jpg?v=5" alt="Controlnautas × Muse AI — engineer requests PLC specs and live inventory via Muse AI; Controlnautas API returns stock, price, and preliminary quote" width="100%" />
 </p>
 
-# Controlnautas × Meta Muse Commerce
+<h1 align="center">Controlnautas × Meta Muse Commerce</h1>
 
-**Hack Day 2026 — San Francisco**  
-Evidence-backed industrial product selection for AI assistants, with live pricing and preliminary quotes from a real Medusa storefront.
+<p align="center">
+  <strong>Hack Day 2026 — San Francisco</strong><br/>
+  Evidence-backed industrial product selection for AI assistants,<br/>
+  with live Medusa price/inventory and preliminary quote PDFs.
+</p>
 
-[![Demo](https://img.shields.io/badge/Demo-data.controlnautas.com-C8102E?style=for-the-badge)](https://data.controlnautas.com/us)
-[![API](https://img.shields.io/badge/OpenAPI-muse%2Fv1-185394?style=for-the-badge)](https://data.controlnautas.com/openapi.yaml)
-[![Health](https://img.shields.io/badge/Healthz-public-0B7A3E?style=for-the-badge)](https://data.controlnautas.com/healthz)
-[![Locale](https://img.shields.io/badge/Locale-EN%20%2B%20USD-111111?style=for-the-badge)](https://data.controlnautas.com/us)
+<p align="center">
+  <a href="https://data.controlnautas.com/us"><img src="https://img.shields.io/badge/Demo-Live-C8102E?style=for-the-badge" alt="Live demo" /></a>
+  <a href="https://data.controlnautas.com/openapi.yaml"><img src="https://img.shields.io/badge/OpenAPI-muse%2Fv1-185394?style=for-the-badge" alt="OpenAPI" /></a>
+  <a href="https://data.controlnautas.com/healthz"><img src="https://img.shields.io/badge/Healthz-OK-0B7A3E?style=for-the-badge" alt="Healthz" /></a>
+  <img src="https://img.shields.io/badge/License-Private%20demo-111111?style=for-the-badge" alt="License" />
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Meta%20Muse%20AI-Agent-0668E1?style=flat-square&logo=meta&logoColor=white" alt="Meta Muse AI" />
+  <img src="https://img.shields.io/badge/Medusa-2.x-0F172A?style=flat-square&logo=medusa&logoColor=white" alt="Medusa" />
+  <img src="https://img.shields.io/badge/Next.js-15-000000?style=flat-square&logo=nextdotjs&logoColor=white" alt="Next.js" />
+  <img src="https://img.shields.io/badge/TypeScript-5-3178C6?style=flat-square&logo=typescript&logoColor=white" alt="TypeScript" />
+  <img src="https://img.shields.io/badge/PostgreSQL-16-4169E1?style=flat-square&logo=postgresql&logoColor=white" alt="PostgreSQL" />
+  <img src="https://img.shields.io/badge/Node.js-20-339933?style=flat-square&logo=nodedotjs&logoColor=white" alt="Node.js" />
+  <img src="https://img.shields.io/badge/Caddy-TLS-1F8787?style=flat-square&logo=caddy&logoColor=white" alt="Caddy" />
+  <img src="https://img.shields.io/badge/AWS%20EC2-Ubuntu-FF9900?style=flat-square&logo=amazonec2&logoColor=white" alt="AWS EC2" />
+</p>
+
+<p align="center">
+  <a href="https://data.controlnautas.com/us">Live demo</a> ·
+  <a href="https://data.controlnautas.com/openapi.yaml">OpenAPI</a> ·
+  <a href="#what-this-project-is">Overview</a> ·
+  <a href="#agent-commerce-api-apimusev1">API</a> ·
+  <a href="#judge--reviewer-quick-path">Judge path</a>
+</p>
 
 ---
 
