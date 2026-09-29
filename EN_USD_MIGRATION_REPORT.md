@@ -1,6 +1,6 @@
 # English + USD Migration Report (Hack Day SF)
 
-**SHA:** (see git after commit)  
+**SHA:** 5777b71  
 **Public base:** https://data.controlnautas.com  
 **Status:** Complete
 
