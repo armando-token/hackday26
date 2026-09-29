@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-29T19:14:45.606Z",
+  "generated_at": "2026-09-29T19:47:27.271Z",
   "region": {
     "id": "reg_01M01FK2K4G93M9GKDRTPRP6ZB",
     "name": "Perú",
@@ -22,8 +22,8 @@
     "CN-DEMO-PLC-DIN-420-MR1": {
       "sku": "CN-DEMO-PLC-DIN-420-MR1",
       "model": "CN-DIN-PLC-A1",
-      "product_id": "prod_01M3Q9EFRFGA8H1CKGFSBNQYFT",
-      "variant_id": "variant_01M3Q9EFWEAXAPG9Z8GN1TD77X",
+      "product_id": "prod_01M3QBAB914MWFS8P8DXF9S65V",
+      "variant_id": "variant_01M3QBABE23B00D9EFMZBTEMWP",
       "handle": "cn-demo-plc-din-420-mr1",
       "urls": {
         "pdf_datasheet": "http://52.20.66.203:8000/demo/datasheets/CN-DEMO-PLC-DIN-420-MR1.pdf",
@@ -37,8 +37,8 @@
     "CN-DEMO-PID-PT100-RS1": {
       "sku": "CN-DEMO-PID-PT100-RS1",
       "model": "CN-PID-T1",
-      "product_id": "prod_01M3Q9EG3C1366KQ1N7Q1QGB3J",
-      "variant_id": "variant_01M3Q9EG70WN5TC456TEHQFEB6",
+      "product_id": "prod_01M3QBABMP79J6XP26K954ECK7",
+      "variant_id": "variant_01M3QBABT7JV797XXBK53A6RHY",
       "handle": "cn-demo-pid-pt100-rs1",
       "urls": {
         "pdf_datasheet": "http://52.20.66.203:8000/demo/datasheets/CN-DEMO-PID-PT100-RS1.pdf",
@@ -52,8 +52,8 @@
     "CN-DEMO-PT100-3W-A1": {
       "sku": "CN-DEMO-PT100-3W-A1",
       "model": "CN-RTD-P1",
-      "product_id": "prod_01M3Q9EGD5XR33F3404FYN26CT",
-      "variant_id": "variant_01M3Q9EGGC5Y05QTEYCBRCE8T1",
+      "product_id": "prod_01M3QBAC0EZKXEW0Z9M6A3ESSK",
+      "variant_id": "variant_01M3QBAC53GDKG8C0N0KJC4HAA",
       "handle": "cn-demo-pt100-3w-a1",
       "urls": {
         "pdf_datasheet": "http://52.20.66.203:8000/demo/datasheets/CN-DEMO-PT100-3W-A1.pdf",
@@ -68,8 +68,8 @@
   "CN-DEMO-PLC-DIN-420-MR1": {
     "sku": "CN-DEMO-PLC-DIN-420-MR1",
     "model": "CN-DIN-PLC-A1",
-    "product_id": "prod_01M3Q9EFRFGA8H1CKGFSBNQYFT",
-    "variant_id": "variant_01M3Q9EFWEAXAPG9Z8GN1TD77X",
+    "product_id": "prod_01M3QBAB914MWFS8P8DXF9S65V",
+    "variant_id": "variant_01M3QBABE23B00D9EFMZBTEMWP",
     "handle": "cn-demo-plc-din-420-mr1",
     "urls": {
       "pdf_datasheet": "http://52.20.66.203:8000/demo/datasheets/CN-DEMO-PLC-DIN-420-MR1.pdf",
@@ -83,8 +83,8 @@
   "CN-DEMO-PID-PT100-RS1": {
     "sku": "CN-DEMO-PID-PT100-RS1",
     "model": "CN-PID-T1",
-    "product_id": "prod_01M3Q9EG3C1366KQ1N7Q1QGB3J",
-    "variant_id": "variant_01M3Q9EG70WN5TC456TEHQFEB6",
+    "product_id": "prod_01M3QBABMP79J6XP26K954ECK7",
+    "variant_id": "variant_01M3QBABT7JV797XXBK53A6RHY",
     "handle": "cn-demo-pid-pt100-rs1",
     "urls": {
       "pdf_datasheet": "http://52.20.66.203:8000/demo/datasheets/CN-DEMO-PID-PT100-RS1.pdf",
@@ -98,8 +98,8 @@
   "CN-DEMO-PT100-3W-A1": {
     "sku": "CN-DEMO-PT100-3W-A1",
     "model": "CN-RTD-P1",
-    "product_id": "prod_01M3Q9EGD5XR33F3404FYN26CT",
-    "variant_id": "variant_01M3Q9EGGC5Y05QTEYCBRCE8T1",
+    "product_id": "prod_01M3QBAC0EZKXEW0Z9M6A3ESSK",
+    "variant_id": "variant_01M3QBAC53GDKG8C0N0KJC4HAA",
     "handle": "cn-demo-pt100-3w-a1",
     "urls": {
       "pdf_datasheet": "http://52.20.66.203:8000/demo/datasheets/CN-DEMO-PT100-3W-A1.pdf",

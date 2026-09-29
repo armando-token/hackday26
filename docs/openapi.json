@@ -1,0 +1,1920 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Controlnautas × Meta Muse Agent-Commerce API",
+    "version": "1.0.0",
+    "description": "Machine-to-Machine (M2M) HTTP interface for autonomous industrial procurement agents (Meta Muse connector) on Controlnautas B2B Industrial.\n\n**Gate 2 (Technical Discovery & Evaluation):** Deterministic technical profile inspection, verifiable factual claims with citable PDF datasheets, and predicate evaluation engine.\n\n**Gate 3 (Commercial Offers & Preliminary Quotes):** Dynamic live pricing (PEN) and physical stock availability, idempotent preliminary quote snapshots, manual review contingencies, and signed immutable ReportLab PDF generation.",
+    "license": {
+      "name": "Proprietary / Demonstration Use",
+      "url": "http://52.20.66.203:8000"
+    },
+    "contact": {
+      "name": "Controlnautas Engineering Team",
+      "url": "http://52.20.66.203:8000"
+    }
+  },
+  "servers": [
+    {
+      "url": "http://52.20.66.203:9000",
+      "description": "AWS EC2 Prototype Server (Elastic IP)"
+    },
+    {
+      "url": "http://127.0.0.1:9000",
+      "description": "Local Medusa Backend Development Server"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Gate 3 - Commercial Offers & Quotes",
+      "description": "Live pricing, stock availability, idempotent preliminary quotes, and signed PDF generation"
+    },
+    {
+      "name": "Gate 2 - Technical Discovery & Evaluation",
+      "description": "Deterministic technical facts, PDP evidence, and predicate evaluation engine"
+    },
+    {
+      "name": "System",
+      "description": "Liveness healthcheck and service status"
+    }
+  ],
+  "paths": {
+    "/healthz": {
+      "get": {
+        "tags": [
+          "System"
+        ],
+        "summary": "Liveness health check",
+        "description": "Returns system health, version, and commit status without exposing sensitive credentials or secrets.",
+        "operationId": "getHealthz",
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "System is healthy and operational",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HealthzResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Malformed request syntax",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "System is unhealthy or uninitialized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/muse/v1/products/search": {
+      "get": {
+        "tags": [
+          "Gate 2 - Technical Discovery & Evaluation"
+        ],
+        "summary": "Search demo products",
+        "description": "Searches demonstration catalog products using textual queries matching SKU, model, or technical facts. Prohibits price or inventory leakage.",
+        "operationId": "searchDemoProducts",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "description": "Search keyword or phrase (max 200 characters)",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "maxLength": 200,
+              "example": "PLC 4-20mA"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Maximum number of items to return (1-20)",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 20,
+              "default": 3,
+              "example": 3
+            }
+          },
+          {
+            "$ref": "#/components/parameters/XRequestIdHeader"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Search results matching query",
+            "headers": {
+              "X-Request-Id": {
+                "$ref": "#/components/headers/XRequestId"
+              },
+              "Cache-Control": {
+                "$ref": "#/components/headers/CacheControlNoStore"
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProductSearchResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid search parameter",
+            "headers": {
+              "X-Request-Id": {
+                "$ref": "#/components/headers/XRequestId"
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - Missing or invalid Bearer token",
+            "headers": {
+              "X-Request-Id": {
+                "$ref": "#/components/headers/XRequestId"
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "headers": {
+              "X-Request-Id": {
+                "$ref": "#/components/headers/XRequestId"
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/muse/v1/products/{variantId}": {
+      "get": {
+        "tags": [
+          "Gate 2 - Technical Discovery & Evaluation"
+        ],
+        "summary": "Get product technical profile",
+        "description": "Returns verified technical specifications, factual claims, and citable PDF datasheet sources. Strictly prohibits zero or live price and stock data.",
+        "operationId": "getProductTechnicalProfile",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "variantId",
+            "in": "path",
+            "required": true,
+            "description": "Medusa variant ID (variant_...) or canonical SKU (CN-DEMO-...)",
+            "schema": {
+              "type": "string",
+              "example": "variant_01M3QAJ590Z5C5GH7VD3TKS4T3"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/XRequestIdHeader"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Product technical profile with verified claims and sources",
+            "headers": {
+              "X-Request-Id": {
+                "$ref": "#/components/headers/XRequestId"
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TechnicalProfileResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request - invalid variant ID syntax",
+            "headers": {
+              "X-Request-Id": {
+                "$ref": "#/components/headers/XRequestId"
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - Missing or invalid Bearer token",
+            "headers": {
+              "X-Request-Id": {
+                "$ref": "#/components/headers/XRequestId"
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Variant not found or outside demo scope",
+            "headers": {
+              "X-Request-Id": {
+                "$ref": "#/components/headers/XRequestId"
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "headers": {
+              "X-Request-Id": {
+                "$ref": "#/components/headers/XRequestId"
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/muse/v1/evaluate": {
+      "post": {
+        "tags": [
+          "Gate 2 - Technical Discovery & Evaluation"
+        ],
+        "summary": "Deterministic technical evaluation",
+        "description": "Evaluates client engineering requirements against verifiable technical facts using a closed vocabulary and strict relational operators. Purely deterministic (zero LLM inference in the critical loop).",
+        "operationId": "evaluateTechnicalRequirements",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XRequestIdHeader"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "description": "Evaluation payload with target variant and 1 to 10 requirements",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EvaluateRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Technical evaluation results with requirement breakdown and citations",
+            "headers": {
+              "X-Request-Id": {
+                "$ref": "#/components/headers/XRequestId"
+              },
+              "Cache-Control": {
+                "$ref": "#/components/headers/CacheControlNoStore"
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EvaluateResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid evaluation payload, property out of closed vocabulary, or array length out of range",
+            "headers": {
+              "X-Request-Id": {
+                "$ref": "#/components/headers/XRequestId"
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - Missing or invalid Bearer token",
+            "headers": {
+              "X-Request-Id": {
+                "$ref": "#/components/headers/XRequestId"
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Variant not found or outside demo scope",
+            "headers": {
+              "X-Request-Id": {
+                "$ref": "#/components/headers/XRequestId"
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error during evaluation",
+            "headers": {
+              "X-Request-Id": {
+                "$ref": "#/components/headers/XRequestId"
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/muse/v1/products/{variantId}/offer": {
+      "get": {
+        "tags": [
+          "Gate 3 - Commercial Offers & Quotes"
+        ],
+        "summary": "Live commercial offer and real-time stock",
+        "description": "Fetches atomic live pricing (PEN) and physical stock availability directly from Medusa modules.\n\n- **Strict Demo Isolation:** Only variants with `demo = true` and `SKU LIKE 'CN-DEMO-%'` are accessible.\n- **Zero Storefront Cache:** Bypasses any ISR or cached layers; guarantees fresh state (`Cache-Control: no-store`).\n- **State Resolution:** Returns `state: \"priced\"` when pricing and stock are determinable, or `state: \"manual_review\"` with `review_reason` if price is missing or unlisted. **Never invents a fake 0 price**.\n- **Monetary Scale:** Expressed in integer minor units (`unit_price_minor`, `subtotal_minor` in centavos) and 2-decimal formatted floats (`unit_price`, `subtotal`).",
+        "operationId": "getLiveCommercialOffer",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "variantId",
+            "in": "path",
+            "required": true,
+            "description": "Medusa product variant ID (variant_...) or canonical demo SKU (CN-DEMO-...)",
+            "schema": {
+              "type": "string",
+              "example": "variant_01M3QAJ590Z5C5GH7VD3TKS4T3"
+            }
+          },
+          {
+            "name": "quantity",
+            "in": "query",
+            "required": false,
+            "description": "Purchasing quantity requested (integer between 1 and 20, default 1)",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 20,
+              "default": 1,
+              "example": 1
+            }
+          },
+          {
+            "name": "region_id",
+            "in": "query",
+            "required": false,
+            "description": "Target sales region ID (optional, defaults to Peru PEN demo region)",
+            "schema": {
+              "type": "string",
+              "example": "reg_01M01FK2K4G93M9GKDRTPRP6ZB"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/XRequestIdHeader"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Live offer computed successfully. Returns either a fully priced offer or a manual review offer.",
+            "headers": {
+              "X-Request-Id": {
+                "$ref": "#/components/headers/XRequestId"
+              },
+              "Cache-Control": {
+                "$ref": "#/components/headers/CacheControlNoStore"
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "oneOf": [
+                    {
+                      "$ref": "#/components/schemas/PricedOffer"
+                    },
+                    {
+                      "$ref": "#/components/schemas/ManualReviewOffer"
+                    }
+                  ],
+                  "discriminator": {
+                    "propertyName": "state"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid parameter (e.g. quantity is non-integer or outside 1..20)",
+            "headers": {
+              "X-Request-Id": {
+                "$ref": "#/components/headers/XRequestId"
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - Missing or invalid Bearer token",
+            "headers": {
+              "X-Request-Id": {
+                "$ref": "#/components/headers/XRequestId"
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Variant not found or outside demo scope",
+            "headers": {
+              "X-Request-Id": {
+                "$ref": "#/components/headers/XRequestId"
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error during price or stock query",
+            "headers": {
+              "X-Request-Id": {
+                "$ref": "#/components/headers/XRequestId"
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/muse/v1/preliminary-quotes": {
+      "post": {
+        "tags": [
+          "Gate 3 - Commercial Offers & Quotes"
+        ],
+        "summary": "Create idempotent preliminary quote snapshot and PDF",
+        "description": "Re-evaluates the live offer, freezes the quote data in PostgreSQL (`preliminary_quote`), generates an immutable ReportLab PDF with mandatory watermarks ('PRODUCTO FICTICIO', 'SIMULACIÓN'), and returns a non-enumerable public download URL.\n\n- **Anti-Tampering:** Any client-injected `price`, `unit_price`, `subtotal`, or `in_stock` fields in the request body are strictly ignored and stripped.\n- **Zero Cart / Zero Stock Deduction:** Does NOT create an order or cart, and does NOT decrement inventory.\n- **Idempotency Guarantee:** Supports `idempotency_key` in request body or `Idempotency-Key` header:\n  - Same key + identical payload -> `200 OK` or `201 Created` with identical `quote_id` and `pdf_url` (idempotent replay).\n  - Same key + modified payload -> `409 Conflict` (`IDEMPOTENCY_CONFLICT`).",
+        "operationId": "createPreliminaryQuote",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/XRequestIdHeader"
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": false,
+            "description": "Optional HTTP header for request idempotency (equivalent to body idempotency_key)",
+            "schema": {
+              "type": "string",
+              "maxLength": 128,
+              "example": "idem-key-procurement-001"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "description": "Preliminary quote request payload",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PreliminaryQuoteRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Preliminary quote generated and persisted successfully",
+            "headers": {
+              "X-Request-Id": {
+                "$ref": "#/components/headers/XRequestId"
+              },
+              "Cache-Control": {
+                "$ref": "#/components/headers/CacheControlNoStore"
+              },
+              "Location": {
+                "description": "Download URI for the generated preliminary quote PDF",
+                "schema": {
+                  "type": "string",
+                  "example": "http://52.20.66.203:9000/api/muse/v1/quotes/pq_a4b9c1d2e3f405162738495a6b7c8d9e/pdf?token=7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PreliminaryQuoteResponse"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Idempotent replay: an existing preliminary quote matching the idempotency key and body was returned",
+            "headers": {
+              "X-Request-Id": {
+                "$ref": "#/components/headers/XRequestId"
+              },
+              "Cache-Control": {
+                "$ref": "#/components/headers/CacheControlNoStore"
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PreliminaryQuoteResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request payload (e.g. missing variant_id or quantity out of 1..20 bounds)",
+            "headers": {
+              "X-Request-Id": {
+                "$ref": "#/components/headers/XRequestId"
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - Missing or invalid Bearer token",
+            "headers": {
+              "X-Request-Id": {
+                "$ref": "#/components/headers/XRequestId"
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Variant not found or outside demo scope",
+            "headers": {
+              "X-Request-Id": {
+                "$ref": "#/components/headers/XRequestId"
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Idempotency conflict: the idempotency key was previously submitted with a different request payload",
+            "headers": {
+              "X-Request-Id": {
+                "$ref": "#/components/headers/XRequestId"
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error during PDF compilation, storage write, or quote record insertion",
+            "headers": {
+              "X-Request-Id": {
+                "$ref": "#/components/headers/XRequestId"
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/muse/v1/quotes/{quoteId}/pdf": {
+      "get": {
+        "tags": [
+          "Gate 3 - Commercial Offers & Quotes"
+        ],
+        "summary": "Public non-enumerable PDF quote download",
+        "description": "Streams the signed preliminary quote PDF document generated by the ReportLab engine.\n\n- **Public Access:** Does NOT require an Authorization Bearer header.\n- **No Bearer in Query:** Strictly rejects using the API Bearer token in the URL query string to prevent credential logging.\n- **Token Validation:** Requires a valid `token` query parameter matching the quote's hashed download token in PostgreSQL.\n- **24h Expiration:** If accessed after `expires_at`, returns `HTTP 410 Gone` with `error.code: \"QUOTE_EXPIRED\"`.\n- **Integrity Verification:** Emits `ETag` and `X-Quote-Checksum-SHA256` headers with the exact SHA-256 hash of the PDF binary.",
+        "operationId": "downloadPreliminaryQuotePdf",
+        "security": [
+          {
+            "DownloadTokenQuery": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "quoteId",
+            "in": "path",
+            "required": true,
+            "description": "Opaque public quote identifier (pq_...) or internal system quote ID",
+            "schema": {
+              "type": "string",
+              "example": "pq_a4b9c1d2e3f405162738495a6b7c8d9e"
+            }
+          },
+          {
+            "name": "token",
+            "in": "query",
+            "required": true,
+            "description": "Cryptographic ephemeral download token associated with this quote",
+            "schema": {
+              "type": "string",
+              "example": "7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/XRequestIdHeader"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Preliminary quote PDF file stream",
+            "headers": {
+              "X-Request-Id": {
+                "$ref": "#/components/headers/XRequestId"
+              },
+              "Content-Type": {
+                "description": "Standard PDF MIME type",
+                "schema": {
+                  "type": "string",
+                  "example": "application/pdf"
+                }
+              },
+              "Content-Disposition": {
+                "description": "Inline disposition header with descriptive filename",
+                "schema": {
+                  "type": "string",
+                  "example": "inline; filename=\"cotizacion-preliminar-CN-DEMO-PLC-DIN-420-MR1-pq_a4b9.pdf\""
+                }
+              },
+              "Cache-Control": {
+                "description": "Public caching header for immutable quote documents",
+                "schema": {
+                  "type": "string",
+                  "example": "public, max-age=3600"
+                }
+              },
+              "ETag": {
+                "description": "Entity tag matching the cryptographic SHA-256 hash of the PDF",
+                "schema": {
+                  "type": "string",
+                  "example": "\"8f5a3b2c1d0e9f8a7b6c5d4e3f2a1b0c9d8e7f6a5b4c3d2e1f0a9b8c7d6e5f4a\""
+                }
+              },
+              "X-Quote-Checksum-SHA256": {
+                "description": "Exact SHA-256 checksum of the PDF binary on disk",
+                "schema": {
+                  "type": "string",
+                  "example": "8f5a3b2c1d0e9f8a7b6c5d4e3f2a1b0c9d8e7f6a5b4c3d2e1f0a9b8c7d6e5f4a"
+                }
+              }
+            },
+            "content": {
+              "application/pdf": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Missing required token query parameter",
+            "headers": {
+              "X-Request-Id": {
+                "$ref": "#/components/headers/XRequestId"
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - Invalid, mismatched, or API Bearer token in query parameter",
+            "headers": {
+              "X-Request-Id": {
+                "$ref": "#/components/headers/XRequestId"
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Quote record not found in database or PDF file missing from storage directory",
+            "headers": {
+              "X-Request-Id": {
+                "$ref": "#/components/headers/XRequestId"
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "410": {
+            "description": "Gone - The preliminary quote has expired after its 24-hour validity limit",
+            "headers": {
+              "X-Request-Id": {
+                "$ref": "#/components/headers/XRequestId"
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error while reading PDF binary from storage",
+            "headers": {
+              "X-Request-Id": {
+                "$ref": "#/components/headers/XRequestId"
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "Token",
+        "description": "M2M Bearer authentication token configured via MUSE_API_TOKEN. Required for all agent endpoints except public PDF downloads and healthcheck."
+      },
+      "DownloadTokenQuery": {
+        "type": "apiKey",
+        "name": "token",
+        "in": "query",
+        "description": "Cryptographic ephemeral 256-bit download token matching the preliminary quote's hashed token. API Bearer tokens are strictly forbidden in this parameter."
+      }
+    },
+    "parameters": {
+      "XRequestIdHeader": {
+        "name": "X-Request-Id",
+        "in": "header",
+        "required": false,
+        "description": "Client-supplied unique request correlation ID (UUID). If omitted, the backend generates one cryptographically.",
+        "schema": {
+          "type": "string",
+          "format": "uuid",
+          "example": "c1f7b82e-9d21-4f32-8411-d102e38c7f99"
+        }
+      }
+    },
+    "headers": {
+      "XRequestId": {
+        "description": "Cryptographic request correlation identifier propagated across headers and response bodies",
+        "schema": {
+          "type": "string",
+          "format": "uuid",
+          "example": "c1f7b82e-9d21-4f32-8411-d102e38c7f99"
+        }
+      },
+      "CacheControlNoStore": {
+        "description": "Security and determinism caching header preventing stale response reuse",
+        "schema": {
+          "type": "string",
+          "example": "no-store, no-cache, must-revalidate"
+        }
+      }
+    },
+    "schemas": {
+      "PricedOffer": {
+        "type": "object",
+        "required": [
+          "state",
+          "variant_id",
+          "sku",
+          "model",
+          "title",
+          "quantity",
+          "region_id",
+          "currency",
+          "unit_price_minor",
+          "unit_price",
+          "subtotal_minor",
+          "subtotal",
+          "scale",
+          "tax_status",
+          "shipping_status",
+          "availability",
+          "observed_at",
+          "limitations"
+        ],
+        "properties": {
+          "state": {
+            "type": "string",
+            "enum": [
+              "priced"
+            ],
+            "description": "Commercial state of the offer. Indicates automated pricing was resolved.",
+            "example": "priced"
+          },
+          "variant_id": {
+            "type": "string",
+            "description": "Medusa variant identifier",
+            "example": "variant_01M3QAJ590Z5C5GH7VD3TKS4T3"
+          },
+          "sku": {
+            "type": "string",
+            "description": "Unique product SKU",
+            "example": "CN-DEMO-PLC-DIN-420-MR1"
+          },
+          "model": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Manufacturer model designation",
+            "example": "CN-DIN-PLC-A1"
+          },
+          "title": {
+            "type": "string",
+            "description": "Product display title",
+            "example": "PLC Compacto 24VDC 4-20mA Carril DIN"
+          },
+          "quantity": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 20,
+            "description": "Quantity priced in this offer",
+            "example": 1
+          },
+          "region_id": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Medusa sales region identifier",
+            "example": "reg_01M01FK2K4G93M9GKDRTPRP6ZB"
+          },
+          "currency": {
+            "type": "string",
+            "description": "Canonical ISO 4217 currency code (strictly PEN)",
+            "example": "PEN"
+          },
+          "unit_price_minor": {
+            "type": "integer",
+            "description": "Unit price in minor currency units (centavos). E.g. 89000 for S/. 890.00.",
+            "example": 89000
+          },
+          "unit_price": {
+            "type": "number",
+            "format": "double",
+            "description": "Unit price in standard currency units (Soles PEN).",
+            "example": 890.0
+          },
+          "subtotal_minor": {
+            "type": "integer",
+            "description": "Subtotal in minor units (unit_price_minor * quantity). Pure integer math.",
+            "example": 89000
+          },
+          "subtotal": {
+            "type": "number",
+            "format": "double",
+            "description": "Subtotal in standard currency units (unit_price * quantity).",
+            "example": 890.0
+          },
+          "scale": {
+            "type": "integer",
+            "description": "Decimal scale factor (strictly 2 for PEN centavos).",
+            "example": 2
+          },
+          "tax_status": {
+            "type": "string",
+            "enum": [
+              "tax_excluded",
+              "tax_included",
+              "to_be_confirmed"
+            ],
+            "description": "Tax treatment policy (default: tax_excluded net of 18% IGV)",
+            "example": "tax_excluded"
+          },
+          "shipping_status": {
+            "type": "string",
+            "enum": [
+              "to_be_confirmed",
+              "free_shipping",
+              "calculated"
+            ],
+            "description": "Shipping freight quotation status",
+            "example": "to_be_confirmed"
+          },
+          "availability": {
+            "$ref": "#/components/schemas/OfferAvailability"
+          },
+          "observed_at": {
+            "type": "string",
+            "format": "date-time",
+            "description": "UTC ISO 8601 timestamp when price and inventory were observed",
+            "example": "2026-09-29T19:35:00.000Z"
+          },
+          "limitations": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Commercial limitation flags",
+            "example": []
+          }
+        }
+      },
+      "ManualReviewOffer": {
+        "type": "object",
+        "required": [
+          "state",
+          "variant_id",
+          "sku",
+          "model",
+          "title",
+          "quantity",
+          "region_id",
+          "currency",
+          "review_reason",
+          "tax_status",
+          "shipping_status",
+          "availability",
+          "observed_at",
+          "limitations"
+        ],
+        "properties": {
+          "state": {
+            "type": "string",
+            "enum": [
+              "manual_review"
+            ],
+            "description": "Commercial state indicating pricing or availability requires manual review.",
+            "example": "manual_review"
+          },
+          "variant_id": {
+            "type": "string",
+            "description": "Medusa variant identifier",
+            "example": "variant_01M3QAJ6EQB14K0ZVGE2MC1M2A"
+          },
+          "sku": {
+            "type": "string",
+            "description": "Unique product SKU",
+            "example": "CN-DEMO-PT100-3W-A1"
+          },
+          "model": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Manufacturer model designation",
+            "example": "CN-RTD-P1"
+          },
+          "title": {
+            "type": "string",
+            "description": "Product display title",
+            "example": "Sensor RTD Pt100 Clase A Cabezal Marino"
+          },
+          "quantity": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 20,
+            "description": "Quantity requested",
+            "example": 1
+          },
+          "region_id": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Medusa sales region identifier",
+            "example": "reg_01M01FK2K4G93M9GKDRTPRP6ZB"
+          },
+          "currency": {
+            "type": "string",
+            "description": "Canonical ISO 4217 currency code (strictly PEN)",
+            "example": "PEN"
+          },
+          "review_reason": {
+            "type": "string",
+            "description": "Technical or commercial explanation why pricing cannot be automated.",
+            "example": "Price configuration not established or unmanaged inventory requires human review"
+          },
+          "unit_price_minor": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "description": "Null in manual_review mode. Never 0.",
+            "example": null
+          },
+          "unit_price": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "format": "double",
+            "description": "Null in manual_review mode. Never 0.00.",
+            "example": null
+          },
+          "subtotal_minor": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "description": "Null in manual_review mode. Never 0.",
+            "example": null
+          },
+          "subtotal": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "format": "double",
+            "description": "Null in manual_review mode. Never 0.00.",
+            "example": null
+          },
+          "scale": {
+            "type": "integer",
+            "example": 2
+          },
+          "tax_status": {
+            "type": "string",
+            "enum": [
+              "tax_excluded",
+              "to_be_confirmed"
+            ],
+            "example": "tax_excluded"
+          },
+          "shipping_status": {
+            "type": "string",
+            "enum": [
+              "to_be_confirmed"
+            ],
+            "example": "to_be_confirmed"
+          },
+          "availability": {
+            "$ref": "#/components/schemas/OfferAvailability"
+          },
+          "observed_at": {
+            "type": "string",
+            "format": "date-time",
+            "description": "UTC ISO 8601 timestamp when observation occurred",
+            "example": "2026-09-29T19:35:00.000Z"
+          },
+          "limitations": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "example": [
+              "PRICE_NOT_CONFIGURED"
+            ]
+          }
+        }
+      },
+      "OfferAvailability": {
+        "type": "object",
+        "required": [
+          "status",
+          "available_quantity"
+        ],
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": [
+              "in_stock",
+              "limited_stock",
+              "out_of_stock",
+              "backorder"
+            ],
+            "description": "Inventory status classification",
+            "example": "in_stock"
+          },
+          "available_quantity": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "Unreserved available stock quantity at target warehouse",
+            "example": 3
+          },
+          "stocked_quantity": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "Total physical stocked units",
+            "example": 3
+          },
+          "reserved_quantity": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "Currently allocated or reserved units",
+            "example": 0
+          },
+          "manage_inventory": {
+            "type": "boolean",
+            "description": "Whether stock tracking is active for this variant",
+            "example": true
+          },
+          "allow_backorder": {
+            "type": "boolean",
+            "description": "Whether backorders are accepted when stock is depleted",
+            "example": false
+          }
+        }
+      },
+      "PreliminaryQuoteRequest": {
+        "type": "object",
+        "required": [
+          "variant_id",
+          "quantity"
+        ],
+        "properties": {
+          "variant_id": {
+            "type": "string",
+            "description": "Medusa variant identifier or canonical SKU of the demo product",
+            "example": "variant_01M3QAJ590Z5C5GH7VD3TKS4T3"
+          },
+          "quantity": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 20,
+            "default": 1,
+            "description": "Requested quantity for commercial quotation (1 to 20)",
+            "example": 1
+          },
+          "region_id": {
+            "type": "string",
+            "description": "Target sales region ID (optional, defaults to Peru PEN demo region)",
+            "example": "reg_01M01FK2K4G93M9GKDRTPRP6ZB"
+          },
+          "idempotency_key": {
+            "type": "string",
+            "maxLength": 128,
+            "description": "Client-generated unique token to guarantee safe idempotent request retries",
+            "example": "idem-key-procurement-001"
+          }
+        }
+      },
+      "PreliminaryQuoteResponse": {
+        "type": "object",
+        "required": [
+          "quote_id",
+          "opaque_public_id",
+          "status",
+          "observed_at",
+          "expires_at",
+          "pdf_url",
+          "summary",
+          "request_id"
+        ],
+        "properties": {
+          "quote_id": {
+            "type": "string",
+            "description": "Internal unique identifier of the persisted preliminary quote record",
+            "example": "pquote_1727638500000_a1b2c3d4"
+          },
+          "opaque_public_id": {
+            "type": "string",
+            "description": "Cryptographically random non-enumerable public identifier used in download links",
+            "example": "pq_a4b9c1d2e3f405162738495a6b7c8d9e"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "priced",
+              "manual_review"
+            ],
+            "description": "Status of the quote snapshot",
+            "example": "priced"
+          },
+          "observed_at": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Timestamp when live price and stock snapshot was captured",
+            "example": "2026-09-29T19:35:00.000Z"
+          },
+          "expires_at": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Expiration timestamp (exactly 24 hours from creation)",
+            "example": "2026-09-30T19:35:00.000Z"
+          },
+          "pdf_url": {
+            "type": "string",
+            "format": "uri",
+            "description": "Public download URL for the generated PDF (with download token, without Bearer token)",
+            "example": "http://52.20.66.203:9000/api/muse/v1/quotes/pq_a4b9c1d2e3f405162738495a6b7c8d9e/pdf?token=7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c"
+          },
+          "summary": {
+            "$ref": "#/components/schemas/QuoteSummary"
+          },
+          "request_id": {
+            "type": "string",
+            "format": "uuid",
+            "description": "Correlation request ID",
+            "example": "c1f7b82e-9d21-4f32-8411-d102e38c7f99"
+          }
+        }
+      },
+      "QuoteSummary": {
+        "type": "object",
+        "required": [
+          "sku",
+          "model",
+          "title",
+          "quantity",
+          "currency",
+          "availability"
+        ],
+        "properties": {
+          "sku": {
+            "type": "string",
+            "example": "CN-DEMO-PLC-DIN-420-MR1"
+          },
+          "model": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": "CN-DIN-PLC-A1"
+          },
+          "title": {
+            "type": "string",
+            "example": "PLC Compacto 24VDC 4-20mA Carril DIN"
+          },
+          "quantity": {
+            "type": "integer",
+            "example": 1
+          },
+          "currency": {
+            "type": "string",
+            "example": "PEN"
+          },
+          "unit_price": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "format": "double",
+            "description": "Unit price in PEN (null when status is manual_review)",
+            "example": 890.0
+          },
+          "unit_price_minor": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "description": "Unit price in centavos (null when status is manual_review)",
+            "example": 89000
+          },
+          "subtotal": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "format": "double",
+            "description": "Subtotal in PEN (null when status is manual_review)",
+            "example": 890.0
+          },
+          "subtotal_minor": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "description": "Subtotal in centavos (null when status is manual_review)",
+            "example": 89000
+          },
+          "scale": {
+            "type": "integer",
+            "example": 2
+          },
+          "review_reason": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "example": null
+          },
+          "availability": {
+            "$ref": "#/components/schemas/OfferAvailability"
+          }
+        }
+      },
+      "ErrorResponse": {
+        "type": "object",
+        "required": [
+          "error",
+          "request_id"
+        ],
+        "properties": {
+          "error": {
+            "type": "object",
+            "required": [
+              "code",
+              "message"
+            ],
+            "properties": {
+              "code": {
+                "type": "string",
+                "enum": [
+                  "UNAUTHORIZED",
+                  "INVALID_REQUEST",
+                  "INVALID_PARAM",
+                  "INVALID_VOCABULARY",
+                  "NOT_FOUND",
+                  "IDEMPOTENCY_CONFLICT",
+                  "QUOTE_EXPIRED",
+                  "INTERNAL_SERVER_ERROR"
+                ],
+                "description": "Structured machine-readable error code",
+                "example": "UNAUTHORIZED"
+              },
+              "message": {
+                "type": "string",
+                "description": "Human-readable description of error cause",
+                "example": "Missing or invalid bearer token"
+              },
+              "details": {
+                "type": [
+                  "object",
+                  "array",
+                  "string",
+                  "null"
+                ],
+                "description": "Optional detailed validation errors, schema violations, or parameter context"
+              }
+            }
+          },
+          "request_id": {
+            "type": "string",
+            "format": "uuid",
+            "description": "Unique request tracing ID matching X-Request-Id header",
+            "example": "c1f7b82e-9d21-4f32-8411-d102e38c7f99"
+          }
+        }
+      },
+      "HealthzResponse": {
+        "type": "object",
+        "required": [
+          "status"
+        ],
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": [
+              "ok"
+            ],
+            "example": "ok"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2026-09-29T19:35:00.000Z"
+          },
+          "version": {
+            "type": "string",
+            "example": "1.0.0-hackday"
+          },
+          "commit": {
+            "type": "string",
+            "example": "55f7a37"
+          }
+        }
+      },
+      "ProductSearchResponse": {
+        "type": "object",
+        "required": [
+          "count",
+          "products"
+        ],
+        "properties": {
+          "count": {
+            "type": "integer",
+            "example": 1
+          },
+          "products": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProductSearchItem"
+            }
+          }
+        }
+      },
+      "ProductSearchItem": {
+        "type": "object",
+        "required": [
+          "sku",
+          "model",
+          "title",
+          "variant_id",
+          "handle",
+          "urls"
+        ],
+        "properties": {
+          "sku": {
+            "type": "string",
+            "example": "CN-DEMO-PLC-DIN-420-MR1"
+          },
+          "model": {
+            "type": "string",
+            "example": "CN-DIN-PLC-A1"
+          },
+          "title": {
+            "type": "string",
+            "example": "PLC Compacto 24VDC 4-20mA Carril DIN"
+          },
+          "variant_id": {
+            "type": "string",
+            "example": "variant_01M3QAJ590Z5C5GH7VD3TKS4T3"
+          },
+          "handle": {
+            "type": "string",
+            "example": "cn-demo-plc-din-420-mr1"
+          },
+          "urls": {
+            "type": "object",
+            "properties": {
+              "pdf_datasheet": {
+                "type": "string",
+                "format": "uri",
+                "example": "http://52.20.66.203:8000/demo/datasheets/CN-DEMO-PLC-DIN-420-MR1.pdf"
+              },
+              "markdown_spec": {
+                "type": "string",
+                "format": "uri",
+                "example": "http://52.20.66.203:8000/demo/specs/CN-DEMO-PLC-DIN-420-MR1.md"
+              },
+              "pdp_human": {
+                "type": "string",
+                "format": "uri",
+                "example": "http://52.20.66.203:8000/pe/products/cn-demo-plc-din-420-mr1"
+              }
+            }
+          }
+        }
+      },
+      "TechnicalProfileResponse": {
+        "type": "object",
+        "required": [
+          "variant_id",
+          "sku",
+          "model",
+          "title",
+          "description",
+          "handle",
+          "facts",
+          "sources"
+        ],
+        "properties": {
+          "variant_id": {
+            "type": "string",
+            "example": "variant_01M3QAJ590Z5C5GH7VD3TKS4T3"
+          },
+          "sku": {
+            "type": "string",
+            "example": "CN-DEMO-PLC-DIN-420-MR1"
+          },
+          "model": {
+            "type": "string",
+            "example": "CN-DIN-PLC-A1"
+          },
+          "title": {
+            "type": "string",
+            "example": "PLC Compacto 24VDC 4-20mA Carril DIN"
+          },
+          "description": {
+            "type": "string",
+            "example": "Controlador lógico programable para montaje en carril DIN 35mm..."
+          },
+          "handle": {
+            "type": "string",
+            "example": "cn-demo-plc-din-420-mr1"
+          },
+          "revision": {
+            "type": "string",
+            "example": "rev-2026-09"
+          },
+          "facts": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TechnicalFact"
+            }
+          },
+          "sources": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TechnicalSource"
+            }
+          },
+          "urls": {
+            "type": "object"
+          }
+        }
+      },
+      "TechnicalFact": {
+        "type": "object",
+        "required": [
+          "id",
+          "property",
+          "normalized_value_json",
+          "display_value",
+          "polarity"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "fact_01M3..."
+          },
+          "property": {
+            "type": "string",
+            "enum": [
+              "mounting",
+              "supply_voltage",
+              "analog_input",
+              "analog_output",
+              "protocol",
+              "interface",
+              "sensor_element",
+              "control_function"
+            ],
+            "example": "mounting"
+          },
+          "normalized_value_json": {
+            "description": "Normalized data value (string, number, boolean, or range object)",
+            "example": "din_35mm"
+          },
+          "display_value": {
+            "type": "string",
+            "example": "Carril DIN 35 mm"
+          },
+          "source_id": {
+            "type": "string",
+            "example": "src_01M3..."
+          },
+          "page": {
+            "type": "integer",
+            "example": 1
+          },
+          "section": {
+            "type": "string",
+            "example": "Montaje e Instalación"
+          },
+          "excerpt": {
+            "type": "string",
+            "example": "Montaje directo sobre perfil normalizado DIN EN 50022 (35 mm)"
+          },
+          "polarity": {
+            "type": "boolean",
+            "description": "True if positive capability, false if contraexample / negative claim",
+            "example": true
+          }
+        }
+      },
+      "TechnicalSource": {
+        "type": "object",
+        "required": [
+          "id",
+          "kind",
+          "title",
+          "url",
+          "checksum"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "src_01M3..."
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "pdf_datasheet",
+              "manual",
+              "compliance_doc"
+            ],
+            "example": "pdf_datasheet"
+          },
+          "title": {
+            "type": "string",
+            "example": "Ficha Técnica Oficial PLC DIN 4-20mA"
+          },
+          "url": {
+            "type": "string",
+            "format": "uri",
+            "example": "http://52.20.66.203:8000/demo/datasheets/CN-DEMO-PLC-DIN-420-MR1.pdf"
+          },
+          "revision": {
+            "type": "string",
+            "example": "rev-1.0"
+          },
+          "checksum": {
+            "type": "string",
+            "description": "SHA-256 hash of the referenced PDF file",
+            "example": "9b12a83e0c4b21d74e50761d4b684cb6371f456e30b42917d3d29837a718f45a"
+          }
+        }
+      },
+      "EvaluateRequest": {
+        "type": "object",
+        "required": [
+          "variant_id",
+          "requirements"
+        ],
+        "properties": {
+          "variant_id": {
+            "type": "string",
+            "description": "Medusa variant identifier or canonical demo SKU",
+            "example": "variant_01M3QAJ590Z5C5GH7VD3TKS4T3"
+          },
+          "requirements": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 10,
+            "description": "Array of 1 to 10 technical predicate requirements",
+            "items": {
+              "$ref": "#/components/schemas/TechnicalRequirement"
+            }
+          }
+        }
+      },
+      "TechnicalRequirement": {
+        "type": "object",
+        "required": [
+          "property",
+          "operator",
+          "value"
+        ],
+        "properties": {
+          "requirement_id": {
+            "type": "string",
+            "example": "req-mounting-01"
+          },
+          "property": {
+            "type": "string",
+            "enum": [
+              "mounting",
+              "supply_voltage",
+              "analog_input",
+              "analog_output",
+              "protocol",
+              "interface",
+              "sensor_element",
+              "control_function"
+            ],
+            "example": "mounting"
+          },
+          "operator": {
+            "type": "string",
+            "enum": [
+              "equals",
+              "not_equals",
+              "in",
+              "contains",
+              "range_contains",
+              "greater_than_or_equal",
+              "less_than_or_equal"
+            ],
+            "example": "equals"
+          },
+          "value": {
+            "description": "Target value to compare against normalized fact value",
+            "example": "din_35mm"
+          }
+        }
+      },
+      "EvaluateResponse": {
+        "type": "object",
+        "required": [
+          "variant_id",
+          "sku",
+          "overall_satisfied",
+          "evaluations",
+          "request_id"
+        ],
+        "properties": {
+          "variant_id": {
+            "type": "string",
+            "example": "variant_01M3QAJ590Z5C5GH7VD3TKS4T3"
+          },
+          "sku": {
+            "type": "string",
+            "example": "CN-DEMO-PLC-DIN-420-MR1"
+          },
+          "overall_satisfied": {
+            "type": "boolean",
+            "description": "Logical conjunction (AND) of all requirement evaluations",
+            "example": true
+          },
+          "evaluations": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RequirementEvaluationResult"
+            }
+          },
+          "request_id": {
+            "type": "string",
+            "format": "uuid",
+            "example": "c1f7b82e-9d21-4f32-8411-d102e38c7f99"
+          }
+        }
+      },
+      "RequirementEvaluationResult": {
+        "type": "object",
+        "required": [
+          "property",
+          "operator",
+          "satisfied",
+          "reason"
+        ],
+        "properties": {
+          "requirement_id": {
+            "type": "string",
+            "example": "req-mounting-01"
+          },
+          "property": {
+            "type": "string",
+            "example": "mounting"
+          },
+          "operator": {
+            "type": "string",
+            "example": "equals"
+          },
+          "satisfied": {
+            "type": "boolean",
+            "example": true
+          },
+          "reason": {
+            "type": "string",
+            "example": "Mounting type matches 'din_35mm' on DIN EN 50022"
+          },
+          "fact_display_value": {
+            "type": "string",
+            "example": "Carril DIN 35 mm"
+          },
+          "source_evidence": {
+            "type": "object",
+            "properties": {
+              "source_id": {
+                "type": "string"
+              },
+              "url": {
+                "type": "string",
+                "format": "uri"
+              },
+              "page": {
+                "type": "integer"
+              },
+              "section": {
+                "type": "string"
+              },
+              "excerpt": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

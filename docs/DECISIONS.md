@@ -327,4 +327,244 @@ Headers permitidos: `Authorization`, `Content-Type`, `X-Request-Id`, `Accept`.
 - **Aislamiento Total:** Todas las consultas SQL filtran explícitamente `tp.demo = true` y `deleted_at IS NULL`.
 - **Protección contra Fuga de Catálogo:** Las consultas de hechos técnicos vinculan internamente con `technical_profile`, garantizando que jamás se expongan hechos o registros de variantes fuera del entorno controlado de demostración.
 
+---
+
+# Decisiones Arquitectónicas y Técnicas — Fase 3 (Puerta 3)
+**Proyecto:** Controlnautas × Meta Muse (Hack Day 2026)  
+**Host:** AWS EC2 Ubuntu 24.04 LTS (`ip-172-31-94-6`) | Elastic IP: `52.20.66.203`  
+**Fecha:** 29 de Septiembre de 2026  
+**Rama de Trabajo:** `hackday-2026-controlnautas-muse`  
+**HEAD Base Fase 3:** `55f7a37eeffb6b6e087fdf25b37648857812f181`
+
+---
+
+## 14. Arquitectura del Motor getLiveOffer (getLiveOffer Engine Architecture)
+
+### A. Propósito y Separación de Fases
+En el ciclo de adquisición automatizada B2B entre Meta Muse y Controlnautas:
+- **Fase 2 (Evaluación Técnica):** El agente ejecuta `/evaluate` para validar deterministamente la compatibilidad física, eléctrica y normativa de las variantes con base en hechos demostrables (`technical_fact`). Este flujo es atemporal y está exento de precios o stock.
+- **Fase 3 (Cotización Comercial Dinámica):** Una vez confirmada la idoneidad técnica de un SKU, el agente invoca el motor comercial `getLiveOffer` (expuesto vía `POST /api/muse/v1/offer` y `/api/muse/v1/preliminary-quotes`) para obtener la cotización vinculante en tiempo real y verificar la disponibilidad de inventario físico.
+
+### B. Consultas Directas a Medusa (Pricing & Inventory)
+En Medusa v2, los módulos transaccionales están completamente desacoplados del catálogo básico:
+1. **Precios Vivos (`PricingModuleService` / Esquema Relacional):**
+   - Cada variante en `product_variant` se enlaza mediante `product_variant_price_set` a un `price_set_id`.
+   - Los precios vigentes se consultan directamente sobre la tabla `price`, filtrando por la moneda oficial peruana (`currency_code = 'pen'`) y la región comercial asociada a Perú.
+2. **Inventario Físico en Tiempo Real (`InventoryModuleService` / Esquema Relacional):**
+   - La variante se vincula a su ítem de inventario a través de `product_variant_inventory_item`.
+   - El stock disponible se extrae directamente de `inventory_level`, considerando la ubicación de almacenamiento asignada (`European Warehouse` / `location_id`).
+   - La cantidad disponible se calcula de manera atómica:
+     `available_quantity = stocked_quantity - reserved_quantity`
+3. **Acceso de Alta Velocidad sin Sobrecarga de ORM:**
+   - Para cumplir con los estrictos requerimientos de latencia de agentes de IA (< 10 ms p95), las consultas de `getLiveOffer` se ejecutan mediante consultas SQL parametrizadas directas en PostgreSQL a través de `pg.Pool`, con fallback al service container de Medusa.
+
+### C. Aislamiento Estricto al Catálogo Demo (`CN-DEMO-*`)
+Para garantizar la integridad del entorno de demostración y proteger el catálogo comercial de producción:
+- **Validación de Demostración:** Cada consulta valida que la variante solicitada posea un registro activo en `technical_profile` con la bandera `demo = true` y que su SKU comience con el prefijo canónico `CN-DEMO-`.
+- **Rechazo Estricto:** Cualquier solicitud sobre variantes que no pertenezcan al catálogo demo (o con `deleted_at IS NOT NULL`) es rechazada de inmediato con `HTTP 404 NOT_FOUND` o `HTTP 403 FORBIDDEN` con código `DEMO_ISOLATION_VIOLATION`.
+- **Garantía Anti-Fuga:** No existe ruta de código que permita a un agente externo consultar precios o existencias del catálogo industrial no participante en el hackathon.
+
+### D. Prohibición Total de Storefront Cache (No Storefront Cache)
+A diferencia de los portales web B2C o storefronts donde se utiliza almacenamiento en caché (Next.js ISR, Cloudflare CDN o Redis):
+- **Bypass de Almacenamiento en Caché:** Los agentes de compras industriales no pueden operar con datos estancados (*stale data*). Por ello, el motor `getLiveOffer` no almacena respuestas en memoria intermedia ni utiliza la caché de renderizado del storefront.
+- **Encabezados HTTP Mandatorios:**
+  ```http
+  Cache-Control: no-store, no-cache, must-revalidate, proxy-revalidate
+  Pragma: no-cache
+  Expires: 0
+  ```
+- **Consistencia Atómica:** Cada llamada a `getLiveOffer` refleja el estado vivo y atómico del inventario y las listas de precios en la base de datos al milisegundo exacto de la invocación.
+
+---
+
+## 15. Representación Monetaria y Escala Decimal (Monetary Representation & Decimal Scale)
+
+### A. Moneda Oficial Canónica
+- **Divisa de Operación:** Nuevo Sol Peruano (`PEN`, código ISO 4217, símbolo `S/.`).
+- **Alineación con Medusa v2:** La moneda `pen` es la única divisa habilitada para las transacciones demo de la alianza Controlnautas × Meta Muse en el canal de ventas y región de Perú.
+
+### B. Unidades Menores (Centavos / Minor Units)
+Para evitar ambigüedades entre sistemas distribuidos y garantizar compatibilidad con estándares bancarios y de comercio electrónico:
+- **Regla de Persistencia y Transporte:** Todos los valores monetarios en bases de datos, APIs JSON y parámetros transaccionales se representan y transmiten obligatoriamente en **unidades menores enteras (centavos / céntimos)**:
+  - 1 PEN = 100 centavos.
+  - Ejemplo: Un precio unitario de `S/. 890.00` se expresa como el número entero `89000`.
+  - Ejemplo: Un precio de `S/. 480.00` se expresa como `48000`.
+  - Ejemplo: Un precio de `S/. 75.00` se expresa como `7500`.
+- **Nomenclatura Canónica de Campos:** Los campos monetarios adoptan de forma inequívoca el sufijo `_cents` en los esquemas de API y modelos de base de datos (`unit_price_cents`, `subtotal_cents`, `tax_cents`, `total_cents`).
+
+### C. Aritmética Entera Estricta contra Floating Point Drift
+- **Riesgo Crítico de Coma Flotante (IEEE 754):** El uso de números de punto flotante en cálculos financieros (`number` en JavaScript/TypeScript o `REAL`/`FLOAT` en SQL) genera errores de aproximación binaria (ej. `0.1 + 0.2 = 0.30000000000000004`), que conllevan discrepancias de redondeo y fallos de cuadratura contable.
+- **Implementación de Aritmética Entera Pura:**
+  - Todas las operaciones de agregación y multiplicación comercial se efectúan estrictamente con enteros dentro del rango seguro (`Number.isSafeInteger()` / `BigInt`):
+    `subtotal_cents = unit_price_cents * quantity`
+  - Para sumatorias y acumuladores, se suman exclusivamente cantidades enteras en centavos.
+- **Regla de Redondeo:** Cuando sea necesario realizar operaciones de prorrateo o porcentaje (como el cálculo proyectado de impuestos), se aplica la regla de redondeo simétrico medio hacia arriba (*round half-up*):
+  ```typescript
+  const estimatedTaxCents = Math.round((subtotalCents * 18) / 100);
+  ```
+- **Cero Conversiones Flotantes Intermedias:** Nunca se almacena ni calcula dinero en valores de coma flotante en ninguna etapa del procesamiento comercial.
+
+---
+
+## 16. Política de Impuestos y Fletes en Cotizaciones Preliminares (Tax and Shipping Policy in Preliminary Quotes)
+
+### A. Política Impositiva (Tax Excluded Default)
+En el comercio industrial B2B peruano, las negociaciones técnicas y presupuestos corporativos se emiten sobre valores netos:
+- **Régimen Predeterminado:** Las cotizaciones preliminares se generan bajo la modalidad **`tax_excluded`** (precios netos sin IGV).
+- **Tasa Aplicable:** Impuesto General a las Ventas (IGV) del **18%** (16% IGV + 2% Impuesto de Promoción Municipal).
+- **Tratamiento en la API:**
+  - El campo `tax_policy` se define como `"tax_excluded"`.
+  - El campo `tax_rate` se especifica como `0.18`.
+  - El monto del impuesto en esta etapa es informativo (`estimated_tax_cents`), no consolidándose como pasivo tributario exigible hasta la formalización de la orden de compra y emisión de la factura electrónica SUNAT.
+
+### B. Política de Transporte y Flete (`shipping: to_be_confirmed`)
+La logística de componentes de automatización industrial e instrumentación de precisión en el Perú involucra factores complejos de destino y manipulación:
+- **Estado Logístico no Asumido:** En la fase preliminar, el flete no se asume en cero ni se inventa una tarifa arbitraria.
+- **Especificación Formal:** Se define obligatoriamente con el valor `shipping_status: "to_be_confirmed"` y `shipping_cents: 0` (o `null`).
+- **Criterio Operativo:** Los costos definitivos de transporte, embalaje industrial especial, seguro de carga y entrega en planta o faena minera se cotizan una vez confirmado el punto de entrega (ubigeo/dirección) y las condiciones Incoterms acordadas (ej. EXW, CPT, DDP).
+
+### C. Descargos y Leyendas Contractuales Obligatorias (Clear Disclaimers)
+Para salvaguardar la certeza jurídica y prevenir compromisos comerciales indebidos antes de la orden formal, toda cotización preliminar (tanto en el payload JSON de la API como en el documento PDF generado) incluye de forma prominente las siguientes leyendas contractuales:
+1. **Carácter Informativo Preliminar:** *"Documento preliminar emitido automáticamente para evaluación técnica y presupuestaria de agentes de aprovisionamiento industrial."*
+2. **Exclusión de Impuestos:** *"Los precios unitarios y subtotales indicados están expresados en Soles Peruanos (PEN) y NO incluyen el Impuesto General a las Ventas (IGV 18%)."*
+3. **Condición de Transporte:** *"Costos de transporte, flete local/nacional y seguros de envío no incluidos; sujetos a confirmación según punto de entrega y modalidad logística."*
+4. **Vigencia Temporal Acotada:** *"Precios y reserva temporal de disponibilidad válidos exclusivamente por 24 horas a partir de la fecha y hora de emisión del presente documento."*
+5. **Entorno de Demostración:** *"Ambiente de demostración técnica Controlnautas × Meta Muse — Hack Day 2026. Documento no válido como comprobante de pago SUNAT."*
+
+---
+
+## 17. Arquitectura de Snapshot de Cotización y Almacenamiento Inmutable de PDF (Quote Snapshot & Immutable PDF Storage Architecture)
+
+### A. Esquema Relacional de Persistencia (Tabla PostgreSQL `preliminary_quote`)
+Para asegurar la inmutabilidad, auditoría forense y reproducibilidad exacta de cada oferta generada, se implementa la tabla `preliminary_quote` en la base de datos `medusa`:
+
+| Campo | Tipo SQL | Restricciones / Modificadores | Descripción |
+| :--- | :--- | :--- | :--- |
+| `id` | `VARCHAR(64)` | `PRIMARY KEY` | Identificador interno único del registro (ej. UUID v4 o prefijo interno). |
+| `public_id` | `VARCHAR(64)` | `NOT NULL UNIQUE` | Identificador público opaco no enumerable (`pq_...`) expuesto a clientes y URLs. |
+| `download_token_hash` | `VARCHAR(64)` | `NOT NULL` | Hash SHA-256 del token efímero de descarga. Previene el almacenamiento de tokens en texto plano. |
+| `variant_id` | `VARCHAR(255)` | `NOT NULL` | Identificador de la variante de Medusa v2 cotizada (`variant_...`). |
+| `sku` | `VARCHAR(100)` | `NOT NULL` | SKU del producto demo (`CN-DEMO-...`). |
+| `quantity` | `INTEGER` | `NOT NULL CHECK (quantity > 0)` | Cantidad solicitada y cotizada. |
+| `unit_price_cents` | `BIGINT` | `NOT NULL CHECK (unit_price_cents >= 0)` | Precio unitario congelado en centavos PEN al momento de la cotización. |
+| `subtotal_cents` | `BIGINT` | `NOT NULL CHECK (subtotal_cents >= 0)` | Subtotal calculado en centavos PEN (`unit_price_cents * quantity`). |
+| `currency` | `VARCHAR(3)` | `NOT NULL DEFAULT 'PEN'` | Código ISO de la moneda (`PEN`). |
+| `tax_policy` | `VARCHAR(32)` | `NOT NULL DEFAULT 'tax_excluded'` | Política impositiva aplicada. |
+| `shipping_status` | `VARCHAR(32)` | `NOT NULL DEFAULT 'to_be_confirmed'` | Estado de flete y logística. |
+| `buyer_reference` | `VARCHAR(255)` | `NULL` | Identificador o referencia del agente de compra (ej. `meta-muse-agent-01`). |
+| `snapshot_data` | `JSONB` | `NOT NULL` | Snapshot inmutable completo: datos del producto, especificaciones, stock en el momento, hechos técnicos y desglose. |
+| `pdf_path` | `VARCHAR(512)` | `NOT NULL` | Ruta absoluta en el sistema de archivos local al PDF generado. |
+| `pdf_sha256` | `VARCHAR(64)` | `NOT NULL` | Suma de comprobación criptográfica SHA-256 del archivo PDF físico. |
+| `expires_at` | `TIMESTAMPTZ` | `NOT NULL` | Marca de tiempo de expiración exacta (24 horas tras la emisión). |
+| `created_at` | `TIMESTAMPTZ` | `NOT NULL DEFAULT NOW()` | Marca de tiempo de creación y emisión. |
+
+- **Índices de Optimización:**
+  - `CREATE UNIQUE INDEX idx_preliminary_quote_public_id ON preliminary_quote (public_id);`
+  - `CREATE INDEX idx_preliminary_quote_expires_at ON preliminary_quote (expires_at);`
+  - `CREATE INDEX idx_preliminary_quote_variant_id ON preliminary_quote (variant_id);`
+
+### B. Ruta de Almacenamiento Local y Permisos de Acceso
+- **Ubicación Física Designada:** `/home/ubuntu/hackday26/storage/quotes/`
+- **Convención de Nombres de Archivo:** `preliminary-quote-{public_id}.pdf`
+- **Aislamiento de Servidor Web:**
+  - La carpeta `storage/quotes/` reside **fuera** de los directorios estáticos públicos servidos directamente por el backend de Medusa o Next.js (`apps/backend/public`, `static`, `.next`).
+  - Ningún archivo PDF puede ser descargado por acceso directo a una ruta estática. Toda entrega requiere pasar por el endpoint de descarga autorizado.
+- **Permisos de Archivo en Disco:** Modos restrictivos POSIX `0640` asignados al usuario y grupo del servicio backend (`ubuntu:ubuntu`), impidiendo la lectura por procesos no privilegiados en el sistema operativo.
+
+### C. Política de Retención y Purga (Retention Policy)
+- **Vigencia Activa:** 24 horas continuas a partir de la emisión (`expires_at = created_at + INTERVAL '24 hours'`).
+- **Ciclo de Vida Diferenciado:**
+  - **Metadatos y Auditoría en Base de Datos:** Los registros en la tabla `preliminary_quote` se conservan de forma permanente (o por el periodo de auditoría legal requerido) para mantener la trazabilidad de ofertas pasadas.
+  - **Archivos Binarios PDF en Disco:** Los archivos físicos de cotizaciones expiradas pueden ser purgados de forma segura mediante tareas programadas de mantenimiento (*garbage collection*), liberando espacio en almacenamiento sin perder el snapshot JSON en base de datos.
+
+### D. Verificación de Integridad por Checksum Criptográfico (SHA-256)
+- **Generación Determinista del Checksum:**
+  - Inmediatamente tras renderizar el binario PDF en memoria o disco, se computa su hash criptográfico:
+    ```typescript
+    const pdfSha256 = crypto.createHash("sha256").update(pdfBuffer).digest("hex");
+    ```
+- **Persistencia e Inmutabilidad:** El hash se almacena en la columna `pdf_sha256` y se devuelve tanto en las cabeceras HTTP de descarga (`ETag`, `X-Quote-Checksum-SHA256`) como en el JSON de la cotización.
+- **Garantía para el Agente:** El agente Meta Muse puede verificar criptográficamente que el documento recibido coincide bit a bit con la cotización aprobada, asegurando la imposibilidad de manipulación o corrupción física del archivo en tránsito o en reposo.
+
+---
+
+## 18. Seguridad de URLs de Descarga Pública y Acceso No Enumerable (Public Download URL Security & Non-Enumerable Access)
+
+### A. Identificadores Públicos Opacos y Mitigación de IDOR
+- **Prohibición de Identificadores Predecibles:** Se prohíbe taxativamente el uso de secuencias auto-incrementales (`1, 2, 3...`), marcas de tiempo ordenadas o variantes de SKU en las URLs públicas.
+- **Generación Criptográfica:** El `public_id` se genera a partir de generadores pseudoaleatorios criptográficamente seguros (CSPRNG):
+  ```typescript
+  const publicId = "pq_" + crypto.randomBytes(16).toString("hex");
+  // Ejemplo: "pq_a4b9c1d2e3f405162738495a6b7c8d9e"
+  ```
+- **Defensa contra IDOR:** Un atacante o bot no puede adivinar, iterar ni enumerar cotizaciones de otros clientes o agentes (*Insecure Direct Object References*).
+
+### B. Tokens de Descarga Separados con Almacenamiento Hasheado
+Para desacoplar la consulta de metadatos de la descarga del documento:
+1. **Generación del Token:** Se genera un token de descarga independiente (`download_token`) de 256 bits de entropía:
+   ```typescript
+   const downloadToken = crypto.randomBytes(32).toString("hex");
+   ```
+2. **Almacenamiento Criptográfico (Zero Plaintext Token):**
+   - El token en texto plano **nunca** se almacena en la base de datos.
+   - En PostgreSQL se persiste únicamente su hash SHA-256 (`download_token_hash`):
+     ```typescript
+     const downloadTokenHash = crypto.createHash("sha256").update(downloadToken).digest("hex");
+     ```
+3. **Validación en Tiempo Constante:**
+   - Al recibir una solicitud de descarga, el endpoint calcula el hash del token recibido y lo compara con `download_token_hash` mediante `crypto.timingSafeEqual`, impidiendo ataques de temporización (*timing attacks*).
+
+### C. Prohibición Absoluta del Token Bearer en URLs (No Bearer API Token in URL)
+- **Principio Fundamental de Seguridad:** El token de autenticación principal de la API (`MUSE_API_TOKEN` / Bearer token) **JAMÁS** debe figurar en una URL de descarga, query string o hipervínculo público.
+- **Riesgos Mitigados:**
+  - Los query parameters de URLs quedan registrados de manera persistente en logs de servidores web, proxies inversos (ej. Nginx, CloudFront), sistemas de monitoreo APM, historiales de navegador y cabeceras `Referer`.
+  - Exponer el Bearer token en una URL comprometería la seguridad total de la API M2M.
+- **Mecanismo Seguro:** Las URLs de descarga incorporan exclusivamente el token efímero de uso acotado:
+  `http://52.20.66.203:9000/api/muse/v1/preliminary-quotes/{public_id}/download?token={download_token}`
+
+### D. Expiración Estricta a las 24 Horas y Semántica HTTP 410 Gone
+El ciclo de vida del endpoint de descarga sigue un árbol de decisión determinista:
+
+```mermaid
+flowchart TD
+    Req["GET /api/muse/v1/preliminary-quotes/:publicId/download?token=:token"] --> CheckExists{"¿Existe public_id en DB?"}
+    CheckExists -- "No" --> Ret404["404 NOT_FOUND (Quote inexistente)"]
+    CheckExists -- "Sí" --> CheckToken{"¿Hash de token coincide (timingSafeEqual)?"}
+    CheckToken -- "No" --> Ret401["401 UNAUTHORIZED (Token inválido o ausente)"]
+    CheckToken -- "Sí" --> CheckExpiry{"¿now() > expires_at (24h)?"}
+    CheckExpiry -- "Sí" --> Ret410["410 GONE (Quote expirada)"]
+    CheckExpiry -- "No" --> CheckFile{"¿Existe archivo PDF en storage?"}
+    CheckFile -- "No" --> Ret500["500 INTERNAL_SERVER_ERROR (PDF missing)"]
+    CheckFile -- "Sí" --> StreamPDF["200 OK (Stream PDF inmutable)"]
+```
+
+- **Semántica de HTTP 410 Gone:**
+  - Cuando la cotización ha superado su vigencia de 24 horas (`Date.now() > expires_at`), el servidor rechaza la petición respondiendo con **`HTTP 410 Gone`** (en lugar de `404 Not Found`).
+  - Esto comunica inequívocamente a los agentes de IA y clientes que el recurso existió formalmente pero ha caducado de manera deliberada y no volverá a estar disponible, orientando al agente a solicitar una nueva cotización vía `/offer`.
+- **Estructura Estándar de Respuesta de Error (HTTP 410):**
+  ```json
+  {
+    "error": {
+      "code": "QUOTE_EXPIRED",
+      "message": "La cotización preliminar ha expirado tras cumplir su vigencia límite de 24 horas. Solicite una nueva cotización comercial a través del endpoint /offer.",
+      "details": {
+        "public_id": "pq_a4b9c1d2e3f405162738495a6b7c8d9e",
+        "expired_at": "2026-09-30T19:35:00.000Z"
+      }
+    },
+    "request_id": "8f3e2b10-6c9a-4e2b-b9d1-f8e4a2c0d5b7"
+  }
+  ```
+- **Encabezados HTTP de Entrega Exitosa (HTTP 200 OK):**
+  ```http
+  HTTP/1.1 200 OK
+  Content-Type: application/pdf
+  Content-Disposition: inline; filename="preliminary-quote-pq_a4b9c1d2e3f405162738495a6b7c8d9e.pdf"
+  Cache-Control: private, no-cache, no-store, must-revalidate
+  ETag: "8f5a3b2c1d0e9f8a7b6c5d4e3f2a1b0c9d8e7f6a5b4c3d2e1f0a9b8c7d6e5f4a"
+  X-Quote-Checksum-SHA256: 8f5a3b2c1d0e9f8a7b6c5d4e3f2a1b0c9d8e7f6a5b4c3d2e1f0a9b8c7d6e5f4a
+  X-Request-Id: 8f3e2b10-6c9a-4e2b-b9d1-f8e4a2c0d5b7
+  ```
+
+
 
