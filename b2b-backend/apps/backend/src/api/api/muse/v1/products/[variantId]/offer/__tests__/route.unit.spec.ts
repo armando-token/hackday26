@@ -256,7 +256,7 @@ describe("GET /api/muse/v1/products/[variantId]/offer", () => {
       expect(body.sku).toBe("CN-DEMO-PLC-DIN-420-MR1")
       expect(body.quantity).toBe(1)
       expect(body.state).toBe("priced")
-      expect(body.currency).toBe("pen")
+      expect(body.currency).toBe("usd")
       expect(body.unit_price).toBe(890)
       expect(body.unit_price_minor).toBe(89000)
       expect(body.subtotal).toBe(890)
@@ -363,7 +363,7 @@ describe("GET /api/muse/v1/products/[variantId]/offer", () => {
       const response = getResponse()
 
       expect(response.status).toBe(200)
-      expect(response.body.region_id).toBe("reg_01M01FK2K4G93M9GKDRTPRP6ZB")
+      expect(response.body.region_id).toBe("reg_01JUS00HACKDAY26DEMOUSD0000")
     })
   })
 })

@@ -3,20 +3,20 @@
   "info": {
     "title": "Controlnautas × Meta Muse Agent-Commerce API",
     "version": "1.0.0",
-    "description": "Machine-to-Machine (M2M) HTTP interface for autonomous industrial procurement agents (Meta Muse connector) on Controlnautas B2B Industrial.\n\n**Gate 2 (Technical Discovery & Evaluation):** Deterministic technical profile inspection, verifiable factual claims with citable PDF datasheets, and predicate evaluation engine.\n\n**Gate 3 (Commercial Offers & Preliminary Quotes):** Dynamic live pricing (PEN) and physical stock availability, idempotent preliminary quote snapshots, manual review contingencies, and signed immutable ReportLab PDF generation.",
+    "description": "Machine-to-Machine (M2M) HTTP interface for autonomous industrial procurement agents (Meta Muse connector) on Controlnautas B2B Industrial.\n\n**Gate 2 (Technical Discovery & Evaluation):** Deterministic technical profile inspection, verifiable factual claims with citable PDF datasheets, and predicate evaluation engine.\n\n**Gate 3 (Commercial Offers & Preliminary Quotes):** Dynamic live pricing (USD) and physical stock availability, idempotent preliminary quote snapshots, manual review contingencies, and signed immutable ReportLab PDF generation.",
     "license": {
       "name": "Proprietary / Demonstration Use",
-      "url": "http://52.20.66.203:8000"
+      "url": "https://data.controlnautas.com"
     },
     "contact": {
       "name": "Controlnautas Engineering Team",
-      "url": "http://52.20.66.203:8000"
+      "url": "https://data.controlnautas.com"
     }
   },
   "servers": [
     {
       "url": "https://data.controlnautas.com",
-      "description": "AWS EC2 Prototype Server (Elastic IP)"
+      "description": "Public Hackday HTTPS gateway"
     },
     {
       "url": "http://127.0.0.1:9000",
@@ -414,7 +414,7 @@
           "Gate 3 - Commercial Offers & Quotes"
         ],
         "summary": "Live commercial offer and real-time stock",
-        "description": "Fetches atomic live pricing (PEN) and physical stock availability directly from Medusa modules.\n\n- **Strict Demo Isolation:** Only variants with `demo = true` and `SKU LIKE 'CN-DEMO-%'` are accessible.\n- **Zero Storefront Cache:** Bypasses any ISR or cached layers; guarantees fresh state (`Cache-Control: no-store`).\n- **State Resolution:** Returns `state: \"priced\"` when pricing and stock are determinable, or `state: \"manual_review\"` with `review_reason` if price is missing or unlisted. **Never invents a fake 0 price**.\n- **Monetary Scale:** Expressed in integer minor units (`unit_price_minor`, `subtotal_minor` in centavos) and 2-decimal formatted floats (`unit_price`, `subtotal`).",
+        "description": "Fetches atomic live pricing (USD) and physical stock availability directly from Medusa modules.\n\n- **Strict Demo Isolation:** Only variants with `demo = true` and `SKU LIKE 'CN-DEMO-%'` are accessible.\n- **Zero Storefront Cache:** Bypasses any ISR or cached layers; guarantees fresh state (`Cache-Control: no-store`).\n- **State Resolution:** Returns `state: \"priced\"` when pricing and stock are determinable, or `state: \"manual_review\"` with `review_reason` if price is missing or unlisted. **Never invents a fake 0 price**.\n- **Monetary Scale:** Expressed in integer minor units (`unit_price_minor`, `subtotal_minor` in cents) and 2-decimal formatted floats (`unit_price`, `subtotal`).",
         "operationId": "getLiveCommercialOffer",
         "security": [
           {
@@ -449,7 +449,7 @@
             "name": "region_id",
             "in": "query",
             "required": false,
-            "description": "Target sales region ID (optional, defaults to Peru PEN demo region)",
+            "description": "Target sales region ID (optional, defaults to United States (demo) USD demo region)",
             "schema": {
               "type": "string",
               "example": "reg_01M01FK2K4G93M9GKDRTPRP6ZB"
@@ -557,7 +557,7 @@
           "Gate 3 - Commercial Offers & Quotes"
         ],
         "summary": "Create idempotent preliminary quote snapshot and PDF",
-        "description": "Re-evaluates the live offer, freezes the quote data in PostgreSQL (`preliminary_quote`), generates an immutable ReportLab PDF with mandatory watermarks ('PRODUCTO FICTICIO', 'SIMULACIÓN'), and returns a non-enumerable public download URL.\n\n- **Anti-Tampering:** Any client-injected `price`, `unit_price`, `subtotal`, or `in_stock` fields in the request body are strictly ignored and stripped.\n- **Zero Cart / Zero Stock Deduction:** Does NOT create an order or cart, and does NOT decrement inventory.\n- **Idempotency Guarantee:** Supports `idempotency_key` in request body or `Idempotency-Key` header:\n  - Same key + identical payload -> `200 OK` or `201 Created` with identical `quote_id` and `pdf_url` (idempotent replay).\n  - Same key + modified payload -> `409 Conflict` (`IDEMPOTENCY_CONFLICT`).",
+        "description": "Re-evaluates the live offer, freezes the quote data in PostgreSQL (`preliminary_quote`), generates an immutable ReportLab PDF with mandatory watermarks ('FICTITIOUS PRODUCT — DEMONSTRATION DATA', 'SIMULATION — NOT A VALID COMMERCIAL OFFER'), and returns a non-enumerable public download URL.\n\n- **Anti-Tampering:** Any client-injected `price`, `unit_price`, `subtotal`, or `in_stock` fields in the request body are strictly ignored and stripped.\n- **Zero Cart / Zero Stock Deduction:** Does NOT create an order or cart, and does NOT decrement inventory.\n- **Idempotency Guarantee:** Supports `idempotency_key` in request body or `Idempotency-Key` header:\n  - Same key + identical payload -> `200 OK` or `201 Created` with identical `quote_id` and `pdf_url` (idempotent replay).\n  - Same key + modified payload -> `409 Conflict` (`IDEMPOTENCY_CONFLICT`).",
         "operationId": "createPreliminaryQuote",
         "security": [
           {
@@ -605,7 +605,7 @@
                 "description": "Download URI for the generated preliminary quote PDF",
                 "schema": {
                   "type": "string",
-                  "example": "https://data.controlnautas.com/api/muse/v1/quotes/pq_a4b9c1d2e3f405162738495a6b7c8d9e/pdf?token=7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c"
+                  "example": "https://data.controlnautas.com/api/muse/v1/quotes/{id}/pdf?token={download_token}"
                 }
               }
             },
@@ -999,19 +999,19 @@
           },
           "currency": {
             "type": "string",
-            "description": "Canonical ISO 4217 currency code (strictly PEN)",
-            "example": "PEN"
+            "description": "Canonical ISO 4217 currency code (strictly USD)",
+            "example": "usd"
           },
           "unit_price_minor": {
             "type": "integer",
-            "description": "Unit price in minor currency units (centavos). E.g. 89000 for S/. 890.00.",
+            "description": "Unit price in minor currency units (cents). E.g. 89000 for $890.00.",
             "example": 89000
           },
           "unit_price": {
             "type": "number",
             "format": "double",
-            "description": "Unit price in standard currency units (Soles PEN).",
-            "example": 890.0
+            "description": "Unit price in standard currency units (US Dollars USD).",
+            "example": 890
           },
           "subtotal_minor": {
             "type": "integer",
@@ -1022,11 +1022,11 @@
             "type": "number",
             "format": "double",
             "description": "Subtotal in standard currency units (unit_price * quantity).",
-            "example": 890.0
+            "example": 890
           },
           "scale": {
             "type": "integer",
-            "description": "Decimal scale factor (strictly 2 for PEN centavos).",
+            "description": "Decimal scale factor (strictly 2 for USD cents).",
             "example": 2
           },
           "tax_status": {
@@ -1135,8 +1135,8 @@
           },
           "currency": {
             "type": "string",
-            "description": "Canonical ISO 4217 currency code (strictly PEN)",
-            "example": "PEN"
+            "description": "Canonical ISO 4217 currency code (strictly USD)",
+            "example": "usd"
           },
           "review_reason": {
             "type": "string",
@@ -1286,7 +1286,7 @@
           },
           "region_id": {
             "type": "string",
-            "description": "Target sales region ID (optional, defaults to Peru PEN demo region)",
+            "description": "Target sales region ID (optional, defaults to United States (demo) USD demo region)",
             "example": "reg_01M01FK2K4G93M9GKDRTPRP6ZB"
           },
           "idempotency_key": {
@@ -1345,7 +1345,7 @@
             "type": "string",
             "format": "uri",
             "description": "Public download URL for the generated PDF (with download token, without Bearer token)",
-            "example": "https://data.controlnautas.com/api/muse/v1/quotes/pq_a4b9c1d2e3f405162738495a6b7c8d9e/pdf?token=7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c"
+            "example": "https://data.controlnautas.com/api/muse/v1/quotes/{id}/pdf?token={download_token}"
           },
           "summary": {
             "$ref": "#/components/schemas/QuoteSummary"
@@ -1390,7 +1390,7 @@
           },
           "currency": {
             "type": "string",
-            "example": "PEN"
+            "example": "usd"
           },
           "unit_price": {
             "type": [
@@ -1398,15 +1398,15 @@
               "null"
             ],
             "format": "double",
-            "description": "Unit price in PEN (null when status is manual_review)",
-            "example": 890.0
+            "description": "Unit price in USD (null when status is manual_review)",
+            "example": 890
           },
           "unit_price_minor": {
             "type": [
               "integer",
               "null"
             ],
-            "description": "Unit price in centavos (null when status is manual_review)",
+            "description": "Unit price in cents (null when status is manual_review)",
             "example": 89000
           },
           "subtotal": {
@@ -1415,16 +1415,22 @@
               "null"
             ],
             "format": "double",
-            "description": "Subtotal in PEN (null when status is manual_review)",
-            "example": 890.0
+            "description": "Subtotal in USD (null when status is manual_review)",
+            "example": 890
           },
           "subtotal_minor": {
             "type": [
               "integer",
               "null"
             ],
-            "description": "Subtotal in centavos (null when status is manual_review)",
+            "description": "Subtotal in cents (null when status is manual_review)",
             "example": 89000
+          },
+          "product_url": {
+            "type": "string",
+            "format": "uri",
+            "description": "Canonical public storefront URL for this product",
+            "example": "https://data.controlnautas.com/us/products/cn-demo-plc-din-420-mr1"
           },
           "scale": {
             "type": "integer",
@@ -1573,23 +1579,29 @@
             "type": "string",
             "example": "cn-demo-plc-din-420-mr1"
           },
+          "product_url": {
+            "type": "string",
+            "format": "uri",
+            "description": "Canonical public storefront URL for this product",
+            "example": "https://data.controlnautas.com/us/products/cn-demo-plc-din-420-mr1"
+          },
           "urls": {
             "type": "object",
             "properties": {
               "pdf_datasheet": {
                 "type": "string",
                 "format": "uri",
-                "example": "http://52.20.66.203:8000/demo/datasheets/CN-DEMO-PLC-DIN-420-MR1.pdf"
+                "example": "https://data.controlnautas.com/demo/datasheets/CN-DEMO-PLC-DIN-420-MR1.pdf"
               },
               "markdown_spec": {
                 "type": "string",
                 "format": "uri",
-                "example": "http://52.20.66.203:8000/demo/specs/CN-DEMO-PLC-DIN-420-MR1.md"
+                "example": "https://data.controlnautas.com/demo/specs/CN-DEMO-PLC-DIN-420-MR1.md"
               },
               "pdp_human": {
                 "type": "string",
                 "format": "uri",
-                "example": "http://52.20.66.203:8000/pe/products/cn-demo-plc-din-420-mr1"
+                "example": "https://data.controlnautas.com/us/products/cn-demo-plc-din-420-mr1"
               }
             }
           }
@@ -1631,6 +1643,12 @@
           "handle": {
             "type": "string",
             "example": "cn-demo-plc-din-420-mr1"
+          },
+          "product_url": {
+            "type": "string",
+            "format": "uri",
+            "description": "Canonical public storefront URL for this product",
+            "example": "https://data.controlnautas.com/us/products/cn-demo-plc-din-420-mr1"
           },
           "revision": {
             "type": "string",
@@ -1742,7 +1760,7 @@
           "url": {
             "type": "string",
             "format": "uri",
-            "example": "http://52.20.66.203:8000/demo/datasheets/CN-DEMO-PLC-DIN-420-MR1.pdf"
+            "example": "https://data.controlnautas.com/demo/datasheets/CN-DEMO-PLC-DIN-420-MR1.pdf"
           },
           "revision": {
             "type": "string",

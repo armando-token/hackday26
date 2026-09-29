@@ -5,6 +5,7 @@ import {
   getTechnicalFacts,
   getTechnicalSources,
 } from "../../../../../../lib/muse/db"
+import { getLiveOffer } from "../../../../../../lib/muse/offer"
 
 /**
  * Tell Medusa to disable default session/store authentication.
@@ -12,11 +13,14 @@ import {
  */
 export const AUTHENTICATE = false
 
-const STOREFRONT_BASE_URL =
+const STOREFRONT_PUBLIC_BASE_URL =
+  process.env.STOREFRONT_PUBLIC_BASE_URL ||
   process.env.STOREFRONT_BASE_URL ||
   process.env.STOREFRONT_URL ||
   process.env.NEXT_PUBLIC_STOREFRONT_URL ||
   "https://data.controlnautas.com"
+
+const STOREFRONT_BASE_URL = STOREFRONT_PUBLIC_BASE_URL
 
 /**
  * GET /api/muse/v1/products/[variantId]
@@ -29,7 +33,7 @@ const STOREFRONT_BASE_URL =
  * - Response header: `X-Request-Id: <request_id>`.
  * - Strict scope: ONLY demo variants.
  * - If variantId does not exist or is outside demo scope -> HTTP 404 NOT_FOUND.
- * - PROHIBITION: Zero price and stock data embedded in this technical endpoint.
+ * - Includes live commercial `offer` snapshot (getLiveOffer) so agents discover price/stock naturally.
  */
 export const GET = withMuseAuth(
   async (req: MedusaRequest, res: MedusaResponse, { requestId }) => {
@@ -136,9 +140,44 @@ export const GET = withMuseAuth(
       }
 
       const productHandle = profile.product_handle || ""
-      const productUrl = `${STOREFRONT_BASE_URL.replace(/\/+$/, "")}/pe/products/${productHandle}`
+      const productUrl = `${STOREFRONT_PUBLIC_BASE_URL.replace(/\/+$/, "")}/us/products/${productHandle}`
 
       // Formato de respuesta exacto y conforme a especificación
+      let offer: Record<string, unknown> | null = null
+      try {
+        const live = await getLiveOffer(profile.variant_id, 1)
+        offer = {
+          state: live.state,
+          currency: live.currency,
+          unit_price_minor: live.unit_price_minor,
+          unit_price: live.unit_price,
+          subtotal_minor: live.subtotal_minor,
+          subtotal: live.subtotal,
+          scale: live.scale,
+          availability: live.availability,
+          availability_status: live.availability_status,
+          tax_status: live.tax_status,
+          shipping_status: live.shipping_status,
+          limitations: live.limitations,
+          observed_at: live.observed_at,
+          review_reason: live.review_reason,
+          offer_url: `https://data.controlnautas.com/api/muse/v1/products/${profile.variant_id}/offer?quantity=1`,
+        }
+      } catch (offerErr: any) {
+        offer = {
+          state: "manual_review",
+          review_reason: offerErr?.message || "Live offer unavailable",
+          offer_url: `https://data.controlnautas.com/api/muse/v1/products/${profile.variant_id}/offer?quantity=1`,
+        }
+      }
+
+      const links = {
+        offer: `https://data.controlnautas.com/api/muse/v1/products/${profile.variant_id}/offer?quantity=1`,
+        evaluate: "https://data.controlnautas.com/api/muse/v1/evaluate",
+        preliminary_quote: "https://data.controlnautas.com/api/muse/v1/preliminary-quotes",
+        product_page: productUrl,
+      }
+
       const responsePayload = {
         variant_id: profile.variant_id,
         sku: profile.sku || "",
@@ -149,6 +188,8 @@ export const GET = withMuseAuth(
         profile: profileData,
         facts,
         sources,
+        offer,
+        links,
         request_id: requestId,
       }
 

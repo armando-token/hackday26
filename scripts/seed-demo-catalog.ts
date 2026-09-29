@@ -42,6 +42,13 @@ export async function runSeedDemoCatalog(): Promise<void> {
 
     const manifest = JSON.parse(fs.readFileSync(MANIFEST_PATH, "utf8"))
     console.log(`[SEED] Manifest generated_at: ${manifest.generated_at}`)
+    console.log(`[SEED] Manifest region: ${manifest.region?.name} (${manifest.region?.currency_code})`)
+
+    if (manifest.region?.currency_code !== "usd" || manifest.region?.name !== "United States") {
+      throw new Error(
+        `Invalid manifest region: expected 'United States' (usd), got '${manifest.region?.name}' (${manifest.region?.currency_code})`
+      )
+    }
 
     const demoSkus = ["CN-DEMO-PLC-DIN-420-MR1", "CN-DEMO-PID-PT100-RS1", "CN-DEMO-PT100-3W-A1"]
     for (const sku of demoSkus) {
@@ -63,6 +70,12 @@ export async function runSeedDemoCatalog(): Promise<void> {
       }
       if (!urls.pdp_human.startsWith(DEMO_BASE_URL)) {
         throw new Error(`pdp_human for ${sku} does not start with ${DEMO_BASE_URL}`)
+      }
+      if (!urls.pdp_human.includes("/us/products/")) {
+        throw new Error(`pdp_human for ${sku} does not contain /us/products/: ${urls.pdp_human}`)
+      }
+      if (!urls.pdp_relative?.startsWith("/us/products/")) {
+        throw new Error(`pdp_relative for ${sku} does not start with /us/products/: ${urls.pdp_relative}`)
       }
     }
 

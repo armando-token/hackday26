@@ -203,7 +203,12 @@ async function runSuite() {
   const ROOT_DIR = path.resolve(__dirname, "..");
   const BACKEND_URL = (process.env.MEDUSA_BACKEND_URL || "http://127.0.0.1:9000").replace(/\/+$/, "");
   const STOREFRONT_URL = (process.env.STOREFRONT_URL || "http://127.0.0.1:8000").replace(/\/+$/, "");
-  const MANIFEST_PATH = path.join(ROOT_DIR, "hackday-demo-manifest.json");
+  const candidateManifestPaths = [
+    path.join(ROOT_DIR, "hackday-demo-manifest.json"),
+    path.join(ROOT_DIR, "hackday26", "hackday-demo-manifest.json"),
+    "/home/ubuntu/hackday26/hackday-demo-manifest.json",
+  ];
+  const MANIFEST_PATH = candidateManifestPaths.find((p) => fs.existsSync(p)) || candidateManifestPaths[0];
 
   const token = loadMuseToken(ROOT_DIR);
   console.log(`  ${BOLD}Host Backend URL:${RESET}      ${BACKEND_URL}`);
@@ -549,29 +554,60 @@ async function runSuite() {
       hasRequiredFields ? "Esquema verificado en todos los productos" : "Faltan campos requeridos en ítems"
     );
 
+    // 4.3.1 Product search product_url check: starts with 'https://data.controlnautas.com/us/products/'
+    const allUrlsValidUs =
+      products.length > 0 &&
+      products.every(
+        (p) =>
+          typeof p.product_url === "string" &&
+          p.product_url.startsWith("https://data.controlnautas.com/us/products/")
+      );
+
+    record(
+      "G2-SEARCH-PRODUCT-URL-US",
+      "product_url en GET /products/search inicia con 'https://data.controlnautas.com/us/products/'",
+      allUrlsValidUs,
+      "https://data.controlnautas.com/us/products/<handle> en todos los ítems",
+      allUrlsValidUs
+        ? "Todas las URLs cumplen con el prefijo /us/products/ de producción"
+        : `URLs encontradas: ${products.map((p) => p.product_url).join(", ")}`
+    );
+
     // 4.4 STRICT PROHIBITION: Zero price or stock in search response
     let hasPriceOrStockLeak = false;
+    const leakedKeys: string[] = [];
     for (const p of products) {
-      if (
-        p.price !== undefined ||
-        p.price_pen !== undefined ||
-        p.amount !== undefined ||
-        p.calculated_price !== undefined ||
-        p.stock !== undefined ||
-        p.inventory_quantity !== undefined ||
-        p.stocked_quantity !== undefined
-      ) {
-        hasPriceOrStockLeak = true;
-        break;
+      const forbiddenKeys = [
+        "price",
+        "price_pen",
+        "price_usd",
+        "amount",
+        "unit_price",
+        "unit_price_cents",
+        "subtotal",
+        "calculated_price",
+        "currency_code",
+        "stock",
+        "inventory_quantity",
+        "stocked_quantity",
+        "available_quantity",
+      ];
+      for (const k of forbiddenKeys) {
+        if (p[k] !== undefined) {
+          hasPriceOrStockLeak = true;
+          leakedKeys.push(`${p.sku}:${k}`);
+        }
       }
     }
 
     record(
       "G2-SEARCH-NO-PRICE-STOCK-LEAK",
-      "PROHIBICIÓN ESTRICTA: La respuesta de búsqueda no contiene precios cacheados ni inventario/stock",
+      "PROHIBICIÓN ESTRICTA: La respuesta de búsqueda no contiene precios cacheados (ni PEN ni USD) ni inventario/stock",
       !hasPriceOrStockLeak,
       "Zero campos de precio ni stock en la respuesta técnica",
-      hasPriceOrStockLeak ? "ALERTA: Se detectó precio o stock en la respuesta" : "Sin precio ni stock en payload"
+      hasPriceOrStockLeak
+        ? `ALERTA: Se detectaron campos filtrados: ${leakedKeys.join(", ")}`
+        : "Sin precio ni stock en payload (100% libre de fuga comercial)"
     );
   } catch (err: any) {
     record("G2-SEARCH-DEMO", "Aislamiento demo en búsqueda", false, "Conforme", err.message);
@@ -616,9 +652,15 @@ async function runSuite() {
       const hasPrice =
         data?.price !== undefined ||
         data?.price_pen !== undefined ||
+        data?.price_usd !== undefined ||
+        data?.amount !== undefined ||
+        data?.unit_price !== undefined ||
         data?.profile?.price !== undefined ||
+        data?.profile?.price_pen !== undefined ||
+        data?.profile?.price_usd !== undefined ||
         data?.stock !== undefined ||
-        data?.profile?.stock !== undefined;
+        data?.profile?.stock !== undefined ||
+        data?.profile?.available_quantity !== undefined;
 
       const fullCheck = is200 && validProfile && validFacts && validSources && !hasPrice;
 
@@ -663,6 +705,33 @@ async function runSuite() {
     record("G2-PROD-404", "Prueba de variante 404", false, "404", err.message);
   }
 
+  // 5.3 Non-demo variant returns 404 (Isolation test)
+  try {
+    const resNonDemo = await httpRequest(
+      `${BACKEND_URL}/api/muse/v1/products/variant_non_demo_standard_catalog_404`,
+      {
+        headers: { Authorization: `Bearer ${token}` },
+      }
+    );
+
+    const isNonDemo404 = resNonDemo.status === 404;
+    const hasNonDemoError =
+      resNonDemo.data?.error &&
+      typeof resNonDemo.data.error.code === "string" &&
+      typeof resNonDemo.data.error.message === "string" &&
+      typeof resNonDemo.data.request_id === "string";
+
+    record(
+      "G2-PROD-404-NONDEMO",
+      "GET /products/{variantId} con variante fuera de demo retorna HTTP 404 NOT_FOUND estructurado",
+      isNonDemo404 && hasNonDemoError,
+      "HTTP 404 con { error: { code: 'NOT_FOUND', message }, request_id }",
+      `HTTP ${resNonDemo.status}: ${JSON.stringify(resNonDemo.data)}`
+    );
+  } catch (err: any) {
+    record("G2-PROD-404-NONDEMO", "Prueba de variante no-demo 404", false, "404", err.message);
+  }
+
   // -------------------------------------------------------------
   // [GATE 6] EVALUADOR TÉCNICO POSITIVO (POST /api/muse/v1/evaluate)
   // -------------------------------------------------------------
@@ -700,13 +769,19 @@ async function runSuite() {
     const evals = resEvalPlc.data?.evaluations || [];
     const allPassed = evals.length === 5 && evals.every((e: any) => e.satisfied === true);
     const hasCitations = evals.every((e: any) => e.source_evidence && e.source_evidence.url);
+    const hasEnglishFacts = evals.some((e: any) =>
+      e.fact_display_value &&
+      (e.fact_display_value.includes("DIN Rail") ||
+        e.fact_display_value.includes("Modbus RTU") ||
+        e.fact_display_value.includes("24 VDC"))
+    );
 
     record(
       "G2-EVAL-PLC-POSITIVE-CONJUNCTION",
-      "POST /evaluate en SKU 1 (PLC DIN): Conjunción de 5 predicados requeridos -> overall_satisfied = true",
-      is200 && overallSatisfied && allPassed && hasCitations,
-      "overall_satisfied = true, 5/5 requisitos satisfied=true con citas",
-      `HTTP ${resEvalPlc.status}, overall_satisfied: ${overallSatisfied}, evaluaciones: ${evals.length}/5 pasadas: ${allPassed}`
+      "POST /evaluate en SKU 1 (PLC DIN): Conjunción de 5 predicados requeridos con hechos en inglés -> overall_satisfied = true",
+      is200 && overallSatisfied && allPassed && hasCitations && hasEnglishFacts,
+      "overall_satisfied = true, 5/5 requisitos satisfied=true con citas y hechos en inglés",
+      `HTTP ${resEvalPlc.status}, overall_satisfied: ${overallSatisfied}, evaluaciones: ${evals.length}/5 pasadas: ${allPassed}, hechos en inglés: ${hasEnglishFacts}`
     );
   } catch (err: any) {
     record("G2-EVAL-PLC-POS", "Evaluación positiva SKU 1 PLC", false, "overall_satisfied=true", err.message);
@@ -742,13 +817,19 @@ async function runSuite() {
       resEvalPid.data?.overall_satisfied === true || resEvalPid.data?.overall_match === true;
     const evals = resEvalPid.data?.evaluations || [];
     const allPassed = evals.length === 5 && evals.every((e: any) => e.satisfied === true);
+    const hasEnglishFacts = evals.some((e: any) =>
+      e.fact_display_value &&
+      (e.fact_display_value.includes("Panel") ||
+        e.fact_display_value.includes("Pt100") ||
+        e.fact_display_value.includes("PID"))
+    );
 
     record(
       "G2-EVAL-PID-POSITIVE-CONJUNCTION",
-      "POST /evaluate en SKU 2 (PID Panel): Conjunción de 5 predicados requeridos -> overall_satisfied = true",
-      is200 && overallSatisfied && allPassed,
-      "overall_satisfied = true, 5/5 requisitos satisfied=true",
-      `HTTP ${resEvalPid.status}, overall_satisfied: ${overallSatisfied}, evaluaciones: ${evals.length}/5 pasadas: ${allPassed}`
+      "POST /evaluate en SKU 2 (PID Panel): Conjunción de 5 predicados requeridos con hechos en inglés -> overall_satisfied = true",
+      is200 && overallSatisfied && allPassed && hasEnglishFacts,
+      "overall_satisfied = true, 5/5 requisitos satisfied=true con hechos en inglés",
+      `HTTP ${resEvalPid.status}, overall_satisfied: ${overallSatisfied}, evaluaciones: ${evals.length}/5 pasadas: ${allPassed}, hechos en inglés: ${hasEnglishFacts}`
     );
   } catch (err: any) {
     record("G2-EVAL-PID-POS", "Evaluación positiva SKU 2 PID", false, "overall_satisfied=true", err.message);
@@ -774,13 +855,21 @@ async function runSuite() {
       resEvalPt100.data?.overall_satisfied === true || resEvalPt100.data?.overall_match === true;
     const evals = resEvalPt100.data?.evaluations || [];
     const allPassed = evals.length === 2 && evals.every((e: any) => e.satisfied === true);
+    const hasEnglishFacts = evals.some((e: any) =>
+      e.fact_display_value &&
+      (e.fact_display_value.includes("Pt100") ||
+        e.fact_display_value.includes("probe") ||
+        e.fact_display_value.includes("Threaded") ||
+        e.fact_display_value.includes("3-Wire") ||
+        e.fact_display_value.includes("3-wire"))
+    );
 
     record(
       "G2-EVAL-PT100-POSITIVE-CONJUNCTION",
-      "POST /evaluate en SKU 3 (Sonda PT100): Conjunción de predicados requeridos -> overall_satisfied = true",
-      is200 && overallSatisfied && allPassed,
-      "overall_satisfied = true, 2/2 requisitos satisfied=true",
-      `HTTP ${resEvalPt100.status}, overall_satisfied: ${overallSatisfied}, evaluaciones: ${evals.length}/2 pasadas: ${allPassed}`
+      "POST /evaluate en SKU 3 (Sonda PT100): Conjunción de predicados requeridos con hechos en inglés -> overall_satisfied = true",
+      is200 && overallSatisfied && allPassed && hasEnglishFacts,
+      "overall_satisfied = true, 2/2 requisitos satisfied=true con hechos en inglés",
+      `HTTP ${resEvalPt100.status}, overall_satisfied: ${overallSatisfied}, evaluaciones: ${evals.length}/2 pasadas: ${allPassed}, hechos en inglés: ${hasEnglishFacts}`
     );
   } catch (err: any) {
     record("G2-EVAL-PT100-POS", "Evaluación positiva SKU 3 PT100", false, "overall_satisfied=true", err.message);
@@ -1164,12 +1253,13 @@ async function runSuite() {
         const productHandle = p.handle || p.product_handle || "";
         try {
           const resPdp = await httpRequest(pdpUrl, { timeoutMs: 20000 });
+          const hasUsPrefix = rawPdpUrl.includes("/us/products/");
           record(
             `G2-ASSET-PDP-${exp.sku}`,
-            `Página humana Storefront responde 200 OK (${productHandle})`,
-            resPdp.status === 200,
-            "HTTP 200 OK",
-            `HTTP ${resPdp.status}`
+            `Página humana Storefront responde 200 OK y usa ruta /us/products/ (${productHandle})`,
+            resPdp.status === 200 && hasUsPrefix,
+            "HTTP 200 OK con ruta /us/products/",
+            `HTTP ${resPdp.status}, ruta US: ${hasUsPrefix ? "Presente" : "Ausente"}`
           );
         } catch (err: any) {
           record(`G2-ASSET-PDP-${exp.sku}`, `Verificación de PDP ${exp.sku}`, false, "200 OK", err.message);

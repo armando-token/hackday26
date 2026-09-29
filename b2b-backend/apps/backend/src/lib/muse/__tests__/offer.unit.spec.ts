@@ -103,7 +103,7 @@ describe("Live Offer Calculation Engine (offer.ts)", () => {
   // --------------------------------------------------------------------------
   describe("calculateLiveOfferPricing", () => {
     it("should accurately calculate integer minor units and subtotal for valid prices", () => {
-      const p1 = calculateLiveOfferPricing(890, "pen", 1)
+      const p1 = calculateLiveOfferPricing(890, "usd", 1)
       expect(p1.state).toBe("priced")
       expect(p1.review_reason).toBeNull()
       expect(p1.currency).toBe(CANONICAL_CURRENCY)
@@ -114,7 +114,7 @@ describe("Live Offer Calculation Engine (offer.ts)", () => {
       expect(p1.scale).toBe(DECIMAL_SCALE)
 
       // Multiple quantity
-      const p2 = calculateLiveOfferPricing("480", "pen", 3)
+      const p2 = calculateLiveOfferPricing("480", "usd", 3)
       expect(p2.state).toBe("priced")
       expect(p2.unit_price).toBe(480)
       expect(p2.unit_price_minor).toBe(48000)
@@ -122,7 +122,7 @@ describe("Live Offer Calculation Engine (offer.ts)", () => {
       expect(p2.subtotal_minor).toBe(144000)
 
       // Decimal amount (cents precision)
-      const p3 = calculateLiveOfferPricing("75.50", "pen", 2)
+      const p3 = calculateLiveOfferPricing("75.50", "usd", 2)
       expect(p3.state).toBe("priced")
       expect(p3.unit_price).toBe(75.5)
       expect(p3.unit_price_minor).toBe(7550)
@@ -131,7 +131,7 @@ describe("Live Offer Calculation Engine (offer.ts)", () => {
     })
 
     it("should return manual_review and NEVER invent price 0 when price is missing", () => {
-      const pNull = calculateLiveOfferPricing(null, "pen", 1)
+      const pNull = calculateLiveOfferPricing(null, "usd", 1)
       expect(pNull.state).toBe("manual_review")
       expect(pNull.review_reason).toContain("not configured")
       expect(pNull.unit_price).toBeNull()
@@ -139,40 +139,45 @@ describe("Live Offer Calculation Engine (offer.ts)", () => {
       expect(pNull.subtotal).toBeNull()
       expect(pNull.subtotal_minor).toBeNull()
 
-      const pUndef = calculateLiveOfferPricing(undefined, "pen", 1)
+      const pUndef = calculateLiveOfferPricing(undefined, "usd", 1)
       expect(pUndef.state).toBe("manual_review")
       expect(pUndef.unit_price).toBeNull()
 
-      const pEmpty = calculateLiveOfferPricing("", "pen", 1)
+      const pEmpty = calculateLiveOfferPricing("", "usd", 1)
       expect(pEmpty.state).toBe("manual_review")
       expect(pEmpty.unit_price).toBeNull()
     })
 
     it("should return manual_review when price is 0 or negative (NEVER price 0)", () => {
-      const pZero = calculateLiveOfferPricing(0, "pen", 1)
+      const pZero = calculateLiveOfferPricing(0, "usd", 1)
       expect(pZero.state).toBe("manual_review")
       expect(pZero.review_reason).toContain("Non-positive")
       expect(pZero.unit_price).toBeNull()
       expect(pZero.unit_price_minor).toBeNull()
 
-      const pNeg = calculateLiveOfferPricing("-10.50", "pen", 2)
+      const pNeg = calculateLiveOfferPricing("-10.50", "usd", 2)
       expect(pNeg.state).toBe("manual_review")
       expect(pNeg.unit_price).toBeNull()
     })
 
-    it("should return manual_review when currency is invalid or not PEN", () => {
-      const pUsd = calculateLiveOfferPricing(100, "usd", 1)
-      expect(pUsd.state).toBe("manual_review")
-      expect(pUsd.review_reason).toContain("Unsupported currency")
-      expect(pUsd.unit_price).toBeNull()
+    it("should return manual_review when currency is invalid or not USD", () => {
+      const pPen = calculateLiveOfferPricing(100, "pen", 1)
+      expect(pPen.state).toBe("manual_review")
+      expect(pPen.review_reason).toBe(
+        "Currency 'pen' does not match canonical demonstration currency (usd)"
+      )
+      expect(pPen.unit_price).toBeNull()
 
       const pEur = calculateLiveOfferPricing(100, "eur", 1)
       expect(pEur.state).toBe("manual_review")
+      expect(pEur.review_reason).toBe(
+        "Currency 'eur' does not match canonical demonstration currency (usd)"
+      )
       expect(pEur.unit_price).toBeNull()
     })
 
     it("should return manual_review when price amount is not a valid number", () => {
-      const pNaN = calculateLiveOfferPricing("invalid_amount", "pen", 1)
+      const pNaN = calculateLiveOfferPricing("invalid_amount", "usd", 1)
       expect(pNaN.state).toBe("manual_review")
       expect(pNaN.unit_price).toBeNull()
     })
@@ -221,7 +226,7 @@ describe("Live Offer Calculation Engine (offer.ts)", () => {
       expect(offer.quantity).toBe(1)
       expect(offer.state).toBe("priced")
       expect(offer.review_reason).toBeNull()
-      expect(offer.currency).toBe("pen")
+      expect(offer.currency).toBe("usd")
       expect(offer.unit_price).toBe(890)
       expect(offer.unit_price_minor).toBe(89000)
       expect(offer.subtotal).toBe(890)
@@ -291,7 +296,7 @@ describe("Live Offer Calculation Engine (offer.ts)", () => {
     })
 
     it("should accept optional regionId parameter", async () => {
-      const regionId = "reg_01M01FK2K4G93M9GKDRTPRP6ZB"
+      const regionId = "reg_01JUS00HACKDAY26DEMOUSD0000"
       const offer = await getLiveOffer("CN-DEMO-PLC-DIN-420-MR1", 1, regionId)
       expect(offer.region_id).toBe(regionId)
       expect(offer.state).toBe("priced")
@@ -382,7 +387,7 @@ describe("Live Offer Calculation Engine (offer.ts)", () => {
               product_handle: "test-product-2",
               price_id: "pr_2",
               price_amount: "0",
-              currency_code: "pen",
+              currency_code: "usd",
               stocked_quantity: 5,
               reserved_quantity: 0,
             },
@@ -417,7 +422,7 @@ describe("Live Offer Calculation Engine (offer.ts)", () => {
               product_handle: "test-product-3",
               price_id: "pr_3",
               price_amount: "500",
-              currency_code: "pen",
+              currency_code: "usd",
               stocked_quantity: 0,
               reserved_quantity: 0,
             },

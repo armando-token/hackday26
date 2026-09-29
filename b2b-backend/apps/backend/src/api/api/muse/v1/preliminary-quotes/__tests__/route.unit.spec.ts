@@ -228,10 +228,10 @@ describe("POST /api/muse/v1/preliminary-quotes", () => {
 
       expect(resp.status).toBe(201)
       expect(resp.body.summary).toBeDefined()
-      // Real Medusa price is 890 PEN, NOT the injected 1.00 PEN
+      // Real Medusa price is 890 USD, NOT the injected 1.00 USD
       expect(resp.body.summary.unit_price).toBe(890)
       expect(resp.body.summary.subtotal).toBe(890)
-      expect(resp.body.summary.currency).toBe("pen")
+      expect(resp.body.summary.currency).toBe("usd")
       // Real available stock is 3, NOT the injected 999999
       expect(resp.body.summary.availability.available_quantity).toBe(3)
     })
@@ -279,11 +279,11 @@ describe("POST /api/muse/v1/preliminary-quotes", () => {
       expect(body.summary.sku).toBe(PLC_SKU)
       expect(body.summary.model).toBe("CN-DIN-PLC-A1")
       expect(body.summary.quantity).toBe(2)
-      expect(body.summary.currency).toBe("pen")
+      expect(body.summary.currency).toBe("usd")
       expect(body.summary.unit_price).toBe(890)
       expect(body.summary.subtotal).toBe(1780)
       expect(body.summary.availability.status).toBe("in_stock")
-      expect(body.summary.product_url).toContain("https://data.controlnautas.com/pe/products/")
+      expect(body.summary.product_url).toContain("https://data.controlnautas.com/us/products/")
 
       createdQuoteId = body.quote_id
       createdPublicId = body.opaque_public_id
@@ -314,7 +314,7 @@ describe("POST /api/muse/v1/preliminary-quotes", () => {
       expect(row.download_token).toBe(downloadToken)
       expect(row.tax_status).toBe("tax_excluded")
       expect(row.shipping_status).toBe("to_be_confirmed")
-      expect(row.product_url).toBe("https://data.controlnautas.com/pe/products/cn-demo-plc-din-420-mr1")
+      expect(row.product_url).toBe("https://data.controlnautas.com/us/products/cn-demo-plc-din-420-mr1")
     })
   })
 
@@ -415,7 +415,7 @@ describe("POST /api/muse/v1/preliminary-quotes", () => {
         /^https:\/\/data\.controlnautas\.com\/api\/muse\/v1\/quotes\/[a-f0-9]{32}\/pdf\?token=[a-f0-9]{48}$/
       )
       expect(resp.body.summary.product_url).toBe(
-        "https://data.controlnautas.com/pe/products/cn-demo-plc-din-420-mr1"
+        "https://data.controlnautas.com/us/products/cn-demo-plc-din-420-mr1"
       )
     })
 
@@ -439,7 +439,7 @@ describe("POST /api/muse/v1/preliminary-quotes", () => {
         /^https:\/\/custom-muse\.example\.com\/api\/muse\/v1\/quotes\/[a-f0-9]{32}\/pdf\?token=[a-f0-9]{48}$/
       )
       expect(resp.body.summary.product_url).toBe(
-        "https://custom-muse.example.com/pe/products/cn-demo-plc-din-420-mr1"
+        "https://custom-muse.example.com/us/products/cn-demo-plc-din-420-mr1"
       )
     })
   })

@@ -6,6 +6,7 @@ import {
   type MuseRouteContext,
 } from "../../../../../../lib/muse/auth-guard"
 import { getPool } from "../../../../../../lib/muse/db"
+import { getLiveOffer } from "../../../../../../lib/muse/offer"
 
 /**
  * Indicador para Medusa v2 de que esta ruta maneja su propia autenticación (Bearer token Muse)
@@ -27,6 +28,13 @@ export interface SearchProductItem {
   product_url: string
   technical_summary: string
   demo: boolean
+  currency?: string | null
+  unit_price_minor?: number | null
+  unit_price?: number | null
+  availability_status?: string | null
+  available_quantity?: number | null
+  offer_url: string
+  price_available: boolean
 }
 
 export interface SearchProductsResponse {
@@ -50,8 +58,8 @@ export interface SearchProductsResponse {
  * - Alcance: ÚNICAMENTE variantes de demostración técnica (CN-DEMO-* / demo=true).
  * - Matching: q contra sku, model, title y display_value de technical_fact.
  * - Sin q: retorna todas las variantes demo (hasta el límite).
- * - PROHIBICIÓN: NUNCA incluye precio cacheado ni stock en la respuesta.
- * - URLs: Usan la IP Elástica https://data.controlnautas.com/pe/products/<handle>.
+ * - Includes compact live commercial fields (USD price/stock) for agent discoverability.
+ * - URLs: Usan la IP Elástica https://data.controlnautas.com/us/products/<handle>.
  */
 export const GET = withMuseAuth(
   async (
@@ -161,16 +169,44 @@ export const GET = withMuseAuth(
         limit,
       ])
 
-      // 5. Construcción estricta de la respuesta técnica (SIN precio ni stock)
-      const products: SearchProductItem[] = rows.map((row) => ({
-        variant_id: row.variant_id,
-        sku: row.sku,
-        model: row.model,
-        title: row.title,
-        product_url: `${STOREFRONT_PUBLIC_BASE_URL.replace(/\/+$/, "")}/pe/products/${row.handle}`,
-        technical_summary: row.subtitle || row.description || "",
-        demo: true,
-      }))
+      // 5. Build response with compact live commercial fields for agent discoverability
+      const products: SearchProductItem[] = []
+      for (const row of rows) {
+        const offerUrl = `https://data.controlnautas.com/api/muse/v1/products/${row.variant_id}/offer?quantity=1`
+        let currency: string | null = null
+        let unit_price_minor: number | null = null
+        let unit_price: number | null = null
+        let availability_status: string | null = null
+        let available_quantity: number | null = null
+        let price_available = false
+        try {
+          const live = await getLiveOffer(row.variant_id, 1)
+          currency = live.currency
+          unit_price_minor = live.unit_price_minor
+          unit_price = live.unit_price
+          availability_status = live.availability_status
+          available_quantity = live.availability?.available_quantity ?? null
+          price_available = live.state === "priced"
+        } catch {
+          // keep null commercial fields; search still returns technical hit
+        }
+        products.push({
+          variant_id: row.variant_id,
+          sku: row.sku,
+          model: row.model,
+          title: row.title,
+          product_url: `${STOREFRONT_PUBLIC_BASE_URL.replace(/\/+$/, "")}/us/products/${row.handle}`,
+          technical_summary: row.subtitle || row.description || "",
+          demo: true,
+          currency,
+          unit_price_minor,
+          unit_price,
+          availability_status,
+          available_quantity,
+          offer_url: offerUrl,
+          price_available,
+        })
+      }
 
       const responsePayload: SearchProductsResponse = {
         products,

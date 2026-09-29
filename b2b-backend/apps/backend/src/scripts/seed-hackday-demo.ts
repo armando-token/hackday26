@@ -1,5 +1,6 @@
 import { ExecArgs } from "@medusajs/framework/types"
 import { createProductsWorkflow } from "@medusajs/medusa/core-flows"
+import * as crypto from "crypto"
 import * as fs from "fs"
 import * as path from "path"
 
@@ -12,7 +13,7 @@ interface DemoProductDef {
   title: string
   subtitle: string
   description: string
-  pricePen: number // 890, 480, 75
+  priceUsd: number // 890, 480, 75
   stock: number // 3, 2, 8
   sourceId: string
   pdfDatasheet: string
@@ -33,13 +34,28 @@ const DEMO_BASE_URL =
   process.env.STOREFRONT_BASE_URL ||
   "https://data.controlnautas.com"
 
+function getDatasheetChecksum(pdfPath: string, fallback: string): string {
+  try {
+    if (fs.existsSync(pdfPath)) {
+      const fileBuffer = fs.readFileSync(pdfPath)
+      return crypto.createHash("sha256").update(fileBuffer).digest("hex")
+    }
+  } catch {
+    // fallback
+  }
+  return fallback
+}
+
 const DEMO_SOURCES = [
   {
     id: "SRC-CN-DIN-PLC-A1-DS-V1",
     url: `${DEMO_BASE_URL}/demo/datasheets/CN-DEMO-PLC-DIN-420-MR1.pdf`,
     kind: "datasheet",
     revision: "rev-2026.1",
-    checksum: "8009da7ddf415884229b8570d75fd59e602aad1013caab851ac61d06c361e385",
+    checksum: getDatasheetChecksum(
+      "/home/ubuntu/hackday26/docs/datasheets/CN-DEMO-PLC-DIN-420-MR1.pdf",
+      "7ed82d6c5d982e5e68c2432fcc6d48b6f69978b22c519d0d82aa9c611189b041"
+    ),
     published_at: "2026-09-29T18:00:00Z",
   },
   {
@@ -47,7 +63,10 @@ const DEMO_SOURCES = [
     url: `${DEMO_BASE_URL}/demo/datasheets/CN-DEMO-PID-PT100-RS1.pdf`,
     kind: "datasheet",
     revision: "rev-2026.1",
-    checksum: "b695ef3318e840535601432acb197db1c007ae614673d657df472d9129abdeaf",
+    checksum: getDatasheetChecksum(
+      "/home/ubuntu/hackday26/docs/datasheets/CN-DEMO-PID-PT100-RS1.pdf",
+      "eb675c4bed85a0ce788b133ebc10b9cb1c113cdedbf0397a782874d42b9f8ce8"
+    ),
     published_at: "2026-09-29T18:00:00Z",
   },
   {
@@ -55,7 +74,10 @@ const DEMO_SOURCES = [
     url: `${DEMO_BASE_URL}/demo/datasheets/CN-DEMO-PT100-3W-A1.pdf`,
     kind: "datasheet",
     revision: "rev-2026.1",
-    checksum: "3c8e67e4e5b76baa787e9f91eb0546015a1e7afa1551b79f2a1fb417cca17fbf",
+    checksum: getDatasheetChecksum(
+      "/home/ubuntu/hackday26/docs/datasheets/CN-DEMO-PT100-3W-A1.pdf",
+      "8569559ff27be3855334ac7821d7fd7295963eefb5eb566a0d687d5b5636c6aa"
+    ),
     published_at: "2026-09-29T18:00:00Z",
   },
 ]
@@ -65,11 +87,11 @@ const DEMO_PRODUCTS: DemoProductDef[] = [
     sku: "CN-DEMO-PLC-DIN-420-MR1",
     model: "CN-DIN-PLC-A1",
     handle: "cn-demo-plc-din-420-mr1",
-    title: "Controlador Lógico Programable DIN 4-20 mA (CN-DIN-PLC-A1)",
-    subtitle: "PLC Riel DIN 35mm, 24VDC, 2x AI 4-20mA, RS-485 Modbus RTU Esclavo",
+    title: "Programmable Logic Controller DIN 4-20 mA (CN-DIN-PLC-A1)",
+    subtitle: "DIN Rail 35mm PLC, 24VDC, 2x AI 4-20mA, RS-485 Modbus RTU Slave",
     description:
-      "Controlador Lógico Programable para Riel DIN 35 mm con 2 entradas analógicas 4–20 mA, puerto serie RS-485 Modbus RTU esclavo y alimentación continua 24 VDC. Componente sintético para demostración técnica.",
-    pricePen: 890,
+      "Industrial Programmable Logic Controller for 35 mm DIN rail with 2 analog inputs (4–20 mA), isolated RS-485 Modbus RTU slave interface, and 24 VDC power supply. Synthetic component for technical demonstration.",
+    priceUsd: 890,
     stock: 3,
     sourceId: "SRC-CN-DIN-PLC-A1-DS-V1",
     pdfDatasheet: "/demo/datasheets/CN-DEMO-PLC-DIN-420-MR1.pdf",
@@ -78,21 +100,21 @@ const DEMO_PRODUCTS: DemoProductDef[] = [
       {
         property: "mounting",
         normalized_value_json: { type: "DIN rail", standard: "IEC/EN 60715", size_mm: 35 },
-        display_value: "Montaje en carril DIN 35 mm",
+        display_value: "35 mm DIN Rail Mounting",
         page: 1,
-        section: "Sección 2: Montaje Físico",
+        section: "Section 2: Physical Mounting and Mechanical Form Factor",
         excerpt:
-          "Montaje en carril DIN simétrico de 35 mm bajo norma internacional IEC / EN 60715 (perfiles TH35-7.5 y TH35-15)",
+          "Symmetrical 35 mm DIN rail mounting compliant with international standard IEC/EN 60715 (top-hat rail TH35-7.5 and TH35-15)",
         polarity: true,
       },
       {
         property: "supply_voltage",
         normalized_value_json: { type: "DC", nominal: 24, unit: "VDC", min: 18.0, max: 30.0 },
-        display_value: "24 VDC (18.0 a 30.0 VDC)",
+        display_value: "24 VDC (18.0 to 30.0 VDC)",
         page: 1,
-        section: "Sección 3: Alimentación Eléctrica",
+        section: "Section 3: Electrical Power Supply & Operational Tolerances",
         excerpt:
-          "24 VDC nominales en corriente continua (rango operativo garantizado: 18.0 VDC a 30.0 VDC)",
+          "24 VDC nominal direct current (guaranteed operational range: 18.0 VDC to 30.0 VDC)",
         polarity: true,
       },
       {
@@ -106,21 +128,21 @@ const DEMO_PRODUCTS: DemoProductDef[] = [
           unit: "mA",
           resolution_bits: 12,
         },
-        display_value: "2 entradas analógicas 4–20 mA (12 bits)",
+        display_value: "2 analog inputs 4–20 mA (12-bit)",
         page: 2,
-        section: "Sección 4: Entradas / Salidas Analógicas y Sensores",
+        section: "Section 4: Analog & Discrete I/O Interfaces and Sensors",
         excerpt:
-          "2 canales independientes de entrada analógica en lazo de corriente estándar 4–20 mA",
+          "2 independent analog input channels in standard 4–20 mA current loop",
         polarity: true,
       },
       {
         property: "analog_output",
         normalized_value_json: { direction: "output", channels: 0, available: false },
-        display_value: "0 canales (Sin salidas analógicas)",
+        display_value: "0 channels (No analog outputs)",
         page: 2,
-        section: "Sección 4: Entradas / Salidas Analógicas y Sensores",
+        section: "Section 4: Analog & Discrete I/O Interfaces and Sensors",
         excerpt:
-          "SIN SALIDAS ANALÓGICAS (0 canales de salida analógica). No dispone de DAC ni lazos 4–20 mA de transmisión",
+          "NO ANALOG OUTPUTS (0 analog output channels). Hardware lacks DAC and 4–20 mA current transmission circuits",
         polarity: false,
       },
       {
@@ -130,11 +152,11 @@ const DEMO_PRODUCTS: DemoProductDef[] = [
           role: "slave",
           baudrates: [9600, 19200, 38400, 57600, 115200],
         },
-        display_value: "Modbus RTU esclavo",
+        display_value: "Modbus RTU Slave",
         page: 2,
-        section: "Sección 5: Comunicaciones y Protocolos",
+        section: "Section 5: Communications, Fieldbus and Protocol Specifications",
         excerpt:
-          "Modbus RTU en modo esclavo (slave) configurable por software con registros estándar de lectura/escritura",
+          "Modbus RTU in SLAVE mode (server) software-configurable with standard read/write holding registers",
         polarity: true,
       },
       {
@@ -145,21 +167,21 @@ const DEMO_PRODUCTS: DemoProductDef[] = [
           duplex: "half-duplex",
           isolation_v: 1000,
         },
-        display_value: "RS-485 semidúplex aislado",
+        display_value: "Isolated half-duplex RS-485",
         page: 2,
-        section: "Sección 5: Comunicaciones y Protocolos",
+        section: "Section 5: Communications, Fieldbus and Protocol Specifications",
         excerpt:
-          "Puerto serie físico RS-485 semidúplex (2 hilos A/B + común GND) con aislamiento galvánico de 1000 V",
+          "Physical RS-485 half-duplex serial port (2-wire A/B + isolated GND) with 1000 V galvanic isolation",
         polarity: true,
       },
       {
         property: "control_function",
         normalized_value_json: { type: "PLC", digital_inputs: 4, digital_outputs: 4 },
-        display_value: "PLC compacto con 4 DI y 4 DO",
+        display_value: "Compact PLC with 4 DI and 4 DO",
         page: 1,
-        section: "Sección 1: Identificación y Modelo",
+        section: "Section 1: Identification and Model Overview",
         excerpt:
-          "El microcontrolador industrial modelo CN-DIN-PLC-A1 (código SKU: CN-DEMO-PLC-DIN-420-MR1) es una estación compacta de adquisición y control lógico para cuadros eléctricos.",
+          "The industrial micro-controller model CN-DIN-PLC-A1 (SKU: CN-DEMO-PLC-DIN-420-MR1) is a compact acquisition and logic control station for electrical cabinets.",
         polarity: true,
       },
     ],
@@ -168,11 +190,11 @@ const DEMO_PRODUCTS: DemoProductDef[] = [
     sku: "CN-DEMO-PID-PT100-RS1",
     model: "CN-PID-T1",
     handle: "cn-demo-pid-pt100-rs1",
-    title: "Controlador Digital de Temperatura PID para Panel (CN-PID-T1)",
-    subtitle: "Controlador PID Panel 48x48, Entrada Pt100 3-Hilos, Salida 4-20mA, Modbus RTU",
+    title: "Digital PID Process Controller 1/16 DIN (CN-PID-T1)",
+    subtitle: "1/16 DIN Panel Controller, Pt100 RTD Input, 4-20mA Control Output, Modbus RTU",
     description:
-      "Controlador Digital de Temperatura PID formato panel 48×48 mm (1/16 DIN) con entrada directa Pt100 3 hilos, salida analógica de control 4–20 mA activa y comunicación Modbus RTU RS-485. Componente sintético para demostración técnica.",
-    pricePen: 480,
+      "Compact 1/16 DIN digital process controller featuring Pt100 RTD input, active 4–20 mA PID modulating control output, and RS-485 Modbus RTU interface. Synthetic component for technical demonstration.",
+    priceUsd: 480,
     stock: 2,
     sourceId: "SRC-CN-PID-T1-DS-V1",
     pdfDatasheet: "/demo/datasheets/CN-DEMO-PID-PT100-RS1.pdf",
@@ -186,11 +208,11 @@ const DEMO_PRODUCTS: DemoProductDef[] = [
           cutout_mm: "45x45",
           front_bezel_mm: "48x48",
         },
-        display_value: "Montaje en panel frontal 1/16 DIN (48×48 mm)",
+        display_value: "1/16 DIN Front Panel Mount (48×48 mm)",
         page: 1,
-        section: "Sección 2: Montaje Físico",
+        section: "Section 2: Physical Mounting and Mechanical Form Factor",
         excerpt:
-          "Montaje empotrado en panel o puerta de armario eléctrico formato estándar 1/16 DIN (marco exterior 48 × 48 mm)",
+          "Flush mounting in panel or cabinet door standard 1/16 DIN format (external bezel 48 × 48 mm, cutout 45 × 45 mm)",
         polarity: true,
       },
       {
@@ -203,11 +225,11 @@ const DEMO_PRODUCTS: DemoProductDef[] = [
           min: 85,
           max: 264,
         },
-        display_value: "100 - 240 VAC universal (85 a 264 VAC)",
+        display_value: "100 - 240 VAC Universal (85 to 264 VAC)",
         page: 1,
-        section: "Sección 3: Alimentación Eléctrica",
+        section: "Section 3: Electrical Power Supply & Operational Tolerances",
         excerpt:
-          "Fuente conmutada universal de 100 a 240 VAC (límite operativo: 85 a 264 VAC), 50 / 60 Hz",
+          "Universal switching power supply 100 to 240 VAC (operational limits: 85 to 264 VAC), 50/60 Hz",
         polarity: true,
       },
       {
@@ -220,21 +242,21 @@ const DEMO_PRODUCTS: DemoProductDef[] = [
           min_c: -200.0,
           max_c: 600.0,
         },
-        display_value: "Entrada termorresistencia Pt100 3 hilos",
+        display_value: "Pt100 3-Wire RTD Input",
         page: 2,
-        section: "Sección 4: Entradas / Salidas Analógicas y Sensores",
+        section: "Section 4: Analog & Discrete I/O Interfaces and Sensors",
         excerpt:
-          "Entrada directa para sensor resistivo Pt100 con conexionado a 3 hilos para compensación de longitud de línea",
+          "Direct input for Pt100 resistive temperature sensor with 3-wire connection for lead wire resistance compensation",
         polarity: true,
       },
       {
         property: "analog_input",
         normalized_value_json: { direction: "input", channels: 0, available: false },
-        display_value: "0 canales (Sin entrada de corriente 4–20 mA)",
+        display_value: "0 channels (No 4–20 mA current input)",
         page: 2,
-        section: "Sección 4: Entradas / Salidas Analógicas y Sensores",
+        section: "Section 4: Analog & Discrete I/O Interfaces and Sensors",
         excerpt:
-          "SIN ENTRADA ANALÓGICA 4–20 mA DIRECTA. La entrada analógica está dedicada exclusivamente a termorresistencia RTD Pt100",
+          "NO DIRECT 4–20 mA ANALOG INPUT. The analog input stage is dedicated exclusively to Pt100 RTD sensors",
         polarity: false,
       },
       {
@@ -249,11 +271,11 @@ const DEMO_PRODUCTS: DemoProductDef[] = [
           active_loop: true,
           max_load_ohm: 500,
         },
-        display_value: "1 salida analógica 4–20 mA activa para control modulante",
+        display_value: "1 active 4–20 mA analog output for modulating control",
         page: 2,
-        section: "Sección 4: Entradas / Salidas Analógicas y Sensores",
+        section: "Section 4: Analog & Discrete I/O Interfaces and Sensors",
         excerpt:
-          "1 salida analógica proporcional de control en corriente activa 4–20 mA (impedancia de carga máxima 500 Ω)",
+          "1 proportional modulating control analog output in active 4–20 mA current loop (maximum load impedance 500 Ω)",
         polarity: true,
       },
       {
@@ -263,11 +285,11 @@ const DEMO_PRODUCTS: DemoProductDef[] = [
           features: ["auto-tuning", "manual_mode", "on-off"],
           cycle_time_ms: 200,
         },
-        display_value: "Regulador PID digital con Auto-Tuning",
+        display_value: "Digital PID Controller with Auto-Tuning",
         page: 1,
-        section: "Sección 1: Identificación y Modelo",
+        section: "Section 1: Identification and Model Overview",
         excerpt:
-          "PID avanzado con auto-sintonía adaptativa (Auto-Tuning) y modo manual / ON-OFF seleccionable",
+          "Advanced PID control algorithm with adaptive auto-tuning, manual override, and selectable ON-OFF control mode",
         polarity: true,
       },
       {
@@ -277,11 +299,11 @@ const DEMO_PRODUCTS: DemoProductDef[] = [
           role: "slave",
           baudrates: [4800, 9600, 19200, 38400],
         },
-        display_value: "Modbus RTU esclavo",
+        display_value: "Modbus RTU Slave",
         page: 2,
-        section: "Sección 5: Comunicaciones y Protocolos",
+        section: "Section 5: Communications, Fieldbus and Protocol Specifications",
         excerpt:
-          "Modbus RTU esclavo con soporte de comandos de lectura de variable de proceso (PV) y escritura de Setpoint (SP)",
+          "Modbus RTU slave supporting Process Variable (PV) read commands and Setpoint (SP) write commands",
         polarity: true,
       },
       {
@@ -292,11 +314,11 @@ const DEMO_PRODUCTS: DemoProductDef[] = [
           duplex: "half-duplex",
           isolation_v: 1000,
         },
-        display_value: "RS-485 semidúplex aislado",
+        display_value: "Isolated half-duplex RS-485",
         page: 2,
-        section: "Sección 5: Comunicaciones y Protocolos",
+        section: "Section 5: Communications, Fieldbus and Protocol Specifications",
         excerpt:
-          "Canal serie RS-485 con aislamiento galvánico de 1000 V RMS y bornas traseras desacoplables",
+          "RS-485 serial communication channel with 1000 V RMS galvanic isolation and detachable rear terminals",
         polarity: true,
       },
     ],
@@ -305,11 +327,11 @@ const DEMO_PRODUCTS: DemoProductDef[] = [
     sku: "CN-DEMO-PT100-3W-A1",
     model: "CN-RTD-P1",
     handle: "cn-demo-pt100-3w-a1",
-    title: "Sonda Industrial de Temperatura RTD Pt100 3 Hilos (CN-RTD-P1)",
-    subtitle: "Sonda Pt100 Pasiva 3-Hilos, AISI 316L, Sin Transmisor, Sin Modbus",
+    title: "Industrial RTD Pt100 Temperature Probe 3-Wire (CN-RTD-P1)",
+    subtitle: "Passive 3-Wire Pt100 Probe, AISI 316L, No Transmitter, No Modbus",
     description:
-      "Sonda de temperatura industrial RTD Pt100 pasiva de 3 hilos en acero inoxidable AISI 316L con rosca 1/2\" NPT. Sensor pasivo sin transmisor integrado ni interfaz digital. Componente sintético para demostración técnica.",
-    pricePen: 75,
+      "Industrial 3-wire passive RTD Pt100 temperature sensor probe in AISI 316L stainless steel with 1/2\" NPT process connection. Passive RTD element without integrated transmitter or digital fieldbus. Synthetic component for technical demonstration.",
+    priceUsd: 75,
     stock: 8,
     sourceId: "SRC-CN-RTD-P1-DS-V1",
     pdfDatasheet: "/demo/datasheets/CN-DEMO-PT100-3W-A1.pdf",
@@ -328,11 +350,11 @@ const DEMO_PRODUCTS: DemoProductDef[] = [
           min_c: -50.0,
           max_c: 350.0,
         },
-        display_value: "Sensor termorresistencia Pt100 Clase A, 3 hilos (-50 a +350 °C)",
+        display_value: "Pt100 Class A 3-Wire RTD Sensor (-50 to +350 °C)",
         page: 2,
-        section: "Sección 4: Entradas / Salidas Analógicas y Sensores",
+        section: "Section 4: Analog & Discrete I/O Interfaces and Sensors",
         excerpt:
-          "Elemento de platino puro bobinado Pt100 calibrado bajo norma IEC 60751 Clase A (tolerancia ±(0.15 + 0.002·|t|) °C)",
+          "Pure platinum wire-wound Pt100 element calibrated according to IEC 60751 Class A (tolerance ±(0.15 + 0.002·|t|) °C)",
         polarity: true,
       },
       {
@@ -344,11 +366,11 @@ const DEMO_PRODUCTS: DemoProductDef[] = [
           diameter_mm: 6.0,
           length_mm: 150,
         },
-        display_value: "Sonda de inmersión roscada 1/2\" NPT, vaina AISI 316L 6×150 mm",
+        display_value: "1/2\" NPT Threaded Immersion Probe, AISI 316L Sheath 6×150 mm",
         page: 1,
-        section: "Sección 2: Montaje Físico",
+        section: "Section 2: Physical Mounting and Mechanical Form Factor",
         excerpt:
-          "Racor roscado fijo al proceso de 1/2 pulgada NPT macho en acero inoxidable AISI 316L",
+          "Process-fixed 1/2-inch male NPT threaded fitting in AISI 316L stainless steel",
         polarity: true,
       },
       {
@@ -360,20 +382,20 @@ const DEMO_PRODUCTS: DemoProductDef[] = [
           excitation_current_ma_min: 0.1,
           excitation_current_ma_max: 1.0,
         },
-        display_value: "Sin alimentación propia (dispositivo puramente pasivo)",
+        display_value: "No self-power supply (purely passive device)",
         page: 1,
-        section: "Sección 3: Alimentación Eléctrica",
+        section: "Section 3: Electrical Power Supply & Operational Tolerances",
         excerpt:
-          "SIN ALIMENTACIÓN PROPIA (0 VDC / 0 VAC). Es un componente puramente pasivo",
+          "NO EXTERNAL POWER SUPPLY REQUIRED (0 VDC / 0 VAC). Purely passive resistance element operated via measuring circuit excitation current",
         polarity: true,
       },
       {
         property: "analog_input",
         normalized_value_json: { direction: "input", channels: 0, available: false },
-        display_value: "0 canales (No aplica)",
+        display_value: "0 channels (Not applicable)",
         page: 2,
-        section: "Sección 4: Entradas / Salidas Analógicas y Sensores",
-        excerpt: "No aplica. Sensor pasivo sin etapas de acondicionamiento",
+        section: "Section 4: Analog & Discrete I/O Interfaces and Sensors",
+        excerpt: "Not applicable. Passive RTD sensing probe without signal input conditioning circuits",
         polarity: false,
       },
       {
@@ -384,11 +406,11 @@ const DEMO_PRODUCTS: DemoProductDef[] = [
           available: false,
           notes: "No genera 4-20 mA ni voltaje por sí solo",
         },
-        display_value: "0 canales (Sin transmisor; resistencia pura pasiva)",
+        display_value: "0 channels (No transmitter; pure passive resistance)",
         page: 2,
-        section: "Sección 4: Entradas / Salidas Analógicas y Sensores",
+        section: "Section 4: Analog & Discrete I/O Interfaces and Sensors",
         excerpt:
-          "SIN TRANSMISOR INTEGRADO (0 transmisores). No incluye electrónica de acondicionamiento",
+          "NO INTEGRATED TRANSMITTER (0 transmitters). Does not include 4–20 mA conditioning electronics or analog voltage transmitter",
         polarity: false,
       },
       {
@@ -399,21 +421,21 @@ const DEMO_PRODUCTS: DemoProductDef[] = [
           cable_length_m: 2.0,
           cable_wires: 3,
         },
-        display_value: "Sin interfaz digital (cable directo de 3 conductores)",
+        display_value: "No digital interface (direct 3-conductor shielded cable)",
         page: 2,
-        section: "Sección 5: Comunicaciones y Protocolos",
+        section: "Section 5: Communications, Fieldbus and Protocol Specifications",
         excerpt:
-          "NINGUNA. La sonda carece de microprocesador, UART, circuito integrado o puerto serie",
+          "NONE. Pure sensor probe without microprocessor, UART, integrated circuit, or serial port",
         polarity: false,
       },
       {
         property: "protocol",
         normalized_value_json: { name: "none", supported: false },
-        display_value: "Ninguno (Sin protocolo serie ni bus de datos)",
+        display_value: "None (No serial protocol or fieldbus)",
         page: 2,
-        section: "Sección 5: Comunicaciones y Protocolos",
+        section: "Section 5: Communications, Fieldbus and Protocol Specifications",
         excerpt:
-          "NO APLICA / SIN PROTOCOLO. No posee capacidad de comunicación digital por bus de datos",
+          "NOT APPLICABLE / NO PROTOCOL. No digital communication capability or data bus support",
         polarity: false,
       },
     ],
@@ -436,7 +458,7 @@ function generateId(prefix: string): string {
 export default async function seedHackdayDemo({ container }: ExecArgs) {
   const logger = container.resolve("logger")
   logger.info("=========================================================")
-  logger.info("🌱 INICIANDO SEED HACKDAY DEMO IDEMPOTENTE (FASE 1)")
+  logger.info("🌱 INICIANDO SEED HACKDAY DEMO IDEMPOTENTE (ENGLISH & USD)")
   logger.info("=========================================================")
 
   const connectionString =
@@ -446,80 +468,80 @@ export default async function seedHackdayDemo({ container }: ExecArgs) {
 
   try {
     // -----------------------------------------------------------------------
-    // 1. CONFIGURACIÓN DE MONEDA 'PEN' Y TIENDA
+    // 1. CONFIGURACIÓN DE MONEDA 'USD' Y TIENDA
     // -----------------------------------------------------------------------
-    logger.info("1. Verificando moneda PEN y Store Currency...")
+    logger.info("1. Verificando moneda USD y Store Currency...")
     const storeRes = await client.query("SELECT id FROM store LIMIT 1")
     if (!storeRes.rows.length) {
       throw new Error("No store found in database")
     }
     const storeId = storeRes.rows[0].id
 
-    // Verificar moneda PEN en tabla currency
-    const penCur = await client.query("SELECT code FROM currency WHERE code = 'pen'")
-    if (!penCur.rows.length) {
+    // Verificar moneda USD en tabla currency
+    const usdCur = await client.query("SELECT code FROM currency WHERE code = 'usd'")
+    if (!usdCur.rows.length) {
       await client.query(`
         INSERT INTO currency (code, symbol, symbol_native, decimal_digits, rounding, raw_rounding, name, created_at, updated_at)
-        VALUES ('pen', 'S/.', 'S/.', 2, 0, '{"value": "0", "precision": 20}'::jsonb, 'Peruvian Nuevo Sol', NOW(), NOW())
+        VALUES ('usd', '$', '$', 2, 0, '{"value": "0", "precision": 20}'::jsonb, 'US Dollar', NOW(), NOW())
         ON CONFLICT (code) DO NOTHING
       `)
     }
 
-    // Asegurar PEN en store_currency
+    // Asegurar USD en store_currency
     const storeCurRes = await client.query(
-      "SELECT id FROM store_currency WHERE store_id = $1 AND currency_code = 'pen'",
+      "SELECT id FROM store_currency WHERE store_id = $1 AND currency_code = 'usd'",
       [storeId]
     )
     if (!storeCurRes.rows.length) {
       const stocurId = generateId("stocur")
       await client.query(
         `INSERT INTO store_currency (id, currency_code, is_default, store_id, created_at, updated_at)
-         VALUES ($1, 'pen', false, $2, NOW(), NOW())`,
+         VALUES ($1, 'usd', false, $2, NOW(), NOW())`,
         [stocurId, storeId]
       )
-      logger.info(`✅ Moneda PEN agregada a store_currency para tienda ${storeId}`)
+      logger.info(`✅ Moneda USD agregada a store_currency para tienda ${storeId}`)
     } else {
-      logger.info("✅ Moneda PEN ya presente en store_currency")
+      logger.info("✅ Moneda USD ya presente en store_currency")
     }
 
     // -----------------------------------------------------------------------
-    // 2. CONFIGURACIÓN DE REGIÓN PERÚ (PEN)
+    // 2. CONFIGURACIÓN DE REGIÓN UNITED STATES (USD)
     // -----------------------------------------------------------------------
-    logger.info("2. Verificando Región Perú (PEN)...")
-    let peRegionId = "reg_01M01FK2K4G93M9GKDRTPRP6ZB"
+    logger.info("2. Verificando Región United States (USD)...")
+    let usRegionId = "reg_01JUS00HACKDAY26DEMOUSD0000"
     const regCheck = await client.query(
-      "SELECT id, name, currency_code FROM region WHERE currency_code = 'pen' OR id = $1 LIMIT 1",
-      [peRegionId]
+      "SELECT id, name, currency_code FROM region WHERE currency_code = 'usd' OR id = $1 LIMIT 1",
+      [usRegionId]
     )
     if (!regCheck.rows.length) {
       await client.query(
         `INSERT INTO region (id, name, currency_code, created_at, updated_at)
-         VALUES ($1, 'Perú', 'pen', NOW(), NOW())
-         ON CONFLICT (id) DO UPDATE SET currency_code = 'pen', name = 'Perú', updated_at = NOW()`,
-        [peRegionId]
+         VALUES ($1, 'United States', 'usd', NOW(), NOW())
+         ON CONFLICT (id) DO UPDATE SET currency_code = 'usd', name = 'United States', updated_at = NOW()`,
+        [usRegionId]
       )
-      logger.info(`✅ Región Perú creada: ${peRegionId}`)
+      logger.info(`✅ Región United States creada: ${usRegionId}`)
     } else {
-      peRegionId = regCheck.rows[0].id
-      logger.info(`✅ Región Perú detectada: ${peRegionId} (${regCheck.rows[0].currency_code})`)
+      usRegionId = regCheck.rows[0].id
+      logger.info(`✅ Región United States detectada: ${usRegionId} (${regCheck.rows[0].currency_code})`)
     }
 
-    // Vincular país PE a la región
+    // Vincular país US a la región
     await client.query(
-      `UPDATE region_country SET region_id = $1, updated_at = NOW() WHERE iso_2 = 'pe'`,
-      [peRegionId]
+      `UPDATE region_country SET region_id = $1, updated_at = NOW() WHERE iso_2 = 'us'`,
+      [usRegionId]
     )
 
-    // Asegurar proveedor de pago para región Perú
+    // Asegurar proveedor de pago para región United States
     const regppCheck = await client.query(
       "SELECT id FROM region_payment_provider WHERE region_id = $1",
-      [peRegionId]
+      [usRegionId]
     )
     if (!regppCheck.rows.length) {
       await client.query(
         `INSERT INTO region_payment_provider (id, region_id, payment_provider_id, created_at, updated_at)
          VALUES ($1, $2, 'pp_system_default', NOW(), NOW())`,
-        [generateId("regpp"), peRegionId]
+        [generateId("regpp"), usRegionId]
       )
     }
 
@@ -535,7 +557,7 @@ export default async function seedHackdayDemo({ container }: ExecArgs) {
       defaultSalesChannelId = generateId("sc")
       await client.query(
         `INSERT INTO sales_channel (id, name, description, is_disabled, created_at, updated_at)
-         VALUES ($1, 'Default Sales Channel', 'Canal de ventas predeterminado', false, NOW(), NOW())`,
+         VALUES ($1, 'Default Sales Channel', 'Default sales channel', false, NOW(), NOW())`,
         [defaultSalesChannelId]
       )
     }
@@ -549,7 +571,7 @@ export default async function seedHackdayDemo({ container }: ExecArgs) {
       demoSalesChannelId = generateId("sc")
       await client.query(
         `INSERT INTO sales_channel (id, name, description, is_disabled, created_at, updated_at)
-         VALUES ($1, 'Demo Sales Channel', 'Canal de ventas exclusivo para demostraciones Hackday', false, NOW(), NOW())`,
+         VALUES ($1, 'Demo Sales Channel', 'Exclusive sales channel for Hackday demonstrations', false, NOW(), NOW())`,
         [demoSalesChannelId]
       )
       logger.info(`✅ Canal Demo creado: ${demoSalesChannelId}`)
@@ -565,7 +587,7 @@ export default async function seedHackdayDemo({ container }: ExecArgs) {
       stockLocationId = generateId("sloc")
       await client.query(
         `INSERT INTO stock_location (id, name, created_at, updated_at)
-         VALUES ($1, 'Almacén Principal Demostración', NOW(), NOW())`,
+         VALUES ($1, 'Main Demo Warehouse', NOW(), NOW())`,
         [stockLocationId]
       )
     }
@@ -605,6 +627,11 @@ export default async function seedHackdayDemo({ container }: ExecArgs) {
           )
         }
       }
+      // Asegurar que no haya canales secundarios vinculados a la publishable key para evitar error de inventario en Medusa v2
+      await client.query(
+        "DELETE FROM publishable_api_key_sales_channel WHERE publishable_key_id = $1 AND sales_channel_id != $2",
+        [pubKeyId, defaultSalesChannelId]
+      )
     }
 
     // -----------------------------------------------------------------------
@@ -619,7 +646,7 @@ export default async function seedHackdayDemo({ container }: ExecArgs) {
       parentCatId = generateId("pcat")
       await client.query(
         `INSERT INTO product_category (id, name, handle, description, mpath, is_active, is_internal, rank, created_at, updated_at)
-         VALUES ($1, 'Automatización y Control', 'automatizacion-control', 'Equipos industriales de control y maniobra', $1, true, false, 0, NOW(), NOW())`,
+         VALUES ($1, 'Automation & Control', 'automatizacion-control', 'Industrial control and automation equipment', $1, true, false, 0, NOW(), NOW())`,
         [parentCatId]
       )
     } else {
@@ -635,7 +662,7 @@ export default async function seedHackdayDemo({ container }: ExecArgs) {
       const childMpath = `${parentCatId}.${leafCatId}`
       await client.query(
         `INSERT INTO product_category (id, name, handle, description, mpath, parent_category_id, is_active, is_internal, rank, created_at, updated_at)
-         VALUES ($1, 'Equipos Demo Hackday', 'equipos-demo-hackday', 'Productos sintéticos de demostración técnica', $2, $3, true, false, 1, NOW(), NOW())`,
+         VALUES ($1, 'Hackday Demo Equipment', 'equipos-demo-hackday', 'Synthetic technical demonstration components', $2, $3, true, false, 1, NOW(), NOW())`,
         [leafCatId, childMpath, parentCatId]
       )
     } else {
@@ -759,14 +786,14 @@ export default async function seedHackdayDemo({ container }: ExecArgs) {
                 description: pDef.description,
                 status: "published" as any,
                 category_ids: [leafCatId],
-                options: [{ title: "Modelo", values: [pDef.model] }],
+                options: [{ title: "Model", values: [pDef.model] }],
                 variants: [
                   {
                     title: pDef.model,
                     sku: pDef.sku,
                     manage_inventory: true,
-                    prices: [{ amount: pDef.pricePen, currency_code: "pen" }],
-                    options: { Modelo: pDef.model },
+                    prices: [{ amount: pDef.priceUsd, currency_code: "usd" }],
+                    options: { Model: pDef.model },
                   },
                 ],
                 metadata: { hackday_demo: true, demo: true, model: pDef.model, sku: pDef.sku },
@@ -810,7 +837,7 @@ export default async function seedHackdayDemo({ container }: ExecArgs) {
         }
       }
 
-      // D. Asegurar precio exacto en PEN
+      // D. Asegurar precio exacto en USD
       let priceSetId = ""
       const pvpsRes = await client.query(
         "SELECT price_set_id FROM product_variant_price_set WHERE variant_id = $1 LIMIT 1",
@@ -831,24 +858,30 @@ export default async function seedHackdayDemo({ container }: ExecArgs) {
         priceSetId = pvpsRes.rows[0].price_set_id
       }
 
-      const priceCheck = await client.query(
-        "SELECT id FROM price WHERE price_set_id = $1 AND currency_code = 'pen' LIMIT 1",
+      // Limpiar precios no-usd obsoletos para esta variante
+      await client.query(
+        "DELETE FROM price WHERE price_set_id = $1 AND currency_code != 'usd'",
         [priceSetId]
       )
-      const rawPrice = JSON.stringify({ value: String(pDef.pricePen), precision: 20 })
+
+      const priceCheck = await client.query(
+        "SELECT id FROM price WHERE price_set_id = $1 AND currency_code = 'usd' LIMIT 1",
+        [priceSetId]
+      )
+      const rawPrice = JSON.stringify({ value: String(pDef.priceUsd), precision: 20 })
       if (!priceCheck.rows.length) {
         await client.query(
           `INSERT INTO price (id, price_set_id, currency_code, amount, raw_amount, rules_count, created_at, updated_at)
-           VALUES ($1, $2, 'pen', $3, $4, 0, NOW(), NOW())`,
-          [generateId("price"), priceSetId, pDef.pricePen, rawPrice]
+           VALUES ($1, $2, 'usd', $3, $4, 0, NOW(), NOW())`,
+          [generateId("price"), priceSetId, pDef.priceUsd, rawPrice]
         )
       } else {
         await client.query(
           `UPDATE price SET amount = $1, raw_amount = $2, updated_at = NOW() WHERE id = $3`,
-          [pDef.pricePen, rawPrice, priceCheck.rows[0].id]
+          [pDef.priceUsd, rawPrice, priceCheck.rows[0].id]
         )
       }
-      logger.info(`💰 Precio fijado: PEN ${pDef.pricePen} (en price_set ${priceSetId})`)
+      logger.info(`💰 Precio fijado: USD ${pDef.priceUsd} (en price_set ${priceSetId})`)
 
       // E. Inventario en ubicación de Medusa (cantidades exactas: 3, 2, 8)
       let inventoryItemId = ""
@@ -860,11 +893,15 @@ export default async function seedHackdayDemo({ container }: ExecArgs) {
         inventoryItemId = generateId("iitem")
         await client.query(
           `INSERT INTO inventory_item (id, sku, title, description, requires_shipping, origin_country, created_at, updated_at)
-           VALUES ($1, $2, $3, $4, true, 'PE', NOW(), NOW())`,
+           VALUES ($1, $2, $3, $4, true, 'US', NOW(), NOW())`,
           [inventoryItemId, pDef.sku, pDef.title, pDef.title]
         )
       } else {
         inventoryItemId = invItemRes.rows[0].id
+        await client.query(
+          `UPDATE inventory_item SET title = $1, description = $2, origin_country = 'US', updated_at = NOW() WHERE id = $3`,
+          [pDef.title, pDef.title, inventoryItemId]
+        )
       }
 
       // Vincular variante con inventory_item
@@ -1031,8 +1068,8 @@ export default async function seedHackdayDemo({ container }: ExecArgs) {
           markdown_spec: `${DEMO_BASE_URL}/demo/specs/${pDef.sku}.md`,
           pdf_datasheet_relative: `/demo/datasheets/${pDef.sku}.pdf`,
           markdown_spec_relative: `/demo/specs/${pDef.sku}.md`,
-          pdp_human: `${DEMO_BASE_URL}/pe/products/${pDef.handle}`,
-          pdp_relative: `/pe/products/${pDef.handle}`,
+          pdp_human: `${DEMO_BASE_URL}/us/products/${pDef.handle}`,
+          pdp_relative: `/us/products/${pDef.handle}`,
         },
       }
     }
@@ -1044,9 +1081,9 @@ export default async function seedHackdayDemo({ container }: ExecArgs) {
     const manifestPayload = {
       generated_at: new Date().toISOString(),
       region: {
-        id: peRegionId,
-        name: "Perú",
-        currency_code: "pen",
+        id: usRegionId,
+        name: "United States",
+        currency_code: "usd",
       },
       sales_channels: [
         { id: defaultSalesChannelId, name: "Default Sales Channel" },

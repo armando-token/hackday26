@@ -216,7 +216,7 @@ describe("GET /api/muse/v1/products/search", () => {
         expect(prod.model).toMatch(/^CN-/)
         expect(prod).toHaveProperty("title")
         expect(prod).toHaveProperty("product_url")
-        expect(prod.product_url).toMatch(/^(https:\/\/data\.controlnautas\.com|http:\/\/52\.20\.66\.203:8000)\/pe\/products\//)
+        expect(prod.product_url).toMatch(/^(https:\/\/data\.controlnautas\.com|http:\/\/52\.20\.66\.203:8000)\/us\/products\//)
         expect(prod).toHaveProperty("technical_summary")
         expect(typeof prod.technical_summary).toBe("string")
         expect(prod.demo).toBe(true)
@@ -249,12 +249,12 @@ describe("GET /api/muse/v1/products/search", () => {
       }
     })
 
-    it("filtra por hecho técnico como 'carril DIN'", async () => {
+    it("filtra por hecho técnico como 'DIN rail'", async () => {
       const { req, res, getResponse } = createMockContext({
         headers: {
           authorization: `Bearer ${TEST_TOKEN}`,
         },
-        query: { q: "carril DIN" },
+        query: { q: "DIN rail" },
       })
 
       await GET(req, res)

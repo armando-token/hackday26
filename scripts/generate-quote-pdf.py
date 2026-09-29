@@ -1,28 +1,40 @@
 #!/usr/bin/env python3
 """
 Script: generate-quote-pdf.py
-Descripción: Generador de Cotizaciones Técnicas Preliminares en formato PDF con ReportLab
-para la plataforma Controlnautas B2B Industrial (Ambiente de Demostración y Simulación).
+Description: Preliminary Technical Quote PDF Generator using ReportLab
+for the Controlnautas B2B Industrial platform (Simulation & Demonstration Environment).
 
-Requisitos implementados:
-  1. Lectura de JSON de cotización desde archivo o stdin:
-     quote_id, opaque_public_id, status, sku, model, title, quantity, currency,
-     unit_price, subtotal, availability, observed_at, expires_at, reason, items, etc.
-  2. Generación del PDF en la ruta especificada (o por defecto en storage/quotes/<opaque_id>.pdf).
-  3. Marcas de agua y avisos destacados obligatorios:
-     - Destacado prominente: "PRODUCTO FICTICIO — DATOS DE DEMOSTRACIÓN"
-     - Running header/footer: "SIMULACIÓN — NO VÁLIDA COMO OFERTA COMERCIAL"
-     - Branding: "Controlnautas B2B Industrial — Simulación de Cotización Preliminar"
-  4. Estructura del documento:
-     - Cabecera con Quote ID, Fechas (UTC + Local Perú), Expiración (24h).
-     - Ficha técnica de ítems: SKU, Modelo, Título, Cantidad.
-     - Si status == 'priced': Tabla con P. Unitario, Subtotal,
-       Nota de impuestos ('Impuestos: No incluidos / por confirmar'),
-       Nota de envío ('Envío: Por coordinar').
-     - Si status == 'manual_review': Alerta 'EN REVISIÓN MANUAL — SIN IMPORTE COMERCIAL DISPONIBLE'
-       con explicación de causa (sin precios cero ficticios).
-     - Instantánea de disponibilidad con timestamp exacto de observación.
-     - Descargo oficial: 'Documento generado automáticamente para evaluación técnica. Sujeto a confirmación de un representante humano.'
+Implemented Requirements:
+  1. Watermark:
+     - 'FICTITIOUS PRODUCT — DEMONSTRATION DATA'
+     - 'SIMULATION — NOT A VALID COMMERCIAL OFFER'
+  2. Running Header and Footer:
+     - Header: 'SIMULATION — NOT A VALID COMMERCIAL OFFER'
+     - Reference: 'REF: {quote_ref}'
+     - Footer: 'SIMULATION — NOT A VALID COMMERCIAL OFFER'
+     - Branding: 'Controlnautas B2B Industrial — Preliminary Quote Simulation'
+     - Page numbering: 'Page {pageNumber} of {pageCount}'
+  3. Title:
+     - 'Preliminary quote — simulation'
+  4. Timezones:
+     - Dual timestamp: UTC and US Pacific Time ('America/Los_Angeles' / PDT UTC-7).
+  5. Currency formatting:
+     - Default currency must be 'USD'.
+     - Currency symbol: '$' (format: '$ 890.00 USD' or '$ 890.00').
+     - NEVER output 'S/.' or 'PEN'.
+  6. Table headers:
+     - 'SKU / Reference', 'Product Description & Model', 'Qty', 'Unit Price (USD)', 'Subtotal (USD)'
+  7. Commercial terms:
+     - 'Taxes: Tax excluded / to be confirmed'
+     - 'Shipping: To be confirmed'
+     - 'Payment Terms: Subject to commercial agreement'
+     - 'Validity: 24 hours from observation timestamp'
+  8. Human confirmation disclaimer:
+     - 'Document generated automatically for technical evaluation. Subject to confirmation by a Controlnautas representative.'
+  9. Manual review alert:
+     - 'UNDER MANUAL REVIEW — NO COMMERCIAL PRICE AVAILABLE'
+     - Reason explanation without false zero numbers.
+  10. Test running the generator with sample JSON and confirm English strings in generated PDF.
 """
 
 import os
@@ -37,16 +49,16 @@ from reportlab.lib.pagesizes import letter
 from reportlab.lib import colors
 from reportlab.pdfgen import canvas
 from reportlab.platypus import (
-    SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle, KeepTogether
+    SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle
 )
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
-from reportlab.lib.enums import TA_CENTER, TA_LEFT, TA_RIGHT, TA_JUSTIFY
+from reportlab.lib.enums import TA_CENTER, TA_LEFT, TA_RIGHT
 
 
 class QuoteNumberedCanvas(canvas.Canvas):
     """
-    Canvas de doble pasada para calcular el número total de páginas y estampar
-    cabecera, pie de página y marca de agua de simulación en todas las páginas.
+    Two-pass canvas to compute total page count and render
+    header, footer, and simulation watermark across all pages.
     """
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -68,51 +80,51 @@ class QuoteNumberedCanvas(canvas.Canvas):
         self.saveState()
 
         # ---------------------------------------------------------
-        # 1. MARCA DE AGUA DIAGONAL DE FONDO
+        # 1. DIAGONAL BACKGROUND WATERMARK
         # ---------------------------------------------------------
         self.saveState()
         self.translate(306, 396)
         self.rotate(32)
-        # Color rojo atenuado semi-transparente
+        # Attenuated semi-transparent red
         self.setFillColor(colors.Color(0.85, 0.15, 0.15, alpha=0.07))
-        self.setFont('Helvetica-Bold', 30)
-        self.drawCentredString(0, 36, "PRODUCTO FICTICIO — DATOS DE DEMOSTRACIÓN")
-        self.setFont('Helvetica-Bold', 24)
-        self.drawCentredString(0, -6, "SIMULACIÓN — NO VÁLIDA COMO OFERTA COMERCIAL")
+        self.setFont('Helvetica-Bold', 28)
+        self.drawCentredString(0, 36, "FICTITIOUS PRODUCT — DEMONSTRATION DATA")
+        self.setFont('Helvetica-Bold', 22)
+        self.drawCentredString(0, -6, "SIMULATION — NOT A VALID COMMERCIAL OFFER")
         self.restoreState()
 
         # ---------------------------------------------------------
-        # 2. RUNNING HEADER (CABECERA SUPERIOR)
+        # 2. RUNNING HEADER
         # ---------------------------------------------------------
         self.setFont('Helvetica-Bold', 8)
         self.setFillColor(colors.HexColor('#DC2626'))
-        self.drawString(36, 764, "SIMULACIÓN — NO VÁLIDA COMO OFERTA COMERCIAL")
+        self.drawString(36, 764, "SIMULATION — NOT A VALID COMMERCIAL OFFER")
 
-        quote_ref = getattr(self, '_doc_quote_id', 'COTIZACIÓN PRELIMINAR')
+        quote_ref = getattr(self, '_doc_quote_id', 'PRELIMINARY QUOTE')
         self.setFont('Helvetica-Bold', 7.5)
         self.setFillColor(colors.HexColor('#475569'))
         self.drawRightString(576, 764, f"REF: {quote_ref}")
 
-        # Línea divisoria de cabecera
+        # Header divider rule
         self.setStrokeColor(colors.HexColor('#CBD5E1'))
         self.setLineWidth(0.6)
         self.line(36, 757, 576, 757)
 
         # ---------------------------------------------------------
-        # 3. RUNNING FOOTER (PIE DE PÁGINA)
+        # 3. RUNNING FOOTER
         # ---------------------------------------------------------
-        # Línea divisoria de pie
+        # Footer divider rule
         self.line(36, 46, 576, 46)
 
         self.setFont('Helvetica-Bold', 7.5)
         self.setFillColor(colors.HexColor('#DC2626'))
-        self.drawString(36, 34, "SIMULACIÓN — NO VÁLIDA COMO OFERTA COMERCIAL")
+        self.drawString(36, 34, "SIMULATION — NOT A VALID COMMERCIAL OFFER")
 
         self.setFont('Helvetica', 7)
         self.setFillColor(colors.HexColor('#64748B'))
-        self.drawCentredString(306, 34, "Controlnautas B2B Industrial — Simulación de Cotización Preliminar")
+        self.drawCentredString(306, 34, "Controlnautas B2B Industrial — Preliminary Quote Simulation")
 
-        page_str = f"Página {self._pageNumber} de {page_count}"
+        page_str = f"Page {self._pageNumber} of {page_count}"
         self.setFont('Helvetica-Bold', 7.5)
         self.setFillColor(colors.HexColor('#334155'))
         self.drawRightString(576, 34, page_str)
@@ -121,7 +133,7 @@ class QuoteNumberedCanvas(canvas.Canvas):
 
 
 def make_canvas(quote_ref_str: str):
-    """Fábrica de clases Canvas con contexto de la cotización."""
+    """Factory for canvas class with attached quote reference context."""
     class CustomCanvas(QuoteNumberedCanvas):
         def __init__(self, *args, **kwargs):
             super().__init__(*args, **kwargs)
@@ -130,7 +142,7 @@ def make_canvas(quote_ref_str: str):
 
 
 def parse_datetime(val: Any) -> datetime.datetime:
-    """Parsea representaciones diversas de fecha a datetime con zona horaria UTC."""
+    """Parses diverse datetime representations into UTC-aware datetime."""
     if not val:
         return datetime.datetime.now(datetime.timezone.utc)
     if isinstance(val, (int, float)):
@@ -154,33 +166,46 @@ def parse_datetime(val: Any) -> datetime.datetime:
 
 
 def format_datetime_dual(dt: datetime.datetime) -> Tuple[str, str]:
-    """Genera strings formateados duales: UTC y Local Perú (America/Lima UTC-5)."""
+    """Generates dual formatted timestamp strings: UTC and US Pacific Time ('America/Los_Angeles' / PDT UTC-7)."""
     utc_dt = dt.astimezone(datetime.timezone.utc)
     try:
-        local_dt = dt.astimezone(ZoneInfo('America/Lima'))
+        local_dt = dt.astimezone(ZoneInfo('America/Los_Angeles'))
     except Exception:
-        local_dt = dt.astimezone(datetime.timezone(datetime.timedelta(hours=-5)))
+        local_dt = dt.astimezone(datetime.timezone(datetime.timedelta(hours=-7)))
+
+    tz_name = local_dt.strftime('%Z') or 'PDT'
+    offset = local_dt.utcoffset()
+    if offset is not None:
+        total_minutes = int(offset.total_seconds() // 60)
+        hours = total_minutes // 60
+        mins = abs(total_minutes % 60)
+        offset_str = f"UTC{hours:+d}" if mins == 0 else f"UTC{hours:+d}:{mins:02d}"
+    else:
+        offset_str = "UTC-7"
+
     return (
         utc_dt.strftime('%Y-%m-%d %H:%M:%S UTC'),
-        local_dt.strftime('%Y-%m-%d %H:%M:%S PET (UTC-5)')
+        local_dt.strftime(f'%Y-%m-%d %H:%M:%S {tz_name} ({offset_str})')
     )
 
 
-def format_currency(val: Any, currency: str = "PEN") -> str:
-    """Formatea valores monetarios numéricos o cadenas de forma estandarizada."""
+def format_currency(val: Any, currency: str = "USD") -> str:
+    """Formats monetary amounts standardized in USD. Never outputs S/. or PEN."""
     if val is None or val == "":
-        return "N/D"
-    curr = str(currency).upper()
-    sym = "S/." if curr == "PEN" else ("$" if curr == "USD" else ("€" if curr == "EUR" else curr))
+        return "N/A"
+    curr = str(currency).strip().upper()
+    if not curr or curr in ("PEN", "SOL", "SOLES"):
+        curr = "USD"
+    sym = "$" if curr == "USD" else ("€" if curr == "EUR" else "$")
     try:
         fval = float(val)
-        return f"{sym} {fval:,.2f} {curr}"
+        return f"{sym} {fval:,.2f} USD" if curr == "USD" else f"{sym} {fval:,.2f} {curr}"
     except (ValueError, TypeError):
-        return f"{sym} {val} {curr}"
+        return f"{sym} {val} USD" if curr == "USD" else f"{sym} {val} {curr}"
 
 
 def create_styles() -> Dict[str, ParagraphStyle]:
-    """Genera la paleta de estilos tipográficos estandarizados."""
+    """Generates standardized typographical styles palette."""
     base = getSampleStyleSheet()
 
     return {
@@ -250,11 +275,6 @@ def create_styles() -> Dict[str, ParagraphStyle]:
             fontName='Helvetica-Bold', fontSize=6.8, leading=8.5,
             textColor=colors.HexColor('#0F2942')
         ),
-        'td_model': ParagraphStyle(
-            'TdModel', parent=base['Normal'],
-            fontName='Helvetica-Bold', fontSize=6.8, leading=8.5,
-            textColor=colors.HexColor('#1E3A8A')
-        ),
         'td_desc': ParagraphStyle(
             'TdDesc', parent=base['Normal'],
             fontName='Helvetica', fontSize=6.8, leading=8.5,
@@ -304,13 +324,13 @@ def create_styles() -> Dict[str, ParagraphStyle]:
 
 
 def build_top_watermark_banner(styles: Dict[str, ParagraphStyle]) -> Table:
-    """Construye el banner visual obligatorio destacado de producto ficticio."""
+    """Builds mandatory top visual banner for fictitious demonstration product."""
     banner_data = [
-        [Paragraph("★ PRODUCTO FICTICIO — DATOS DE DEMOSTRACIÓN ★", styles['banner_title'])],
+        [Paragraph("★ FICTITIOUS PRODUCT — DEMONSTRATION DATA ★", styles['banner_title'])],
         [Paragraph(
-            "AVISO OBLIGATORIO DE DEMOSTRACIÓN: Esta cotización y todos los datos técnicos, precios, modelos y disponibilidad "
-            "que contiene han sido generados sintéticamente en ambiente de simulación y benchmarking técnico. "
-            "NO constituye una oferta comercial vinculante, ni presupuesto mercantil exigible, ni reserva de inventario.",
+            "MANDATORY DEMONSTRATION NOTICE: This preliminary quote and all technical data, pricing, models, and availability "
+            "contained herein have been synthetically generated in a simulation and benchmarking environment. "
+            "It does NOT constitute a binding commercial offer, enforceable mercantile quote, or inventory reservation.",
             styles['banner_body']
         )]
     ]
@@ -327,31 +347,31 @@ def build_top_watermark_banner(styles: Dict[str, ParagraphStyle]) -> Table:
 
 
 def build_branding_header(styles: Dict[str, ParagraphStyle], quote_data: Dict[str, Any]) -> Table:
-    """Construye la cabecera institucional de Controlnautas B2B Industrial con badge de estado."""
+    """Builds institutional header of Controlnautas B2B Industrial with status badge."""
     status = str(quote_data.get('status', 'priced')).strip().lower()
     is_priced = (status == 'priced')
 
     left_content = [
-        Paragraph("<b>Controlnautas B2B Industrial — Simulación de Cotización Preliminar</b>", styles['brand_title']),
+        Paragraph("<b>Preliminary quote — simulation</b>", styles['brand_title']),
         Spacer(1, 1.5),
-        Paragraph("División de Soluciones Industriales, Automatización e Instrumentación", styles['brand_sub']),
+        Paragraph("Controlnautas B2B Industrial — Industrial Solutions, Automation & Instrumentation", styles['brand_sub']),
         Spacer(1, 1),
-        Paragraph("Portal B2B: <u>https://data.controlnautas.com</u> &nbsp;|&nbsp; RUC: 20601234567 &nbsp;|&nbsp; Cotizaciones Técnicas", styles['brand_meta']),
+        Paragraph("B2B Portal: <u>https://data.controlnautas.com</u> &nbsp;|&nbsp; Preliminary Technical Quotes", styles['brand_meta']),
     ]
 
     if is_priced:
         badge_bg = colors.HexColor('#ECFDF5')
         badge_box = colors.HexColor('#059669')
         badge_html = (
-            "<font color='#065F46'><b>ESTADO: COTIZACIÓN PRELIMINAR</b></font><br/>"
-            "<font color='#047857' size='6.5'>Precios preliminares calculados</font>"
+            "<font color='#065F46'><b>STATUS: PRELIMINARY QUOTE</b></font><br/>"
+            "<font color='#047857' size='6.5'>Preliminary pricing calculated</font>"
         )
     else:
         badge_bg = colors.HexColor('#FEF2F2')
         badge_box = colors.HexColor('#DC2626')
         badge_html = (
-            "<font color='#991B1B'><b>ESTADO: EN REVISIÓN MANUAL</b></font><br/>"
-            "<font color='#B91C1C' size='6.5'>Sin importe comercial preliminar</font>"
+            "<font color='#991B1B'><b>STATUS: UNDER MANUAL REVIEW</b></font><br/>"
+            "<font color='#B91C1C' size='6.5'>No commercial price available</font>"
         )
 
     badge_table = Table([[Paragraph(badge_html, styles['badge_text'])]], colWidths=[195])
@@ -382,30 +402,30 @@ def build_metadata_table(
     dt_observed: datetime.datetime,
     dt_expires: datetime.datetime
 ) -> Table:
-    """Construye la matriz de metadatos temporales y de identificación de la cotización."""
+    """Builds metadata matrix with dual timestamps and quote identification."""
     obs_utc, obs_loc = format_datetime_dual(dt_observed)
     exp_utc, exp_loc = format_datetime_dual(dt_expires)
 
-    quote_id = quote_data.get('quote_id') or quote_data.get('id') or 'COT-DEMO-000000'
+    quote_id = quote_data.get('quote_id') or quote_data.get('id') or 'QUOTE-DEMO-000000'
     opaque_id = quote_data.get('opaque_public_id') or quote_id
 
     data = [
         [
-            Paragraph("<b>ID Cotización:</b>", styles['meta_label']),
+            Paragraph("<b>Quote ID:</b>", styles['meta_label']),
             Paragraph(f"<code>{quote_id}</code>", styles['meta_val']),
-            Paragraph("<b>Emisión (UTC):</b>", styles['meta_label']),
+            Paragraph("<b>Issued (UTC):</b>", styles['meta_label']),
             Paragraph(obs_utc, styles['meta_val']),
         ],
         [
-            Paragraph("<b>ID Público Seguro:</b>", styles['meta_label']),
+            Paragraph("<b>Secure Public ID:</b>", styles['meta_label']),
             Paragraph(f"<code>{opaque_id}</code>", styles['meta_val']),
-            Paragraph("<b>Emisión (Local Perú):</b>", styles['meta_label']),
+            Paragraph("<b>Issued (US Pacific):</b>", styles['meta_label']),
             Paragraph(obs_loc, styles['meta_val']),
         ],
         [
-            Paragraph("<b>Vigencia de Cotización:</b>", styles['meta_label']),
-            Paragraph("24 horas continuas", styles['meta_val']),
-            Paragraph("<b>Expiración Estimada:</b>", styles['meta_label']),
+            Paragraph("<b>Validity:</b>", styles['meta_label']),
+            Paragraph("24 hours from observation timestamp", styles['meta_val']),
+            Paragraph("<b>Estimated Expiration:</b>", styles['meta_label']),
             Paragraph(f"{exp_utc} &nbsp;/&nbsp; {exp_loc}", styles['meta_val']),
         ]
     ]
@@ -425,23 +445,31 @@ def build_metadata_table(
 
 
 def extract_items(quote_data: Dict[str, Any]) -> List[Dict[str, Any]]:
-    """Extrae la lista normalizada de ítems a cotizar a partir del JSON."""
+    """Extracts normalized list of items to quote from JSON payload."""
     raw_items = quote_data.get('items')
     if isinstance(raw_items, list) and len(raw_items) > 0:
         items = []
         for it in raw_items:
             if isinstance(it, dict):
-                items.append(it)
+                curr = str(it.get('currency', 'USD')).upper()
+                if not curr or curr in ('PEN', 'SOL', 'SOLES'):
+                    curr = 'USD'
+                it_copy = dict(it)
+                it_copy['currency'] = curr
+                items.append(it_copy)
         if items:
             return items
 
-    # Si no hay lista 'items', construir a partir de las propiedades raíz
+    curr = str(quote_data.get('currency', 'USD')).upper()
+    if not curr or curr in ('PEN', 'SOL', 'SOLES'):
+        curr = 'USD'
+
     single_item = {
-        'sku': quote_data.get('sku', 'N/D'),
-        'model': quote_data.get('model', 'N/D'),
-        'title': quote_data.get('title') or quote_data.get('name') or 'Ítem Técnico Industrial',
+        'sku': quote_data.get('sku', 'N/A'),
+        'model': quote_data.get('model', 'N/A'),
+        'title': quote_data.get('title') or quote_data.get('name') or 'Industrial Technical Item',
         'quantity': quote_data.get('quantity', 1),
-        'currency': quote_data.get('currency', 'PEN'),
+        'currency': curr,
         'unit_price': quote_data.get('unit_price'),
         'subtotal': quote_data.get('subtotal'),
     }
@@ -452,29 +480,31 @@ def build_priced_section(
     styles: Dict[str, ParagraphStyle],
     quote_data: Dict[str, Any],
     items: List[Dict[str, Any]],
-    currency: str
+    currency: str = "USD"
 ) -> List[Any]:
-    """Construye la sección de ítems con tabla de precios, subtotal y notas de flete e impuestos."""
+    """Builds items section with pricing table, subtotal, and commercial notes."""
     flowables = []
 
-    # Columnas: SKU(110), Modelo(85), Descripción(175), Cant(35), P.Unit(65), Subtotal(70) = 540
+    if not currency or currency.upper() in ('PEN', 'SOL', 'SOLES'):
+        currency = 'USD'
+
+    # Columns: SKU / Reference (110), Product Description & Model (250), Qty (40), Unit Price (USD) (70), Subtotal (USD) (70) = 540
     table_data = [
         [
-            Paragraph("SKU", styles['th']),
-            Paragraph("Modelo", styles['th']),
-            Paragraph("Descripción Técnica / Título", styles['th']),
-            Paragraph("Cant.", styles['th_center']),
-            Paragraph("P. Unitario", styles['th_right']),
-            Paragraph("Subtotal", styles['th_right']),
+            Paragraph("SKU / Reference", styles['th']),
+            Paragraph("Product Description & Model", styles['th']),
+            Paragraph("Qty", styles['th_center']),
+            Paragraph("Unit Price (USD)", styles['th_right']),
+            Paragraph("Subtotal (USD)", styles['th_right']),
         ]
     ]
 
     total_subtotal = 0.0
 
     for it in items:
-        sku = str(it.get('sku', 'N/D'))
-        model = str(it.get('model', 'N/D'))
-        title = str(it.get('title') or it.get('name') or 'N/D')
+        sku = str(it.get('sku', 'N/A'))
+        model = str(it.get('model') or '')
+        title = str(it.get('title') or it.get('name') or 'N/A')
         qty = it.get('quantity', 1)
         try:
             qty_num = int(qty)
@@ -499,16 +529,20 @@ def build_priced_section(
             except Exception:
                 pass
 
+        if model and model not in ('N/A', 'N/D', 'None'):
+            desc_html = f"<b>{title}</b><br/><font color='#1E3A8A' size='6.5'>Model: {model}</font>"
+        else:
+            desc_html = f"<b>{title}</b>"
+
         table_data.append([
             Paragraph(sku, styles['td_sku']),
-            Paragraph(model, styles['td_model']),
-            Paragraph(title, styles['td_desc']),
+            Paragraph(desc_html, styles['td_desc']),
             Paragraph(str(qty), styles['td_center']),
             Paragraph(format_currency(u_price, currency), styles['td_right']),
             Paragraph(format_currency(sub, currency), styles['td_right']),
         ])
 
-    items_table = Table(table_data, colWidths=[110, 85, 175, 35, 65, 70])
+    items_table = Table(table_data, colWidths=[110, 250, 40, 70, 70])
     items_table.setStyle(TableStyle([
         ('BACKGROUND', (0, 0), (-1, 0), colors.HexColor('#1E3A8A')),
         ('GRID', (0, 0), (-1, -1), 0.5, colors.HexColor('#CBD5E1')),
@@ -522,14 +556,16 @@ def build_priced_section(
     flowables.append(items_table)
     flowables.append(Spacer(1, 4))
 
-    # Bloque de notas comerciales (Impuestos, Envío) y Resumen de Totales
-    # Anchos: Columna Izquierda 315 pt, Columna Derecha 225 pt = 540 pt
+    # Commercial terms block (Taxes, Shipping, Payment Terms, Validity) and Summary Totals
+    # Col widths: Left Column 315 pt, Right Column 225 pt = 540 pt
     left_notes = [
-        Paragraph("<b>Impuestos: No incluidos / por confirmar</b>", styles['note_bold']),
+        Paragraph("<b>Taxes: Tax excluded / to be confirmed</b>", styles['note_bold']),
         Spacer(1, 1.5),
-        Paragraph("<b>Envío: Por coordinar</b> (Almacén Central Lima o Despacho a Planta)", styles['note_bold']),
+        Paragraph("<b>Shipping: To be confirmed</b>", styles['note_bold']),
         Spacer(1, 1.5),
-        Paragraph("Condición comercial preliminar: Sujeto a validación crediticia y disponibilidad logística.", styles['note_text']),
+        Paragraph("<b>Payment Terms: Subject to commercial agreement</b>", styles['note_bold']),
+        Spacer(1, 1.5),
+        Paragraph("<b>Validity: 24 hours from observation timestamp</b>", styles['note_bold']),
     ]
 
     total_display = quote_data.get('subtotal')
@@ -543,15 +579,15 @@ def build_priced_section(
 
     totals_matrix = [
         [
-            Paragraph("<b>Subtotal Neto Estimado:</b>", styles['meta_label']),
+            Paragraph("<b>Estimated Net Subtotal:</b>", styles['meta_label']),
             Paragraph(format_currency(final_subtotal_amt, currency), styles['td_right']),
         ],
         [
-            Paragraph("<b>Impuestos (IGV 18% ref.):</b>", styles['meta_label']),
-            Paragraph("<font color='#64748B' size='6.5'>No incluidos / Por confirmar</font>", styles['td_right']),
+            Paragraph("<b>Taxes:</b>", styles['meta_label']),
+            Paragraph("<font color='#64748B' size='6.5'>Tax excluded / to be confirmed</font>", styles['td_right']),
         ],
         [
-            Paragraph(f"<b>Total Preliminar ({currency.upper()}):</b>", styles['note_bold']),
+            Paragraph(f"<b>Estimated Total ({currency}):</b>", styles['note_bold']),
             Paragraph(f"<b>{format_currency(final_subtotal_amt, currency)}</b>", styles['td_right']),
         ]
     ]
@@ -587,39 +623,42 @@ def build_manual_review_section(
     items: List[Dict[str, Any]]
 ) -> List[Any]:
     """
-    Construye la sección de ítems en estado 'manual_review'.
-    NO muestra precios cero ficticios ni columnas de valor monetario no verificado.
-    Muestra de forma prominente la alerta y el motivo de revisión técnica.
+    Builds items section for 'manual_review' status.
+    Does NOT output false zero prices or unverified currency columns.
+    Prominently displays the manual review alert and engineering explanation.
     """
     flowables = []
 
-    # Tabla de ítems técnicos sin columnas monetarias
-    # Columnas: SKU(120), Modelo(90), Descripción(225), Cant(45), Estado(60) = 540
+    # Technical items table without monetary columns
+    # Columns: SKU / Reference (130), Product Description & Model (285), Qty (45), Commercial Status (80) = 540
     table_data = [
         [
-            Paragraph("SKU", styles['th']),
-            Paragraph("Modelo", styles['th']),
-            Paragraph("Descripción Técnica / Título", styles['th']),
-            Paragraph("Cant.", styles['th_center']),
-            Paragraph("Estado Comercial", styles['th_center']),
+            Paragraph("SKU / Reference", styles['th']),
+            Paragraph("Product Description & Model", styles['th']),
+            Paragraph("Qty", styles['th_center']),
+            Paragraph("Commercial Status", styles['th_center']),
         ]
     ]
 
     for it in items:
-        sku = str(it.get('sku', 'N/D'))
-        model = str(it.get('model', 'N/D'))
-        title = str(it.get('title') or it.get('name') or 'N/D')
+        sku = str(it.get('sku', 'N/A'))
+        model = str(it.get('model') or '')
+        title = str(it.get('title') or it.get('name') or 'N/A')
         qty = str(it.get('quantity', 1))
+
+        if model and model not in ('N/A', 'N/D', 'None'):
+            desc_html = f"<b>{title}</b><br/><font color='#1E3A8A' size='6.5'>Model: {model}</font>"
+        else:
+            desc_html = f"<b>{title}</b>"
 
         table_data.append([
             Paragraph(sku, styles['td_sku']),
-            Paragraph(model, styles['td_model']),
-            Paragraph(title, styles['td_desc']),
+            Paragraph(desc_html, styles['td_desc']),
             Paragraph(qty, styles['td_center']),
-            Paragraph("<font color='#DC2626'><b>En Revisión</b></font>", styles['td_center']),
+            Paragraph("<font color='#DC2626'><b>Under Review</b></font>", styles['td_center']),
         ])
 
-    items_table = Table(table_data, colWidths=[120, 90, 225, 45, 60])
+    items_table = Table(table_data, colWidths=[130, 285, 45, 80])
     items_table.setStyle(TableStyle([
         ('BACKGROUND', (0, 0), (-1, 0), colors.HexColor('#1E3A8A')),
         ('GRID', (0, 0), (-1, -1), 0.5, colors.HexColor('#CBD5E1')),
@@ -633,26 +672,24 @@ def build_manual_review_section(
     flowables.append(items_table)
     flowables.append(Spacer(1, 5))
 
-    # Razón de la revisión manual
     reason = (
         quote_data.get('reason')
         or quote_data.get('manual_review_reason')
         or quote_data.get('review_reason')
         or quote_data.get('notes')
-        or "El volumen solicitado o la configuración de ingeniería de este producto requiere validación de stock y asignación de margen comercial por el departamento de ingeniería."
+        or "The requested volume or technical engineering configuration requires inventory verification and margin assignment by the engineering department."
     )
 
-    # ALERTA DESTACADA: 'EN REVISIÓN MANUAL — SIN IMPORTE COMERCIAL DISPONIBLE'
     alert_content = [
-        [Paragraph("EN REVISIÓN MANUAL — SIN IMPORTE COMERCIAL DISPONIBLE", styles['review_alert_title'])],
+        [Paragraph("UNDER MANUAL REVIEW — NO COMMERCIAL PRICE AVAILABLE", styles['review_alert_title'])],
         [Spacer(1, 2)],
-        [Paragraph(f"<b>Causa / Justificación Técnica:</b> {reason}", styles['review_alert_body'])],
+        [Paragraph(f"<b>Technical Review Reason:</b> {reason}", styles['review_alert_body'])],
         [Spacer(1, 2)],
         [Paragraph(
-            "<b>Política de Integridad Comercial:</b> Para evitar discrepancias presupuestarias o cotizaciones desactualizadas, "
-            "Controlnautas B2B Industrial <b>NO emite precios cero ficticios ($0.00 / S/ 0.00)</b> en requerimientos pendientes. "
-            "Un asesor técnico comercial asignado revisará la disponibilidad de fábrica, embalaje industrial y condiciones de entrega "
-            "para remitirle la propuesta formal personalizada.",
+            "<b>Commercial Integrity Policy:</b> To avoid budgetary discrepancies or unverified estimates, "
+            "Controlnautas B2B Industrial <b>does not issue false zero prices or unverified placeholder amounts</b> for items pending review. "
+            "An assigned technical sales representative will verify factory lead times, industrial packaging, and delivery terms "
+            "to provide a formal customized quote.",
             styles['review_alert_body']
         )],
     ]
@@ -676,33 +713,34 @@ def build_availability_section(
     quote_data: Dict[str, Any],
     dt_observed: datetime.datetime
 ) -> Table:
-    """Construye el bloque de instantánea de disponibilidad con timestamp exacto."""
+    """Builds availability snapshot block with exact dual timestamp."""
     obs_utc, obs_loc = format_datetime_dual(dt_observed)
     raw_avail = quote_data.get('availability')
 
     if isinstance(raw_avail, dict):
-        status_txt = raw_avail.get('status', 'Consultar')
-        qty_txt = f" ({raw_avail.get('quantity')} unidades)" if 'quantity' in raw_avail else ""
+        status_txt = raw_avail.get('status', 'Inquire')
+        qty_val = raw_avail.get('quantity') or raw_avail.get('available_quantity')
+        qty_txt = f" ({qty_val} units)" if qty_val is not None else ""
         avail_str = f"{status_txt}{qty_txt}"
     elif raw_avail:
         avail_str = str(raw_avail)
     else:
-        avail_str = "Disponible en Almacén Central Lima (Sujeto a confirmación física de stock)"
+        avail_str = "Available at Central Distribution Warehouse (Subject to physical stock verification)"
 
     data = [
         [
-            Paragraph("<b>Estado de Disponibilidad:</b>", styles['meta_label']),
+            Paragraph("<b>Availability Status:</b>", styles['meta_label']),
             Paragraph(avail_str, styles['meta_val']),
         ],
         [
-            Paragraph("<b>Timestamp de Observación:</b>", styles['meta_label']),
+            Paragraph("<b>Observation Timestamp:</b>", styles['meta_label']),
             Paragraph(f"<b>{obs_utc}</b> &nbsp;|&nbsp; <b>{obs_loc}</b>", styles['meta_val']),
         ],
         [
-            Paragraph("<b>Condición de Trazabilidad:</b>", styles['meta_label']),
+            Paragraph("<b>Traceability Policy:</b>", styles['meta_label']),
             Paragraph(
-                "La disponibilidad reportada corresponde a la instantánea exacta del inventario al momento de emitirse esta simulación. "
-                "No garantiza reserva de producto hasta la formalización de la Orden de Compra.",
+                "Reported availability represents the exact inventory snapshot at the moment this simulation was generated. "
+                "It does not guarantee inventory hold or reservation until a formal Purchase Order is confirmed.",
                 styles['note_text']
             ),
         ]
@@ -724,23 +762,25 @@ def build_availability_section(
 
 def build_disclaimer_section(
     styles: Dict[str, ParagraphStyle],
-    currency: str
+    currency: str = "USD"
 ) -> Table:
-    """Construye el bloque de descargo oficial y términos comerciales preliminares."""
+    """Builds official disclaimer and preliminary commercial terms section."""
+    if not currency or currency.upper() in ('PEN', 'SOL', 'SOLES'):
+        currency = 'USD'
     data = [
         [
             Paragraph(
-                "<b>Documento generado automáticamente para evaluación técnica. Sujeto a confirmación de un representante humano.</b>",
+                "<b>Document generated automatically for technical evaluation. Subject to confirmation by a Controlnautas representative.</b>",
                 styles['disclaimer_title']
             )
         ],
         [Spacer(1, 2)],
         [
             Paragraph(
-                "• <b>Vigencia Técnica:</b> Esta simulación de cotización preliminar tiene una validez estricta de 24 horas continuas a partir de su emisión.<br/>"
-                "• <b>Carácter no Vinculante:</b> Este documento no constituye una oferta comercial en firme, contrato ni promesa unilateral de venta.<br/>"
-                "• <b>Confirmación Humana Obligatoria:</b> Precios, plazos de entrega y disponibilidad física final deben ser refrendados por un asesor de Controlnautas B2B Industrial.<br/>"
-                f"• <b>Impuestos y Logística:</b> Los importes calculados en {currency.upper()} no incluyen IGV (18%) ni fletes o seguros de transporte, a liquidarse en la oferta definitiva.",
+                "• <b>Validity:</b> 24 hours from observation timestamp.<br/>"
+                "• <b>Non-Binding Simulation:</b> This simulation does not constitute a firm commercial offer, binding contract, or unilateral commitment to sell.<br/>"
+                "• <b>Human Confirmation Required:</b> Document generated automatically for technical evaluation. Subject to confirmation by a Controlnautas representative.<br/>"
+                f"• <b>Commercial Terms:</b> Taxes: Tax excluded / to be confirmed. Shipping: To be confirmed. Payment Terms: Subject to commercial agreement. Stated amounts in {currency.upper()}.",
                 styles['disclaimer_body']
             )
         ]
@@ -760,18 +800,20 @@ def build_disclaimer_section(
 
 def generate_quote_pdf(quote_data: Dict[str, Any], output_path: str) -> str:
     """
-    Ensambla el documento PDF de cotización cumpliendo todos los requisitos de diseño y conformidad.
+    Assembles preliminary technical quote PDF document meeting all design and regulatory standards.
     """
     abs_output = os.path.abspath(output_path)
     os.makedirs(os.path.dirname(abs_output), exist_ok=True)
 
-    # Identificadores y estado
-    quote_id = quote_data.get('quote_id') or quote_data.get('id') or 'COT-DEMO-000000'
+    # Identifiers and status
+    quote_id = quote_data.get('quote_id') or quote_data.get('id') or 'QUOTE-DEMO-000000'
     opaque_id = quote_data.get('opaque_public_id') or quote_id
     status = str(quote_data.get('status', 'priced')).strip().lower()
-    currency = str(quote_data.get('currency', 'PEN')).upper()
+    currency = str(quote_data.get('currency', 'USD')).upper()
+    if not currency or currency in ('PEN', 'SOL', 'SOLES'):
+        currency = 'USD'
 
-    # Fechas
+    # Datetimes
     dt_observed = parse_datetime(quote_data.get('observed_at') or quote_data.get('created_at'))
     raw_expires = quote_data.get('expires_at')
     if raw_expires:
@@ -779,36 +821,37 @@ def generate_quote_pdf(quote_data: Dict[str, Any], output_path: str) -> str:
     else:
         dt_expires = dt_observed + datetime.timedelta(hours=24)
 
-    # Contexto para el canvas
+    # Canvas factory with quote reference context
     doc_canvas_factory = make_canvas(f"{quote_id} | {opaque_id}")
 
-    # Configuración de página: carta (letter: 612x792 pt), márgenes 36 pt (ancho útil 540 pt)
+    # Page layout: letter (612x792 pt), margins 36 pt (printable width 540 pt)
     doc = SimpleDocTemplate(
         abs_output,
         pagesize=letter,
         leftMargin=36,
         rightMargin=36,
         topMargin=46,
-        bottomMargin=46
+        bottomMargin=46,
+        title="Preliminary quote — simulation"
     )
 
     styles = create_styles()
     story = []
 
-    # 1. Banner superior destacado de simulación / producto ficticio
+    # 1. Top visual watermark banner
     story.append(build_top_watermark_banner(styles))
     story.append(Spacer(1, 6))
 
-    # 2. Cabecera institucional de Controlnautas
+    # 2. Institutional header
     story.append(build_branding_header(styles, quote_data))
     story.append(Spacer(1, 6))
 
-    # 3. Metadatos de la cotización (ID, UTC + Local, Expiración 24h)
+    # 3. Metadata matrix (Quote ID, Dual UTC + US Pacific, Validity 24h)
     story.append(build_metadata_table(styles, quote_data, dt_observed, dt_expires))
     story.append(Spacer(1, 6))
 
-    # 4. Sección técnica de ítems
-    story.append(Paragraph("1. Detalle Técnico de Ítems Cotizados", styles['sec_heading']))
+    # 4. Technical item details section
+    story.append(Paragraph("1. Technical Item Details", styles['sec_heading']))
     story.append(Spacer(1, 2))
 
     items = extract_items(quote_data)
@@ -819,18 +862,18 @@ def generate_quote_pdf(quote_data: Dict[str, Any], output_path: str) -> str:
 
     story.append(Spacer(1, 6))
 
-    # 5. Sección de disponibilidad con timestamp exacto
-    story.append(Paragraph("2. Instantánea de Disponibilidad e Inventario", styles['sec_heading']))
+    # 5. Availability snapshot section with exact timestamps
+    story.append(Paragraph("2. Availability & Inventory Snapshot", styles['sec_heading']))
     story.append(Spacer(1, 2))
     story.append(build_availability_section(styles, quote_data, dt_observed))
     story.append(Spacer(1, 6))
 
-    # 6. Descargo oficial y condiciones técnicas
-    story.append(Paragraph("3. Descargo Oficial y Términos de la Simulación", styles['sec_heading']))
+    # 6. Official disclaimer & simulation terms
+    story.append(Paragraph("3. Official Disclaimer & Simulation Terms", styles['sec_heading']))
     story.append(Spacer(1, 2))
     story.append(build_disclaimer_section(styles, currency))
 
-    # Construir documento PDF
+    # Build PDF
     doc.build(story, canvasmaker=doc_canvas_factory)
 
     return abs_output
@@ -838,8 +881,8 @@ def generate_quote_pdf(quote_data: Dict[str, Any], output_path: str) -> str:
 
 def run_worker():
     """
-    Modo worker persistente de alta velocidad (line-delimited JSON).
-    Permite generar PDFs en ~60ms reutilizando las bibliotecas ReportLab ya compiladas en memoria.
+    Persistent high-speed worker mode (line-delimited JSON).
+    Generates PDFs in ~60ms reusing ReportLab modules pre-compiled in memory.
     """
     sys.stdout.write("READY\n")
     sys.stdout.flush()
@@ -856,9 +899,9 @@ def run_worker():
             quote_data = req.get("data")
             output_target = req.get("output")
             if not quote_data or not isinstance(quote_data, dict):
-                raise ValueError("Se requiere 'data' como diccionario JSON")
+                raise ValueError("JSON object expected for 'data'")
             if not output_target:
-                opaque_id = quote_data.get("opaque_public_id") or quote_data.get("quote_id") or "cotizacion_simulada"
+                opaque_id = quote_data.get("opaque_public_id") or quote_data.get("quote_id") or "simulated_quote"
                 output_target = f"/home/ubuntu/hackday26/storage/quotes/{opaque_id}.pdf"
             generated_path = generate_quote_pdf(quote_data, output_target)
             file_size = os.path.getsize(generated_path)
@@ -873,27 +916,27 @@ def run_worker():
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Generador de Cotizaciones Técnicas Preliminares PDF (ReportLab) — Controlnautas B2B Industrial"
+        description="Preliminary Technical Quote PDF Generator (ReportLab) — Controlnautas B2B Industrial"
     )
     parser.add_argument(
         "--worker", action="store_true",
-        help="Ejecuta en modo worker persistente (line-delimited JSON via stdin/stdout)"
+        help="Run in persistent high-speed worker mode (line-delimited JSON via stdin/stdout)"
     )
     parser.add_argument(
         "input_pos", nargs="?", default=None,
-        help="Ruta al archivo JSON de cotización (o '-' para stdin)"
+        help="Path to quote JSON file (or '-' for stdin)"
     )
     parser.add_argument(
         "output_pos", nargs="?", default=None,
-        help="Ruta al archivo PDF de destino"
+        help="Path to output PDF destination"
     )
     parser.add_argument(
         "-i", "--input", dest="input_flag", default=None,
-        help="Ruta al archivo JSON de cotización (o '-' para stdin)"
+        help="Path to quote JSON file (or '-' for stdin)"
     )
     parser.add_argument(
         "-o", "--output", dest="output_flag", default=None,
-        help="Ruta al archivo PDF de destino"
+        help="Path to output PDF destination"
     )
 
     args = parser.parse_args()
@@ -902,7 +945,7 @@ def main():
         run_worker()
         return
 
-    # Resolver entrada
+    # Resolve input
     input_target = args.input_flag or args.input_pos
 
     if not input_target or input_target == "-":
@@ -912,7 +955,7 @@ def main():
         raw_json = sys.stdin.read()
     else:
         if not os.path.exists(input_target):
-            sys.stderr.write(f"Error: Archivo de entrada no encontrado: {input_target}\n")
+            sys.stderr.write(f"Error: Input file not found: {input_target}\n")
             sys.exit(1)
         with open(input_target, "r", encoding="utf-8") as f:
             raw_json = f.read()
@@ -920,25 +963,25 @@ def main():
     try:
         quote_data = json.loads(raw_json)
     except json.JSONDecodeError as e:
-        sys.stderr.write(f"Error: JSON inválido recibido: {e}\n")
+        sys.stderr.write(f"Error: Invalid JSON received: {e}\n")
         sys.exit(1)
 
     if not isinstance(quote_data, dict):
-        sys.stderr.write("Error: El payload JSON debe ser un objeto/diccionario.\n")
+        sys.stderr.write("Error: JSON payload must be an object/dict.\n")
         sys.exit(1)
 
-    # Resolver salida
+    # Resolve output
     output_target = args.output_flag or args.output_pos
     if not output_target:
-        opaque_id = quote_data.get("opaque_public_id") or quote_data.get("quote_id") or "cotizacion_simulada"
+        opaque_id = quote_data.get("opaque_public_id") or quote_data.get("quote_id") or "simulated_quote"
         output_target = f"/home/ubuntu/hackday26/storage/quotes/{opaque_id}.pdf"
 
     try:
         generated_path = generate_quote_pdf(quote_data, output_target)
         file_size = os.path.getsize(generated_path)
-        print(f"Cotización PDF generada exitosamente: {generated_path} ({file_size} bytes)")
+        print(f"Preliminary quote PDF generated successfully: {generated_path} ({file_size} bytes)")
     except Exception as e:
-        sys.stderr.write(f"Error generando el PDF: {e}\n")
+        sys.stderr.write(f"Error generating PDF: {e}\n")
         import traceback
         traceback.print_exc()
         sys.exit(1)
@@ -946,4 +989,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

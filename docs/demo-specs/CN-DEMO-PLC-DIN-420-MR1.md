@@ -1,106 +1,107 @@
-# PRODUCTO FICTICIO — DATOS DE DEMOSTRACIÓN
+# FICTITIOUS PRODUCT — DEMONSTRATION DATA
 
-> **AVISO IMPORTANTE DE CONFORMIDAD:**
-> Este equipo y sus especificaciones técnicas han sido generados sintéticamente de manera exclusiva para fines de demostración, pruebas funcionales y benchmarking de ingeniería de la Fase 1. No corresponde a un componente comercial físico activo.
-
----
-
-# Ficha de Especificaciones Técnicas
-
-## Identificación del Producto
-- **Código SKU:** `CN-DEMO-PLC-DIN-420-MR1`
-- **Modelo:** `CN-DIN-PLC-A1`
-- **Denominación Técnica:** Controlador Lógico Programable para Riel DIN con Entradas Analógicas 4–20 mA y Modbus RTU
-- **Línea de Producto:** Familia DIN-Logic Series Compact (Entorno Demostración)
-- **Categoría:** Automatización y Control / PLCs Compactos
+> **FICTITIOUS PRODUCT — DEMONSTRATION DATA**  
+> *SIMULATION — NOT A VALID COMMERCIAL OFFER*  
+> This specification represents a synthetic benchmark component for the Controlnautas × Meta Muse agent-commerce evaluation.
 
 ---
 
-## Fuente Técnica Primaria y Control Documental
-- **Identificador de Fuente (`source_id`):** `SRC-CN-DIN-PLC-A1-DS-V1`
-- **Revisión del Documento (`revision`):** `rev-2026.1`
-- **URL Primaria del Datasheet:** [http://52.20.66.203:8000/demo/datasheets/CN-DEMO-PLC-DIN-420-MR1.pdf](http://52.20.66.203:8000/demo/datasheets/CN-DEMO-PLC-DIN-420-MR1.pdf)
-- **URL Alternativa / Local:** `/demo/datasheets/CN-DEMO-PLC-DIN-420-MR1.pdf`
-- **Tipo de Fuente:** Hoja de Datos Técnicos Oficial en PDF (Sintético con numeración de secciones estables)
+# Technical Specification Sheet
+
+## Product Identification
+- **SKU Code:** `CN-DEMO-PLC-DIN-420-MR1`
+- **Model:** `CN-DIN-PLC-A1`
+- **Technical Designation:** DIN Rail Programmable Logic Controller with 4–20 mA Analog Inputs and Modbus RTU
+- **Product Line:** DIN-Logic Compact Series (Demonstration Environment)
+- **Category:** Automation and Control / Compact PLCs
 
 ---
 
-## Perfil Técnico Resumido (Vocabulario Normalizado)
+## Primary Technical Source and Document Control
+- **source_id:** `SRC-CN-DIN-PLC-A1-DS-V1`
+- **revision:** `rev-2026.1`
+- **Primary Datasheet URL:** [https://data.controlnautas.com/demo/datasheets/CN-DEMO-PLC-DIN-420-MR1.pdf](https://data.controlnautas.com/demo/datasheets/CN-DEMO-PLC-DIN-420-MR1.pdf)
+- **Alternative / Local URL:** `/demo/datasheets/CN-DEMO-PLC-DIN-420-MR1.pdf`
+- **Source Type:** Official Technical Datasheet in PDF (Synthetic with stable section numbering)
 
-| Propiedad (`property`) | Valor Normalizado (`normalized_value_json`) | Valor Mostrado (`display_value`) |
+---
+
+## Summary Technical Profile (Standardized Vocabulary)
+
+| Property (`property`) | Normalized Value (`normalized_value_json`) | Display Value (`display_value`) |
 | :--- | :--- | :--- |
-| `mounting` | `{"type": "DIN rail", "standard": "IEC/EN 60715", "size_mm": 35}` | Montaje en carril DIN 35 mm |
-| `supply_voltage` | `{"type": "DC", "nominal": 24, "unit": "VDC", "min": 18.0, "max": 30.0}` | 24 VDC (18.0 a 30.0 VDC) |
-| `analog_input` | `{"direction": "input", "channels": 2, "signal": "current", "min": 4, "max": 20, "unit": "mA", "resolution_bits": 12}` | 2 entradas analógicas 4–20 mA (12 bits) |
-| `analog_output` | `{"direction": "output", "channels": 0, "available": false}` | 0 canales (Sin salidas analógicas) |
-| `protocol` | `{"name": "Modbus RTU", "role": "slave", "baudrates": [9600, 19200, 38400, 57600, 115200]}` | Modbus RTU esclavo |
-| `interface` | `{"type": "serial", "physical_layer": "RS-485", "duplex": "half-duplex", "isolation_v": 1000}` | RS-485 semidúplex aislado |
-| `control_function` | `{"type": "PLC", "digital_inputs": 4, "digital_outputs": 4}` | PLC compacto con 4 DI y 4 DO |
+| `mounting` | `{"type": "DIN rail", "standard": "IEC/EN 60715", "size_mm": 35}` | 35 mm DIN rail mounting |
+| `supply_voltage` | `{"type": "DC", "nominal": 24, "unit": "VDC", "min": 18.0, "max": 30.0}` | 24 VDC (18.0 to 30.0 VDC) |
+| `analog_input` | `{"direction": "input", "channels": 2, "signal": "current", "min": 4, "max": 20, "unit": "mA", "resolution_bits": 12}` | 2 analog inputs 4–20 mA (12-bit) |
+| `analog_output` | `{"direction": "output", "channels": 0, "available": false}` | 0 channels (No analog outputs) |
+| `protocol` | `{"name": "Modbus RTU", "role": "slave", "baudrates": [9600, 19200, 38400, 57600, 115200]}` | Modbus RTU slave |
+| `interface` | `{"type": "serial", "physical_layer": "RS-485", "duplex": "half-duplex", "isolation_v": 1000}` | Isolated half-duplex RS-485 |
+| `control_function` | `{"type": "PLC", "digital_inputs": 4, "digital_outputs": 4}` | Compact PLC with 4 DI and 4 DO |
 
 ---
 
-## Especificaciones Detalladas con Citación Formal
+## Detailed Specifications with Formal Citation
 
-### Sección 1: Identificación y Modelo
+## Section 1: Identification and Model Overview
 - **source_id:** `SRC-CN-DIN-PLC-A1-DS-V1`
 - **revision:** `rev-2026.1`
-- **URL:** [http://52.20.66.203:8000/demo/datasheets/CN-DEMO-PLC-DIN-420-MR1.pdf](http://52.20.66.203:8000/demo/datasheets/CN-DEMO-PLC-DIN-420-MR1.pdf)
-- **página:** Pág. 1
-- **sección:** Sección 1: Identificación y Modelo
-- **excerpt:** `"El microcontrolador industrial modelo CN-DIN-PLC-A1 (código SKU: CN-DEMO-PLC-DIN-420-MR1) es una estación compacta de adquisición y control lógico para cuadros eléctricos. Integra procesamiento embebido para la digitalización de variables analógicas de corriente estándar y enlaces de supervisión remota en buses serie."`
-- **excerpt complementario:** `"Unidad lógica de adquisición descentralizada con reloj en tiempo real y memoria no volátil"`
+- **URL:** [https://data.controlnautas.com/demo/datasheets/CN-DEMO-PLC-DIN-420-MR1.pdf](https://data.controlnautas.com/demo/datasheets/CN-DEMO-PLC-DIN-420-MR1.pdf)
+- **page:** Page 1
+- **section:** Section 1: Identification and Model Overview (Datasheet: Section 1: Identificación y Modelo)
+- **excerpt:** `"The industrial microcontroller model CN-DIN-PLC-A1 (SKU code: CN-DEMO-PLC-DIN-420-MR1) is a compact acquisition and logic control station for electrical switchboards. It integrates embedded processing for digitizing standard analog current variables and remote supervisory links on serial buses."`
+- **supplementary excerpt:** `"Decentralized acquisition logic unit with real-time clock and non-volatile memory"`
 
-### Sección 2: Montaje Físico
+## Section 2: Physical Mounting and Mechanical Form Factor
 - **source_id:** `SRC-CN-DIN-PLC-A1-DS-V1`
 - **revision:** `rev-2026.1`
-- **URL:** [http://52.20.66.203:8000/demo/datasheets/CN-DEMO-PLC-DIN-420-MR1.pdf](http://52.20.66.203:8000/demo/datasheets/CN-DEMO-PLC-DIN-420-MR1.pdf)
-- **página:** Pág. 1
-- **sección:** Sección 2: Montaje Físico
-- **excerpt:** `"Montaje en carril DIN simétrico de 35 mm bajo norma internacional IEC / EN 60715 (perfiles TH35-7.5 y TH35-15)"`
-- **excerpt dimensional:** `"90 mm (alto) × 70 mm (ancho, ocupación exacta de 4 módulos DIN estándar) × 58 mm (profundidad)"`
-- **excerpt protección mecánica:** `"210 g / Grado de protección IP20 según IEC 60529 (diseñado exclusivamente para interior de tableros protegidos)"`
-- **excerpt térmico:** `"25 mm de separación despejada por encima y por debajo respecto a canaletas u otros componentes"`
+- **URL:** [https://data.controlnautas.com/demo/datasheets/CN-DEMO-PLC-DIN-420-MR1.pdf](https://data.controlnautas.com/demo/datasheets/CN-DEMO-PLC-DIN-420-MR1.pdf)
+- **page:** Page 1
+- **section:** Section 2: Physical Mounting and Mechanical Form Factor (Datasheet: Section 2: Montaje Físico)
+- **excerpt:** `"Symmetrical 35 mm DIN rail mounting compliant with international standard IEC / EN 60715 (TH35-7.5 and TH35-15 profiles)"`
+- **dimensional excerpt:** `"90 mm (H) × 70 mm (W, exact footprint of 4 standard DIN modules) × 58 mm (D)"`
+- **mechanical protection excerpt:** `"210 g / Ingress protection rating IP20 according to IEC 60529 (designed exclusively for protected electrical enclosure interiors)"`
+- **thermal clearance excerpt:** `"25 mm clear clearance above and below with respect to wire ducts or adjacent components"`
 
-### Sección 3: Alimentación Eléctrica
+## Section 3: Electrical Power Supply & Operational Tolerances
 - **source_id:** `SRC-CN-DIN-PLC-A1-DS-V1`
 - **revision:** `rev-2026.1`
-- **URL:** [http://52.20.66.203:8000/demo/datasheets/CN-DEMO-PLC-DIN-420-MR1.pdf](http://52.20.66.203:8000/demo/datasheets/CN-DEMO-PLC-DIN-420-MR1.pdf)
-- **página:** Pág. 1
-- **sección:** Sección 3: Alimentación Eléctrica
-- **excerpt:** `"24 VDC (tensión continua estabilizada)"`
-- **excerpt rango operativo:** `"18.0 VDC a 30.0 VDC (con rizado residual admisible Vpp < 5%)"`
-- **excerpt potencia y protección:** `"4.5 W máximo (con puertos de comunicación activos y bornas de entradas polarizadas)"` | `"Protección contra inversión de polaridad por diodo en serie, fusible PTC térmico rearmable y aislamiento 1500 VAC"`
+- **URL:** [https://data.controlnautas.com/demo/datasheets/CN-DEMO-PLC-DIN-420-MR1.pdf](https://data.controlnautas.com/demo/datasheets/CN-DEMO-PLC-DIN-420-MR1.pdf)
+- **page:** Page 1
+- **section:** Section 3: Electrical Power Supply & Operational Tolerances (Datasheet Section 3: Electrical Power Supply)
+- **excerpt:** `"24 VDC (stabilized direct voltage)"`
+- **operating range excerpt:** `"18.0 VDC to 30.0 VDC (allowable residual ripple Vpp < 5%)"`
+- **power and protection excerpt:** `"4.5 W maximum (with communication ports active and input terminals energized)"` | `"Reverse polarity protection via series diode, resettable PTC thermal fuse, and 1500 VAC galvanic isolation"`
 
-### Sección 4: Entradas / Salidas Analógicas y Sensores
+## Section 4: Analog & Discrete I/O Interfaces and Sensors
 - **source_id:** `SRC-CN-DIN-PLC-A1-DS-V1`
 - **revision:** `rev-2026.1`
-- **URL:** [http://52.20.66.203:8000/demo/datasheets/CN-DEMO-PLC-DIN-420-MR1.pdf](http://52.20.66.203:8000/demo/datasheets/CN-DEMO-PLC-DIN-420-MR1.pdf)
-- **página:** Pág. 2
-- **sección:** Sección 4: Entradas / Salidas Analógicas y Sensores
-- **excerpt entrada analógica:** `"2 canales (AI1, AI2)"` | `"Lazo de corriente 4–20 mA pasivo; impedancia de entrada shunt de 250 Ω; resolución ADC de 12 bits (4096 cuentas); precisión global ±0.2% del fondo de escala; filtrado digital configurable"`
-- **excerpt salida analógica (ausencia total):** `"0 canales (NINGUNA)"` | `"NO DISPONE DE SALIDAS ANALÓGICAS. El hardware carece de DAC y de etapas de corriente 4–20 mA o tensión 0–10 V"`
-- **excerpt entradas digitales:** `"Entradas discretas optoacopladas 24 VDC (PNP / tipo sink), consumo 5 mA por canal a 24 V"`
-- **excerpt salidas digitales:** `"Salidas a contacto seco por relé electromecánico SPST-NO (250 VAC / 30 VDC, 2 A máx. resistivo)"`
+- **URL:** [https://data.controlnautas.com/demo/datasheets/CN-DEMO-PLC-DIN-420-MR1.pdf](https://data.controlnautas.com/demo/datasheets/CN-DEMO-PLC-DIN-420-MR1.pdf)
+- **page:** Page 2
+- **section:** Section 4: Analog & Discrete I/O Interfaces and Sensors (Datasheet: Section 4: Entradas / Salidas Analógicas y Sensores)
+- **analog input excerpt:** `"2 channels (AI1, AI2)"` | `"Passive 4–20 mA current loop; internal shunt input impedance of 250 Ω; 12-bit ADC resolution (4096 counts); overall accuracy ±0.2% of full scale; configurable digital filtering"`
+- **analog output excerpt (total absence):** `"0 channels (NONE)"` | `"DOES NOT HAVE ANALOG OUTPUTS. Hardware lacks DAC and any 4–20 mA current or 0–10 V voltage output stages"`
+- **digital inputs excerpt:** `"Optocoupled discrete inputs 24 VDC (PNP / sink type), current consumption 5 mA per channel at 24 V"`
+- **digital outputs excerpt:** `"Dry contact electromechanical relay outputs SPST-NO (250 VAC / 30 VDC, 2 A max. resistive)"`
 
-### Sección 5: Comunicaciones y Protocolos
+## Section 5: Communications, Fieldbus and Protocol Specifications
 - **source_id:** `SRC-CN-DIN-PLC-A1-DS-V1`
 - **revision:** `rev-2026.1`
-- **URL:** [http://52.20.66.203:8000/demo/datasheets/CN-DEMO-PLC-DIN-420-MR1.pdf](http://52.20.66.203:8000/demo/datasheets/CN-DEMO-PLC-DIN-420-MR1.pdf)
-- **página:** Pág. 2
-- **sección:** Sección 5: Comunicaciones y Protocolos
-- **excerpt puerto serie:** `"1 × RS-485 semidúplex (2 hilos: bornes A/D+, B/D- y GND aislada), con resistencia terminadora de 120 Ω seleccionable"`
-- **excerpt protocolo y modo:** `"Modbus RTU en modo ESCLAVO (Slave / Servidor). Identificación de nodo configurable entre 1 y 247"`
-- **excerpt velocidad de bus:** `"Configurable mediante software o microinterruptores: 9600, 19200, 38400, 57600 y 115200 bps (defecto: 19200 bps)"`
-- **excerpt formato de trama:** `"8 bits de datos, paridad seleccionable (Par, Impar, Ninguna), 1 o 2 bits de parada (trama por defecto: 8-E-1)"`
-- **excerpt Ethernet / TCP (no soportado):** `"NO SOPORTADO. El equipo carece de controlador Ethernet, puerto RJ-45 o pila de protocolos TCP/IP"`
+- **URL:** [https://data.controlnautas.com/demo/datasheets/CN-DEMO-PLC-DIN-420-MR1.pdf](https://data.controlnautas.com/demo/datasheets/CN-DEMO-PLC-DIN-420-MR1.pdf)
+- **page:** Page 2
+- **section:** Section 5: Communications, Fieldbus and Protocol Specifications (Datasheet: Section 5: Comunicaciones y Protocolos)
+- **serial port excerpt:** `"1 × half-duplex RS-485 (2-wire: terminals A/D+, B/D-, and isolated GND), with switchable 120 Ω terminating resistor"`
+- **protocol and mode excerpt:** `"Modbus RTU in SLAVE mode (Slave / Server). Configurable node ID from 1 to 247"`
+- **baud rate excerpt:** `"Configurable via software or DIP switches: 9600, 19200, 38400, 57600, and 115200 bps (default: 19200 bps)"`
+- **frame format excerpt:** `"8 data bits, selectable parity (Even, Odd, None), 1 or 2 stop bits (default framing: 8-E-1)"`
+- **Ethernet / TCP excerpt (unsupported):** `"NOT SUPPORTED. Device lacks Ethernet controller, RJ-45 port, or TCP/IP protocol stack"`
 
-### Sección 6: Restricciones y Contraindicaciones de Diseño
+## Section 6: Engineering Constraints and Design Contraindications
 - **source_id:** `SRC-CN-DIN-PLC-A1-DS-V1`
 - **revision:** `rev-2026.1`
-- **URL:** [http://52.20.66.203:8000/demo/datasheets/CN-DEMO-PLC-DIN-420-MR1.pdf](http://52.20.66.203:8000/demo/datasheets/CN-DEMO-PLC-DIN-420-MR1.pdf)
-- **página:** Pág. 2
-- **sección:** Sección 6: Restricciones y Contraindicaciones de Diseño
-- **excerpt contraindicación Modbus TCP:** `"El modelo CN-DIN-PLC-A1 NO cuenta con interfaz Ethernet ni soporta el protocolo Modbus TCP. Bajo ninguna circunstancia debe asumirse conectividad IP directa a redes SCADA ethernetizadas. Toda integración en redes basadas en paquetes TCP/IP exige obligatoriamente un convertidor o gateway pasarela externo RS-485 a Modbus TCP."`
-- **excerpt contraindicación salida analógica:** `"El equipo NO posee ninguna salida analógica de control (ni 4–20 mA ni 0–10 V). Está terminantemente contraindicado prescribir este SKU para la modulación continua directa de variadores de velocidad, posicionadores electroneumáticos de válvulas reguladoras o actuadores analógicos sin incorporar módulos de expansión adicionales."`
-- **excerpt contraindicación maestro:** `"El transceptor RS-485 opera únicamente como esclavo Modbus RTU. No dispone de capacidad para iniciar consultas de polling maestro ni actuar como cliente de red hacia otros dispositivos periféricos."`
-- **excerpt restricción bucle pasivo:** `"Los bornes AI1 y AI2 son receptores pasivos (resistencia shunt interna); no inyectan tensión de excitación. Los transmisores externos conectados deben alimentarse mediante un bucle cerrado con fuente externa de 24 VDC."`
+- **URL:** [https://data.controlnautas.com/demo/datasheets/CN-DEMO-PLC-DIN-420-MR1.pdf](https://data.controlnautas.com/demo/datasheets/CN-DEMO-PLC-DIN-420-MR1.pdf)
+- **page:** Page 2
+- **section:** Section 6: Engineering Constraints and Design Contraindications (Datasheet: Section 6: Restricciones y Contraindicaciones de Diseño)
+- **Modbus TCP contraindication excerpt:** `"Model CN-DIN-PLC-A1 does NOT feature an Ethernet interface and does NOT support the Modbus TCP protocol. Under no circumstances should direct IP connectivity to Ethernet-based SCADA networks be assumed. Any integration into TCP/IP packet-based networks strictly requires an external RS-485 to Modbus TCP gateway or converter."`
+- **analog output contraindication excerpt:** `"The unit possesses NO analog control output (neither 4–20 mA nor 0–10 V). It is strictly contra-indicated to specify this SKU for direct continuous modulation of variable frequency drives (VFDs), electropneumatic control valve positioners, or analog actuators without incorporating supplementary expansion modules."`
+- **master mode contraindication excerpt:** `"The RS-485 transceiver operates solely as a Modbus RTU slave. It lacks capability to initiate master polling requests or act as a network client toward other peripheral devices."`
+- **passive loop constraint excerpt:** `"Terminals AI1 and AI2 are passive receivers (internal shunt resistor); they do not supply excitation loop voltage. Connected external 2-wire transmitters must be powered via a closed loop using an external 24 VDC power supply."`

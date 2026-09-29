@@ -29,9 +29,12 @@ import { generateQuotePdf } from "../../../../../lib/muse/pdf-generator"
 export const AUTHENTICATE = false
 
 /**
- * Default fallback demo region ID from manifest (Perú / PEN).
+ * Default fallback demo region ID for US / USD demonstration catalog.
  */
-const DEFAULT_DEMO_REGION_ID = "reg_01M01FK2K4G93M9GKDRTPRP6ZB"
+const DEFAULT_DEMO_REGION_ID =
+  process.env.DEFAULT_DEMO_REGION_ID ||
+  process.env.DEMO_REGION_ID ||
+  "reg_01JUS00HACKDAY26DEMOUSD0000"
 
 /**
  * Public base URL for Muse quote PDF downloads and product links.
@@ -119,7 +122,7 @@ function resolveDemoRegionId(): string {
  *         unit_price: offer.unit_price,
  *         subtotal: offer.subtotal,
  *         availability: offer.availability,
- *         product_url: `https://data.controlnautas.com/pe/products/${handle}`
+ *         product_url: `https://data.controlnautas.com/us/products/${handle}`
  *       },
  *       request_id
  *     }
@@ -420,7 +423,7 @@ export const POST = async (
 
   const productBaseUrl = getProductBaseUrl()
   const productHandle = offer.product_handle || offer.sku.toLowerCase()
-  const productUrl = `${productBaseUrl}/pe/products/${productHandle}`
+  const productUrl = `${productBaseUrl}/us/products/${productHandle}`
 
   // 8. Generate PDF via generateQuotePdf
   let pdfStorageKey = `quotes/${opaque_public_id}.pdf`
