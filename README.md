@@ -2,12 +2,12 @@
   <img src="docs/hackday26-repo-cover.jpg?v=5" alt="Controlnautas × Muse AI — engineer requests PLC specs and live inventory via Muse AI; Controlnautas API returns stock, price, and preliminary quote" width="100%" />
 </p>
 
-<h1 align="center">Controlnautas × Meta Muse Commerce</h1>
+<h1 align="center">Controlnautas Muse API — Specs, Live Inventory &amp; Quotes</h1>
 
 <p align="center">
   <strong>Hack Day 2026 — San Francisco</strong><br/>
-  Evidence-backed industrial product selection for AI assistants,<br/>
-  with live Medusa price/inventory and preliminary quote PDFs.
+  Meta Muse connects to Controlnautas over a private HTTPS API — not web scraping.<br/>
+  Verified industrial specs, live inventory &amp; price, preliminary quote PDF.
 </p>
 
 <p align="center">
