@@ -79,6 +79,7 @@ export async function middleware(request: NextRequest) {
   if (
     pathname.startsWith("/_next") ||
     pathname.startsWith("/api") ||
+    pathname.startsWith("/demo") ||
     pathname.startsWith("/images") ||
     pathname.startsWith("/cn-media") ||
     pathname === "/favicon.ico" ||
@@ -137,6 +138,6 @@ export async function middleware(request: NextRequest) {
 
 export const config = {
   matcher: [
-    "/((?!_next/static|_next/image|favicon.ico|images|cn-media).*)",
+    "/((?!_next/static|_next/image|favicon.ico|images|cn-media|demo).*)",
   ],
 }

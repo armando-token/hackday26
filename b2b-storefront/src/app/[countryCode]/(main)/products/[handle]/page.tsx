@@ -77,8 +77,13 @@ export default async function ProductPage(props: Props) {
     notFound()
   }
 
-  const all = await listAllCatalogProducts(params.countryCode)
-  const related = getRelatedCatalogProducts(product, all, 4)
+  let related: any[] = []
+  try {
+    const all = await listAllCatalogProducts(params.countryCode)
+    related = getRelatedCatalogProducts(product, all, 4)
+  } catch (e) {
+    console.warn("Could not load related products:", e)
+  }
 
   return (
     <HvacProductTemplate

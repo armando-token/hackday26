@@ -27,3 +27,4 @@ build
 
 static/*
 !static/.gitkeep
+public/
