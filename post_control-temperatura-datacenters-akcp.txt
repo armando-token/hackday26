@@ -1,0 +1,116 @@
+SLUG: control-temperatura-datacenters-akcp
+TITLE: Caso de Éxito: Máxima Confiabilidad en el Control de Temperatura de Datacenters con AKCP
+POST_DATE: 2025-08-20 22:00:20
+PUBDATE: Wed, 20 Aug 2025 22:00:20 +0000
+
+Una importante empresa aseguradora con sede en Lima enfrentaba un desafío creciente: la inestabilidad térmica en sus datacenters distribuía calor de forma desigual entre pisos, poniendo en riesgo la operación de sistemas clave.
+
+Aunque contaban con aire acondicionado permanente, este no era suficiente para contrarrestar el impacto del cambio climático ni la acumulación de calor por equipos en funcionamiento constante.
+
+El problema no era solo técnico. La aseguradora que brindaba cobertura al edificio exigía que todo sistema de monitoreo ambiental estuviera certificado para uso en datacenters.
+
+El sistema anterior, basado en tecnología industrial genérica, fue categóricamente rechazado por no cumplir normativas internacionales. Esto dejaba expuestos millones en equipos, información y operaciones sensibles.
+
+Frente a entornos standarizados globalmente de data centers, Control Nautas diseñó e implementó una solución integral utilizando sensores y controladores AKCP, marca reconocida a nivel mundial por su especialización en áreas críticas.
+
+A continuación, explicamos el proyecto paso a paso: diagnóstico, propuesta técnica, instalación y resultados obtenidos.
+
+### Paso 1: Diagnóstico Técnico y Evaluación de Riesgos
+
+Todo comenzó con una inspección detallada a los distintos datacenters distribuidos en el edificio.
+
+Se encontró que el sistema de aire acondicionado era insuficiente para mantener temperaturas dentro de rangos seguros, especialmente en pisos superiores, donde el calor se acumulaba por horas sin ventilación adecuada.
+
+También se detectaron fallas estructurales como ductos mal aislados y drenajes que generaban pequeñas filtraciones, imperceptibles pero constantes.
+
+El problema se agravaba por la naturaleza del sistema de monitoreo existente: sensores industriales genéricos, sin certificación para datacenters.
+
+Esto invalidaba automáticamente la cobertura del seguro. La aseguradora fue clara: si no se reemplazaban los equipos por una solución certificada, se suspendería la póliza para esos espacios.
+
+Los requisitos mínimos eran:
+
+Sensores normados y certificados para uso en datacenter.
+
+Monitoreo remoto de temperatura, humedad y agua.
+
+Registro histórico de condiciones ambientales.
+
+Comunicación entre racks, gabinetes y pisos del edificio.
+
+Posibilidad de activación automática de sistemas de respaldo ante eventos críticos.
+
+El diagnóstico reveló que el cliente no solo necesitaba un cambio de tecnología, sino una arquitectura completamente nueva de monitoreo ambiental.
+
+### Paso 2: Propuesta Técnica con Tecnología AKCP para Ambientes de Misión Crítica
+
+Control Nautas propuso una solución integral basada en la tecnología AKCP SensorProbe+, diseñada específicamente para entornos de misión crítica como datacenters, laboratorios y salas blancas.
+
+Esta plataforma ofrece monitoreo modular, escalable y certificado, cumpliendo con estándares internacionales como NST3 de redundancia.
+
+Cada rack fue equipado con sensores de temperatura y humedad compactos, alimentados por PoE (Power over Ethernet), lo cual elimina la necesidad de fuentes de energía externas. 
+
+Estos sensores pueden integrarse vía RJ45 o protocolo Modbus TCP/IP, lo que permite extender el sistema a múltiples pisos sin requerir rediseños de infraestructura.
+
+También se incorporaron sensores de detección de agua colocados estratégicamente bajo los equipos de aire acondicionado.
+
+Su función es alertar de manera inmediata ante filtraciones, goteo o acumulación de condensación, que podrían derivar en fallos eléctricos o pérdida de información crítica.
+
+Lo más relevante fue que todos los componentes AKCP cuentan con certificación para uso exclusivo en datacenters, lo que cumplía estrictamente con las exigencias contractuales del seguro.
+
+### Paso 3: Instalación, Configuración y Adaptación a Infraestructura Existente
+
+La instalación fue diseñada en fases para no interrumpir la operación del cliente. Se comenzó por los pisos con mayor carga térmica, incorporando sensores de temperatura y humedad directamente en los gabinetes de servidores.
+
+Cada punto fue configurado con umbrales personalizados según la criticidad del área.
+
+Durante esta fase se realizaron ajustes en el cableado estructurado para integrar la red de sensores con el sistema de monitoreo central.
+
+También se instalaron paneles visuales para lectura local y se habilitó el acceso remoto seguro para que el equipo de TI pudiera supervisar el estado de cada sala de servidores en tiempo real.
+
+Uno de los aportes más relevantes fue la conexión de los sensores con el sistema de aire acondicionado mediante salidas de relé.
+
+Esto permitió automatizar el encendido o apagado del sistema según parámetros ambientales, optimizando el consumo energético y reduciendo el desgaste de los equipos.
+
+Al finalizar la implementación, se brindó capacitación técnica al personal del cliente y se documentó todo el sistema para futuras auditorías y revisiones internas.
+
+### Paso 4: Resultados Medibles y Validación de la Aseguradora
+
+Tras la implementación del sistema, el cliente logró múltiples beneficios operativos y administrativos.
+
+El más importante fue la validación inmediata por parte de la aseguradora, que renovó la cobertura integral para todos los datacenters intervenidos. Esto se tradujo en tranquilidad legal, operativa y financiera.
+
+Desde el punto de vista técnico, el nuevo sistema permitió:
+
+Monitoreo centralizado de temperatura, humedad y agua en tiempo real.
+
+Registro histórico para auditorías internas y cumplimiento normativo.
+
+Reducción del riesgo de sobrecalentamiento y fallas por condensación.
+
+Disminución del uso continuo del aire acondicionado gracias al control automatizado.
+
+Mayor visibilidad y capacidad de respuesta ante cualquier incidente ambiental.
+
+También se logró optimizar el flujo de aire en los espacios más críticos, mejorando la eficiencia energética del edificio. 
+
+El cliente destacó especialmente la facilidad de uso del sistema, la estabilidad de la red de sensores y el soporte técnico continuo brindado por Control Nautas.
+
+### ¿Está tu Datacenter Realmente Protegido?
+
+Operar con sistemas industriales no certificados puede parecer una solución económica, pero representa un riesgo latente. 
+
+En ambientes críticos, donde cada grado importa y donde el fallo de un equipo puede costar millones, no se puede improvisar.
+
+Con Control Nautas, accedes a soluciones diseñadas para cumplir con los más altos estándares del sector.
+
+Utilizamos tecnología AKCP, líder mundial en monitoreo para datacenters, y te acompañamos con soporte técnico local, diseño personalizado e instalación profesional.
+
+Contáctanos hoy mismo y asegura el control total de tu infraestructura crítica.
+
+Teléfono / WhatsApp: +51 950 302 141
+Correo: ventas@controlnautas.com
+
+Dirección: AV. GENERAL EUGENIO GARZON 2099
+JESUS MARIA LIMA, 15072
+Web: www.controlnautas.com
+RUC: 20610965807

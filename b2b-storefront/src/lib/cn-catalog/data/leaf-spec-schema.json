@@ -1,0 +1,494 @@
+{
+  "paneles-lana-roca": [
+    "Espesor",
+    "Dimensiones",
+    "Densidad",
+    "Conductividad Térmica",
+    "T° Máxima",
+    "Reacción al Fuego",
+    "Revestimiento",
+    "Aplicación"
+  ],
+  "espuma-elastomerica": [
+    "Tipo de Material",
+    "Recubrimiento",
+    "Adhesivo",
+    "Ancho de Cinta",
+    "Espesor",
+    "Longitud del Rollo"
+  ],
+  "temperatura-termopar-rtd": [
+    "Tipo de Elemento",
+    "Rango de Temperatura",
+    "Vaina / Material",
+    "Conexión a Proceso",
+    "Salida / Cabeza"
+  ],
+  "presion-proceso": [
+    "Rango de Presión",
+    "Tipo de Presión",
+    "Salida / Protocolo",
+    "Conexión a Proceso",
+    "T° Máx. Maza"
+  ],
+  "transmisores": [
+    "Alimentación",
+    "Rango de Temperatura",
+    "Precisión",
+    "Modelos"
+  ],
+  "sistemas-llave-en-mano": [
+    "Sistema",
+    "Potencia",
+    "Tensión / Fase",
+    "Medio / Proceso",
+    "Temperatura",
+    "Caudal / Capacidad",
+    "Control",
+    "Gabinete"
+  ],
+  "controladores-pid": [
+    "Formato",
+    "Entrada / Rango",
+    "Salidas",
+    "Control / Perfil",
+    "Comunicación",
+    "Alimentación"
+  ],
+  "loggers-industriales": [
+    "Canales",
+    "Señales Compatibles",
+    "Resolución / Exactitud",
+    "Registro",
+    "Comunicaciones",
+    "Alimentación / Autonomía"
+  ],
+  "indicadores-proceso": [
+    "Tipo / Variable",
+    "Entradas",
+    "Display",
+    "Precisión / Muestreo",
+    "Salidas / Alarmas",
+    "Comunicación / Retransmisión"
+  ],
+  "plc-hmi": [
+    "Pantalla",
+    "E/S Integradas",
+    "Expansión E/S",
+    "Comunicaciones",
+    "Alimentación"
+  ],
+  "loggers-cadena-frio": [
+    "Variables / Sensor",
+    "Rango",
+    "Exactitud",
+    "Capacidad",
+    "Intervalo",
+    "Interfaz / Reporte"
+  ],
+  "termostatos-linea": [
+    "Tipo",
+    "Tensión",
+    "Capacidad de Carga",
+    "Rango de Temperatura",
+    "Programación / Conectividad",
+    "Sensor"
+  ],
+  "pared-conveccion": [
+    "Tipo / Montaje",
+    "Potencia",
+    "Tensión",
+    "Caudal de Aire",
+    "Termostato / Control"
+  ],
+  "portatiles": [
+    "Potencia",
+    "Tensión / Fase",
+    "Caudal",
+    "Conexión",
+    "Termostato / Control",
+    "Ductable"
+  ],
+  "ducto-mau-plenum": [
+    "Tipo",
+    "Potencia",
+    "Tensión / Fase",
+    "Caudal",
+    "Control / Modulación",
+    "Instalación"
+  ],
+  "antiexplosion": [
+    "Potencia",
+    "Tensión / Fase",
+    "Clasificación de Área",
+    "T-Code",
+    "Caudal",
+    "Construcción / Protección"
+  ],
+  "techos-canalones": [
+    "Tipo",
+    "Tensión",
+    "Potencia Lineal",
+    "Longitud",
+    "Conexión / Enchufe",
+    "Kit / Accesorios"
+  ],
+  "nivel": [
+    "Tecnología de Medición",
+    "Rango de Medición",
+    "Salida / Protocolo",
+    "Material Sumergible / Carcasa",
+    "Alimentación"
+  ],
+  "radiante-infrarrojo": [
+    "Potencia",
+    "Tensión",
+    "Instalación",
+    "Tipo de Infrarrojo",
+    "Protección",
+    "Control"
+  ],
+  "pir-poliuretano": [
+    "Tipo",
+    "Material del núcleo",
+    "Revestimiento",
+    "Espesores disponibles",
+    "Ancho útil",
+    "Propiedades térmicas"
+  ],
+  "plataformas": [
+    "Dimensiones",
+    "Alimentación",
+    "Montaje",
+    "Puertos de sensores",
+    "Puertos de Sensores"
+  ],
+  "io-relays": [
+    "Comunicación"
+  ],
+  "gateways": [
+    "Interfaz de Campo",
+    "Uplink / Red",
+    "Protocolos",
+    "Redundancia / Seguridad",
+    "Alimentación"
+  ],
+  "termostatos-industriales": [
+    "Aplicación / Función",
+    "Sensor / Rango",
+    "Salidas",
+    "Funciones Especiales",
+    "Alimentación",
+    "Comunicación"
+  ],
+  "humedad-temperatura": [
+    "Tipo de Montaje",
+    "Rango de Medición",
+    "Salida / Protocolo",
+    "Precisión",
+    "Alimentación"
+  ],
+  "expansion-io": [
+    "Tipo de Módulo",
+    "Canales",
+    "Tensión / Señal",
+    "Tipo de Salida",
+    "Compatibilidad"
+  ],
+  "mantas-canuelas": [
+    "Material de la Funda",
+    "Formato",
+    "Reacción al Fuego",
+    "Temperatura Máxima",
+    "Propiedades Acústicas"
+  ],
+  "cable-autorregulable": [
+    "Potencia @ Ref.",
+    "Tensión",
+    "T° Máx. Mantenimiento",
+    "T° Máx. Exposición",
+    "Área / Cubierta"
+  ],
+  "deshielo-nieve": [
+    "Formato",
+    "Tensión",
+    "Área Calefaccionada",
+    "Potencia Específica",
+    "Potencia Total",
+    "Dimensión"
+  ],
+  "suelo-radiante": [
+    "Formato",
+    "Área Calefaccionada",
+    "Tensión",
+    "Potencia Específica",
+    "Potencia Total",
+    "Piso Compatible"
+  ],
+  "controles-deshielo": [
+    "Aplicación",
+    "Alimentación",
+    "Capacidad de Salida",
+    "Circuitos / Zonas",
+    "Sensores Soportados"
+  ],
+  "zocalo": [
+    "Potencia",
+    "Tensión",
+    "Longitud",
+    "Termostato",
+    "Tipo",
+    "Acabado"
+  ],
+  "unit-heaters-compactos": [
+    "Tipo de Dispositivo",
+    "Elemento Calefactor",
+    "Seguridad Térmica",
+    "Montaje",
+    "Rango de Temperatura"
+  ],
+  "unit-heaters-industriales": [
+    "Tipo de Dispositivo",
+    "Elemento Calefactor",
+    "Flujo de Aire",
+    "Montaje",
+    "Garantía"
+  ],
+  "cartuchos": [
+    "Tipo / Serie",
+    "Diámetro",
+    "Longitud",
+    "Potencia",
+    "Tensión",
+    "Densidad de Potencia",
+    "T° Máx."
+  ],
+  "inmersion": [
+    "Tipo",
+    "Potencia",
+    "Tensión / Fase",
+    "Conexión",
+    "Fluido / Aplicación",
+    "Densidad de Potencia",
+    "Material de Vaina",
+    "Longitud Inmersión"
+  ],
+  "bandas": [
+    "Tipo",
+    "Diámetro Interior",
+    "Ancho",
+    "Potencia",
+    "Tensión",
+    "Densidad de Potencia",
+    "T° Máx."
+  ],
+  "strips": [
+    "Tipo",
+    "Dimensiones",
+    "Potencia",
+    "Tensión",
+    "Densidad de Potencia",
+    "T° Máx.",
+    "Montaje / Terminación"
+  ],
+  "controladores-remotos": [
+    "E/S Integradas",
+    "Expansión E/S",
+    "Comunicaciones",
+    "Alimentación",
+    "Memoria / Clase"
+  ],
+  "hmi-paneles-operador": [
+    "Pantalla",
+    "Táctil",
+    "Interfaces",
+    "Protocolos",
+    "Protección Frontal"
+  ],
+  "sensores-ambientales": [
+    "Variable / Función",
+    "Rango",
+    "Precisión / Resolución",
+    "Tipo de Medición",
+    "Compatibilidad",
+    "Montaje"
+  ],
+  "paneles-sandwich": [
+    "Espesor",
+    "Núcleo Aislante",
+    "Conductividad Térmica",
+    "Reacción al Fuego",
+    "Revestimiento",
+    "Aplicación"
+  ],
+  "accesorios-entrenamiento": [
+    "Tipo de Dispositivo",
+    "Compatibilidad",
+    "Alimentación"
+  ],
+  "comunicacion-inalambrica": [
+    "Tecnología / Frecuencia",
+    "Interfaz hacia Red",
+    "Alcance",
+    "Dispositivos / Topología",
+    "Alimentación",
+    "Protección"
+  ],
+  "interfaces-industriales": [
+    "Conversión",
+    "Rol / Modo",
+    "Puertos / Canales",
+    "Alimentación",
+    "Aislamiento / Protección"
+  ],
+  "transmisores-temperatura": [
+    "Tipo de Montaje",
+    "Entrada de Sensor",
+    "Salida / Protocolo",
+    "Alimentación",
+    "Aislamiento / Precisión"
+  ],
+  "gases-co2": [
+    "Gas Detectado",
+    "Rango de Medición",
+    "Sensor / Tecnología",
+    "Salida / Protocolo",
+    "Alimentación"
+  ],
+  "accesorios-sensores": [
+    "Tipo de Accesorio",
+    "Material / Construcción",
+    "Conexión a Proceso / Entrada",
+    "Compatibilidad",
+    "Rango / Grado"
+  ],
+  "controles-anticongelamiento": [
+    "Tipo de Sensor",
+    "Rango de Temperatura",
+    "Tensión",
+    "Capacidad",
+    "Salida / Contacto",
+    "Protección"
+  ],
+  "calentadores-tambor": [
+    "Capacidad de Tambor",
+    "Dimensiones",
+    "Potencia",
+    "Tensión",
+    "Rango de Temperatura",
+    "Control / Termostato"
+  ],
+  "reles-ssr": [
+    "Fase",
+    "Corriente de Carga",
+    "Tensión de Carga",
+    "Señal de Control",
+    "Conmutación",
+    "Montaje / Disipador"
+  ],
+  "deshielo-techos": [
+    "Tensión",
+    "Potencia por Metro",
+    "Certificaciones",
+    "Aplicación"
+  ],
+  "deshielo-pavimentos": [
+    "Área Cubierta",
+    "Potencia Total",
+    "Tensión",
+    "Grado de Protección"
+  ],
+  "deteccion-fugas": [
+    "Tipo",
+    "Cobertura / Longitud",
+    "Localización",
+    "Compatibilidad",
+    "Entorno"
+  ],
+  "monitoreo-energia": [
+    "Tipo / Alcance",
+    "Fase",
+    "Tensión / Corriente",
+    "Variables Medidas",
+    "Circuitos / Capacidad",
+    "Comunicación"
+  ],
+  "monitoreo-condicion": [
+    "Sensores Integrados",
+    "Conectividad Celular",
+    "Plataforma",
+    "Alimentación"
+  ],
+  "monitoreo-inalambrico": [
+    "Red Inalámbrica",
+    "Rango",
+    "Autonomía",
+    "Almacenamiento"
+  ],
+  "accesorios-trazado": [
+    "Tipo de Accesorio",
+    "Compatibilidad",
+    "Incluye"
+  ],
+  "unit-heaters": [
+    "Potencia",
+    "Tensión / Fase",
+    "Caudal de Aire",
+    "Montaje",
+    "Control / Termostato",
+    "Construcción / Entorno"
+  ],
+  "calentadores-flexibles": [
+    "Dimensiones",
+    "Potencia",
+    "Tensión",
+    "Densidad de Potencia",
+    "T° Máx.",
+    "Montaje"
+  ],
+  "unidades-monitoreo": [
+    "Puertos de Sensores / E/S",
+    "Capacidad / Expansión",
+    "Red y Protocolos",
+    "Alarmas / Notificaciones",
+    "Montaje"
+  ],
+  "monitoreo-condicion-telik": [
+    "Variables",
+    "Sensor ↔ Gateway",
+    "Uplink / Protocolos",
+    "Capacidad",
+    "Analítica / Muestreo",
+    "Autonomía / Montaje"
+  ],
+  "monitoreo-inalambrico-climate": [
+    "Variable / Precisión",
+    "Alcance",
+    "Capacidad",
+    "Conectividad / Protocolos",
+    "Memoria / Autonomía",
+    "Cumplimiento"
+  ],
+  "sustratos-hidroponicos": [
+    "Formato",
+    "Etapa / Uso",
+    "Dimensiones",
+    "Orificio / Plug",
+    "Cultivos / Sistema",
+    "Presentación"
+  ],
+  "ventiladores-alta-velocidad": [
+    "Montaje",
+    "Diámetro",
+    "Caudal de Aire",
+    "Tensión",
+    "Velocidades / Oscilación",
+    "Entorno / Protección"
+  ],
+  "accesorios-ventilacion": [
+    "Tipo de Accesorio",
+    "Compatibilidad",
+    "Tamaño / Modelo Compatible",
+    "Característica Principal"
+  ]
+}

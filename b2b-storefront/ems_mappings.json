@@ -1,0 +1,417 @@
+[
+  {
+    "handle": "ems-ts-412-413-portable-temperature-sensor",
+    "model": "TS-412 / TS-413",
+    "url": "https://emskontrol.com/wp-content/uploads/2026/06/TS-412-1x1-ENG-600x600.png"
+  },
+  {
+    "handle": "ems-tt-391-wireless-temperature-sensor",
+    "model": "TT-391",
+    "url": "https://emskontrol.com/wp-content/uploads/2026/01/TT-301-1x1-ENG-600x600.png"
+  },
+  {
+    "handle": "ems-tt-4xx-temperature-transmitter-display",
+    "model": "TT-4XX",
+    "url": "https://emskontrol.com/wp-content/uploads/2026/05/TT-401-1x1-ENG-600x600.png"
+  },
+  {
+    "handle": "ems-st-2xx-duct-temp-humidity-transmitter",
+    "model": "ST-2XX",
+    "url": "https://emskontrol.com/wp-content/uploads/2026/01/ST-201-1x1-ENG-600x600.png"
+  },
+  {
+    "handle": "ems-nt-2xx-duct-humidity-transmitter",
+    "model": "NT-2XX",
+    "url": "https://emskontrol.com/wp-content/uploads/2026/01/NT-201-1x1-ENG-600x600.png"
+  },
+  {
+    "handle": "ems-dt-3xx-outdoor-temp-humidity-transmitter",
+    "model": "DT-3XX",
+    "url": "https://emskontrol.com/wp-content/uploads/2026/01/DT-301-1x1-ENG-1-600x600.png"
+  },
+  {
+    "handle": "ems-ss-412-portable-temp-humidity-sensor",
+    "model": "SS-412",
+    "url": "https://emskontrol.com/wp-content/uploads/2026/06/SS-412-1x1-ENG-1-600x600.png"
+  },
+  {
+    "handle": "ems-nt-391-wireless-humidity-sensor",
+    "model": "NT-391",
+    "url": "https://emskontrol.com/wp-content/uploads/2026/01/NT-301-1x1-ENG-600x600.png"
+  },
+  {
+    "handle": "ems-st-391-wireless-temp-humidity-sensor",
+    "model": "ST-391",
+    "url": "https://emskontrol.com/wp-content/uploads/2026/01/ST-301-1x1-ENG-600x600.png"
+  },
+  {
+    "handle": "ems-kt-3x1-co2-transmitter",
+    "model": "KT-3X1",
+    "url": "https://emskontrol.com/wp-content/uploads/2026/01/KT-301-1x1-ENG-600x600.png"
+  },
+  {
+    "handle": "ems-kt-3x9-co2-transmitter-high-range",
+    "model": "KT-3X9",
+    "url": "https://emskontrol.com/wp-content/uploads/2026/01/KT-301-1x1-ENG-600x600.png"
+  },
+  {
+    "handle": "ems-kt-4x1-co2-transmitter-display",
+    "model": "KT-4X1",
+    "url": "https://emskontrol.com/wp-content/uploads/2026/01/KT-401-1x1-ENG-600x600.png"
+  },
+  {
+    "handle": "ems-kt-4x9-co2-transmitter-display-high-range",
+    "model": "KT-4X9",
+    "url": "https://emskontrol.com/wp-content/uploads/2026/01/KT-401-1x1-ENG-600x600.png"
+  },
+  {
+    "handle": "ems-kt-5xx-temp-humidity-co2-transmitter",
+    "model": "KT-5XX",
+    "url": "https://emskontrol.com/wp-content/uploads/2026/01/KT-501-1x1-ENG-600x600.png"
+  },
+  {
+    "handle": "ems-kt-6xx-temp-humidity-co2-transmitter-display",
+    "model": "KT-6XX",
+    "url": "https://emskontrol.com/wp-content/uploads/2026/01/KT-601-1x1-ENG-600x600.png"
+  },
+  {
+    "handle": "ems-at-3xx-ammonia-transmitter",
+    "model": "AT-3XX",
+    "url": "https://emskontrol.com/wp-content/uploads/2026/01/AT-301-1x1-ENG-600x600.png"
+  },
+  {
+    "handle": "ems-at-4xx-ammonia-transmitter-display",
+    "model": "AT-4XX",
+    "url": "https://emskontrol.com/wp-content/uploads/2026/01/AT-401-1x1-ENG-600x600.png"
+  },
+  {
+    "handle": "ems-et-3xx-ethylene-transmitter",
+    "model": "ET-3XX",
+    "url": "https://emskontrol.com/wp-content/uploads/2026/01/ET-301-1x1-ENG-600x600.png"
+  },
+  {
+    "handle": "ems-et-4xx-ethylene-transmitter-display",
+    "model": "ET-4XX",
+    "url": "https://emskontrol.com/wp-content/uploads/2026/01/ET-401-1x1-ENG-600x600.png"
+  },
+  {
+    "handle": "ems-ut-3xx-so2-transmitter",
+    "model": "UT-3XX",
+    "url": "https://emskontrol.com/wp-content/uploads/2026/05/UT-301-1x1-ENG-200-600x600.png"
+  },
+  {
+    "handle": "ems-ut-4xx-so2-transmitter-display",
+    "model": "UT-4XX",
+    "url": "https://emskontrol.com/wp-content/uploads/2026/05/UT-401-Kukurtdioksit-Transmitteri-0-20-ENG-600x600.png"
+  },
+  {
+    "handle": "ems-ct-3xx-co-transmitter",
+    "model": "CT-3XX",
+    "url": "https://emskontrol.com/wp-content/uploads/2026/01/CT-301-1x1-ENG-600x600.png"
+  },
+  {
+    "handle": "ems-ct-4xx-co-transmitter-display",
+    "model": "CT-4XX",
+    "url": "https://emskontrol.com/wp-content/uploads/2026/01/CT-401-1x1-ENG-600x600.png"
+  },
+  {
+    "handle": "ems-ot-3xx-o2-transmitter",
+    "model": "OT-3XX",
+    "url": "https://emskontrol.com/wp-content/uploads/2026/01/OT-301-1x1-ENG-600x600.png"
+  },
+  {
+    "handle": "ems-ot-4xx-o2-transmitter-display",
+    "model": "OT-4XX",
+    "url": "https://emskontrol.com/wp-content/uploads/2026/01/OT-401-1x1-ENG-600x600.png"
+  },
+  {
+    "handle": "ems-ks-412-portable-co2-sensor",
+    "model": "KS-412",
+    "url": "https://emskontrol.com/wp-content/uploads/2026/06/KS-412-1x1-ENG-2-600x600.png"
+  },
+  {
+    "handle": "ems-ks-415-portable-co2-sensor",
+    "model": "KS-415",
+    "url": "https://emskontrol.com/wp-content/uploads/2026/06/KS-412-1x1-ENG-2-600x600.png"
+  },
+  {
+    "handle": "ems-ks-419-portable-co2-sensor",
+    "model": "KS-419",
+    "url": "https://emskontrol.com/wp-content/uploads/2026/06/KS-412-1x1-ENG-2-600x600.png"
+  },
+  {
+    "handle": "ems-ks-612-portable-temp-humidity-co2-sensor",
+    "model": "KS-612",
+    "url": "https://emskontrol.com/wp-content/uploads/2026/06/KS-612-1x1-ENG-600x600.png"
+  },
+  {
+    "handle": "ems-as-412-portable-ammonia-sensor",
+    "model": "AS-412",
+    "url": "https://emskontrol.com/wp-content/uploads/2026/06/AS-412-1x1-ENG-1-600x600.png"
+  },
+  {
+    "handle": "ems-es-412-portable-ethylene-sensor",
+    "model": "ES-412",
+    "url": "https://emskontrol.com/wp-content/uploads/2026/06/ES-412-1x1-ENG-1-600x600.png"
+  },
+  {
+    "handle": "ems-cs-412-portable-co-sensor",
+    "model": "CS-412",
+    "url": "https://emskontrol.com/wp-content/uploads/2026/06/CS-412-1x1-ENG-1-600x600.png"
+  },
+  {
+    "handle": "ems-os-412-portable-o2-sensor",
+    "model": "OS-412",
+    "url": "https://emskontrol.com/wp-content/uploads/2026/06/OS-412-1x1-ENG-1-600x600.png"
+  },
+  {
+    "handle": "ems-kt-391-wireless-co2-sensor",
+    "model": "KT-391",
+    "url": "https://emskontrol.com/wp-content/uploads/2026/01/KT-301-1x1-ENG-600x600.png"
+  },
+  {
+    "handle": "ems-at-391-wireless-ammonia-sensor",
+    "model": "AT-391",
+    "url": "https://emskontrol.com/wp-content/uploads/2026/01/AT-301-1x1-ENG-600x600.png"
+  },
+  {
+    "handle": "ems-et-391-wireless-ethylene-sensor",
+    "model": "ET-391",
+    "url": "https://emskontrol.com/wp-content/uploads/2026/01/ET-301-1x1-ENG-600x600.png"
+  },
+  {
+    "handle": "ems-ut-391-wireless-so2-sensor",
+    "model": "UT-391",
+    "url": "https://emskontrol.com/wp-content/uploads/2026/05/UT-301-1x1-ENG-200-600x600.png"
+  },
+  {
+    "handle": "ems-ct-391-wireless-co-sensor",
+    "model": "CT-391",
+    "url": "https://emskontrol.com/wp-content/uploads/2026/01/CT-301-1x1-ENG-600x600.png"
+  },
+  {
+    "handle": "ems-ot-391-wireless-o2-sensor",
+    "model": "OT-391",
+    "url": "https://emskontrol.com/wp-content/uploads/2026/01/OT-301-1x1-ENG-600x600.png"
+  },
+  {
+    "handle": "ems-bs-412-413-portable-differential-pressure",
+    "model": "BS-412 / BS-413",
+    "url": "https://emskontrol.com/wp-content/uploads/2026/06/BS-412-1x1-ENG-1-600x600.png"
+  },
+  {
+    "handle": "ems-bs-414-415-portable-differential-pressure",
+    "model": "BS-414 / BS-415",
+    "url": "https://emskontrol.com/wp-content/uploads/2026/06/BS-412-1x1-ENG-1-600x600.png"
+  },
+  {
+    "handle": "ems-ys-111-capacitive-sensor-m18",
+    "model": "YS-111",
+    "url": "https://emskontrol.com/wp-content/uploads/2024/09/YS-111-600x600.png"
+  },
+  {
+    "handle": "ems-ys-112-capacitive-sensor-m30",
+    "model": "YS-112",
+    "url": "https://emskontrol.com/wp-content/uploads/2024/09/YS-111-600x600.png"
+  },
+  {
+    "handle": "ems-ae-321-stainless-sensor-accessory",
+    "model": "AE-321",
+    "url": "https://emskontrol.com/wp-content/uploads/2026/06/AE-311-600x600.png"
+  },
+  {
+    "handle": "ems-ae-322-stainless-duct-probe",
+    "model": "AE-322",
+    "url": "https://emskontrol.com/wp-content/uploads/2026/06/AE-311-600x600.png"
+  },
+  {
+    "handle": "ems-ae-323-stainless-screw-probe",
+    "model": "AE-323",
+    "url": "https://emskontrol.com/wp-content/uploads/2026/06/AE-311-600x600.png"
+  },
+  {
+    "handle": "ems-ae-331-plastic-sensor-accessory",
+    "model": "AE-331",
+    "url": "https://emskontrol.com/wp-content/uploads/2026/06/AE-311-600x600.png"
+  },
+  {
+    "handle": "ems-ae-332-wall-mounting-accessory",
+    "model": "AE-332",
+    "url": "https://emskontrol.com/wp-content/uploads/2026/06/AE-311-600x600.png"
+  },
+  {
+    "handle": "ems-ae-333-duct-mounting-accessory",
+    "model": "AE-333",
+    "url": "https://emskontrol.com/wp-content/uploads/2026/06/AE-311-600x600.png"
+  },
+  {
+    "handle": "ems-ae-341-co2-wall-mounting",
+    "model": "AE-341",
+    "url": "https://emskontrol.com/wp-content/uploads/2026/06/AE-311-600x600.png"
+  },
+  {
+    "handle": "ems-ae-342-co2-duct-mounting",
+    "model": "AE-342",
+    "url": "https://emskontrol.com/wp-content/uploads/2026/06/AE-311-600x600.png"
+  },
+  {
+    "handle": "ems-ae-351-co2-wall-apparatus",
+    "model": "AE-351",
+    "url": "https://emskontrol.com/wp-content/uploads/2026/06/AE-311-600x600.png"
+  },
+  {
+    "handle": "ems-ae-361-gas-wall-mounting",
+    "model": "AE-361",
+    "url": "https://emskontrol.com/wp-content/uploads/2026/06/AE-311-600x600.png"
+  },
+  {
+    "handle": "ems-ae-362-gas-duct-mounting",
+    "model": "AE-362",
+    "url": "https://emskontrol.com/wp-content/uploads/2026/06/AE-311-600x600.png"
+  },
+  {
+    "handle": "ems-ae-311-threaded-thermowell",
+    "model": "AE-311",
+    "url": "https://emskontrol.com/wp-content/uploads/2026/06/AE-311-600x600.png"
+  },
+  {
+    "handle": "ems-ae-601-12vdc-adapter",
+    "model": "AE-601",
+    "url": "https://emskontrol.com/wp-content/uploads/2026/06/AE-602-600x600.png"
+  },
+  {
+    "handle": "ems-ht-2xx-air-velocity-transmitter",
+    "model": "HT-2XX",
+    "url": "https://emskontrol.com/wp-content/uploads/2023/07/HT-2XX-Hava-Hizi-Transmitteri-Front-2-RT-600x600-1-300x300.png"
+  },
+  {
+    "handle": "ems-wm-320-ortak-temp-humidity-wifi-sensor",
+    "model": "WM-320",
+    "url": "https://emskontrol.com/wp-content/uploads/2025/10/WM-320-600x600.png"
+  },
+  {
+    "handle": "ems-wm-410-ortak-temp-humidity-co2-wifi-sensor",
+    "model": "WM-410",
+    "url": "https://emskontrol.com/wp-content/uploads/2025/10/WM-410-1-600x600.png"
+  },
+  {
+    "handle": "ems-kr-4x1-co2-control-device",
+    "model": "KR-4X1",
+    "url": "https://emskontrol.com/wp-content/uploads/2026/06/KR-411-1x1-ENG-1-600x600.png"
+  },
+  {
+    "handle": "ems-kr-4x5-co2-control-device-high",
+    "model": "KR-4X5",
+    "url": "https://emskontrol.com/wp-content/uploads/2026/06/KR-411-1x1-ENG-1-600x600.png"
+  },
+  {
+    "handle": "ems-kr-4x9-co2-control-device-xhigh",
+    "model": "KR-4X9",
+    "url": "https://emskontrol.com/wp-content/uploads/2026/06/KR-411-1x1-ENG-1-600x600.png"
+  },
+  {
+    "handle": "ems-br-4x1-4x2-diff-pressure-control",
+    "model": "BR-4X1 / 4X2",
+    "url": "https://emskontrol.com/wp-content/uploads/2026/06/BR-411-1x1-ENG-1-600x600.png"
+  },
+  {
+    "handle": "ems-br-4x4-4x5-diff-pressure-control-high",
+    "model": "BR-4X4 / 4X5",
+    "url": "https://emskontrol.com/wp-content/uploads/2026/06/BR-411-1x1-ENG-1-600x600.png"
+  },
+  {
+    "handle": "ems-ar-4x1-ammonia-control-device",
+    "model": "AR-4X1",
+    "url": "https://emskontrol.com/wp-content/uploads/2026/06/AR-411-1x1-ENG-1-600x600.png"
+  },
+  {
+    "handle": "ems-er-4x1-ethylene-control-device",
+    "model": "ER-4X1",
+    "url": "https://emskontrol.com/wp-content/uploads/2026/06/ER-411-1x1-ENG-1-600x600.png"
+  },
+  {
+    "handle": "ems-cr-4x1-co-control-device",
+    "model": "CR-4X1",
+    "url": "https://emskontrol.com/wp-content/uploads/2026/06/CR-411-1x1-ENG-1-600x600.png"
+  },
+  {
+    "handle": "ems-or-4x1-o2-control-device",
+    "model": "OR-4X1",
+    "url": "https://emskontrol.com/wp-content/uploads/2026/06/OR-411-1x1-ENG-1-600x600.png"
+  },
+  {
+    "handle": "ems-tr-711-panel-temperature-control",
+    "model": "TR-711 / TR-713",
+    "url": "https://emskontrol.com/wp-content/uploads/2026/06/TR-711-1x1-ENG-1-600x600.png"
+  },
+  {
+    "handle": "ems-nr-711-panel-humidity-control",
+    "model": "NR-711",
+    "url": "https://emskontrol.com/wp-content/uploads/2026/06/NR-711-1x1-ENG-1-600x600.png"
+  },
+  {
+    "handle": "ems-sr-711-panel-temp-humidity-control",
+    "model": "SR-711",
+    "url": "https://emskontrol.com/wp-content/uploads/2026/06/SR-711-1x1-ENG-1-600x600.png"
+  },
+  {
+    "handle": "ems-kr-711-panel-co2-control",
+    "model": "KR-711",
+    "url": "https://emskontrol.com/wp-content/uploads/2026/06/KR-711-1x1-ENG-1-600x600.png"
+  },
+  {
+    "handle": "ems-kr-715-panel-co2-control-mid",
+    "model": "KR-715",
+    "url": "https://emskontrol.com/wp-content/uploads/2026/06/KR-711-1x1-ENG-1-600x600.png"
+  },
+  {
+    "handle": "ems-kr-719-panel-co2-control-high",
+    "model": "KR-719",
+    "url": "https://emskontrol.com/wp-content/uploads/2026/06/KR-711-1x1-ENG-1-600x600.png"
+  },
+  {
+    "handle": "ems-kr-751-panel-temp-humidity-co2-control",
+    "model": "KR-751 / KR-752",
+    "url": "https://emskontrol.com/wp-content/uploads/2026/06/KR-711-1x1-ENG-1-600x600.png"
+  },
+  {
+    "handle": "ems-ar-711-panel-ammonia-control",
+    "model": "AR-711",
+    "url": "https://emskontrol.com/wp-content/uploads/2026/06/AR-711-1x1-ENG-1-600x600.png"
+  },
+  {
+    "handle": "ems-er-711-panel-ethylene-control",
+    "model": "ER-711",
+    "url": "https://emskontrol.com/wp-content/uploads/2026/06/ER-711-1x1-ENG-1-600x600.png"
+  },
+  {
+    "handle": "ems-cr-711-panel-co-control",
+    "model": "CR-711",
+    "url": "https://emskontrol.com/wp-content/uploads/2026/06/CR-711-1x1-ENG-1-600x600.png"
+  },
+  {
+    "handle": "ems-or-711-panel-o2-control",
+    "model": "OR-711",
+    "url": "https://emskontrol.com/wp-content/uploads/2026/06/OR-711-1x1-ENG-1-600x600.png"
+  },
+  {
+    "handle": "ems-mm-010-ortak-large-master-gsm",
+    "model": "MM-010 / M-010",
+    "url": "https://emskontrol.com/wp-content/uploads/2025/10/MM-010-1-600x600.png"
+  },
+  {
+    "handle": "ems-mm-011-ortak-large-master-gsm-phase",
+    "model": "MM-011",
+    "url": "https://emskontrol.com/wp-content/uploads/2025/10/MM-010-1-600x600.png"
+  },
+  {
+    "handle": "ems-mm-012-ortak-large-master-wifi",
+    "model": "MM-012",
+    "url": "https://emskontrol.com/wp-content/uploads/2025/10/MM-010-1-600x600.png"
+  },
+  {
+    "handle": "ems-mm-02x-ortak-small-master",
+    "model": "MM-02X",
+    "url": "https://emskontrol.com/wp-content/uploads/2025/10/MM-010-1-600x600.png"
+  }
+]

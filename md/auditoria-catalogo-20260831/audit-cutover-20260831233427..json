@@ -1,0 +1,1494 @@
+{
+  "generatedAt": "2026-08-31T23:34:27.097Z",
+  "mode": "dry-run",
+  "totals": {
+    "productosMedusa": 498,
+    "productosJson": 498,
+    "pimTotal": 498,
+    "pimHuerfanos": 0,
+    "buyNow": 149,
+    "variantesConPen": 149
+  },
+  "gatesBloqueantesFallidos": 1,
+  "findings": [
+    {
+      "id": "productos-publicados",
+      "gate": "Productos publicados",
+      "severity": "info",
+      "expected": "498",
+      "actual": "498",
+      "passed": true
+    },
+    {
+      "id": "brand-link",
+      "gate": "Productos con enlace de marca",
+      "severity": "blocker",
+      "expected": "498/498",
+      "actual": "498/498",
+      "passed": true,
+      "sample": []
+    },
+    {
+      "id": "pim-huerfanos",
+      "gate": "PIM huerfanos (sin producto activo)",
+      "severity": "blocker",
+      "expected": "0",
+      "actual": "0",
+      "passed": true,
+      "sample": []
+    },
+    {
+      "id": "pim-duplicados",
+      "gate": "product_id duplicados en PIM",
+      "severity": "blocker",
+      "expected": "0",
+      "actual": "0",
+      "passed": true,
+      "sample": []
+    },
+    {
+      "id": "pim-cobertura",
+      "gate": "Productos con exactamente 1 PIM",
+      "severity": "blocker",
+      "expected": "498/498",
+      "actual": "498/498",
+      "passed": true,
+      "sample": []
+    },
+    {
+      "id": "variantes",
+      "gate": "Productos con al menos 1 variante",
+      "severity": "blocker",
+      "expected": "498/498",
+      "actual": "498/498",
+      "passed": true,
+      "sample": []
+    },
+    {
+      "id": "skus",
+      "gate": "Variantes con SKU",
+      "severity": "blocker",
+      "expected": "0 sin SKU",
+      "actual": "0 productos con variante sin SKU",
+      "passed": true,
+      "sample": []
+    },
+    {
+      "id": "categoria-hoja",
+      "gate": "Productos con exactamente 1 categoria hoja",
+      "severity": "blocker",
+      "expected": "498/498",
+      "actual": "498/498",
+      "passed": true,
+      "sample": []
+    },
+    {
+      "id": "categorias-inactivas",
+      "gate": "Categorias inactivas con productos publicados",
+      "severity": "warning",
+      "expected": "0",
+      "actual": "17",
+      "passed": false,
+      "sample": [
+        "accesorios-sensores",
+        "transmisores-temperatura",
+        "termostatos-industriales",
+        "gases-co2",
+        "controles-anticongelamiento",
+        "ventiladores-alta-velocidad",
+        "accesorios-ventilacion",
+        "unidades-monitoreo",
+        "monitoreo-energia",
+        "comunicacion-industrial",
+        "interfaces-industriales",
+        "monitoreo-inalambrico-climate",
+        "comunicacion-inalambrica",
+        "monitoreo-condicion-telik",
+        "calentadores-tambor",
+        "deteccion-fugas",
+        "reles-ssr"
+      ]
+    },
+    {
+      "id": "assets",
+      "gate": "Productos sin imagen principal",
+      "severity": "blocker",
+      "expected": "0",
+      "actual": "0",
+      "passed": true,
+      "sample": []
+    },
+    {
+      "id": "enums",
+      "gate": "Valores de enum invalidos en PIM",
+      "severity": "blocker",
+      "expected": "0",
+      "actual": "0",
+      "passed": true,
+      "sample": []
+    },
+    {
+      "id": "lead-time",
+      "gate": "lead_time_days coherente con availability_mode",
+      "severity": "warning",
+      "expected": "0 incoherencias",
+      "actual": "236",
+      "passed": false,
+      "sample": [
+        {
+          "product_id": "prod_01M01FKQEXS5Z6GES9D94ZEJ48",
+          "availability_mode": "lead_time",
+          "lead_time_days": null
+        },
+        {
+          "product_id": "prod_01M01FM17699M8GTH5E82J39EJ",
+          "availability_mode": "lead_time",
+          "lead_time_days": null
+        },
+        {
+          "product_id": "prod_01M01FM19V6B5J0MPS392JMHKE",
+          "availability_mode": "lead_time",
+          "lead_time_days": null
+        },
+        {
+          "product_id": "prod_01M01FM1CQHR94BJ93FRWK5VKE",
+          "availability_mode": "lead_time",
+          "lead_time_days": null
+        },
+        {
+          "product_id": "prod_01M01FM1GNSZYMZMAXR3EJSANT",
+          "availability_mode": "lead_time",
+          "lead_time_days": null
+        },
+        {
+          "product_id": "prod_01M01FM1KDTZHCCT89JZEKEQM7",
+          "availability_mode": "lead_time",
+          "lead_time_days": null
+        },
+        {
+          "product_id": "prod_01M01FM1P6R0J68D5FVR3KX8DN",
+          "availability_mode": "lead_time",
+          "lead_time_days": null
+        },
+        {
+          "product_id": "prod_01M01FM1SQY8XP6BJRZW2VSGBV",
+          "availability_mode": "lead_time",
+          "lead_time_days": null
+        },
+        {
+          "product_id": "prod_01M01FM1WHRVQFH9QNGVKZ9GTP",
+          "availability_mode": "lead_time",
+          "lead_time_days": null
+        },
+        {
+          "product_id": "prod_01M01FM1ZXJNHCS8HV8KJ0RE4A",
+          "availability_mode": "lead_time",
+          "lead_time_days": null
+        }
+      ]
+    },
+    {
+      "id": "precio-duplicado",
+      "gate": "Variantes con precio PEN duplicado",
+      "severity": "blocker",
+      "expected": "0",
+      "actual": "0",
+      "passed": true,
+      "sample": []
+    },
+    {
+      "id": "buynow-precio",
+      "gate": "buy_now con precio PEN",
+      "severity": "blocker",
+      "expected": "149/149",
+      "actual": "149/149",
+      "passed": true,
+      "sample": []
+    },
+    {
+      "id": "paridad-handles",
+      "gate": "Handles presentes en ambas fuentes",
+      "severity": "blocker",
+      "expected": "0 discrepancias",
+      "actual": "0 solo JSON, 0 solo Medusa",
+      "passed": true,
+      "sample": []
+    },
+    {
+      "id": "precio-x100",
+      "gate": "Precios con sospecha de factor x100",
+      "severity": "blocker",
+      "expected": "0",
+      "actual": "149",
+      "passed": false,
+      "sample": [
+        {
+          "handle": "cintas-aislante-foam-tape",
+          "json": 119,
+          "medusa": 11900,
+          "ratio": 100,
+          "sospecha_x100": true
+        },
+        {
+          "handle": "sensor-rtd-con-cabezal-y-conexion-a-proceso",
+          "json": 990,
+          "medusa": 99000,
+          "ratio": 100,
+          "sospecha_x100": true
+        },
+        {
+          "handle": "sensor-rtd-con-cabezal-din-b",
+          "json": 830,
+          "medusa": 83000,
+          "ratio": 100,
+          "sospecha_x100": true
+        },
+        {
+          "handle": "sensor-rtd-con-cabezal-de-acero-inoxidable",
+          "json": 330,
+          "medusa": 33000,
+          "ratio": 100,
+          "sospecha_x100": true
+        },
+        {
+          "handle": "sensor-rtd-con-termopozo-higienico",
+          "json": 890,
+          "medusa": 89000,
+          "ratio": 100,
+          "sospecha_x100": true
+        },
+        {
+          "handle": "termopozos",
+          "json": 390,
+          "medusa": 39000,
+          "ratio": 100,
+          "sospecha_x100": true
+        },
+        {
+          "handle": "sensor-flexible-novus-fsb",
+          "json": 89,
+          "medusa": 8900,
+          "ratio": 100,
+          "sospecha_x100": true
+        },
+        {
+          "handle": "sensores-con-empunadura-y-cable-serie-hsc",
+          "json": 479,
+          "medusa": 47900,
+          "ratio": 100,
+          "sospecha_x100": true
+        },
+        {
+          "handle": "sensores-con-cabezal-de-proteccion-sph",
+          "json": 299,
+          "medusa": 29900,
+          "ratio": 100,
+          "sospecha_x100": true
+        },
+        {
+          "handle": "sensores-con-punta-de-metal",
+          "json": 89,
+          "medusa": 8900,
+          "ratio": 100,
+          "sospecha_x100": true
+        }
+      ]
+    },
+    {
+      "id": "precio-divergente",
+      "gate": "Divergencia de precio JSON vs Medusa",
+      "severity": "warning",
+      "expected": "0",
+      "actual": "149",
+      "passed": false,
+      "sample": [
+        {
+          "handle": "cintas-aislante-foam-tape",
+          "json": 119,
+          "medusa": 11900,
+          "ratio": 100,
+          "sospecha_x100": true
+        },
+        {
+          "handle": "sensor-rtd-con-cabezal-y-conexion-a-proceso",
+          "json": 990,
+          "medusa": 99000,
+          "ratio": 100,
+          "sospecha_x100": true
+        },
+        {
+          "handle": "sensor-rtd-con-cabezal-din-b",
+          "json": 830,
+          "medusa": 83000,
+          "ratio": 100,
+          "sospecha_x100": true
+        },
+        {
+          "handle": "sensor-rtd-con-cabezal-de-acero-inoxidable",
+          "json": 330,
+          "medusa": 33000,
+          "ratio": 100,
+          "sospecha_x100": true
+        },
+        {
+          "handle": "sensor-rtd-con-termopozo-higienico",
+          "json": 890,
+          "medusa": 89000,
+          "ratio": 100,
+          "sospecha_x100": true
+        },
+        {
+          "handle": "termopozos",
+          "json": 390,
+          "medusa": 39000,
+          "ratio": 100,
+          "sospecha_x100": true
+        },
+        {
+          "handle": "sensor-flexible-novus-fsb",
+          "json": 89,
+          "medusa": 8900,
+          "ratio": 100,
+          "sospecha_x100": true
+        },
+        {
+          "handle": "sensores-con-empunadura-y-cable-serie-hsc",
+          "json": 479,
+          "medusa": 47900,
+          "ratio": 100,
+          "sospecha_x100": true
+        },
+        {
+          "handle": "sensores-con-cabezal-de-proteccion-sph",
+          "json": 299,
+          "medusa": 29900,
+          "ratio": 100,
+          "sospecha_x100": true
+        },
+        {
+          "handle": "sensores-con-punta-de-metal",
+          "json": 89,
+          "medusa": 8900,
+          "ratio": 100,
+          "sospecha_x100": true
+        },
+        {
+          "handle": "sensores-con-transmisor-incorporado-serie-bts",
+          "json": 405,
+          "medusa": 40500,
+          "ratio": 100,
+          "sospecha_x100": true
+        },
+        {
+          "handle": "sistema-de-calefaccion-electrico-para-la-circulacion-de-combustible",
+          "json": 29300,
+          "medusa": 2930000,
+          "ratio": 100,
+          "sospecha_x100": true
+        },
+        {
+          "handle": "sistema-de-calefaccion-electrico-para-conductos",
+          "json": 22400,
+          "medusa": 2240000,
+          "ratio": 100,
+          "sospecha_x100": true
+        },
+        {
+          "handle": "sistema-de-calefaccion-electrico-para-la-circulacion-de-fluidos-diversos",
+          "json": 73500,
+          "medusa": 7350000,
+          "ratio": 100,
+          "sospecha_x100": true
+        },
+        {
+          "handle": "sistema-de-calefaccion-de-inmersion-con-caja-electrica",
+          "json": 15300,
+          "medusa": 1530000,
+          "ratio": 100,
+          "sospecha_x100": true
+        },
+        {
+          "handle": "registrador-de-datos-industrial-multicanales-fieldlogger",
+          "json": 5269,
+          "medusa": 526900,
+          "ratio": 100,
+          "sospecha_x100": true
+        },
+        {
+          "handle": "controlador-de-temperatura-n1040-novus",
+          "json": 465,
+          "medusa": 46500,
+          "ratio": 100,
+          "sospecha_x100": true
+        },
+        {
+          "handle": "controlador-de-temperatura-n1050",
+          "json": 589,
+          "medusa": 58900,
+          "ratio": 100,
+          "sospecha_x100": true
+        },
+        {
+          "handle": "controlador-de-proceso-n1200-novus",
+          "json": 864,
+          "medusa": 86400,
+          "ratio": 100,
+          "sospecha_x100": true
+        },
+        {
+          "handle": "indicador-de-proceso-universal-n1500",
+          "json": 832.8,
+          "medusa": 83280,
+          "ratio": 100,
+          "sospecha_x100": true
+        }
+      ]
+    }
+  ],
+  "diferenciasPrecioCompletas": [
+    {
+      "handle": "cintas-aislante-foam-tape",
+      "json": 119,
+      "medusa": 11900,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "sensor-rtd-con-cabezal-y-conexion-a-proceso",
+      "json": 990,
+      "medusa": 99000,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "sensor-rtd-con-cabezal-din-b",
+      "json": 830,
+      "medusa": 83000,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "sensor-rtd-con-cabezal-de-acero-inoxidable",
+      "json": 330,
+      "medusa": 33000,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "sensor-rtd-con-termopozo-higienico",
+      "json": 890,
+      "medusa": 89000,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "termopozos",
+      "json": 390,
+      "medusa": 39000,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "sensor-flexible-novus-fsb",
+      "json": 89,
+      "medusa": 8900,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "sensores-con-empunadura-y-cable-serie-hsc",
+      "json": 479,
+      "medusa": 47900,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "sensores-con-cabezal-de-proteccion-sph",
+      "json": 299,
+      "medusa": 29900,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "sensores-con-punta-de-metal",
+      "json": 89,
+      "medusa": 8900,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "sensores-con-transmisor-incorporado-serie-bts",
+      "json": 405,
+      "medusa": 40500,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "sistema-de-calefaccion-electrico-para-la-circulacion-de-combustible",
+      "json": 29300,
+      "medusa": 2930000,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "sistema-de-calefaccion-electrico-para-conductos",
+      "json": 22400,
+      "medusa": 2240000,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "sistema-de-calefaccion-electrico-para-la-circulacion-de-fluidos-diversos",
+      "json": 73500,
+      "medusa": 7350000,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "sistema-de-calefaccion-de-inmersion-con-caja-electrica",
+      "json": 15300,
+      "medusa": 1530000,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "registrador-de-datos-industrial-multicanales-fieldlogger",
+      "json": 5269,
+      "medusa": 526900,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "controlador-de-temperatura-n1040-novus",
+      "json": 465,
+      "medusa": 46500,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "controlador-de-temperatura-n1050",
+      "json": 589,
+      "medusa": 58900,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "controlador-de-proceso-n1200-novus",
+      "json": 864,
+      "medusa": 86400,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "indicador-de-proceso-universal-n1500",
+      "json": 832.8,
+      "medusa": 83280,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "controlador-universal-n2000",
+      "json": 711.6,
+      "medusa": 71160,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "controlador-de-procesos-universal-n3000",
+      "json": 666,
+      "medusa": 66600,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "controlador-novus-n323-pt100-rs485",
+      "json": 378,
+      "medusa": 37800,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "controlador-de-temperatura-n480d-novus",
+      "json": 675.6,
+      "medusa": 67560,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "controlador-de-temperatura-novus-n960",
+      "json": 495.6,
+      "medusa": 49560,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "transmisor-de-temperatura-y-humedad-rht-climate",
+      "json": 954,
+      "medusa": 95400,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "transmisor-de-temperatura-y-humedad-rht-wm-y-rht-dm",
+      "json": 882,
+      "medusa": 88200,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "transmisor-temperatura-para-cabezal-txblock-usb",
+      "json": 250,
+      "medusa": 25000,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "transmisor-temperatura-para-riel-din-txrail-usb",
+      "json": 288,
+      "medusa": 28800,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "transmisor-de-temperatura-y-humedad-rht-p10-rht-xs",
+      "json": 1089.6,
+      "medusa": 108960,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "discos-de-ruptura-para-extrusoras",
+      "json": 499,
+      "medusa": 49900,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "transmisores-y-transductores-industriales-de-presion-mpi-dynisco-gefran-gentran",
+      "json": 3490,
+      "medusa": 349000,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "x2-ocs-micro-plc-todo-en-uno",
+      "json": 1799,
+      "medusa": 179900,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "horner-xlee-xl-ocs",
+      "json": 2500,
+      "medusa": 250000,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "horner-xlte-xl-ocs",
+      "json": 3660,
+      "medusa": 366000,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "horner-xl4-xl-series-ocs-plc-todo-en-uno",
+      "json": 4700,
+      "medusa": 470000,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "horner-exl6-ocs-horner",
+      "json": 6500,
+      "medusa": 650000,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "horner-exlw-ocs",
+      "json": 6500,
+      "medusa": 650000,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "horner-xl7-ocs-horner",
+      "json": 8500,
+      "medusa": 850000,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "horner-exl10-ocs",
+      "json": 12900,
+      "medusa": 1290000,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "controlador-de-automatizacion-horner-xl15-plus-ocs",
+      "json": 22600,
+      "medusa": 2260000,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "controlador-de-automatizacion-horner-xlee-ocs",
+      "json": 2100,
+      "medusa": 210000,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "controlador-de-automatizacion-xlte-ocs",
+      "json": 3700,
+      "medusa": 370000,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "horner-micro-ocs-x4-series-plc-todo-en-uno",
+      "json": 2250,
+      "medusa": 225000,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "horner-x5-micro-ocs-series-plc-todo-en-uno",
+      "json": 3199,
+      "medusa": 319900,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "horner-micro-ocs-x7-series-plc-todo-en-uno",
+      "json": 3599,
+      "medusa": 359900,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "horner-x10-micro-ocs-series-plc-todo-en-uno",
+      "json": 4990,
+      "medusa": 499000,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "horner-kit-de-inicio-ocs-micro-series-plc-todo-en-uno",
+      "json": 1399,
+      "medusa": 139900,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "panel-lana-de-roca-mineral-fibra-50-y-100-kg-m3-rock-wool-peru",
+      "json": 32,
+      "medusa": 3200,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "registrador-de-datos-en-tiempo-real-tt18-con-sensor-de-temperatura-y-humedad",
+      "json": 72,
+      "medusa": 7200,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "registrador-de-datos-multiuso-tempu04",
+      "json": 219.2,
+      "medusa": 21920,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "controlador-de-temperatura-tz-tht02",
+      "json": 302.7,
+      "medusa": 30270,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "transmisor-co2-tz-ct01",
+      "json": 1084.2,
+      "medusa": 108420,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "transmisor-tz-tht03r",
+      "json": 356.3,
+      "medusa": 35630,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "transmisor-tz-tht03c",
+      "json": 356.3,
+      "medusa": 35630,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "transmisor-de-temperatura-integrado-ptt04r",
+      "json": 416.9,
+      "medusa": 41690,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "registrador-tz-bt06",
+      "json": 249.8,
+      "medusa": 24980,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "registrador-de-datos-bluetooth-tz-bt04b",
+      "json": 302.7,
+      "medusa": 30270,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "datos-tempu07b",
+      "json": 279.8,
+      "medusa": 27980,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "kings-pkbs-calentador-portatil",
+      "json": 18452,
+      "medusa": 1845200,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "calentador-de-utilidad-model-u-ss",
+      "json": 1539,
+      "medusa": 153900,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "calentadores-de-unidad-kbs",
+      "json": 11515,
+      "medusa": 1151500,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "calefactor-marino-de-acero-inoxidable-daw-ss",
+      "json": 3064,
+      "medusa": 306400,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "paw-ss-calefactor-marino",
+      "json": 1985,
+      "medusa": 198500,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "calefactor-marino-mkt-ss",
+      "json": 1879,
+      "medusa": 187900,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "calefactor-compacto-kbp",
+      "json": 2018,
+      "medusa": 201800,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "calefactor-industrial-king-kb",
+      "json": 3885,
+      "medusa": 388500,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "termostato-de-proteccion-trf115-005",
+      "json": 209,
+      "medusa": 20900,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "calefactor-de-pared-modelo-w",
+      "json": 492,
+      "medusa": 49200,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "calefactor-modelo-wsc",
+      "json": 931,
+      "medusa": 93100,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "calefactor-pkb-dt",
+      "json": 9974,
+      "medusa": 997400,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "calefactor-a-prueba-de-explosiones-cx1",
+      "json": 5851,
+      "medusa": 585100,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "calefactor-a-prueba-de-explosiones-fx6",
+      "json": 18405,
+      "medusa": 1840500,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "calentador-portatil-industrial-pckw",
+      "json": 20519,
+      "medusa": 2051900,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "calefactor-portatil-pkb-platinum",
+      "json": 6360,
+      "medusa": 636000,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "calefactor-portatil-industrial-pkb-fm",
+      "json": 7794,
+      "medusa": 779400,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "calefactor-portatil-pckf",
+      "json": 46154,
+      "medusa": 4615400,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "ventilador-king-pfo-24",
+      "json": 667,
+      "medusa": 66700,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "ventilador-king-pfo-30",
+      "json": 667,
+      "medusa": 66700,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "calefactor-electronico-kb-eco2s",
+      "json": 3665,
+      "medusa": 366500,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "calefactor-king-kfuh-eco2s",
+      "json": 15122,
+      "medusa": 1512200,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "calefacto-compacto-kcc",
+      "json": 5946,
+      "medusa": 594600,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "calefactor-radiante-infrarrojo-smartwave",
+      "json": 545,
+      "medusa": 54500,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "calefactor-infrarrojo-smartwave",
+      "json": 511,
+      "medusa": 51100,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "calefactor-infrarrojo-smartwave-con-3-lamparas",
+      "json": 1798,
+      "medusa": 179800,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "horno-electrico-eco2s-kf-kfs",
+      "json": 7830,
+      "medusa": 783000,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "calefactor-serie-e-king",
+      "json": 3916,
+      "medusa": 391600,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "calefactor-radiante-infrarrojo",
+      "json": 2258,
+      "medusa": 225800,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "calefactor-portatil-puh1215t",
+      "json": 137,
+      "medusa": 13700,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "calentador-portatil-pgh2440tb",
+      "json": 451,
+      "medusa": 45100,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "calentador-portatil-psh2440tb",
+      "json": 545,
+      "medusa": 54500,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "cable-calefactor-serie-srp",
+      "json": 2289,
+      "medusa": 228900,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "cable-calefactor-serie-srp-240v",
+      "json": 433,
+      "medusa": 43300,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "cable-calefactor-serie-sr",
+      "json": 516,
+      "medusa": 51600,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "unidad-de-aire-de-reposicion-clear-air-mau",
+      "json": 31848,
+      "medusa": 3184800,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "termostato-n-e-m-a-4x-tf115",
+      "json": 543,
+      "medusa": 54300,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "termostato-n-e-m-a-4x-th109",
+      "json": 212,
+      "medusa": 21200,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "termostato-wifi-modelo-hoot",
+      "json": 395,
+      "medusa": 39500,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "termostato-programable-k302pe",
+      "json": 314,
+      "medusa": 31400,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "termostato-mecanico-k101",
+      "json": 51,
+      "medusa": 5100,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "termostato-mecanico-k102",
+      "json": 95,
+      "medusa": 9500,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "termostato-enfriamiento-k101-c",
+      "json": 142,
+      "medusa": 14200,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "ventilador-oscilante-wfo-24",
+      "json": 947,
+      "medusa": 94700,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "ventilador-oscilante-wfo-30",
+      "json": 947,
+      "medusa": 94700,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "kit-de-nebulizacion-pfo-mistkit",
+      "json": 129,
+      "medusa": 12900,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "funda-resistente-al-agua-fo-cover-24",
+      "json": 116,
+      "medusa": 11600,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "funda-resistente-al-agua-fo-cover-30",
+      "json": 152,
+      "medusa": 15200,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "panel-de-cubierta-sc-pw-de-lana-de-roca",
+      "json": 55,
+      "medusa": 5500,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "panel-de-fachada-sc-pw-de-lana-de-roca",
+      "json": 68,
+      "medusa": 6800,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "panel-decorativo-pu-peso",
+      "json": 85,
+      "medusa": 8500,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "panel-de-fachada-sc-pu-de-poliuretano",
+      "json": 92,
+      "medusa": 9200,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "panel-de-cubierta-scr-pu-de-poliuretano",
+      "json": 98,
+      "medusa": 9800,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "panel-frigorifico-sc-pc-de-poliuretano",
+      "json": 105,
+      "medusa": 10500,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "panel-para-sala-blanca-sinopan",
+      "json": 115,
+      "medusa": 11500,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "sensorprobe1-plus-akcp",
+      "json": 1393,
+      "medusa": 139300,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "sensorprobe2-plus-akcp",
+      "json": 1150,
+      "medusa": 115000,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "in-line-power-meter-akcp",
+      "json": 1100,
+      "medusa": 110000,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "sensorprobe2-lcd-akcp",
+      "json": 2093,
+      "medusa": 209300,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "controlador-de-temperatura-novus-n323",
+      "json": 328.8,
+      "medusa": 32880,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "controlador-de-temperatura-n322-pt100",
+      "json": 280,
+      "medusa": 28000,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "indicador-digital-n1500-lc",
+      "json": 1026,
+      "medusa": 102600,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "indicador-universal-n1500-g",
+      "json": 1800,
+      "medusa": 180000,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "novus-convertidor-usb-i485",
+      "json": 567.6,
+      "medusa": 56760,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "controlador-novus-n1030t",
+      "json": 261.6,
+      "medusa": 26160,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "controlador-de-temperatura-novus-n1050",
+      "json": 558,
+      "medusa": 55800,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "controlador-novus-n1200-usb",
+      "json": 706.8,
+      "medusa": 70680,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "controlador-novus-n1200-24v-rs485",
+      "json": 864,
+      "medusa": 86400,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "controlador-novus-n1200-rs485-termostato",
+      "json": 846,
+      "medusa": 84600,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "controlador-novus-n2000-usb-rs485",
+      "json": 832.8,
+      "medusa": 83280,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "controlador-novus-n3000-usb-rs485",
+      "json": 787.2,
+      "medusa": 78720,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "controlador-novus-n3000-usb-rs485-24v",
+      "json": 801.6,
+      "medusa": 80160,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "novus-n321-ntc-24v",
+      "json": 261.6,
+      "medusa": 26160,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "sensor-de-temperatura-ntc-novus",
+      "json": 27.6,
+      "medusa": 2760,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "brida-novus-ss310",
+      "json": 441.6,
+      "medusa": 44160,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "novus-n323-rht",
+      "json": 409.2,
+      "medusa": 40920,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "sensor-novus-s35-rht-probe",
+      "json": 342,
+      "medusa": 34200,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "novus-rht-wm-pared",
+      "json": 747.6,
+      "medusa": 74760,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "panel-lana-de-roca-alta-densidad",
+      "json": 45,
+      "medusa": 4500,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "tzone-tt20si-registrador-de-datos",
+      "json": 297,
+      "medusa": 29700,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "novus-ssr-4810",
+      "json": 145,
+      "medusa": 14500,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "novus-ssr-4825",
+      "json": 195,
+      "medusa": 19500,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "novus-ssr-4840",
+      "json": 265,
+      "medusa": 26500,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "novus-ssr-4880",
+      "json": 420,
+      "medusa": 42000,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "novus-ssr-3ph-40a",
+      "json": 580,
+      "medusa": 58000,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "novus-power-controller-60a",
+      "json": 1150,
+      "medusa": 115000,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "novus-power-controller-100a",
+      "json": 1850,
+      "medusa": 185000,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "novus-power-controller-200a",
+      "json": 2950,
+      "medusa": 295000,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "novus-interface-relay-nio-24v",
+      "json": 65,
+      "medusa": 6500,
+      "ratio": 100,
+      "sospecha_x100": true
+    },
+    {
+      "handle": "novus-interface-relay-nio-220v",
+      "json": 75,
+      "medusa": 7500,
+      "ratio": 100,
+      "sospecha_x100": true
+    }
+  ],
+  "errores": []
+}

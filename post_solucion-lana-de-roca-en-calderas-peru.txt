@@ -1,0 +1,138 @@
+SLUG: solucion-lana-de-roca-en-calderas-peru
+TITLE: Caso de éxito: solución con lana de roca en calderas pesqueras del perú
+POST_DATE: 2025-08-28 22:58:14
+PUBDATE: Thu, 28 Aug 2025 22:58:14 +0000
+
+En Control Nautas trabajamos cada día en el diseño de soluciones térmicas (como la lana de roca) que aseguran la continuidad de las operaciones industriales en el Perú. 
+
+Una de las áreas donde más retos se presentan es la industria pesquera, debido a las paradas obligatorias por veda y mantenimiento que pueden detener la producción durante días u horas críticas.
+
+Cuando la producción se detiene, el combustible de uso industrial —en este caso el petróleo A50 de alta viscosidad— pierde temperatura, se solidifica en tuberías y tanques, y se convierte en un obstáculo para el arranque inmediato de las calderas de vapor. 
+
+Esto no solo retrasa la reactivación de la planta, sino que también genera pérdidas económicas importantes.
+
+Este caso de éxito muestra cómo acompañamos a una planta pesquera en el litoral peruano para resolver un problema recurrente: mantener el petróleo A50 a la temperatura ideal y permitir un arranque inmediato tras cada parada. 
+
+A través de un plan paso a paso, aplicamos aislamiento térmico especializado, calentadores eléctricos de paso y sistemas de control simples, logrando una solución robusta y de larga duración.
+
+A continuación, compartimos el proceso en cinco pasos que seguimos para garantizar resultados medibles y sostenibles en el tiempo.
+
+### Paso 1: Diagnóstico del problema con petróleo A50 en la planta pesquera
+
+El primer paso fue entender el contexto real de la planta. Nuestro cliente operaba con petróleo A50, un combustible de alta viscosidad que requiere temperaturas específicas para circular y alimentar las calderas. 
+
+Cada vez que la planta se detenía por mantenimiento o veda, el A50 se enfriaba dentro del tanque de 30 m³ y en las tuberías, imposibilitando el arranque inmediato.
+
+Este enfriamiento provocaba que los técnicos tuvieran que recurrir a métodos externos de calentamiento, lo cual demandaba varias horas y encarecía la operación. 
+
+Cada hora de espera representaba pérdidas económicas significativas y retrasos en la programación productiva.
+
+En esta etapa, establecimos las condiciones necesarias para garantizar la solución:
+
+Mantener el petróleo entre 50 °C y 80 °C para circulación y bombeo.
+
+Elevar la temperatura a un rango de 90 °C a 120 °C para inyección en calderas.
+
+Evitar pérdidas de calor en un volumen considerable de 30 m³.
+
+Con el diagnóstico técnico definido, estábamos listos para implementar un sistema que asegurara arranques inmediatos y seguros cada vez que la planta lo necesitara.
+
+### Paso 2: Aislamiento térmico con lana de roca en tanque y tuberías
+
+El segundo paso consistió en detener la fuga de calor en los puntos críticos. Diseñamos un plan de aislamiento térmico con lana de roca de alta densidad, un material ideal para operaciones pesqueras por su resistencia, durabilidad y capacidad de soportar altas temperaturas.
+
+Aplicamos las siguientes acciones:
+
+Enchaquetado del tanque de 30 m³ con lana de roca, asegurando una envoltura completa que evitara pérdidas energéticas.
+
+Instalación de cañuelas en las tuberías, lo que permitió conservar la temperatura del petróleo en circulación.
+
+Implementación de un sellado uniforme que eliminó puntos de fuga de calor.
+
+Con este paso, conseguimos que el petróleo A50 se mantuviera caliente durante más tiempo incluso en periodos prolongados de inactividad. 
+
+El aislamiento térmico fue la base para garantizar que los demás componentes del sistema trabajaran con mayor eficiencia, reduciendo la necesidad de recalentar desde cero.
+
+Esta medida inmediata permitió al cliente reducir significativamente los tiempos muertos y avanzar hacia un esquema de operación continua y confiable.
+
+### Paso 3: Instalación de calentadores de paso eléctricos de 30 kW
+
+El tercer paso fue añadir energía al sistema de forma controlada y eficiente. Implementamos un calentador de paso eléctrico de 30 kW, diseñado específicamente para trabajar con petróleo pesado como el A50.
+
+El funcionamiento era simple pero efectivo: el petróleo ingresaba al calentador, atravesaba una resistencia eléctrica que elevaba su temperatura y luego retornaba caliente al tanque o se enviaba directamente a las calderas. 
+
+Este sistema de recirculación garantizaba que el combustible permaneciera en condiciones óptimas en todo momento.
+
+Los beneficios directos fueron:
+
+Arranque inmediato de calderas sin depender de fuentes externas de calor.
+
+Estabilidad térmica en el tanque gracias al circuito de recirculación.
+
+Mayor versatilidad operativa, ya que el sistema incluía una salida en “Y” para alimentar calderas directamente.
+
+Mantenimiento mínimo, con resistencias robustas diseñadas para petróleo de alta densidad.
+
+Gracias a este paso, el cliente pudo operar con flexibilidad, arrancando la planta incluso después de mantenimientos nocturnos, y eliminando las horas de espera que antes eran inevitables.
+
+### Paso 4: Control de temperatura simple y confiable
+
+Una solución eficiente no siempre requiere complejidad en el control. En este paso, instalamos un sistema de control por termostato, ajustado para mantener la temperatura ideal del petróleo según las condiciones de operación.
+
+El control térmico se configuró para:
+
+Mantener el rango de 50 °C a 80 °C durante el bombeo y circulación.
+
+Elevar entre 90 °C y 120 °C al momento de la inyección en calderas.
+
+Activarse automáticamente cuando el combustible descendiera de los valores establecidos.
+
+El uso de un termostato simple fue una decisión estratégica:
+
+Evitó la necesidad de sistemas de automatización costosos y complejos.
+
+Facilitó la operación para el personal de mantenimiento.
+
+Aseguró confiabilidad a largo plazo con un diseño robusto y probado.
+
+Este paso consolidó la solución, permitiendo que el sistema se autoregule con mínima intervención y asegurando que el cliente tuviera un control práctico, seguro y de bajo costo operativo.
+
+### Paso 5: Resultados y sostenibilidad a largo plazo
+
+El último paso fue la validación de resultados. Desde el primer día, la planta pudo arrancar calderas sin demoras, eliminando los tiempos de espera por viscosidad del A50.
+
+Los beneficios obtenidos incluyeron:
+
+Reducción de pérdidas económicas por inactividad.
+
+Flexibilidad para iniciar operaciones en cualquier momento.
+
+Estabilidad térmica constante en tanque y tuberías.
+
+Disminución de costos energéticos al no recalentar desde cero.
+
+A más de 7 años de la instalación, el sistema continúa funcionando con total confiabilidad. La durabilidad proyectada supera los 30 años, lo que convierte a esta inversión en una solución estratégica de largo plazo.
+
+Gracias a este proyecto, el cliente alcanzó mayor competitividad y seguridad en su operación, demostrando cómo una solución bien diseñada puede transformar la productividad de toda una planta pesquera.
+
+### Control Nautas: expertos en aislamiento y eficiencia industrial
+
+En Control Nautas somos especialistas en aislamiento térmico, sistemas de calefacción eléctrica y soluciones industriales a medida. 
+
+Este caso refleja nuestra capacidad para diagnosticar problemas complejos, diseñar soluciones personalizadas y garantizar resultados medibles.
+
+Trabajamos con industrias clave como pesca, alimentos, minería e hidrocarburos, siempre con el objetivo de optimizar procesos, reducir costos y asegurar la continuidad productiva. 
+
+Nuestra experiencia y el uso de materiales de alta calidad, como la lana de roca, nos posicionan como un aliado estratégico para las empresas que buscan operar con seguridad y eficiencia.
+
+Para mayor información, no dudes en contactarnos.
+
+RUC: 20610965807
+
+Dirección: Av. General Eugenio Garzón 2099, Jesús María, Lima 15072
+
+WhatsApp: +51 950 302 141
+
+Correo: programas@controlnautas.com
+
+Web: www.controlnautas.com

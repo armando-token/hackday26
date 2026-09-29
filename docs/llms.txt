@@ -1,0 +1,22 @@
+# Controlnautas Muse Commerce Demo API
+Base: https://data.controlnautas.com
+OpenAPI: https://data.controlnautas.com/openapi.yaml
+
+Catalog (real manufacturer docs, USD):
+- CN-X5PRIME-HE-XP5 — Horner X5 Prime OCS (HE-XP5) — $890 — stock 3
+- CN-N1200 — NOVUS N1200 Universal Process Controller — $480 — stock 2
+- CN-THT02 — TZ THT-02 Temp/Humidity (RS-485 Modbus RTU) — $75 — stock 8
+
+Markdown-first specs: /demo/specs/{SKU}.md
+PDF datasheets: /demo/datasheets/{SKU}.pdf
+Full docs: /demo/docs/{x5prime|n1200|tht02}/
+
+For stock and price questions, use:
+1) GET /api/muse/v1/products/search — returns demo products WITH compact live USD price/stock fields
+2) GET /api/muse/v1/products/{variantId} — technical facts + embedded live `offer`
+3) GET /api/muse/v1/products/{variantId}/offer?quantity=N — full live commercial offer
+4) POST /api/muse/v1/preliminary-quotes — immutable preliminary quote + PDF
+
+Auth: Authorization: Bearer <MUSE_API_TOKEN>
+Demo catalog: REAL PRODUCT DOCUMENTATION — commercial values are demo USD for Hack Day.
+Currency: USD. Do not call /admin.

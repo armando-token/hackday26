@@ -1,23 +1,71 @@
+# Heavy & backup folders
+extra/
+/extra/
+**/extra/
+git/
+/git/
+**/git/
+backups/
+/backups/
+**/backups/
+logs/
+/logs/
+**/logs/
+*.dump
+*.sql
+*.tar.gz
+*.zip
+*.tsbuildinfo
+
+# Node & dependencies
+node_modules
+node_modules/
+**/node_modules/
+
+# Generated Quote PDFs
+storage/quotes/*.pdf
+!storage/quotes/.gitkeep
+# Next.js & Medusa builds
+.next/
+**/.next/
+dist/
+build/
+.medusa/
+**/.medusa/
+# Environment & local config
+.env
+.env.local
+*.env
+!.env.template
+# Logs & OS files
+.DS_Store
+*.log
+npm-debug.log*
+yarn-debug.log*
+# Playwright & test cache
+/test-results/
+/playwright-report/
+.cache/
+__pycache__/
+*.pyc
 # AWS private keys — never commit
 aws-keys/
 *.pem
-
 # Env / secrets
-.env
 .env.*
 !.env.example
-
 # OS / editor
-.DS_Store
 .idea/
 .vscode/
 *.swp
-
 # Dependencies / build
-node_modules/
-dist/
-build/
-__pycache__/
-*.pyc
 .venv/
 venv/
+# Hackday / secrets
+code_surce_cn.zip
+code_source_cn.zip
+code_source_cn/
+code_surce_cn/
+
+# Raw manufacturer folders (published copies live under docs/ and real-products-publish/)
+real-products-source/

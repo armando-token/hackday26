@@ -1,0 +1,900 @@
+{
+  "apply": true,
+  "count": 149,
+  "actions": [
+    {
+      "handle": "cintas-aislante-foam-tape",
+      "pen": 119,
+      "usd": 31.73,
+      "before": 11900
+    },
+    {
+      "handle": "sensor-rtd-con-cabezal-y-conexion-a-proceso",
+      "pen": 990,
+      "usd": 264,
+      "before": 99000
+    },
+    {
+      "handle": "sensor-rtd-con-cabezal-din-b",
+      "pen": 830,
+      "usd": 221.33,
+      "before": 83000
+    },
+    {
+      "handle": "sensor-rtd-con-cabezal-de-acero-inoxidable",
+      "pen": 330,
+      "usd": 88,
+      "before": 33000
+    },
+    {
+      "handle": "sensor-rtd-con-termopozo-higienico",
+      "pen": 890,
+      "usd": 237.33,
+      "before": 89000
+    },
+    {
+      "handle": "termopozos",
+      "pen": 390,
+      "usd": 104,
+      "before": 39000
+    },
+    {
+      "handle": "sensor-flexible-novus-fsb",
+      "pen": 89,
+      "usd": 23.73,
+      "before": 8900
+    },
+    {
+      "handle": "sensores-con-empunadura-y-cable-serie-hsc",
+      "pen": 479,
+      "usd": 127.73,
+      "before": 47900
+    },
+    {
+      "handle": "sensores-con-cabezal-de-proteccion-sph",
+      "pen": 299,
+      "usd": 79.73,
+      "before": 29900
+    },
+    {
+      "handle": "sensores-con-punta-de-metal",
+      "pen": 89,
+      "usd": 23.73,
+      "before": 8900
+    },
+    {
+      "handle": "sensores-con-transmisor-incorporado-serie-bts",
+      "pen": 405,
+      "usd": 108,
+      "before": 40500
+    },
+    {
+      "handle": "sistema-de-calefaccion-electrico-para-la-circulacion-de-combustible",
+      "pen": 29300,
+      "usd": 7813.33,
+      "before": 2930000
+    },
+    {
+      "handle": "sistema-de-calefaccion-electrico-para-conductos",
+      "pen": 22400,
+      "usd": 5973.33,
+      "before": 2240000
+    },
+    {
+      "handle": "sistema-de-calefaccion-electrico-para-la-circulacion-de-fluidos-diversos",
+      "pen": 73500,
+      "usd": 19600,
+      "before": 7350000
+    },
+    {
+      "handle": "sistema-de-calefaccion-de-inmersion-con-caja-electrica",
+      "pen": 15300,
+      "usd": 4080,
+      "before": 1530000
+    },
+    {
+      "handle": "registrador-de-datos-industrial-multicanales-fieldlogger",
+      "pen": 5269,
+      "usd": 1405.07,
+      "before": 526900
+    },
+    {
+      "handle": "controlador-de-temperatura-n1040-novus",
+      "pen": 465,
+      "usd": 124,
+      "before": 46500
+    },
+    {
+      "handle": "controlador-de-temperatura-n1050",
+      "pen": 589,
+      "usd": 157.07,
+      "before": 58900
+    },
+    {
+      "handle": "controlador-de-proceso-n1200-novus",
+      "pen": 864,
+      "usd": 230.4,
+      "before": 86400
+    },
+    {
+      "handle": "indicador-de-proceso-universal-n1500",
+      "pen": 832.8,
+      "usd": 222.08,
+      "before": 83280
+    },
+    {
+      "handle": "controlador-universal-n2000",
+      "pen": 711.6,
+      "usd": 189.76,
+      "before": 71160
+    },
+    {
+      "handle": "controlador-de-procesos-universal-n3000",
+      "pen": 666,
+      "usd": 177.6,
+      "before": 66600
+    },
+    {
+      "handle": "controlador-novus-n323-pt100-rs485",
+      "pen": 378,
+      "usd": 100.8,
+      "before": 37800
+    },
+    {
+      "handle": "controlador-de-temperatura-n480d-novus",
+      "pen": 675.6,
+      "usd": 180.16,
+      "before": 67560
+    },
+    {
+      "handle": "controlador-de-temperatura-novus-n960",
+      "pen": 495.6,
+      "usd": 132.16,
+      "before": 49560
+    },
+    {
+      "handle": "transmisor-de-temperatura-y-humedad-rht-climate",
+      "pen": 954,
+      "usd": 254.4,
+      "before": 95400
+    },
+    {
+      "handle": "transmisor-de-temperatura-y-humedad-rht-wm-y-rht-dm",
+      "pen": 882,
+      "usd": 235.2,
+      "before": 88200
+    },
+    {
+      "handle": "transmisor-temperatura-para-cabezal-txblock-usb",
+      "pen": 250,
+      "usd": 66.67,
+      "before": 25000
+    },
+    {
+      "handle": "transmisor-temperatura-para-riel-din-txrail-usb",
+      "pen": 288,
+      "usd": 76.8,
+      "before": 28800
+    },
+    {
+      "handle": "transmisor-de-temperatura-y-humedad-rht-p10-rht-xs",
+      "pen": 1089.6,
+      "usd": 290.56,
+      "before": 108960
+    },
+    {
+      "handle": "discos-de-ruptura-para-extrusoras",
+      "pen": 499,
+      "usd": 133.07,
+      "before": 49900
+    },
+    {
+      "handle": "transmisores-y-transductores-industriales-de-presion-mpi-dynisco-gefran-gentran",
+      "pen": 3490,
+      "usd": 930.67,
+      "before": 349000
+    },
+    {
+      "handle": "x2-ocs-micro-plc-todo-en-uno",
+      "pen": 1799,
+      "usd": 479.73,
+      "before": 179900
+    },
+    {
+      "handle": "horner-xlee-xl-ocs",
+      "pen": 2500,
+      "usd": 666.67,
+      "before": 250000
+    },
+    {
+      "handle": "horner-xlte-xl-ocs",
+      "pen": 3660,
+      "usd": 976,
+      "before": 366000
+    },
+    {
+      "handle": "horner-xl4-xl-series-ocs-plc-todo-en-uno",
+      "pen": 4700,
+      "usd": 1253.33,
+      "before": 470000
+    },
+    {
+      "handle": "horner-exl6-ocs-horner",
+      "pen": 6500,
+      "usd": 1733.33,
+      "before": 650000
+    },
+    {
+      "handle": "horner-exlw-ocs",
+      "pen": 6500,
+      "usd": 1733.33,
+      "before": 650000
+    },
+    {
+      "handle": "horner-xl7-ocs-horner",
+      "pen": 8500,
+      "usd": 2266.67,
+      "before": 850000
+    },
+    {
+      "handle": "horner-exl10-ocs",
+      "pen": 12900,
+      "usd": 3440,
+      "before": 1290000
+    },
+    {
+      "handle": "controlador-de-automatizacion-horner-xl15-plus-ocs",
+      "pen": 22600,
+      "usd": 6026.67,
+      "before": 2260000
+    },
+    {
+      "handle": "controlador-de-automatizacion-horner-xlee-ocs",
+      "pen": 2100,
+      "usd": 560,
+      "before": 210000
+    },
+    {
+      "handle": "controlador-de-automatizacion-xlte-ocs",
+      "pen": 3700,
+      "usd": 986.67,
+      "before": 370000
+    },
+    {
+      "handle": "horner-micro-ocs-x4-series-plc-todo-en-uno",
+      "pen": 2250,
+      "usd": 600,
+      "before": 225000
+    },
+    {
+      "handle": "horner-x5-micro-ocs-series-plc-todo-en-uno",
+      "pen": 3199,
+      "usd": 853.07,
+      "before": 319900
+    },
+    {
+      "handle": "horner-micro-ocs-x7-series-plc-todo-en-uno",
+      "pen": 3599,
+      "usd": 959.73,
+      "before": 359900
+    },
+    {
+      "handle": "horner-x10-micro-ocs-series-plc-todo-en-uno",
+      "pen": 4990,
+      "usd": 1330.67,
+      "before": 499000
+    },
+    {
+      "handle": "horner-kit-de-inicio-ocs-micro-series-plc-todo-en-uno",
+      "pen": 1399,
+      "usd": 373.07,
+      "before": 139900
+    },
+    {
+      "handle": "panel-lana-de-roca-mineral-fibra-50-y-100-kg-m3-rock-wool-peru",
+      "pen": 32,
+      "usd": 8.53,
+      "before": 3200
+    },
+    {
+      "handle": "registrador-de-datos-en-tiempo-real-tt18-con-sensor-de-temperatura-y-humedad",
+      "pen": 72,
+      "usd": 19.2,
+      "before": 7200
+    },
+    {
+      "handle": "registrador-de-datos-multiuso-tempu04",
+      "pen": 219.2,
+      "usd": 58.45,
+      "before": 21920
+    },
+    {
+      "handle": "controlador-de-temperatura-tz-tht02",
+      "pen": 302.7,
+      "usd": 80.72,
+      "before": 30270
+    },
+    {
+      "handle": "transmisor-co2-tz-ct01",
+      "pen": 1084.2,
+      "usd": 289.12,
+      "before": 108420
+    },
+    {
+      "handle": "transmisor-tz-tht03r",
+      "pen": 356.3,
+      "usd": 95.01,
+      "before": 35630
+    },
+    {
+      "handle": "transmisor-tz-tht03c",
+      "pen": 356.3,
+      "usd": 95.01,
+      "before": 35630
+    },
+    {
+      "handle": "transmisor-de-temperatura-integrado-ptt04r",
+      "pen": 416.9,
+      "usd": 111.17,
+      "before": 41690
+    },
+    {
+      "handle": "registrador-tz-bt06",
+      "pen": 249.8,
+      "usd": 66.61,
+      "before": 24980
+    },
+    {
+      "handle": "registrador-de-datos-bluetooth-tz-bt04b",
+      "pen": 302.7,
+      "usd": 80.72,
+      "before": 30270
+    },
+    {
+      "handle": "datos-tempu07b",
+      "pen": 279.8,
+      "usd": 74.61,
+      "before": 27980
+    },
+    {
+      "handle": "kings-pkbs-calentador-portatil",
+      "pen": 18452,
+      "usd": 4920.53,
+      "before": 1845200
+    },
+    {
+      "handle": "calentador-de-utilidad-model-u-ss",
+      "pen": 1539,
+      "usd": 410.4,
+      "before": 153900
+    },
+    {
+      "handle": "calentadores-de-unidad-kbs",
+      "pen": 11515,
+      "usd": 3070.67,
+      "before": 1151500
+    },
+    {
+      "handle": "calefactor-marino-de-acero-inoxidable-daw-ss",
+      "pen": 3064,
+      "usd": 817.07,
+      "before": 306400
+    },
+    {
+      "handle": "paw-ss-calefactor-marino",
+      "pen": 1985,
+      "usd": 529.33,
+      "before": 198500
+    },
+    {
+      "handle": "calefactor-marino-mkt-ss",
+      "pen": 1879,
+      "usd": 501.07,
+      "before": 187900
+    },
+    {
+      "handle": "calefactor-compacto-kbp",
+      "pen": 2018,
+      "usd": 538.13,
+      "before": 201800
+    },
+    {
+      "handle": "calefactor-industrial-king-kb",
+      "pen": 3885,
+      "usd": 1036,
+      "before": 388500
+    },
+    {
+      "handle": "termostato-de-proteccion-trf115-005",
+      "pen": 209,
+      "usd": 55.73,
+      "before": 20900
+    },
+    {
+      "handle": "calefactor-de-pared-modelo-w",
+      "pen": 492,
+      "usd": 131.2,
+      "before": 49200
+    },
+    {
+      "handle": "calefactor-modelo-wsc",
+      "pen": 931,
+      "usd": 248.27,
+      "before": 93100
+    },
+    {
+      "handle": "calefactor-pkb-dt",
+      "pen": 9974,
+      "usd": 2659.73,
+      "before": 997400
+    },
+    {
+      "handle": "calefactor-a-prueba-de-explosiones-cx1",
+      "pen": 5851,
+      "usd": 1560.27,
+      "before": 585100
+    },
+    {
+      "handle": "calefactor-a-prueba-de-explosiones-fx6",
+      "pen": 18405,
+      "usd": 4908,
+      "before": 1840500
+    },
+    {
+      "handle": "calentador-portatil-industrial-pckw",
+      "pen": 20519,
+      "usd": 5471.73,
+      "before": 2051900
+    },
+    {
+      "handle": "calefactor-portatil-pkb-platinum",
+      "pen": 6360,
+      "usd": 1696,
+      "before": 636000
+    },
+    {
+      "handle": "calefactor-portatil-industrial-pkb-fm",
+      "pen": 7794,
+      "usd": 2078.4,
+      "before": 779400
+    },
+    {
+      "handle": "calefactor-portatil-pckf",
+      "pen": 46154,
+      "usd": 12307.73,
+      "before": 4615400
+    },
+    {
+      "handle": "ventilador-king-pfo-24",
+      "pen": 667,
+      "usd": 177.87,
+      "before": 66700
+    },
+    {
+      "handle": "ventilador-king-pfo-30",
+      "pen": 667,
+      "usd": 177.87,
+      "before": 66700
+    },
+    {
+      "handle": "calefactor-electronico-kb-eco2s",
+      "pen": 3665,
+      "usd": 977.33,
+      "before": 366500
+    },
+    {
+      "handle": "calefactor-king-kfuh-eco2s",
+      "pen": 15122,
+      "usd": 4032.53,
+      "before": 1512200
+    },
+    {
+      "handle": "calefacto-compacto-kcc",
+      "pen": 5946,
+      "usd": 1585.6,
+      "before": 594600
+    },
+    {
+      "handle": "calefactor-radiante-infrarrojo-smartwave",
+      "pen": 545,
+      "usd": 145.33,
+      "before": 54500
+    },
+    {
+      "handle": "calefactor-infrarrojo-smartwave",
+      "pen": 511,
+      "usd": 136.27,
+      "before": 51100
+    },
+    {
+      "handle": "calefactor-infrarrojo-smartwave-con-3-lamparas",
+      "pen": 1798,
+      "usd": 479.47,
+      "before": 179800
+    },
+    {
+      "handle": "horno-electrico-eco2s-kf-kfs",
+      "pen": 7830,
+      "usd": 2088,
+      "before": 783000
+    },
+    {
+      "handle": "calefactor-serie-e-king",
+      "pen": 3916,
+      "usd": 1044.27,
+      "before": 391600
+    },
+    {
+      "handle": "calefactor-radiante-infrarrojo",
+      "pen": 2258,
+      "usd": 602.13,
+      "before": 225800
+    },
+    {
+      "handle": "calefactor-portatil-puh1215t",
+      "pen": 137,
+      "usd": 36.53,
+      "before": 13700
+    },
+    {
+      "handle": "calentador-portatil-pgh2440tb",
+      "pen": 451,
+      "usd": 120.27,
+      "before": 45100
+    },
+    {
+      "handle": "calentador-portatil-psh2440tb",
+      "pen": 545,
+      "usd": 145.33,
+      "before": 54500
+    },
+    {
+      "handle": "cable-calefactor-serie-srp",
+      "pen": 2289,
+      "usd": 610.4,
+      "before": 228900
+    },
+    {
+      "handle": "cable-calefactor-serie-srp-240v",
+      "pen": 433,
+      "usd": 115.47,
+      "before": 43300
+    },
+    {
+      "handle": "cable-calefactor-serie-sr",
+      "pen": 516,
+      "usd": 137.6,
+      "before": 51600
+    },
+    {
+      "handle": "unidad-de-aire-de-reposicion-clear-air-mau",
+      "pen": 31848,
+      "usd": 8492.8,
+      "before": 3184800
+    },
+    {
+      "handle": "termostato-n-e-m-a-4x-tf115",
+      "pen": 543,
+      "usd": 144.8,
+      "before": 54300
+    },
+    {
+      "handle": "termostato-n-e-m-a-4x-th109",
+      "pen": 212,
+      "usd": 56.53,
+      "before": 21200
+    },
+    {
+      "handle": "termostato-wifi-modelo-hoot",
+      "pen": 395,
+      "usd": 105.33,
+      "before": 39500
+    },
+    {
+      "handle": "termostato-programable-k302pe",
+      "pen": 314,
+      "usd": 83.73,
+      "before": 31400
+    },
+    {
+      "handle": "termostato-mecanico-k101",
+      "pen": 51,
+      "usd": 13.6,
+      "before": 5100
+    },
+    {
+      "handle": "termostato-mecanico-k102",
+      "pen": 95,
+      "usd": 25.33,
+      "before": 9500
+    },
+    {
+      "handle": "termostato-enfriamiento-k101-c",
+      "pen": 142,
+      "usd": 37.87,
+      "before": 14200
+    },
+    {
+      "handle": "ventilador-oscilante-wfo-24",
+      "pen": 947,
+      "usd": 252.53,
+      "before": 94700
+    },
+    {
+      "handle": "ventilador-oscilante-wfo-30",
+      "pen": 947,
+      "usd": 252.53,
+      "before": 94700
+    },
+    {
+      "handle": "kit-de-nebulizacion-pfo-mistkit",
+      "pen": 129,
+      "usd": 34.4,
+      "before": 12900
+    },
+    {
+      "handle": "funda-resistente-al-agua-fo-cover-24",
+      "pen": 116,
+      "usd": 30.93,
+      "before": 11600
+    },
+    {
+      "handle": "funda-resistente-al-agua-fo-cover-30",
+      "pen": 152,
+      "usd": 40.53,
+      "before": 15200
+    },
+    {
+      "handle": "panel-de-cubierta-sc-pw-de-lana-de-roca",
+      "pen": 55,
+      "usd": 14.67,
+      "before": 5500
+    },
+    {
+      "handle": "panel-de-fachada-sc-pw-de-lana-de-roca",
+      "pen": 68,
+      "usd": 18.13,
+      "before": 6800
+    },
+    {
+      "handle": "panel-decorativo-pu-peso",
+      "pen": 85,
+      "usd": 22.67,
+      "before": 8500
+    },
+    {
+      "handle": "panel-de-fachada-sc-pu-de-poliuretano",
+      "pen": 92,
+      "usd": 24.53,
+      "before": 9200
+    },
+    {
+      "handle": "panel-de-cubierta-scr-pu-de-poliuretano",
+      "pen": 98,
+      "usd": 26.13,
+      "before": 9800
+    },
+    {
+      "handle": "panel-frigorifico-sc-pc-de-poliuretano",
+      "pen": 105,
+      "usd": 28,
+      "before": 10500
+    },
+    {
+      "handle": "panel-para-sala-blanca-sinopan",
+      "pen": 115,
+      "usd": 30.67,
+      "before": 11500
+    },
+    {
+      "handle": "sensorprobe1-plus-akcp",
+      "pen": 1393,
+      "usd": 371.47,
+      "before": 139300
+    },
+    {
+      "handle": "sensorprobe2-plus-akcp",
+      "pen": 1150,
+      "usd": 306.67,
+      "before": 115000
+    },
+    {
+      "handle": "in-line-power-meter-akcp",
+      "pen": 1100,
+      "usd": 293.33,
+      "before": 110000
+    },
+    {
+      "handle": "sensorprobe2-lcd-akcp",
+      "pen": 2093,
+      "usd": 558.13,
+      "before": 209300
+    },
+    {
+      "handle": "controlador-de-temperatura-novus-n323",
+      "pen": 328.8,
+      "usd": 87.68,
+      "before": 32880
+    },
+    {
+      "handle": "controlador-de-temperatura-n322-pt100",
+      "pen": 280,
+      "usd": 74.67,
+      "before": 28000
+    },
+    {
+      "handle": "indicador-digital-n1500-lc",
+      "pen": 1026,
+      "usd": 273.6,
+      "before": 102600
+    },
+    {
+      "handle": "indicador-universal-n1500-g",
+      "pen": 1800,
+      "usd": 480,
+      "before": 180000
+    },
+    {
+      "handle": "novus-convertidor-usb-i485",
+      "pen": 567.6,
+      "usd": 151.36,
+      "before": 56760
+    },
+    {
+      "handle": "controlador-novus-n1030t",
+      "pen": 261.6,
+      "usd": 69.76,
+      "before": 26160
+    },
+    {
+      "handle": "controlador-de-temperatura-novus-n1050",
+      "pen": 558,
+      "usd": 148.8,
+      "before": 55800
+    },
+    {
+      "handle": "controlador-novus-n1200-usb",
+      "pen": 706.8,
+      "usd": 188.48,
+      "before": 70680
+    },
+    {
+      "handle": "controlador-novus-n1200-24v-rs485",
+      "pen": 864,
+      "usd": 230.4,
+      "before": 86400
+    },
+    {
+      "handle": "controlador-novus-n1200-rs485-termostato",
+      "pen": 846,
+      "usd": 225.6,
+      "before": 84600
+    },
+    {
+      "handle": "controlador-novus-n2000-usb-rs485",
+      "pen": 832.8,
+      "usd": 222.08,
+      "before": 83280
+    },
+    {
+      "handle": "controlador-novus-n3000-usb-rs485",
+      "pen": 787.2,
+      "usd": 209.92,
+      "before": 78720
+    },
+    {
+      "handle": "controlador-novus-n3000-usb-rs485-24v",
+      "pen": 801.6,
+      "usd": 213.76,
+      "before": 80160
+    },
+    {
+      "handle": "novus-n321-ntc-24v",
+      "pen": 261.6,
+      "usd": 69.76,
+      "before": 26160
+    },
+    {
+      "handle": "sensor-de-temperatura-ntc-novus",
+      "pen": 27.6,
+      "usd": 7.36,
+      "before": 2760
+    },
+    {
+      "handle": "brida-novus-ss310",
+      "pen": 441.6,
+      "usd": 117.76,
+      "before": 44160
+    },
+    {
+      "handle": "novus-n323-rht",
+      "pen": 409.2,
+      "usd": 109.12,
+      "before": 40920
+    },
+    {
+      "handle": "sensor-novus-s35-rht-probe",
+      "pen": 342,
+      "usd": 91.2,
+      "before": 34200
+    },
+    {
+      "handle": "novus-rht-wm-pared",
+      "pen": 747.6,
+      "usd": 199.36,
+      "before": 74760
+    },
+    {
+      "handle": "panel-lana-de-roca-alta-densidad",
+      "pen": 45,
+      "usd": 12,
+      "before": 4500
+    },
+    {
+      "handle": "tzone-tt20si-registrador-de-datos",
+      "pen": 297,
+      "usd": 79.2,
+      "before": 29700
+    },
+    {
+      "handle": "novus-ssr-4810",
+      "pen": 145,
+      "usd": 38.67,
+      "before": 14500
+    },
+    {
+      "handle": "novus-ssr-4825",
+      "pen": 195,
+      "usd": 52,
+      "before": 19500
+    },
+    {
+      "handle": "novus-ssr-4840",
+      "pen": 265,
+      "usd": 70.67,
+      "before": 26500
+    },
+    {
+      "handle": "novus-ssr-4880",
+      "pen": 420,
+      "usd": 112,
+      "before": 42000
+    },
+    {
+      "handle": "novus-ssr-3ph-40a",
+      "pen": 580,
+      "usd": 154.67,
+      "before": 58000
+    },
+    {
+      "handle": "novus-power-controller-60a",
+      "pen": 1150,
+      "usd": 306.67,
+      "before": 115000
+    },
+    {
+      "handle": "novus-power-controller-100a",
+      "pen": 1850,
+      "usd": 493.33,
+      "before": 185000
+    },
+    {
+      "handle": "novus-power-controller-200a",
+      "pen": 2950,
+      "usd": 786.67,
+      "before": 295000
+    },
+    {
+      "handle": "novus-interface-relay-nio-24v",
+      "pen": 65,
+      "usd": 17.33,
+      "before": 6500
+    },
+    {
+      "handle": "novus-interface-relay-nio-220v",
+      "pen": 75,
+      "usd": 20,
+      "before": 7500
+    }
+  ]
+}

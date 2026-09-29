@@ -1,0 +1,103 @@
+{
+  "source_files": {
+    "old_csv": "/home/ubuntu/CN_Web/extra/wc-product-export-15-8-2026-1786846848839.csv",
+    "current_json": "/home/ubuntu/CN_Web/b2b-storefront/src/lib/cn-catalog/data/products.json"
+  },
+  "inventory": {
+    "old_rows_total": 401,
+    "old_rows_published": 400,
+    "old_ems_excluded": 0,
+    "old_non_ems_scope": 401,
+    "current_total": 523,
+    "current_ems_excluded": 113,
+    "current_non_ems_scope": 410,
+    "matched_by_wc_id": 400,
+    "missing_from_current": 1,
+    "extra_in_current": 10
+  },
+  "matched_quality": {
+    "title_changed": 6,
+    "title_low_similarity_below_0_80": 6,
+    "brand_changed": 2,
+    "price_mismatch": 109,
+    "old_long_descriptions_present": 400,
+    "current_long_descriptions_present": 400,
+    "technical_description_suspicious_end": 0,
+    "technical_description_under_80_chars": 0,
+    "products_with_missing_old_specs": 0,
+    "products_with_changed_same_key_specs": 6,
+    "products_with_added_specs": 8,
+    "spec_change_records": {
+      "changed": 19,
+      "added_after_migration": 22
+    },
+    "products_with_no_current_images": 0,
+    "products_with_missing_current_image_files": 0,
+    "products_with_dropped_old_images": 0,
+    "old_image_total": 610,
+    "current_image_total": 610
+  },
+  "current_integrity_issue_counts": {
+    "no_specs": 25,
+    "quote_marked_in_stock": 1
+  },
+  "duplicates_current_non_ems": {
+    "handles": {},
+    "item_numbers": {},
+    "titles": {
+      "serie rsr cable calefactor autorregulable para descongelacion de techos y canalones": [
+        12959,
+        12983
+      ],
+      "serie lsr cable calefactor autorregulable de proteccion contra congelacion para tuberias estandar": [
+        12965,
+        12986
+      ],
+      "hrshtv cable calefactor anti uv para descongelacion de techos y canalones": [
+        12977,
+        13026
+      ]
+    }
+  },
+  "brand_counts_old_non_ems": {
+    "King Electric": 101,
+    "MPI": 75,
+    "Novus": 71,
+    "AKCP": 48,
+    "Horner": 33,
+    "Huanrui": 24,
+    "Tzone": 23,
+    "Perfect": 8,
+    "Sinopan": 7,
+    "Rockwool": 4,
+    "(vacía)": 3,
+    "Control Nautas": 3,
+    "Termolan": 1
+  },
+  "brand_counts_current_non_ems": {
+    "King Electric": 101,
+    "Novus": 82,
+    "MPI": 75,
+    "AKCP": 48,
+    "Horner": 33,
+    "Huanrui": 24,
+    "Tzone": 23,
+    "Perfect": 8,
+    "Sinopan": 7,
+    "Rockwool": 4,
+    "Control Nautas": 4,
+    "Termolan": 1
+  },
+  "category_counts_current_non_ems": {
+    "calefaccion-electrica": 99,
+    "sensores-transmisores": 66,
+    "control-e-indicacion": 63,
+    "monitoreo-data-center": 50,
+    "trazado-termico": 44,
+    "automatizacion-plc-hmi": 36,
+    "aislamiento-termico": 20,
+    "registro-de-datos": 19,
+    "comunicacion-industrial": 7,
+    "otros": 6
+  }
+}

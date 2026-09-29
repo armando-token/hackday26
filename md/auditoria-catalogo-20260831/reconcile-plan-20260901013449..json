@@ -1,0 +1,108 @@
+{
+  "generatedAt": "2026-09-01T01:34:49.465Z",
+  "mode": "apply",
+  "decisions": [
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "D5"
+  ],
+  "totalActions": 18,
+  "byStep": {
+    "category-dedupe": 1,
+    "category-activate-assigned": 17
+  },
+  "actions": [
+    {
+      "step": "category-dedupe",
+      "target": "unit-heaters-industriales",
+      "detail": "desactivar duplicado; canonica=unit-heaters"
+    },
+    {
+      "step": "category-activate-assigned",
+      "target": "accesorios-sensores",
+      "detail": "activar categoria inactiva con productos publicados"
+    },
+    {
+      "step": "category-activate-assigned",
+      "target": "transmisores-temperatura",
+      "detail": "activar categoria inactiva con productos publicados"
+    },
+    {
+      "step": "category-activate-assigned",
+      "target": "termostatos-industriales",
+      "detail": "activar categoria inactiva con productos publicados"
+    },
+    {
+      "step": "category-activate-assigned",
+      "target": "gases-co2",
+      "detail": "activar categoria inactiva con productos publicados"
+    },
+    {
+      "step": "category-activate-assigned",
+      "target": "controles-anticongelamiento",
+      "detail": "activar categoria inactiva con productos publicados"
+    },
+    {
+      "step": "category-activate-assigned",
+      "target": "ventiladores-alta-velocidad",
+      "detail": "activar categoria inactiva con productos publicados"
+    },
+    {
+      "step": "category-activate-assigned",
+      "target": "accesorios-ventilacion",
+      "detail": "activar categoria inactiva con productos publicados"
+    },
+    {
+      "step": "category-activate-assigned",
+      "target": "unidades-monitoreo",
+      "detail": "activar categoria inactiva con productos publicados"
+    },
+    {
+      "step": "category-activate-assigned",
+      "target": "monitoreo-energia",
+      "detail": "activar categoria inactiva con productos publicados"
+    },
+    {
+      "step": "category-activate-assigned",
+      "target": "comunicacion-industrial",
+      "detail": "activar categoria inactiva con productos publicados"
+    },
+    {
+      "step": "category-activate-assigned",
+      "target": "interfaces-industriales",
+      "detail": "activar categoria inactiva con productos publicados"
+    },
+    {
+      "step": "category-activate-assigned",
+      "target": "monitoreo-inalambrico-climate",
+      "detail": "activar categoria inactiva con productos publicados"
+    },
+    {
+      "step": "category-activate-assigned",
+      "target": "comunicacion-inalambrica",
+      "detail": "activar categoria inactiva con productos publicados"
+    },
+    {
+      "step": "category-activate-assigned",
+      "target": "monitoreo-condicion-telik",
+      "detail": "activar categoria inactiva con productos publicados"
+    },
+    {
+      "step": "category-activate-assigned",
+      "target": "calentadores-tambor",
+      "detail": "activar categoria inactiva con productos publicados"
+    },
+    {
+      "step": "category-activate-assigned",
+      "target": "deteccion-fugas",
+      "detail": "activar categoria inactiva con productos publicados"
+    },
+    {
+      "step": "category-activate-assigned",
+      "target": "reles-ssr",
+      "detail": "activar categoria inactiva con productos publicados"
+    }
+  ]
+}
