@@ -31,7 +31,7 @@ interface DemoProductDef {
 const DEMO_SOURCES = [
   {
     id: "SRC-CN-DIN-PLC-A1-DS-V1",
-    url: "https://controlnautas.com/demo/datasheets/CN-DEMO-PLC-DIN-420-MR1.pdf",
+    url: "http://52.20.66.203:8000/demo/datasheets/CN-DEMO-PLC-DIN-420-MR1.pdf",
     kind: "datasheet",
     revision: "rev-2026.1",
     checksum: "8009da7ddf415884229b8570d75fd59e602aad1013caab851ac61d06c361e385",
@@ -39,7 +39,7 @@ const DEMO_SOURCES = [
   },
   {
     id: "SRC-CN-PID-T1-DS-V1",
-    url: "https://controlnautas.com/demo/datasheets/CN-DEMO-PID-PT100-RS1.pdf",
+    url: "http://52.20.66.203:8000/demo/datasheets/CN-DEMO-PID-PT100-RS1.pdf",
     kind: "datasheet",
     revision: "rev-2026.1",
     checksum: "b695ef3318e840535601432acb197db1c007ae614673d657df472d9129abdeaf",
@@ -47,7 +47,7 @@ const DEMO_SOURCES = [
   },
   {
     id: "SRC-CN-RTD-P1-DS-V1",
-    url: "https://controlnautas.com/demo/datasheets/CN-DEMO-PT100-3W-A1.pdf",
+    url: "http://52.20.66.203:8000/demo/datasheets/CN-DEMO-PT100-3W-A1.pdf",
     kind: "datasheet",
     revision: "rev-2026.1",
     checksum: "3c8e67e4e5b76baa787e9f91eb0546015a1e7afa1551b79f2a1fb417cca17fbf",
@@ -587,7 +587,7 @@ export default async function seedHackdayDemo({ container }: ExecArgs) {
     )
     if (pubKeyRes.rows.length) {
       const pubKeyId = pubKeyRes.rows[0].id
-      for (const scId of [defaultSalesChannelId, demoSalesChannelId]) {
+      for (const scId of [defaultSalesChannelId]) {
         const linkCheck = await client.query(
           "SELECT id FROM publishable_api_key_sales_channel WHERE publishable_key_id = $1 AND sales_channel_id = $2",
           [pubKeyId, scId]
@@ -944,7 +944,7 @@ export default async function seedHackdayDemo({ container }: ExecArgs) {
       )
       const pimFields = [
         productId,
-        `https://controlnautas.com/demo/datasheets/${pDef.sku}.pdf`,
+        `http://52.20.66.203:8000/demo/datasheets/${pDef.sku}.pdf`,
         `/demo/specs/${pDef.sku}.md`,
         pDef.model,
         pDef.sku,
@@ -1022,12 +1022,12 @@ export default async function seedHackdayDemo({ container }: ExecArgs) {
         variant_id: variantId,
         handle: pDef.handle,
         urls: {
-          pdf_datasheet: pDef.pdfDatasheet,
-          markdown_spec: pDef.markdownSpec,
-          pdf_datasheet_url: `http://localhost:9000/static${pDef.pdfDatasheet}`,
-          markdown_spec_url: `http://localhost:9000/static${pDef.markdownSpec}`,
-          pdf_datasheet_public: `https://controlnautas.com${pDef.pdfDatasheet}`,
-          markdown_spec_public: `https://controlnautas.com${pDef.markdownSpec}`,
+          pdf_datasheet: `http://52.20.66.203:8000/demo/datasheets/${pDef.sku}.pdf`,
+          markdown_spec: `http://52.20.66.203:8000/demo/specs/${pDef.sku}.md`,
+          pdf_datasheet_relative: `/demo/datasheets/${pDef.sku}.pdf`,
+          markdown_spec_relative: `/demo/specs/${pDef.sku}.md`,
+          pdp_human: `http://52.20.66.203:8000/pe/products/${pDef.handle}`,
+          pdp_relative: `/pe/products/${pDef.handle}`,
         },
       }
     }

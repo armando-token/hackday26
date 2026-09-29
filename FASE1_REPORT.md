@@ -119,46 +119,46 @@ cd /home/ubuntu/hackday26/b2b-backend/apps/backend && npx medusa exec ./src/scri
 
 ### A. Datasheets Sintéticos en PDF (con marca SIMULACIÓN y 6 secciones citables)
 - **SKU 1 (PLC):**
-  - URL Pública HTTPS: `https://controlnautas.com/demo/datasheets/CN-DEMO-PLC-DIN-420-MR1.pdf`
+  - URL Pública HTTPS: `http://52.20.66.203:8000/demo/datasheets/CN-DEMO-PLC-DIN-420-MR1.pdf`
   - URL Local Servidor: `http://localhost:8000/demo/datasheets/CN-DEMO-PLC-DIN-420-MR1.pdf`
   - Path Local: `/home/ubuntu/hackday26/docs/datasheets/CN-DEMO-PLC-DIN-420-MR1.pdf`
   - Checksum SHA-256: `7ed82d6c5d982e5e68c2432fcc6d48b6f69978b22c519d0d82aa9c611189b041`
 - **SKU 2 (PID):**
-  - URL Pública HTTPS: `https://controlnautas.com/demo/datasheets/CN-DEMO-PID-PT100-RS1.pdf`
+  - URL Pública HTTPS: `http://52.20.66.203:8000/demo/datasheets/CN-DEMO-PID-PT100-RS1.pdf`
   - URL Local Servidor: `http://localhost:8000/demo/datasheets/CN-DEMO-PID-PT100-RS1.pdf`
   - Path Local: `/home/ubuntu/hackday26/docs/datasheets/CN-DEMO-PID-PT100-RS1.pdf`
   - Checksum SHA-256: `eb675c4bed85a0ce788b133ebc10b9cb1c113cdedbf0397a782874d42b9f8ce8`
 - **SKU 3 (PT100):**
-  - URL Pública HTTPS: `https://controlnautas.com/demo/datasheets/CN-DEMO-PT100-3W-A1.pdf`
+  - URL Pública HTTPS: `http://52.20.66.203:8000/demo/datasheets/CN-DEMO-PT100-3W-A1.pdf`
   - URL Local Servidor: `http://localhost:8000/demo/datasheets/CN-DEMO-PT100-3W-A1.pdf`
   - Path Local: `/home/ubuntu/hackday26/docs/datasheets/CN-DEMO-PT100-3W-A1.pdf`
   - Checksum SHA-256: `8569559ff27be3855334ac7821d7fd7295963eefb5eb566a0d687d5b5636c6aa`
 
 ### B. Especificaciones en Markdown (con citas formales y CERO precio/stock)
 - **SKU 1 (PLC):**
-  - URL Pública HTTPS: `https://controlnautas.com/demo/specs/CN-DEMO-PLC-DIN-420-MR1.md`
+  - URL Pública HTTPS: `http://52.20.66.203:8000/demo/specs/CN-DEMO-PLC-DIN-420-MR1.md`
   - URL Local Servidor: `http://localhost:8000/demo/specs/CN-DEMO-PLC-DIN-420-MR1.md`
   - Path Local: `/home/ubuntu/hackday26/docs/demo-specs/CN-DEMO-PLC-DIN-420-MR1.md`
 - **SKU 2 (PID):**
-  - URL Pública HTTPS: `https://controlnautas.com/demo/specs/CN-DEMO-PID-PT100-RS1.md`
+  - URL Pública HTTPS: `http://52.20.66.203:8000/demo/specs/CN-DEMO-PID-PT100-RS1.md`
   - URL Local Servidor: `http://localhost:8000/demo/specs/CN-DEMO-PID-PT100-RS1.md`
   - Path Local: `/home/ubuntu/hackday26/docs/demo-specs/CN-DEMO-PID-PT100-RS1.md`
 - **SKU 3 (PT100):**
-  - URL Pública HTTPS: `https://controlnautas.com/demo/specs/CN-DEMO-PT100-3W-A1.md`
+  - URL Pública HTTPS: `http://52.20.66.203:8000/demo/specs/CN-DEMO-PT100-3W-A1.md`
   - URL Local Servidor: `http://localhost:8000/demo/specs/CN-DEMO-PT100-3W-A1.md`
   - Path Local: `/home/ubuntu/hackday26/docs/demo-specs/CN-DEMO-PT100-3W-A1.md`
 
 ### C. Páginas Humanas (Storefront)
-- **SKU 1 (PLC):** `http://localhost:8000/pe/products/cn-demo-plc-din-420-mr1`
-- **SKU 2 (PID):** `http://localhost:8000/pe/products/cn-demo-pid-pt100-rs1`
-- **SKU 3 (PT100):** `http://localhost:8000/pe/products/cn-demo-pt100-3w-a1`
-- **Ruta Inexistente (404 Not Found):** `http://localhost:8000/pe/products/sku-ficticio-no-existente-404`
+- **SKU 1 (PLC):** `http://52.20.66.203:8000/pe/products/cn-demo-plc-din-420-mr1` (Local: `http://localhost:8000/pe/products/cn-demo-plc-din-420-mr1`)
+- **SKU 2 (PID):** `http://52.20.66.203:8000/pe/products/cn-demo-pid-pt100-rs1` (Local: `http://localhost:8000/pe/products/cn-demo-pid-pt100-rs1`)
+- **SKU 3 (PT100):** `http://52.20.66.203:8000/pe/products/cn-demo-pt100-3w-a1` (Local: `http://localhost:8000/pe/products/cn-demo-pt100-3w-a1`)
+- **Ruta Inexistente (404 Not Found):** `http://52.20.66.203:8000/pe/products/sku-ficticio-no-existente-404`
 
 ---
 
-## 7. Resultados de las 7 Pruebas de Aceptación (Evidencia de Comandos y Salidas)
+## 7. Resultados de las Pruebas de Aceptación (Evidencia de Comandos y Salidas)
 
-La suite automatizada `/home/ubuntu/hackday26/scripts/verify-phase1.sh` fue ejecutada de extremo a extremo, evaluando 48 condiciones específicas:
+La suite automatizada `/home/ubuntu/hackday26/scripts/verify-phase1.sh` fue ejecutada de extremo a extremo, evaluando 55 condiciones específicas (incluyendo pruebas HTTP en vivo contra Next.js storefront en puerto 8000, validación de aviso de ficción, validación de rutas 404, y comprobación de que el manifiesto no contiene rutas rotas ni dominios no operativos):
 
 ```
 === Running Phase 1 Verification Suite ===
@@ -186,7 +186,13 @@ La suite automatizada `/home/ubuntu/hackday26/scripts/verify-phase1.sh` fue ejec
 
 [2] PÁGINAS HUMANAS: MARCA DE FICCIÓN Y RUTAS STOREFRONT
   [✔ PASS] [G1-UI-BANNER-CODE] Banner 'PRODUCTO FICTICIO — DATOS DE DEMOSTRACIÓN' en plantilla Storefront
-  [✔ PASS] [G1-UI-ASSET-SERVER] Servidor de activos demo disponible (serve-demo-assets.mjs)
+  [✔ PASS] [G1-UI-PDP-LIVE] PDP en vivo responde HTTP 200 y muestra aviso de ficción (CN-DEMO-PLC-DIN-420-MR1)
+  [✔ PASS] [G1-UI-PDP-LIVE] PDP en vivo responde HTTP 200 y muestra aviso de ficción (CN-DEMO-PID-PT100-RS1)
+  [✔ PASS] [G1-UI-PDP-LIVE] PDP en vivo responde HTTP 200 y muestra aviso de ficción (CN-DEMO-PT100-3W-A1)
+  [✔ PASS] [G1-UI-PDP-404] Ruta de producto inexistente en Storefront retorna HTTP 404
+  [✔ PASS] [G1-UI-HTTP-ASSETS] Activos públicos accesibles vía HTTP en puerto 8000 (CN-DEMO-PLC-DIN-420-MR1)
+  [✔ PASS] [G1-UI-HTTP-ASSETS] Activos públicos accesibles vía HTTP en puerto 8000 (CN-DEMO-PID-PT100-RS1)
+  [✔ PASS] [G1-UI-HTTP-ASSETS] Activos públicos accesibles vía HTTP en puerto 8000 (CN-DEMO-PT100-3W-A1)
 
 [3] DATASHEETS PDF: MARCA DE SIMULACIÓN Y SECCIONES CITABLES
   [✔ PASS] [G1-PDF-EXISTS] Datasheet PDF existe para CN-DEMO-PLC-DIN-420-MR1
@@ -234,17 +240,19 @@ La suite automatizada `/home/ubuntu/hackday26/scripts/verify-phase1.sh` fue ejec
   [✔ PASS] [G1-MANIFEST-EXISTS] Archivo hackday-demo-manifest.json generado en la raíz
   [✔ PASS] [G1-MANIFEST-SKUS] Manifiesto contiene los 3 SKUs obligatorios
   [✔ PASS] [G1-MANIFEST-DYNAMIC-IDS] Variant IDs en manifiesto son generados dinámicamente por Medusa (sin hardcode)
+  [✔ PASS] [G1-MANIFEST-VALID-URLS] URLs del manifiesto apuntan a rutas válidas de Elastic IP (sin /static/demo ni controlnautas.com)
 
 ================================================================
   RESUMEN DE AUDITORÍA Y CONTROL DE CALIDAD                     
 ================================================================
-  Total de pruebas ejecutadas : 48
-  Pruebas superadas (PASS)   : 48
+  Total de pruebas ejecutadas : 55
+  Pruebas superadas (PASS)   : 55
   Pruebas fallidas  (FAIL)   : 0
 
 ✔ TODAS LAS PRUEBAS DE LA PUERTA 1 FUERON SUPERADAS EXITOSAMENTE.
 El entorno se encuentra 100% verificado y listo para la auditoría de Cursor.
 ```
+
 
 ---
 

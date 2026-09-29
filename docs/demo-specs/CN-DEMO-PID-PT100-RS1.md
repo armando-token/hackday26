@@ -19,7 +19,7 @@
 ## Fuente Técnica Primaria y Control Documental
 - **Identificador de Fuente (`source_id`):** `SRC-CN-PID-T1-DS-V1`
 - **Revisión del Documento (`revision`):** `rev-2026.1`
-- **URL Primaria del Datasheet:** [https://controlnautas.com/demo/datasheets/CN-DEMO-PID-PT100-RS1.pdf](https://controlnautas.com/demo/datasheets/CN-DEMO-PID-PT100-RS1.pdf)
+- **URL Primaria del Datasheet:** [http://52.20.66.203:8000/demo/datasheets/CN-DEMO-PID-PT100-RS1.pdf](http://52.20.66.203:8000/demo/datasheets/CN-DEMO-PID-PT100-RS1.pdf)
 - **URL Alternativa / Local:** `/demo/datasheets/CN-DEMO-PID-PT100-RS1.pdf`
 - **Tipo de Fuente:** Hoja de Datos Técnicos Oficial en PDF (Sintético con numeración de secciones estables)
 
@@ -45,7 +45,7 @@
 ### Sección 1: Identificación y Modelo
 - **source_id:** `SRC-CN-PID-T1-DS-V1`
 - **revision:** `rev-2026.1`
-- **URL:** [https://controlnautas.com/demo/datasheets/CN-DEMO-PID-PT100-RS1.pdf](https://controlnautas.com/demo/datasheets/CN-DEMO-PID-PT100-RS1.pdf)
+- **URL:** [http://52.20.66.203:8000/demo/datasheets/CN-DEMO-PID-PT100-RS1.pdf](http://52.20.66.203:8000/demo/datasheets/CN-DEMO-PID-PT100-RS1.pdf)
 - **página:** Pág. 1
 - **sección:** Sección 1: Identificación y Modelo
 - **excerpt descripción:** `"El controlador microprocesado modelo CN-PID-T1 (código SKU: CN-DEMO-PID-PT100-RS1) es un instrumento frontal especializado en regulación de lazo cerrado térmico con algoritmo de sintonización automática (Auto-Tuning) y salida de maniobra proporcional continua en corriente para actuadores modulantes."`
@@ -56,7 +56,7 @@
 ### Sección 2: Montaje Físico
 - **source_id:** `SRC-CN-PID-T1-DS-V1`
 - **revision:** `rev-2026.1`
-- **URL:** [https://controlnautas.com/demo/datasheets/CN-DEMO-PID-PT100-RS1.pdf](https://controlnautas.com/demo/datasheets/CN-DEMO-PID-PT100-RS1.pdf)
+- **URL:** [http://52.20.66.203:8000/demo/datasheets/CN-DEMO-PID-PT100-RS1.pdf](http://52.20.66.203:8000/demo/datasheets/CN-DEMO-PID-PT100-RS1.pdf)
 - **página:** Pág. 1
 - **sección:** Sección 2: Montaje Físico
 - **excerpt tipo montaje:** `"Montaje exclusivo en panel frontal (Panel Mount / Cuadro de mando)"`
@@ -69,7 +69,7 @@
 ### Sección 3: Alimentación Eléctrica
 - **source_id:** `SRC-CN-PID-T1-DS-V1`
 - **revision:** `rev-2026.1`
-- **URL:** [https://controlnautas.com/demo/datasheets/CN-DEMO-PID-PT100-RS1.pdf](https://controlnautas.com/demo/datasheets/CN-DEMO-PID-PT100-RS1.pdf)
+- **URL:** [http://52.20.66.203:8000/demo/datasheets/CN-DEMO-PID-PT100-RS1.pdf](http://52.20.66.203:8000/demo/datasheets/CN-DEMO-PID-PT100-RS1.pdf)
 - **página:** Pág. 1
 - **sección:** Sección 3: Alimentación Eléctrica
 - **excerpt tensión nominal:** `"100 - 240 VAC (50/60 Hz) tensión alterna universal"`
@@ -81,7 +81,7 @@
 ### Sección 4: Entradas / Salidas Analógicas y Sensores
 - **source_id:** `SRC-CN-PID-T1-DS-V1`
 - **revision:** `rev-2026.1`
-- **URL:** [https://controlnautas.com/demo/datasheets/CN-DEMO-PID-PT100-RS1.pdf](https://controlnautas.com/demo/datasheets/CN-DEMO-PID-PT100-RS1.pdf)
+- **URL:** [http://52.20.66.203:8000/demo/datasheets/CN-DEMO-PID-PT100-RS1.pdf](http://52.20.66.203:8000/demo/datasheets/CN-DEMO-PID-PT100-RS1.pdf)
 - **página:** Pág. 2
 - **sección:** Sección 4: Entradas / Salidas Analógicas y Sensores
 - **excerpt entrada Pt100 (sensor PV):** `"Entrada Pt100 3 hilos (IEC 60751); compensación automática de cables hasta 20 Ω/hilo; rango: -200.0 °C a +600.0 °C; resolución 0.1 °C; ADC 16 bits; precisión ±0.2% escala"`
@@ -92,7 +92,7 @@
 ### Sección 5: Comunicaciones y Protocolos
 - **source_id:** `SRC-CN-PID-T1-DS-V1`
 - **revision:** `rev-2026.1`
-- **URL:** [https://controlnautas.com/demo/datasheets/CN-DEMO-PID-PT100-RS1.pdf](https://controlnautas.com/demo/datasheets/CN-DEMO-PID-PT100-RS1.pdf)
+- **URL:** [http://52.20.66.203:8000/demo/datasheets/CN-DEMO-PID-PT100-RS1.pdf](http://52.20.66.203:8000/demo/datasheets/CN-DEMO-PID-PT100-RS1.pdf)
 - **página:** Pág. 2
 - **sección:** Sección 5: Comunicaciones y Protocolos
 - **excerpt puerto serie:** `"1 × RS-485 semidúplex en bornes traseros (TRX+, TRX- y SG aislada), aislamiento galvánico de 1000 V"`
@@ -104,7 +104,7 @@
 ### Sección 6: Restricciones y Contraindicaciones de Diseño
 - **source_id:** `SRC-CN-PID-T1-DS-V1`
 - **revision:** `rev-2026.1`
-- **URL:** [https://controlnautas.com/demo/datasheets/CN-DEMO-PID-PT100-RS1.pdf](https://controlnautas.com/demo/datasheets/CN-DEMO-PID-PT100-RS1.pdf)
+- **URL:** [http://52.20.66.203:8000/demo/datasheets/CN-DEMO-PID-PT100-RS1.pdf](http://52.20.66.203:8000/demo/datasheets/CN-DEMO-PID-PT100-RS1.pdf)
 - **página:** Pág. 2
 - **sección:** Sección 6: Restricciones y Contraindicaciones de Diseño
 - **excerpt contraindicación montaje (Panel != DIN):** `"El CN-PID-T1 está diseñado estrictamente para montaje panel (Panel != DIN / Panel distinto de DIN). Está absolutamente contraindicado especificar o intentar fijar este equipo directamente sobre carril DIN 35 mm. No dispone de fijaciones DIN ni de perfiles homologados para fondo de armario."`

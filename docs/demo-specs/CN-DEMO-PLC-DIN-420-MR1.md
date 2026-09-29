@@ -19,7 +19,7 @@
 ## Fuente Técnica Primaria y Control Documental
 - **Identificador de Fuente (`source_id`):** `SRC-CN-DIN-PLC-A1-DS-V1`
 - **Revisión del Documento (`revision`):** `rev-2026.1`
-- **URL Primaria del Datasheet:** [https://controlnautas.com/demo/datasheets/CN-DEMO-PLC-DIN-420-MR1.pdf](https://controlnautas.com/demo/datasheets/CN-DEMO-PLC-DIN-420-MR1.pdf)
+- **URL Primaria del Datasheet:** [http://52.20.66.203:8000/demo/datasheets/CN-DEMO-PLC-DIN-420-MR1.pdf](http://52.20.66.203:8000/demo/datasheets/CN-DEMO-PLC-DIN-420-MR1.pdf)
 - **URL Alternativa / Local:** `/demo/datasheets/CN-DEMO-PLC-DIN-420-MR1.pdf`
 - **Tipo de Fuente:** Hoja de Datos Técnicos Oficial en PDF (Sintético con numeración de secciones estables)
 
@@ -44,7 +44,7 @@
 ### Sección 1: Identificación y Modelo
 - **source_id:** `SRC-CN-DIN-PLC-A1-DS-V1`
 - **revision:** `rev-2026.1`
-- **URL:** [https://controlnautas.com/demo/datasheets/CN-DEMO-PLC-DIN-420-MR1.pdf](https://controlnautas.com/demo/datasheets/CN-DEMO-PLC-DIN-420-MR1.pdf)
+- **URL:** [http://52.20.66.203:8000/demo/datasheets/CN-DEMO-PLC-DIN-420-MR1.pdf](http://52.20.66.203:8000/demo/datasheets/CN-DEMO-PLC-DIN-420-MR1.pdf)
 - **página:** Pág. 1
 - **sección:** Sección 1: Identificación y Modelo
 - **excerpt:** `"El microcontrolador industrial modelo CN-DIN-PLC-A1 (código SKU: CN-DEMO-PLC-DIN-420-MR1) es una estación compacta de adquisición y control lógico para cuadros eléctricos. Integra procesamiento embebido para la digitalización de variables analógicas de corriente estándar y enlaces de supervisión remota en buses serie."`
@@ -53,7 +53,7 @@
 ### Sección 2: Montaje Físico
 - **source_id:** `SRC-CN-DIN-PLC-A1-DS-V1`
 - **revision:** `rev-2026.1`
-- **URL:** [https://controlnautas.com/demo/datasheets/CN-DEMO-PLC-DIN-420-MR1.pdf](https://controlnautas.com/demo/datasheets/CN-DEMO-PLC-DIN-420-MR1.pdf)
+- **URL:** [http://52.20.66.203:8000/demo/datasheets/CN-DEMO-PLC-DIN-420-MR1.pdf](http://52.20.66.203:8000/demo/datasheets/CN-DEMO-PLC-DIN-420-MR1.pdf)
 - **página:** Pág. 1
 - **sección:** Sección 2: Montaje Físico
 - **excerpt:** `"Montaje en carril DIN simétrico de 35 mm bajo norma internacional IEC / EN 60715 (perfiles TH35-7.5 y TH35-15)"`
@@ -64,7 +64,7 @@
 ### Sección 3: Alimentación Eléctrica
 - **source_id:** `SRC-CN-DIN-PLC-A1-DS-V1`
 - **revision:** `rev-2026.1`
-- **URL:** [https://controlnautas.com/demo/datasheets/CN-DEMO-PLC-DIN-420-MR1.pdf](https://controlnautas.com/demo/datasheets/CN-DEMO-PLC-DIN-420-MR1.pdf)
+- **URL:** [http://52.20.66.203:8000/demo/datasheets/CN-DEMO-PLC-DIN-420-MR1.pdf](http://52.20.66.203:8000/demo/datasheets/CN-DEMO-PLC-DIN-420-MR1.pdf)
 - **página:** Pág. 1
 - **sección:** Sección 3: Alimentación Eléctrica
 - **excerpt:** `"24 VDC (tensión continua estabilizada)"`
@@ -74,7 +74,7 @@
 ### Sección 4: Entradas / Salidas Analógicas y Sensores
 - **source_id:** `SRC-CN-DIN-PLC-A1-DS-V1`
 - **revision:** `rev-2026.1`
-- **URL:** [https://controlnautas.com/demo/datasheets/CN-DEMO-PLC-DIN-420-MR1.pdf](https://controlnautas.com/demo/datasheets/CN-DEMO-PLC-DIN-420-MR1.pdf)
+- **URL:** [http://52.20.66.203:8000/demo/datasheets/CN-DEMO-PLC-DIN-420-MR1.pdf](http://52.20.66.203:8000/demo/datasheets/CN-DEMO-PLC-DIN-420-MR1.pdf)
 - **página:** Pág. 2
 - **sección:** Sección 4: Entradas / Salidas Analógicas y Sensores
 - **excerpt entrada analógica:** `"2 canales (AI1, AI2)"` | `"Lazo de corriente 4–20 mA pasivo; impedancia de entrada shunt de 250 Ω; resolución ADC de 12 bits (4096 cuentas); precisión global ±0.2% del fondo de escala; filtrado digital configurable"`
@@ -85,7 +85,7 @@
 ### Sección 5: Comunicaciones y Protocolos
 - **source_id:** `SRC-CN-DIN-PLC-A1-DS-V1`
 - **revision:** `rev-2026.1`
-- **URL:** [https://controlnautas.com/demo/datasheets/CN-DEMO-PLC-DIN-420-MR1.pdf](https://controlnautas.com/demo/datasheets/CN-DEMO-PLC-DIN-420-MR1.pdf)
+- **URL:** [http://52.20.66.203:8000/demo/datasheets/CN-DEMO-PLC-DIN-420-MR1.pdf](http://52.20.66.203:8000/demo/datasheets/CN-DEMO-PLC-DIN-420-MR1.pdf)
 - **página:** Pág. 2
 - **sección:** Sección 5: Comunicaciones y Protocolos
 - **excerpt puerto serie:** `"1 × RS-485 semidúplex (2 hilos: bornes A/D+, B/D- y GND aislada), con resistencia terminadora de 120 Ω seleccionable"`
@@ -97,7 +97,7 @@
 ### Sección 6: Restricciones y Contraindicaciones de Diseño
 - **source_id:** `SRC-CN-DIN-PLC-A1-DS-V1`
 - **revision:** `rev-2026.1`
-- **URL:** [https://controlnautas.com/demo/datasheets/CN-DEMO-PLC-DIN-420-MR1.pdf](https://controlnautas.com/demo/datasheets/CN-DEMO-PLC-DIN-420-MR1.pdf)
+- **URL:** [http://52.20.66.203:8000/demo/datasheets/CN-DEMO-PLC-DIN-420-MR1.pdf](http://52.20.66.203:8000/demo/datasheets/CN-DEMO-PLC-DIN-420-MR1.pdf)
 - **página:** Pág. 2
 - **sección:** Sección 6: Restricciones y Contraindicaciones de Diseño
 - **excerpt contraindicación Modbus TCP:** `"El modelo CN-DIN-PLC-A1 NO cuenta con interfaz Ethernet ni soporta el protocolo Modbus TCP. Bajo ninguna circunstancia debe asumirse conectividad IP directa a redes SCADA ethernetizadas. Toda integración en redes basadas en paquetes TCP/IP exige obligatoriamente un convertidor o gateway pasarela externo RS-485 a Modbus TCP."`

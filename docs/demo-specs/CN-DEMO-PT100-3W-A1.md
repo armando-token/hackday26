@@ -19,7 +19,7 @@
 ## Fuente Técnica Primaria y Control Documental
 - **Identificador de Fuente (`source_id`):** `SRC-CN-RTD-P1-DS-V1`
 - **Revisión del Documento (`revision`):** `rev-2026.1`
-- **URL Primaria del Datasheet:** [https://controlnautas.com/demo/datasheets/CN-DEMO-PT100-3W-A1.pdf](https://controlnautas.com/demo/datasheets/CN-DEMO-PT100-3W-A1.pdf)
+- **URL Primaria del Datasheet:** [http://52.20.66.203:8000/demo/datasheets/CN-DEMO-PT100-3W-A1.pdf](http://52.20.66.203:8000/demo/datasheets/CN-DEMO-PT100-3W-A1.pdf)
 - **URL Alternativa / Local:** `/demo/datasheets/CN-DEMO-PT100-3W-A1.pdf`
 - **Tipo de Fuente:** Hoja de Datos Técnicos Oficial en PDF (Sintético con numeración de secciones estables)
 
@@ -44,7 +44,7 @@
 ### Sección 1: Identificación y Modelo
 - **source_id:** `SRC-CN-RTD-P1-DS-V1`
 - **revision:** `rev-2026.1`
-- **URL:** [https://controlnautas.com/demo/datasheets/CN-DEMO-PT100-3W-A1.pdf](https://controlnautas.com/demo/datasheets/CN-DEMO-PT100-3W-A1.pdf)
+- **URL:** [http://52.20.66.203:8000/demo/datasheets/CN-DEMO-PT100-3W-A1.pdf](http://52.20.66.203:8000/demo/datasheets/CN-DEMO-PT100-3W-A1.pdf)
 - **página:** Pág. 1
 - **sección:** Sección 1: Identificación y Modelo
 - **excerpt descripción:** `"El sensor primario de temperatura modelo CN-RTD-P1 (código SKU: CN-DEMO-PT100-3W-A1) es una sonda pasiva Pt100 3 hilos con elemento termorresistivo de platino bobinado para inserción en fluidos térmicos y procesos industriales. Cumple rigurosamente con la relación resistencia-temperatura internacional bajo norma IEC 60751."`
@@ -55,7 +55,7 @@
 ### Sección 2: Montaje Físico
 - **source_id:** `SRC-CN-RTD-P1-DS-V1`
 - **revision:** `rev-2026.1`
-- **URL:** [https://controlnautas.com/demo/datasheets/CN-DEMO-PT100-3W-A1.pdf](https://controlnautas.com/demo/datasheets/CN-DEMO-PT100-3W-A1.pdf)
+- **URL:** [http://52.20.66.203:8000/demo/datasheets/CN-DEMO-PT100-3W-A1.pdf](http://52.20.66.203:8000/demo/datasheets/CN-DEMO-PT100-3W-A1.pdf)
 - **página:** Pág. 1
 - **sección:** Sección 2: Montaje Físico
 - **excerpt fijación:** `"Montaje roscado directo a proceso mediante racor fijo macho de 1/2 pulgada NPT"`
@@ -68,7 +68,7 @@
 ### Sección 3: Alimentación Eléctrica
 - **source_id:** `SRC-CN-RTD-P1-DS-V1`
 - **revision:** `rev-2026.1`
-- **URL:** [https://controlnautas.com/demo/datasheets/CN-DEMO-PT100-3W-A1.pdf](https://controlnautas.com/demo/datasheets/CN-DEMO-PT100-3W-A1.pdf)
+- **URL:** [http://52.20.66.203:8000/demo/datasheets/CN-DEMO-PT100-3W-A1.pdf](http://52.20.66.203:8000/demo/datasheets/CN-DEMO-PT100-3W-A1.pdf)
 - **página:** Pág. 1
 - **sección:** Sección 3: Alimentación Eléctrica
 - **excerpt pasividad eléctrica:** `"SIN ALIMENTACIÓN PROPIA (0 VDC / 0 VAC). Es un componente Pt100 3 hilos pasivo"`
@@ -80,7 +80,7 @@
 ### Sección 4: Entradas / Salidas Analógicas y Sensores
 - **source_id:** `SRC-CN-RTD-P1-DS-V1`
 - **revision:** `rev-2026.1`
-- **URL:** [https://controlnautas.com/demo/datasheets/CN-DEMO-PT100-3W-A1.pdf](https://controlnautas.com/demo/datasheets/CN-DEMO-PT100-3W-A1.pdf)
+- **URL:** [http://52.20.66.203:8000/demo/datasheets/CN-DEMO-PT100-3W-A1.pdf](http://52.20.66.203:8000/demo/datasheets/CN-DEMO-PT100-3W-A1.pdf)
 - **página:** Pág. 2
 - **sección:** Sección 4: Entradas / Salidas Analógicas y Sensores
 - **excerpt elemento sensor:** `"Platino puro bobinado / película delgada Pt100 según norma europea DIN EN 60751"`
@@ -94,7 +94,7 @@
 ### Sección 5: Comunicaciones y Protocolos
 - **source_id:** `SRC-CN-RTD-P1-DS-V1`
 - **revision:** `rev-2026.1`
-- **URL:** [https://controlnautas.com/demo/datasheets/CN-DEMO-PT100-3W-A1.pdf](https://controlnautas.com/demo/datasheets/CN-DEMO-PT100-3W-A1.pdf)
+- **URL:** [http://52.20.66.203:8000/demo/datasheets/CN-DEMO-PT100-3W-A1.pdf](http://52.20.66.203:8000/demo/datasheets/CN-DEMO-PT100-3W-A1.pdf)
 - **página:** Pág. 2
 - **sección:** Sección 5: Comunicaciones y Protocolos
 - **excerpt interfaz digital:** `"SIN INTERFAZ DIGITAL (0 interfaces). La sonda carece de microprocesador, UART, circuito integrado o puerto serie"`
@@ -105,7 +105,7 @@
 ### Sección 6: Restricciones y Contraindicaciones de Diseño
 - **source_id:** `SRC-CN-RTD-P1-DS-V1`
 - **revision:** `rev-2026.1`
-- **URL:** [https://controlnautas.com/demo/datasheets/CN-DEMO-PT100-3W-A1.pdf](https://controlnautas.com/demo/datasheets/CN-DEMO-PT100-3W-A1.pdf)
+- **URL:** [http://52.20.66.203:8000/demo/datasheets/CN-DEMO-PT100-3W-A1.pdf](http://52.20.66.203:8000/demo/datasheets/CN-DEMO-PT100-3W-A1.pdf)
 - **página:** Pág. 2
 - **sección:** Sección 6: Restricciones y Contraindicaciones de Diseño
 - **excerpt contraindicación 4–20 mA:** `"El modelo CN-RTD-P1 es una sonda resistiva pasiva SIN TRANSMISOR INTEGRADO. Bajo ninguna circunstancia genera señal: No 4–20 mA por sí solo ni emite tensión normalizada. Está terminantemente prohibido conectar directamente esta sonda a las entradas analógicas 4–20 mA de un PLC (como las de CN-DIN-PLC-A1) sin interponer previamente un transmisor o acondicionador de señal específico para RTD Pt100."`

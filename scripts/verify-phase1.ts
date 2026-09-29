@@ -266,15 +266,97 @@ async function runSuite() {
     bannerInTemplate ? "Banner implementado en HvacProductTemplate" : "Banner no encontrado en archivo"
   );
 
-  // Check static / API asset endpoints
-  const serveDemoPath = "/home/ubuntu/hackday26/scripts/serve-demo-assets.mjs";
-  record(
-    "G1-UI-ASSET-SERVER",
-    "Servidor de activos demo disponible (serve-demo-assets.mjs)",
-    fs.existsSync(serveDemoPath),
-    "Script existe en scripts/serve-demo-assets.mjs",
-    fs.existsSync(serveDemoPath) ? "Script disponible" : "Script ausente"
-  );
+  // Live HTTP check of PDPs on Storefront port 8000
+  const PDP_TESTS = [
+    { handle: "cn-demo-plc-din-420-mr1", sku: "CN-DEMO-PLC-DIN-420-MR1" },
+    { handle: "cn-demo-pid-pt100-rs1", sku: "CN-DEMO-PID-PT100-RS1" },
+    { handle: "cn-demo-pt100-3w-a1", sku: "CN-DEMO-PT100-3W-A1" },
+  ];
+
+  for (const item of PDP_TESTS) {
+    try {
+      const url = `http://127.0.0.1:8000/pe/products/${item.handle}`;
+      const curlCmd = `curl -s -L -w "\\n%{http_code}" "${url}"`;
+      const out = execSync(curlCmd, { encoding: "utf8", timeout: 15000 });
+      const lines = out.trim().split("\n");
+      const statusCode = lines[lines.length - 1];
+      const body = lines.slice(0, -1).join("\n");
+      const hasBanner = body.includes("PRODUCTO FICTICIO — DATOS DE DEMOSTRACIÓN");
+
+      record(
+        "G1-UI-PDP-LIVE",
+        `PDP en vivo responde HTTP 200 y muestra aviso de ficción (${item.sku})`,
+        statusCode === "200" && hasBanner,
+        "HTTP 200 con banner 'PRODUCTO FICTICIO — DATOS DE DEMOSTRACIÓN'",
+        `HTTP ${statusCode}, banner=${hasBanner ? "Detectado en HTML" : "Ausente"}`
+      );
+    } catch (err: any) {
+      record(
+        "G1-UI-PDP-LIVE",
+        `PDP en vivo responde HTTP 200 y muestra aviso de ficción (${item.sku})`,
+        false,
+        "HTTP 200",
+        `Error de conexión: ${err.message}`
+      );
+    }
+  }
+
+  // Live HTTP 404 test on Storefront port 8000
+  try {
+    const fakePdpUrl = "http://127.0.0.1:8000/pe/products/sku-ficticio-no-existente-404";
+    const out = execSync(`curl -s -o /dev/null -w "%{http_code}" "${fakePdpUrl}"`, {
+      encoding: "utf8",
+      timeout: 10000,
+    }).trim();
+    record(
+      "G1-UI-PDP-404",
+      "Ruta de producto inexistente en Storefront retorna HTTP 404",
+      out === "404",
+      "HTTP 404 Not Found",
+      `HTTP ${out}`
+    );
+  } catch (err: any) {
+    record(
+      "G1-UI-PDP-404",
+      "Ruta de producto inexistente en Storefront retorna HTTP 404",
+      false,
+      "HTTP 404 Not Found",
+      `Error: ${err.message}`
+    );
+  }
+
+  // Live HTTP check of Demo Datasheets & Specs on port 8000
+  for (const exp of EXPECTED_SKUS) {
+    try {
+      const pdfUrl = `http://127.0.0.1:8000/demo/datasheets/${exp.sku}.pdf`;
+      const pdfCode = execSync(`curl -s -o /dev/null -w "%{http_code}" "${pdfUrl}"`, {
+        encoding: "utf8",
+        timeout: 5000,
+      }).trim();
+
+      const specUrl = `http://127.0.0.1:8000/demo/specs/${exp.sku}.md`;
+      const specCode = execSync(`curl -s -o /dev/null -w "%{http_code}" "${specUrl}"`, {
+        encoding: "utf8",
+        timeout: 5000,
+      }).trim();
+
+      record(
+        "G1-UI-HTTP-ASSETS",
+        `Activos públicos accesibles vía HTTP en puerto 8000 (${exp.sku})`,
+        pdfCode === "200" && specCode === "200",
+        "PDF y MD retornan HTTP 200",
+        `PDF: HTTP ${pdfCode}, MD: HTTP ${specCode}`
+      );
+    } catch (err: any) {
+      record(
+        "G1-UI-HTTP-ASSETS",
+        `Activos públicos accesibles vía HTTP en puerto 8000 (${exp.sku})`,
+        false,
+        "HTTP 200",
+        `Error: ${err.message}`
+      );
+    }
+  }
 
   // -------------------------------------------------------------
   // TEST 3: PDF Datasheets Watermark & Citable Sections
@@ -597,6 +679,20 @@ async function runSuite() {
         allDynamic && countSkus === 3,
         "IDs comienzan con 'variant_' generados por Medusa v2",
         allDynamic ? "Todos los IDs son dinámicos de Medusa" : "IDs inválidos o hardcodeados"
+      );
+
+      // Check manifest URLs
+      const manifestStr = fs.readFileSync(manifestPath, "utf8");
+      const hasBrokenPaths = manifestStr.includes("static/demo") || manifestStr.includes("controlnautas.com");
+      const hasElasticIpUrls = manifestStr.includes("http://52.20.66.203:8000/demo/datasheets/") &&
+                               manifestStr.includes("http://52.20.66.203:8000/demo/specs/");
+
+      record(
+        "G1-MANIFEST-VALID-URLS",
+        "URLs del manifiesto apuntan a rutas válidas de Elastic IP (sin /static/demo ni controlnautas.com)",
+        !hasBrokenPaths && hasElasticIpUrls,
+        "URLs usan http://52.20.66.203:8000/demo/... y no rutas rotas",
+        !hasBrokenPaths && hasElasticIpUrls ? "URLs válidas y verificadas" : "Rutas rotas o dominio no operativo detectado"
       );
     } catch (err: any) {
       record(
