@@ -45,3 +45,5 @@ yarn-debug.log*
 /test-results/
 /playwright-report/
 .cache/
+__pycache__/
+*.pyc
