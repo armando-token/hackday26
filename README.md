@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="docs/hackday26-repo-cover.jpg?v=2" alt="Controlnautas × Muse AI — engineer asks Muse AI on phone for PLC specs and live price/stock; API returns quote" width="100%" />
+  <img src="docs/hackday26-repo-cover.jpg?v=4" alt="Controlnautas × Muse AI — engineer asks Muse AI on phone for PLC specs and live price/stock; API returns quote" width="100%" />
 </p>
 
 # Controlnautas × Meta Muse Commerce
