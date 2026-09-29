@@ -326,7 +326,7 @@ async function runManualReviewSuite(): Promise<boolean> {
     INNER JOIN technical_profile tp ON tp.variant_id = pv.id AND tp.deleted_at IS NULL
     LEFT JOIN product_variant_price_set pvps ON pvps.variant_id = pv.id AND pvps.deleted_at IS NULL
     LEFT JOIN price pr ON pr.price_set_id = pvps.price_set_id AND pr.currency_code = 'pen' AND pr.deleted_at IS NULL
-    WHERE pv.sku LIKE 'CN-DEMO-%' AND pv.deleted_at IS NULL AND tp.demo = true
+    WHERE pv.sku LIKE 'CN-%' AND sku NOT LIKE 'CN-DEMO-TEST-%' AND sku NOT LIKE 'CN-DEMO-INVENTED-%' AND pv.deleted_at IS NULL AND tp.demo = true
     ORDER BY pv.sku ASC
   `)
 
@@ -334,7 +334,7 @@ async function runManualReviewSuite(): Promise<boolean> {
     throw new Error("No demo products found in PostgreSQL medusa. Ensure seed:demo has been executed.")
   }
 
-  const pt100 = demoProductsRes.rows.find((r) => r.sku === "CN-DEMO-PT100-3W-A1") || demoProductsRes.rows[0]
+  const pt100 = demoProductsRes.rows.find((r) => r.sku === "CN-THT02") || demoProductsRes.rows[0]
   const baseProductId = pt100.product_id
 
   console.log(`\n${BOLD}Target Test Subject (PT100 Sensor):${RESET}`)
@@ -920,8 +920,8 @@ async function runManualReviewSuite(): Promise<boolean> {
       quote_id: `QT-DIRECT-${Date.now()}`,
       opaque_public_id: directOpaqueId,
       status: "manual_review",
-      sku: "CN-DEMO-PLC-DIN-420-MR1",
-      model: "CN-DIN-PLC-A1",
+      sku: "CN-X5PRIME-HE-XP5",
+      model: "HE-XP5",
       title: "Controlador Lógico Programable DIN 4-20 mA",
       quantity: 5,
       currency: "PEN",
@@ -1022,7 +1022,7 @@ async function runManualReviewSuite(): Promise<boolean> {
       FROM product_variant pv
       INNER JOIN product_variant_price_set pvps ON pvps.variant_id = pv.id AND pvps.deleted_at IS NULL
       INNER JOIN price pr ON pr.price_set_id = pvps.price_set_id
-      WHERE pv.sku LIKE 'CN-DEMO-%' AND pv.deleted_at IS NULL
+      WHERE pv.sku LIKE 'CN-%' AND sku NOT LIKE 'CN-DEMO-TEST-%' AND sku NOT LIKE 'CN-DEMO-INVENTED-%' AND pv.deleted_at IS NULL
       ORDER BY pv.sku ASC
     `)
 
@@ -1031,9 +1031,9 @@ async function runManualReviewSuite(): Promise<boolean> {
       console.log(`    ${CYAN}${row.sku.padEnd(26, " ")}${RESET}: S/ ${String(row.amount).padStart(5, " ")} ${row.currency_code.toUpperCase()} (deleted_at: ${row.deleted_at || "NULL"})`)
     }
 
-    const plcRow = auditPricesRes.rows.find((r) => r.sku === "CN-DEMO-PLC-DIN-420-MR1")
-    const pidRow = auditPricesRes.rows.find((r) => r.sku === "CN-DEMO-PID-PT100-RS1")
-    const pt100Row = auditPricesRes.rows.find((r) => r.sku === "CN-DEMO-PT100-3W-A1")
+    const plcRow = auditPricesRes.rows.find((r) => r.sku === "CN-X5PRIME-HE-XP5")
+    const pidRow = auditPricesRes.rows.find((r) => r.sku === "CN-N1200")
+    const pt100Row = auditPricesRes.rows.find((r) => r.sku === "CN-THT02")
 
     assertCheck(
       "5.1",

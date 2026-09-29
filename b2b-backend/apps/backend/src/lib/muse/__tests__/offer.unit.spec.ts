@@ -216,11 +216,11 @@ describe("Live Offer Calculation Engine (offer.ts)", () => {
   // 5. getLiveOffer with Real Database Tests (PostgreSQL Integration)
   // --------------------------------------------------------------------------
   describe("getLiveOffer (PostgreSQL Integration)", () => {
-    it("should calculate valid live offer for SKU CN-DEMO-PLC-DIN-420-MR1 (quantity 1)", async () => {
-      const offer = await getLiveOffer("CN-DEMO-PLC-DIN-420-MR1", 1)
+    it("should calculate valid live offer for SKU CN-X5PRIME-HE-XP5 (quantity 1)", async () => {
+      const offer = await getLiveOffer("CN-X5PRIME-HE-XP5", 1)
 
       expect(offer).toBeDefined()
-      expect(offer.sku).toBe("CN-DEMO-PLC-DIN-420-MR1")
+      expect(offer.sku).toBe("CN-X5PRIME-HE-XP5")
       expect(offer.model).toBe("CN-DIN-PLC-A1")
       expect(offer.variant_id).toMatch(/^variant_/)
       expect(offer.quantity).toBe(1)
@@ -245,7 +245,7 @@ describe("Live Offer Calculation Engine (offer.ts)", () => {
 
     it("should calculate live offer with limited_stock when quantity exceeds stock", async () => {
       // Stock is 3 for PLC, request quantity 5
-      const offer = await getLiveOffer("CN-DEMO-PLC-DIN-420-MR1", 5)
+      const offer = await getLiveOffer("CN-X5PRIME-HE-XP5", 5)
 
       expect(offer.quantity).toBe(5)
       expect(offer.availability.status).toBe("limited_stock")
@@ -260,10 +260,10 @@ describe("Live Offer Calculation Engine (offer.ts)", () => {
       )
     })
 
-    it("should calculate live offer for PID SKU CN-DEMO-PID-PT100-RS1", async () => {
-      const offer = await getLiveOffer("CN-DEMO-PID-PT100-RS1", 2)
+    it("should calculate live offer for PID SKU CN-N1200", async () => {
+      const offer = await getLiveOffer("CN-N1200", 2)
 
-      expect(offer.sku).toBe("CN-DEMO-PID-PT100-RS1")
+      expect(offer.sku).toBe("CN-N1200")
       expect(offer.model).toBe("CN-PID-T1")
       expect(offer.unit_price).toBe(480)
       expect(offer.unit_price_minor).toBe(48000)
@@ -272,10 +272,10 @@ describe("Live Offer Calculation Engine (offer.ts)", () => {
       expect(offer.availability.status).toBe("in_stock")
     })
 
-    it("should calculate live offer for RTD SKU CN-DEMO-PT100-3W-A1", async () => {
-      const offer = await getLiveOffer("CN-DEMO-PT100-3W-A1", 4)
+    it("should calculate live offer for RTD SKU CN-THT02", async () => {
+      const offer = await getLiveOffer("CN-THT02", 4)
 
-      expect(offer.sku).toBe("CN-DEMO-PT100-3W-A1")
+      expect(offer.sku).toBe("CN-THT02")
       expect(offer.model).toBe("CN-RTD-P1")
       expect(offer.unit_price).toBe(75)
       expect(offer.unit_price_minor).toBe(7500)
@@ -297,7 +297,7 @@ describe("Live Offer Calculation Engine (offer.ts)", () => {
 
     it("should accept optional regionId parameter", async () => {
       const regionId = "reg_01JUS00HACKDAY26DEMOUSD0000"
-      const offer = await getLiveOffer("CN-DEMO-PLC-DIN-420-MR1", 1, regionId)
+      const offer = await getLiveOffer("CN-X5PRIME-HE-XP5", 1, regionId)
       expect(offer.region_id).toBe(regionId)
       expect(offer.state).toBe("priced")
     })
@@ -314,13 +314,13 @@ describe("Live Offer Calculation Engine (offer.ts)", () => {
     })
 
     it("should throw LiveOfferValidationError on invalid quantity", async () => {
-      await expect(getLiveOffer("CN-DEMO-PLC-DIN-420-MR1", 0)).rejects.toThrow(
+      await expect(getLiveOffer("CN-X5PRIME-HE-XP5", 0)).rejects.toThrow(
         LiveOfferValidationError
       )
-      await expect(getLiveOffer("CN-DEMO-PLC-DIN-420-MR1", 25)).rejects.toThrow(
+      await expect(getLiveOffer("CN-X5PRIME-HE-XP5", 25)).rejects.toThrow(
         LiveOfferValidationError
       )
-      await expect(getLiveOffer("CN-DEMO-PLC-DIN-420-MR1", 1.5)).rejects.toThrow(
+      await expect(getLiveOffer("CN-X5PRIME-HE-XP5", 1.5)).rejects.toThrow(
         LiveOfferValidationError
       )
     })

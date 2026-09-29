@@ -121,11 +121,11 @@ function resolvePlcVariant(): { variantId: string; sku: string; title: string } 
     try {
       const manifest = JSON.parse(fs.readFileSync(MANIFEST_PATH, "utf8"))
       const products = manifest.products || manifest
-      if (products["CN-DEMO-PLC-DIN-420-MR1"]?.variant_id) {
+      if (products["CN-X5PRIME-HE-XP5"]?.variant_id) {
         return {
-          variantId: products["CN-DEMO-PLC-DIN-420-MR1"].variant_id,
-          sku: "CN-DEMO-PLC-DIN-420-MR1",
-          title: "PLC Carril DIN 35mm CN-DIN-PLC-A1",
+          variantId: products["CN-X5PRIME-HE-XP5"].variant_id,
+          sku: "CN-X5PRIME-HE-XP5",
+          title: "PLC Carril DIN 35mm HE-XP5",
         }
       }
       for (const [sku, prod] of Object.entries<any>(products)) {

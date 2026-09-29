@@ -1,6 +1,6 @@
 /**
  * PLC Controller Contraexample & Mandatory Claims Test Suite
- * SKU: CN-DEMO-PLC-DIN-420-MR1 (Model: CN-DIN-PLC-A1)
+ * SKU: CN-X5PRIME-HE-XP5 (Model: CN-DIN-PLC-A1)
  *
  * Verificaciones obligatorias:
  * 1. Afirmaciones obligatorias:
@@ -33,8 +33,8 @@ import {
   TechnicalSourceRecord,
 } from "../db"
 
-describe("SKU 1: CN-DEMO-PLC-DIN-420-MR1 (CN-DIN-PLC-A1) — Contraejemplos y Afirmaciones Obligatorias", () => {
-  const SKU = "CN-DEMO-PLC-DIN-420-MR1"
+describe("SKU 1: CN-X5PRIME-HE-XP5 (CN-DIN-PLC-A1) — Contraejemplos y Afirmaciones Obligatorias", () => {
+  const SKU = "CN-X5PRIME-HE-XP5"
   const MODEL = "CN-DIN-PLC-A1"
   const VARIANT_ID = "variant_01M3Q80TB1MN6861FT63TR6BTP"
   const SOURCE_ID = "SRC-CN-DIN-PLC-A1-DS-V1"
@@ -53,7 +53,7 @@ describe("SKU 1: CN-DEMO-PLC-DIN-420-MR1 (CN-DIN-PLC-A1) — Contraejemplos y Af
 
   const MOCK_SOURCE: TechnicalSourceRecord = {
     id: SOURCE_ID,
-    url: "http://52.20.66.203:8000/demo/datasheets/CN-DEMO-PLC-DIN-420-MR1.pdf",
+    url: "http://52.20.66.203:8000/demo/datasheets/CN-X5PRIME-HE-XP5.pdf",
     kind: "datasheet",
     revision: "rev-2026.1",
     checksum: "8009da7ddf415884229b8570d75fd59e602aad1013caab851ac61d06c361e385",
@@ -198,7 +198,7 @@ describe("SKU 1: CN-DEMO-PLC-DIN-420-MR1 (CN-DIN-PLC-A1) — Contraejemplos y Af
       page: 1,
       section: "Sección 1: Identificación y Modelo",
       excerpt:
-        "El microcontrolador industrial modelo CN-DIN-PLC-A1 (código SKU: CN-DEMO-PLC-DIN-420-MR1) es una estación compacta de adquisición y control lógico para cuadros eléctricos.",
+        "El microcontrolador industrial modelo CN-DIN-PLC-A1 (código SKU: CN-X5PRIME-HE-XP5) es una estación compacta de adquisición y control lógico para cuadros eléctricos.",
       polarity: true,
       created_at: new Date("2026-09-29T18:00:00Z"),
       updated_at: new Date("2026-09-29T18:00:00Z"),
@@ -768,7 +768,7 @@ describe("SKU 1: CN-DEMO-PLC-DIN-420-MR1 (CN-DIN-PLC-A1) — Contraejemplos y Af
         expect(ev.source_evidence).not.toBeNull()
         expect(ev.source_evidence?.source_id).toBe(SOURCE_ID)
         expect(ev.source_evidence?.source_revision).toBe("rev-2026.1")
-        expect(ev.source_evidence?.url).toContain("CN-DEMO-PLC-DIN-420-MR1.pdf")
+        expect(ev.source_evidence?.url).toContain("CN-X5PRIME-HE-XP5.pdf")
         expect(typeof ev.source_evidence?.page).toBe("number")
         expect(ev.source_evidence?.section).toBeTruthy()
         expect(ev.source_evidence?.excerpt).toBeTruthy()

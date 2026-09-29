@@ -1,0 +1,85 @@
+{
+  "generated_for": "Hack Day Controlnautas Muse Commerce — real product cutover",
+  "locale": "en-US",
+  "currency": "usd",
+  "products": [
+    {
+      "role": "plc",
+      "replaces_demo_sku": "CN-DEMO-PLC-DIN-420-MR1",
+      "sku": "CN-X5PRIME-HE-XP5",
+      "model": "HE-XP5",
+      "brand": "Horner Automation",
+      "title": "X5 Prime OCS All-in-One Controller (HE-XP5)",
+      "handle": "cn-x5prime-he-xp5",
+      "unit_price_usd": 890,
+      "stock": 3,
+      "folder": "X5PRIME",
+      "hero_image": "x5prime/images/product-hero.png",
+      "primary_pdf": "x5prime/pdf/MAN1363_R21_X5P_DS.pdf",
+      "markdown_spec": "x5prime/md/SPEC_X5_PRIME.md",
+      "markdown_full_docs": [
+        "x5prime/md/X5_Prime_Datasheet.md",
+        "x5prime/md/X5_Prime_User_Manual.md",
+        "x5prime/md/X5_Prime_Quick_Reference.md"
+      ],
+      "source_id": "SRC-HE-XP5-DS-MAN1363-R21",
+      "technical_highlights": [
+        "All-in-one OCS operator control station",
+        "Built-in I/O: 4 digital DC inputs, 4 digital DC outputs, 4 analog inputs",
+        "Primary power 10–30 VDC",
+        "Part number HE-XP5"
+      ]
+    },
+    {
+      "role": "controller",
+      "replaces_demo_sku": "CN-DEMO-PID-PT100-RS1",
+      "sku": "CN-N1200",
+      "model": "N1200",
+      "brand": "NOVUS",
+      "title": "NOVUS N1200 Universal Process Controller",
+      "handle": "cn-n1200",
+      "unit_price_usd": 480,
+      "stock": 2,
+      "folder": "N1200",
+      "hero_image": "n1200/images/product-hero.png",
+      "primary_pdf": "n1200/pdf/Manual_N1200_EN.pdf",
+      "markdown_spec": "n1200/md/SPEC_N1200.md",
+      "markdown_full_docs": [
+        "n1200/md/N1200_User_Guide.md",
+        "n1200/md/NOVUS_Controllers_Selection_Guide.md"
+      ],
+      "source_id": "SRC-N1200-UG-V2",
+      "technical_highlights": [
+        "Universal multi-sensor input including Pt100",
+        "PID automatic mode with self-tuning",
+        "4–20 mA control / retransmission outputs available",
+        "USB configuration; Modbus RTU over USB serial"
+      ]
+    },
+    {
+      "role": "sensor",
+      "replaces_demo_sku": "CN-DEMO-PT100-3W-A1",
+      "sku": "CN-THT02",
+      "model": "THT-02",
+      "brand": "TZ / Tzone",
+      "title": "TZ THT-02 Temperature and Humidity Sensor (RS-485 Modbus RTU)",
+      "handle": "cn-tht02",
+      "unit_price_usd": 75,
+      "stock": 8,
+      "folder": "Tzone",
+      "hero_image": "tht02/images/product-hero.png",
+      "primary_pdf": "tht02/pdf/THT02 user's manual v1.1.pdf",
+      "markdown_spec": "tht02/md/SPEC_THT02.md",
+      "markdown_full_docs": [
+        "tht02/md/THT02_User_Manual.md"
+      ],
+      "source_id": "SRC-THT02-UM-V1.1",
+      "technical_highlights": [
+        "SHT30-based temperature and relative humidity sensing",
+        "RS-485 interface, standard Modbus-RTU protocol",
+        "Supply DC 5–24 V",
+        "Temperature range -40 to 125 °C; humidity 5–95 %RH"
+      ]
+    }
+  ]
+}

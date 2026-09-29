@@ -192,7 +192,7 @@ export function resolveContext(): BenchmarkContext {
 
   // Variant discovery from manifest
   let variantId = "variant_01M3QBABE23B00D9EFMZBTEMWP";
-  let sku = "CN-DEMO-PLC-DIN-420-MR1";
+  let sku = "CN-X5PRIME-HE-XP5";
   const manifestPath = path.join(rootDir, "hackday-demo-manifest.json");
 
   if (fs.existsSync(manifestPath)) {

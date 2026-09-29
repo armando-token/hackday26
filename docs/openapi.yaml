@@ -546,7 +546,7 @@ paths:
               description: Inline disposition header with descriptive filename
               schema:
                 type: string
-                example: inline; filename="cotizacion-preliminar-CN-DEMO-PLC-DIN-420-MR1-pq_a4b9.pdf"
+                example: inline; filename="cotizacion-preliminar-CN-X5PRIME-HE-XP5-pq_a4b9.pdf"
             Cache-Control:
               description: Public caching header for immutable quote documents
               schema:
@@ -692,7 +692,7 @@ components:
         sku:
           type: string
           description: Unique product SKU
-          example: CN-DEMO-PLC-DIN-420-MR1
+          example: CN-X5PRIME-HE-XP5
         model:
           type:
           - string
@@ -804,7 +804,7 @@ components:
         sku:
           type: string
           description: Unique product SKU
-          example: CN-DEMO-PT100-3W-A1
+          example: CN-THT02
         model:
           type:
           - string
@@ -1019,7 +1019,7 @@ components:
       properties:
         sku:
           type: string
-          example: CN-DEMO-PLC-DIN-420-MR1
+          example: CN-X5PRIME-HE-XP5
         model:
           type:
           - string
@@ -1064,7 +1064,7 @@ components:
           type: string
           format: uri
           description: Canonical public storefront URL for this product
-          example: https://data.controlnautas.com/us/products/cn-demo-plc-din-420-mr1
+          example: https://data.controlnautas.com/us/products/cn-x5prime-he-xp5
         scale:
           type: integer
           example: 2
@@ -1162,7 +1162,7 @@ components:
       properties:
         sku:
           type: string
-          example: CN-DEMO-PLC-DIN-420-MR1
+          example: CN-X5PRIME-HE-XP5
         model:
           type: string
           example: CN-DIN-PLC-A1
@@ -1174,27 +1174,27 @@ components:
           example: variant_01M3QAJ590Z5C5GH7VD3TKS4T3
         handle:
           type: string
-          example: cn-demo-plc-din-420-mr1
+          example: cn-x5prime-he-xp5
         product_url:
           type: string
           format: uri
           description: Canonical public storefront URL for this product
-          example: https://data.controlnautas.com/us/products/cn-demo-plc-din-420-mr1
+          example: https://data.controlnautas.com/us/products/cn-x5prime-he-xp5
         urls:
           type: object
           properties:
             pdf_datasheet:
               type: string
               format: uri
-              example: https://data.controlnautas.com/demo/datasheets/CN-DEMO-PLC-DIN-420-MR1.pdf
+              example: https://data.controlnautas.com/demo/datasheets/CN-X5PRIME-HE-XP5.pdf
             markdown_spec:
               type: string
               format: uri
-              example: https://data.controlnautas.com/demo/specs/CN-DEMO-PLC-DIN-420-MR1.md
+              example: https://data.controlnautas.com/demo/specs/CN-X5PRIME-HE-XP5.md
             pdp_human:
               type: string
               format: uri
-              example: https://data.controlnautas.com/us/products/cn-demo-plc-din-420-mr1
+              example: https://data.controlnautas.com/us/products/cn-x5prime-he-xp5
     TechnicalProfileResponse:
       type: object
       required:
@@ -1212,7 +1212,7 @@ components:
           example: variant_01M3QAJ590Z5C5GH7VD3TKS4T3
         sku:
           type: string
-          example: CN-DEMO-PLC-DIN-420-MR1
+          example: CN-X5PRIME-HE-XP5
         model:
           type: string
           example: CN-DIN-PLC-A1
@@ -1224,12 +1224,12 @@ components:
           example: Controlador lógico programable para montaje en carril DIN 35mm...
         handle:
           type: string
-          example: cn-demo-plc-din-420-mr1
+          example: cn-x5prime-he-xp5
         product_url:
           type: string
           format: uri
           description: Canonical public storefront URL for this product
-          example: https://data.controlnautas.com/us/products/cn-demo-plc-din-420-mr1
+          example: https://data.controlnautas.com/us/products/cn-x5prime-he-xp5
         revision:
           type: string
           example: rev-2026-09
@@ -1315,7 +1315,7 @@ components:
         url:
           type: string
           format: uri
-          example: https://data.controlnautas.com/demo/datasheets/CN-DEMO-PLC-DIN-420-MR1.pdf
+          example: https://data.controlnautas.com/demo/datasheets/CN-X5PRIME-HE-XP5.pdf
         revision:
           type: string
           example: rev-1.0
@@ -1390,7 +1390,7 @@ components:
           example: variant_01M3QAJ590Z5C5GH7VD3TKS4T3
         sku:
           type: string
-          example: CN-DEMO-PLC-DIN-420-MR1
+          example: CN-X5PRIME-HE-XP5
         overall_satisfied:
           type: boolean
           description: Logical conjunction (AND) of all requirement evaluations

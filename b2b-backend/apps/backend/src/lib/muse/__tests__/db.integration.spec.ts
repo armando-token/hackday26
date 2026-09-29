@@ -29,11 +29,11 @@ describe("Muse Database Helper (db.ts)", () => {
     it("should filter variants by search query q", async () => {
       const plc = await searchDemoVariants("PLC")
       expect(plc).toHaveLength(1)
-      expect(plc[0].sku).toBe("CN-DEMO-PLC-DIN-420-MR1")
+      expect(plc[0].sku).toBe("CN-X5PRIME-HE-XP5")
 
       const pid = await searchDemoVariants("PID")
       expect(pid).toHaveLength(1)
-      expect(pid[0].sku).toBe("CN-DEMO-PID-PT100-RS1")
+      expect(pid[0].sku).toBe("CN-N1200")
 
       const rtd = await searchDemoVariants("Pt100")
       expect(rtd.length).toBeGreaterThanOrEqual(1)
@@ -59,9 +59,9 @@ describe("Muse Database Helper (db.ts)", () => {
     })
 
     it("should retrieve profile by SKU", async () => {
-      const profile = await getTechnicalProfile("CN-DEMO-PLC-DIN-420-MR1")
+      const profile = await getTechnicalProfile("CN-X5PRIME-HE-XP5")
       expect(profile).not.toBeNull()
-      expect(profile?.sku).toBe("CN-DEMO-PLC-DIN-420-MR1")
+      expect(profile?.sku).toBe("CN-X5PRIME-HE-XP5")
       expect(profile?.model).toBe("CN-DIN-PLC-A1")
     })
 
@@ -73,7 +73,7 @@ describe("Muse Database Helper (db.ts)", () => {
 
   describe("getTechnicalFacts", () => {
     it("should retrieve technical facts by variant_id ordered by page and property", async () => {
-      const all = await searchDemoVariants("CN-DEMO-PLC-DIN-420-MR1")
+      const all = await searchDemoVariants("CN-X5PRIME-HE-XP5")
       const target = all[0]
 
       const facts = await getTechnicalFacts(target.variant_id)
@@ -96,7 +96,7 @@ describe("Muse Database Helper (db.ts)", () => {
     })
 
     it("should retrieve technical facts by SKU", async () => {
-      const facts = await getTechnicalFacts("CN-DEMO-PID-PT100-RS1")
+      const facts = await getTechnicalFacts("CN-N1200")
       expect(facts.length).toBe(8)
       const properties = facts.map((f) => f.property)
       expect(properties).toContain("mounting")
@@ -131,7 +131,7 @@ describe("Muse Database Helper (db.ts)", () => {
 
   describe("isDemoVariant", () => {
     it("should return true for valid demo variants and false otherwise", async () => {
-      expect(await isDemoVariant("CN-DEMO-PLC-DIN-420-MR1")).toBe(true)
+      expect(await isDemoVariant("CN-X5PRIME-HE-XP5")).toBe(true)
       expect(await isDemoVariant("non-existent-variant")).toBe(false)
     })
   })

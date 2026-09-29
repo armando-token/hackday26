@@ -107,14 +107,14 @@ function resolveDemoVariants(): DemoVariants {
     try {
       const manifest = JSON.parse(fs.readFileSync(MANIFEST_PATH, "utf8"))
       const products = manifest.products || manifest
-      if (products["CN-DEMO-PLC-DIN-420-MR1"]) {
-        plcId = products["CN-DEMO-PLC-DIN-420-MR1"].variant_id || ""
+      if (products["CN-X5PRIME-HE-XP5"]) {
+        plcId = products["CN-X5PRIME-HE-XP5"].variant_id || ""
       }
-      if (products["CN-DEMO-PID-PT100-RS1"]) {
-        pidId = products["CN-DEMO-PID-PT100-RS1"].variant_id || ""
+      if (products["CN-N1200"]) {
+        pidId = products["CN-N1200"].variant_id || ""
       }
-      if (products["CN-DEMO-PT100-3W-A1"]) {
-        pt100Id = products["CN-DEMO-PT100-3W-A1"].variant_id || ""
+      if (products["CN-THT02"]) {
+        pt100Id = products["CN-THT02"].variant_id || ""
       }
     } catch {
       // fallback to DB below
@@ -126,7 +126,7 @@ function resolveDemoVariants(): DemoVariants {
       const sql = `
         SELECT sku, id as variant_id 
         FROM product_variant 
-        WHERE sku IN ('CN-DEMO-PLC-DIN-420-MR1', 'CN-DEMO-PID-PT100-RS1', 'CN-DEMO-PT100-3W-A1')
+        WHERE sku IN ('CN-X5PRIME-HE-XP5', 'CN-N1200', 'CN-THT02')
           AND deleted_at IS NULL;
       `
       const wrapped = `SELECT json_agg(t) FROM (${sql.trim().replace(/;+$/, "")}) t;`
@@ -138,9 +138,9 @@ function resolveDemoVariants(): DemoVariants {
       if (out) {
         const rows: Array<{ sku: string; variant_id: string }> = JSON.parse(out) || []
         for (const row of rows) {
-          if (row.sku === "CN-DEMO-PLC-DIN-420-MR1") plcId = row.variant_id
-          if (row.sku === "CN-DEMO-PID-PT100-RS1") pidId = row.variant_id
-          if (row.sku === "CN-DEMO-PT100-3W-A1") pt100Id = row.variant_id
+          if (row.sku === "CN-X5PRIME-HE-XP5") plcId = row.variant_id
+          if (row.sku === "CN-N1200") pidId = row.variant_id
+          if (row.sku === "CN-THT02") pt100Id = row.variant_id
         }
       }
     } catch (e: any) {

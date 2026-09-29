@@ -118,9 +118,9 @@ Se diseñaron e incorporaron 3 entidades normalizadas mediante el framework `@me
 
 ### B. Especificaciones Técnicas en Markdown
 - **Archivos creados:**
-  - `/home/ubuntu/hackday26/docs/demo-specs/CN-DEMO-PLC-DIN-420-MR1.md`
-  - `/home/ubuntu/hackday26/docs/demo-specs/CN-DEMO-PID-PT100-RS1.md`
-  - `/home/ubuntu/hackday26/docs/demo-specs/CN-DEMO-PT100-3W-A1.md`
+  - `/home/ubuntu/hackday26/docs/demo-specs/CN-X5PRIME-HE-XP5.md`
+  - `/home/ubuntu/hackday26/docs/demo-specs/CN-N1200.md`
+  - `/home/ubuntu/hackday26/docs/demo-specs/CN-THT02.md`
   (con copias estáticas en `/home/ubuntu/hackday26/b2b-backend/apps/backend/static/demo/specs/`).
 - **Citas textuales verificadas:** 100% de los fragmentos citados (`excerpt`) corresponden de manera idéntica al texto contenido en los PDFs generados.
 - **Regla estricta de precio/stock:** Se comprobó la ausencia total de precios y niveles de stock en los documentos Markdown.
@@ -130,7 +130,7 @@ Se diseñaron e incorporaron 3 entidades normalizadas mediante el framework `@me
 ## 6. Estrategia de Idempotencia y Reversibilidad del Seed
 
 ### A. Script de Seed (`seed-hackday-demo.ts`)
-- Localiza productos y variantes existentes por SKU (`CN-DEMO-PLC-DIN-420-MR1`, `CN-DEMO-PID-PT100-RS1`, `CN-DEMO-PT100-3W-A1`) o handle.
+- Localiza productos y variantes existentes por SKU (`CN-X5PRIME-HE-XP5`, `CN-N1200`, `CN-THT02`) o handle.
 - Si existen, actualiza sus campos in-place sin duplicar registros ni alterar sus identificadores primarios.
 - Si no existen, los crea vinculados al canal demo, categoría correspondiente y ubicación de inventario.
 - Asocia metadata `{ hackday_demo: true }`.

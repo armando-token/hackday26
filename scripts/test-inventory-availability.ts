@@ -289,7 +289,7 @@ async function queryAllDemoInventory(): Promise<Record<string, InventoryLevelRec
     INNER JOIN technical_profile tp ON tp.variant_id = pv.id AND tp.demo = true
     LEFT JOIN product_variant_inventory_item pvii ON pvii.variant_id = pv.id AND pvii.deleted_at IS NULL
     LEFT JOIN inventory_level il ON il.inventory_item_id = pvii.inventory_item_id AND il.deleted_at IS NULL
-    WHERE pv.sku LIKE 'CN-DEMO-%' AND pv.deleted_at IS NULL
+    WHERE pv.sku LIKE 'CN-%' AND sku NOT LIKE 'CN-DEMO-TEST-%' AND sku NOT LIKE 'CN-DEMO-INVENTED-%' AND pv.deleted_at IS NULL
     GROUP BY pv.id, pv.sku, pv.manage_inventory, pv.allow_backorder;
   `
   const res = await dbPool.query(query)
@@ -460,9 +460,9 @@ async function runAudit() {
   console.log(`${BOLD}${CYAN}  Inventory & Availability Logic Audit Suite (Gate 3)${RESET}`)
   console.log(`${BOLD}${CYAN}================================================================================${RESET}\n`)
 
-  const PLC_SKU = "CN-DEMO-PLC-DIN-420-MR1"
-  const PID_SKU = "CN-DEMO-PID-PT100-RS1"
-  const PT100_SKU = "CN-DEMO-PT100-3W-A1"
+  const PLC_SKU = "CN-X5PRIME-HE-XP5"
+  const PID_SKU = "CN-N1200"
+  const PT100_SKU = "CN-THT02"
 
   const token = resolveMuseToken()
 

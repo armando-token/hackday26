@@ -55,7 +55,7 @@ export interface SearchProductsResponse {
  *     - q: string (opcional, <= 200 caracteres).
  *     - limit: integer (opcional, entre 1 y 3, default: 3).
  * - Validación: si q > 200 o limit < 1 o limit > 3 -> 400 { error: { code: "INVALID_PARAM", message: "..." }, request_id }.
- * - Alcance: ÚNICAMENTE variantes de demostración técnica (CN-DEMO-* / demo=true).
+ * - Alcance: ÚNICAMENTE variantes de demostración técnica (CN-* / demo=true).
  * - Matching: q contra sku, model, title y display_value de technical_fact.
  * - Sin q: retorna todas las variantes demo (hasta el límite).
  * - Includes compact live commercial fields (USD price/stock) for agent discoverability.
@@ -163,7 +163,7 @@ export const GET = withMuseAuth(
       `
 
       const { rows } = await pool.query(queryText, [
-        "CN-DEMO-%",
+        "CN-%",
         q,
         filterPattern,
         limit,

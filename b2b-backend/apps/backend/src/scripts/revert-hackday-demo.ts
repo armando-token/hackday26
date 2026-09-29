@@ -5,21 +5,32 @@ import * as path from "path"
 const { Client } = require("pg")
 
 const DEMO_SKUS = [
+  // legacy synthetic (cleanup)
   "CN-DEMO-PLC-DIN-420-MR1",
   "CN-DEMO-PID-PT100-RS1",
   "CN-DEMO-PT100-3W-A1",
+  // real products
+  "CN-X5PRIME-HE-XP5",
+  "CN-N1200",
+  "CN-THT02",
 ]
 
 const DEMO_HANDLES = [
   "cn-demo-plc-din-420-mr1",
   "cn-demo-pid-pt100-rs1",
   "cn-demo-pt100-3w-a1",
+  "cn-x5prime-he-xp5",
+  "cn-n1200",
+  "cn-tht02",
 ]
 
 const DEMO_SOURCES = [
   "SRC-CN-DIN-PLC-A1-DS-V1",
   "SRC-CN-PID-T1-DS-V1",
   "SRC-CN-RTD-P1-DS-V1",
+  "SRC-HE-XP5-DS-MAN1363-R21",
+  "SRC-N1200-UG-V2",
+  "SRC-THT02-UM-V1.1",
 ]
 
 export default async function revertHackdayDemo({ container }: ExecArgs) {
@@ -95,7 +106,7 @@ export default async function revertHackdayDemo({ container }: ExecArgs) {
       const delProfs = await client.query(
         `DELETE FROM technical_profile 
          WHERE variant_id = ANY($1::text[]) 
-            OR (demo = true AND model IN ('CN-DIN-PLC-A1', 'CN-PID-T1', 'CN-RTD-P1'))`,
+            OR (demo = true AND model IN ('CN-DIN-PLC-A1', 'CN-PID-T1', 'CN-RTD-P1', 'HE-XP5', 'N1200', 'THT-02'))`,
         [demoVariantIds]
       )
       logger.info(`🗑️ Eliminados ${delProfs.rowCount} registros de technical_profile`)

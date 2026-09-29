@@ -122,10 +122,10 @@ function resolveDemoVariantId(): { variantId: string; sku: string } {
       const manifest = JSON.parse(fs.readFileSync(MANIFEST_PATH, "utf8"))
       const products = manifest.products || manifest
       // Prefer PLC demo
-      if (products["CN-DEMO-PLC-DIN-420-MR1"]?.variant_id) {
+      if (products["CN-X5PRIME-HE-XP5"]?.variant_id) {
         return {
-          variantId: products["CN-DEMO-PLC-DIN-420-MR1"].variant_id,
-          sku: "CN-DEMO-PLC-DIN-420-MR1",
+          variantId: products["CN-X5PRIME-HE-XP5"].variant_id,
+          sku: "CN-X5PRIME-HE-XP5",
         }
       }
       // Any first product
@@ -145,7 +145,7 @@ function resolveDemoVariantId(): { variantId: string; sku: string } {
       SELECT pv.id as variant_id, pv.sku
       FROM product_variant pv
       INNER JOIN technical_profile tp ON tp.variant_id = pv.id
-      WHERE pv.sku LIKE 'CN-DEMO-%' AND pv.deleted_at IS NULL AND tp.demo = true
+      WHERE pv.sku LIKE 'CN-%' AND sku NOT LIKE 'CN-DEMO-TEST-%' AND sku NOT LIKE 'CN-DEMO-INVENTED-%' AND pv.deleted_at IS NULL AND tp.demo = true
       LIMIT 1;
     `
     const wrapped = `SELECT json_agg(t) FROM (${sql.trim().replace(/;+$/, "")}) t;`

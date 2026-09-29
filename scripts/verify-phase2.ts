@@ -619,9 +619,9 @@ async function runSuite() {
   console.log(`\n${BOLD}[5] DETALLES TÉCNICOS POR VARIANTE (PERFIL, HECHOS, FUENTES Y 404)${RESET}`);
 
   const EXPECTED_SKUS = [
-    { sku: "CN-DEMO-PLC-DIN-420-MR1", model: "CN-DIN-PLC-A1" },
-    { sku: "CN-DEMO-PID-PT100-RS1", model: "CN-PID-T1" },
-    { sku: "CN-DEMO-PT100-3W-A1", model: "CN-RTD-P1" },
+    { sku: "CN-X5PRIME-HE-XP5", model: "HE-XP5" },
+    { sku: "CN-N1200", model: "N1200" },
+    { sku: "CN-THT02", model: "THT-02" },
   ];
 
   for (const exp of EXPECTED_SKUS) {
@@ -738,7 +738,7 @@ async function runSuite() {
   console.log(`\n${BOLD}[6] MOTOR DE EVALUACIÓN DETERMINISTA: PREDICADOS REQUERIDOS POSITIVOS (3 SKUS)${RESET}`);
 
   // 6.1 SKU 1: PLC DIN (overall_satisfied: true)
-  const plcVariantId = variantMapping["CN-DEMO-PLC-DIN-420-MR1"];
+  const plcVariantId = variantMapping["CN-X5PRIME-HE-XP5"];
   try {
     const resEvalPlc = await httpRequest(`${BACKEND_URL}/api/muse/v1/evaluate`, {
       method: "POST",
@@ -788,7 +788,7 @@ async function runSuite() {
   }
 
   // 6.2 SKU 2: PID Controller (overall_satisfied: true)
-  const pidVariantId = variantMapping["CN-DEMO-PID-PT100-RS1"];
+  const pidVariantId = variantMapping["CN-N1200"];
   try {
     const resEvalPid = await httpRequest(`${BACKEND_URL}/api/muse/v1/evaluate`, {
       method: "POST",
@@ -836,7 +836,7 @@ async function runSuite() {
   }
 
   // 6.3 SKU 3: Sensor PT100 (overall_satisfied: true)
-  const pt100VariantId = variantMapping["CN-DEMO-PT100-3W-A1"];
+  const pt100VariantId = variantMapping["CN-THT02"];
   try {
     const resEvalPt100 = await httpRequest(`${BACKEND_URL}/api/muse/v1/evaluate`, {
       method: "POST",

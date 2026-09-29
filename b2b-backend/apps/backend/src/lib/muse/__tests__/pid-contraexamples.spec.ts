@@ -1,6 +1,6 @@
 /**
  * PID Controller Contraexample & Mandatory Claims Test Suite
- * SKU: CN-DEMO-PID-PT100-RS1 (Model: CN-PID-T1)
+ * SKU: CN-N1200 (Model: CN-PID-T1)
  *
  * Validaciones obligatorias:
  * 1. Afirmaciones técnicas obligatorias:
@@ -34,8 +34,8 @@ import {
   TechnicalSourceRecord,
 } from "../db"
 
-describe("SKU 2: CN-DEMO-PID-PT100-RS1 (CN-PID-T1) — Contraejemplos y Afirmaciones Obligatorias", () => {
-  const SKU = "CN-DEMO-PID-PT100-RS1"
+describe("SKU 2: CN-N1200 (CN-PID-T1) — Contraejemplos y Afirmaciones Obligatorias", () => {
+  const SKU = "CN-N1200"
   const MODEL = "CN-PID-T1"
   const VARIANT_ID = "variant_01M3Q80TNZGKAM6EX85BDE7G21"
   const SOURCE_ID = "SRC-CN-PID-T1-DS-V1"
@@ -54,7 +54,7 @@ describe("SKU 2: CN-DEMO-PID-PT100-RS1 (CN-PID-T1) — Contraejemplos y Afirmaci
 
   const MOCK_SOURCE: TechnicalSourceRecord = {
     id: SOURCE_ID,
-    url: "http://52.20.66.203:8000/demo/datasheets/CN-DEMO-PID-PT100-RS1.pdf",
+    url: "http://52.20.66.203:8000/demo/datasheets/CN-N1200.pdf",
     kind: "datasheet",
     revision: "rev-2026.1",
     checksum: "b695ef3318e840535601432acb197db1c007ae614673d657df472d9129abdeaf",
@@ -744,7 +744,7 @@ describe("SKU 2: CN-DEMO-PID-PT100-RS1 (CN-PID-T1) — Contraejemplos y Afirmaci
 
       expect(ev).toBeDefined()
       expect(ev?.source_id).toBe(SOURCE_ID)
-      expect(ev?.url).toContain("CN-DEMO-PID-PT100-RS1.pdf")
+      expect(ev?.url).toContain("CN-N1200.pdf")
       expect(ev?.page).toBe(2)
       expect(ev?.section).toBe("Sección 4: Entradas / Salidas Analógicas y Sensores")
       expect(ev?.excerpt).toContain("1 salida analógica proporcional de control")
