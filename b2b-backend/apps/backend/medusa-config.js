@@ -1,4 +1,4 @@
-import { loadEnv, defineConfig } from '@medusajs/framework/utils'
+const { loadEnv, defineConfig } = require('@medusajs/framework/utils')
 
 loadEnv(process.env.NODE_ENV || 'development', process.cwd())
 
@@ -11,7 +11,7 @@ const REQUIRED_CORS_ORIGINS = [
   "http://52.20.66.203:9000",
 ]
 
-function resolveCorsOrigins(originsEnv?: string, extraOrigins: string[] = []): string {
+function resolveCorsOrigins(originsEnv, extraOrigins = []) {
   const parsed = (originsEnv || "")
     .split(",")
     .map((origin) => origin.trim())
@@ -35,7 +35,7 @@ module.exports = defineConfig({
   },
   admin: {
     backendUrl: process.env.MEDUSA_BACKEND_URL || "http://localhost:9000",
-    vite: (config: any) => {
+    vite: (config) => {
       return {
         ...config,
         define: {
@@ -46,7 +46,7 @@ module.exports = defineConfig({
           ...(config?.plugins || []),
           {
             name: "altcha-admin-pow-injector",
-            transformIndexHtml(html: string) {
+            transformIndexHtml(html) {
               const script = `
 <script>
 (function() {
