@@ -21,8 +21,8 @@ info:
     name: Controlnautas Engineering Team
     url: http://52.20.66.203:8000
 servers:
-- url: http://52.20.66.203:9000
-  description: AWS EC2 Prototype Server (Elastic IP)
+- url: https://data.controlnautas.com
+  description: Public Hackday HTTPS gateway
 - url: http://127.0.0.1:9000
   description: Local Medusa Backend Development Server
 tags:

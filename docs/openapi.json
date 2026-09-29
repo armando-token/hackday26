@@ -15,7 +15,7 @@
   },
   "servers": [
     {
-      "url": "http://52.20.66.203:9000",
+      "url": "https://data.controlnautas.com",
       "description": "AWS EC2 Prototype Server (Elastic IP)"
     },
     {
@@ -605,7 +605,7 @@
                 "description": "Download URI for the generated preliminary quote PDF",
                 "schema": {
                   "type": "string",
-                  "example": "http://52.20.66.203:9000/api/muse/v1/quotes/pq_a4b9c1d2e3f405162738495a6b7c8d9e/pdf?token=7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c"
+                  "example": "https://data.controlnautas.com/api/muse/v1/quotes/pq_a4b9c1d2e3f405162738495a6b7c8d9e/pdf?token=7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c"
                 }
               }
             },
@@ -1345,7 +1345,7 @@
             "type": "string",
             "format": "uri",
             "description": "Public download URL for the generated PDF (with download token, without Bearer token)",
-            "example": "http://52.20.66.203:9000/api/muse/v1/quotes/pq_a4b9c1d2e3f405162738495a6b7c8d9e/pdf?token=7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c"
+            "example": "https://data.controlnautas.com/api/muse/v1/quotes/pq_a4b9c1d2e3f405162738495a6b7c8d9e/pdf?token=7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c"
           },
           "summary": {
             "$ref": "#/components/schemas/QuoteSummary"
