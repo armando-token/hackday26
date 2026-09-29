@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="docs/hackday26-repo-cover.jpg" alt="Controlnautas × Muse AI — engineer asks Muse, API returns verified specs, live stock/price, and a preliminary quote" width="100%" />
+</p>
+
 # Controlnautas × Meta Muse Commerce
 
 **Hack Day 2026 — San Francisco**  
