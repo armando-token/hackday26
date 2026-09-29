@@ -66,22 +66,22 @@ const PaymentDetails = ({ order }: PaymentDetailsProps) => {
               <span>🏦</span> Instrucciones para Transferencia o Depósito Bancario:
             </div>
             <p>
-              Por favor realice el abono por el total de <strong>{convertToLocale({ amount: order.total, currency_code: order.currency_code })}</strong> a nombre de <strong>{company.legalName}</strong> (RUC: {company.taxId}) en cualquiera de nuestras cuentas recaudadoras oficiales:
+              Por favor realice el abono por el total de <strong>{convertToLocale({ amount: order.total, currency_code: order.currency_code })}</strong> a nombre de <strong>{company.legalName}</strong> (Tax ID: {company.taxId}) en cualquiera de nuestras accounts recaudadoras oficiales:
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3 py-2">
               <div className="bg-white p-3 rounded border border-neutral-200">
-                <div className="font-bold text-blue-900">Banco de Crédito del Perú (BCP)</div>
-                <div><strong>Cuenta Corriente Soles:</strong> 193-9483726-0-12</div>
+                <div className="font-bold text-blue-900">Banco de Crédito del United States (BCP)</div>
+                <div><strong>Account Corriente USD:</strong> 193-9483726-0-12</div>
                 <div><strong>CCI:</strong> 002-193-009483726012-14</div>
               </div>
               <div className="bg-white p-3 rounded border border-neutral-200">
-                <div className="font-bold text-blue-900">BBVA Perú</div>
-                <div><strong>Cuenta Corriente Soles:</strong> 0011-0175-0100083921</div>
+                <div className="font-bold text-blue-900">BBVA United States</div>
+                <div><strong>Account Corriente USD:</strong> 0011-0175-0100083921</div>
                 <div><strong>CCI:</strong> 011-175-000100083921-72</div>
               </div>
             </div>
             <div className="bg-blue-50 text-blue-900 p-3 rounded border border-blue-200">
-              <strong>Importante:</strong> Una vez efectuado el abono, envíe el comprobante de transferencia al correo <a href={`mailto:${company.email}`} className="underline font-bold">{company.email}</a> o al WhatsApp <a href={`tel:${company.phoneE164}`} className="underline font-bold">{company.phoneDisplay}</a> indicando el número de pedido <strong>#{order.display_id || order.id.slice(-6)}</strong> para iniciar el despacho inmediato.
+              <strong>Importante:</strong> Una vez efectuado el abono, envíe el comprobante de transferencia al correo <a href={`mailto:${company.email}`} className="underline font-bold">{company.email}</a> o al WhatsApp <a href={`tel:${company.phoneE164}`} className="underline font-bold">{company.phoneDisplay}</a> indicando el número de pedido <strong>#{order.display_id || order.id.slice(-6)}</strong> para iniciar el fulfillment inmediato.
             </div>
           </div>
         )}

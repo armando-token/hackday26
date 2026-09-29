@@ -44,7 +44,7 @@ export default function ProductPreview({
             
             {/* Item details */}
             <div className="text-[12px] text-[#666666] flex flex-wrap gap-x-4 gap-y-1 mb-2 font-normal">
-              <span>Ítem <span className="font-bold text-[#333333]">#{product.variants?.[0]?.sku || (product.metadata?.item_number as string)}</span></span>
+              <span>Item <span className="font-bold text-[#333333]">#{product.variants?.[0]?.sku || (product.metadata?.item_number as string)}</span></span>
               <span>Modelo fab. <span className="font-bold text-[#333333]">#{(product.metadata?.mfr_model as string) || "N/A"}</span></span>
             </div>
 
@@ -73,9 +73,9 @@ export default function ProductPreview({
               </div>
             ) : (
               <div className="text-[13px] font-bold text-[#666666] md:text-right">
-                Inicia sesión para ver precio
+                Sign in to see price
                 <span className="text-[11px] font-semibold text-[#555555] block mt-1">
-                  ⏳ Vía Importación
+                  ⏳ Import lead time
                 </span>
               </div>
             )}

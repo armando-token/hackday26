@@ -6,9 +6,9 @@ import { getCatalogCategoryTree, getL1Families } from "@lib/catalog/catalog-cate
 import { familyImage } from "@lib/cn-catalog"
 
 export const metadata: Metadata = {
-  title: "Control Nautas | Instrumentación, Automatización y Calefacción Industrial B2B",
+  title: "Control Nautas | Industrial Instrumentation, Automation & Heating B2B",
   description:
-    "Catálogo técnico y suministros industriales: sensores, transmisores, data loggers, PLC, HMI, calefacción eléctrica, trazado térmico y aislamiento.",
+    "Technical catalog and industrial supplies: sensors, transmitters, data loggers, PLC, HMI, electric heating, heat tracing, and insulation.",
 }
 
 export default async function Home(props: {
@@ -18,7 +18,7 @@ export default async function Home(props: {
   const products = await listAllCatalogProducts(params.countryCode)
   const tree = await getCatalogCategoryTree(params.countryCode)
   const categories = getL1Families(tree)
-    .sort((a, b) => a.name.localeCompare(b.name, "es"))
+    .sort((a, b) => a.name.localeCompare(b.name, "en"))
     .map((c) => ({
       name: c.name,
       slug: c.slug,

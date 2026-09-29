@@ -56,7 +56,7 @@ export default function SensorsHub({
   category?: CnCategoryNode
 } = {}) {
   const whatsappUrl = `https://wa.me/${company.whatsappNumber}?text=${encodeURIComponent(
-    "Hola Control Nautas, requiero asesoría técnica para la selección y cotización de sensores y transmisores industriales."
+    "Hola Control Nautas, requiero asesoría técnica para la selección y quote de sensores y transmisores industriales."
   )}`
 
   const totalCount = SENSOR_SUBCATEGORIES.reduce((a, b) => a + b.count, 0)
@@ -69,7 +69,7 @@ export default function SensorsHub({
           Sensores y Transmisores Industriales
         </h1>
         <p className="text-[12px] sm:text-[13px] text-[#666]">
-          Disponibles {totalCount} productos industriales
+          Availables {totalCount} productos industriales
         </p>
       </div>
 
@@ -166,7 +166,7 @@ export default function SensorsHub({
           <div className="bg-white p-4 border border-[#E0E0E0] rounded-xs">
             <div className="font-bold text-[#0F1111] text-[14px] mb-2 flex items-center gap-1.5">
               <span>⏲️</span>
-              <span>Presión & Vacío</span>
+              <span>Presión & Empty</span>
             </div>
             <ul className="space-y-2 text-[#444] text-[12px]">
               <li>
@@ -225,7 +225,7 @@ export default function SensorsHub({
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center gap-2 px-5 py-3 bg-[#25D366] hover:bg-[#1EBE5D] text-white font-bold text-[13px] rounded-sm transition-colors shadow-sm"
           >
-            <span>💬 Cotizar por WhatsApp</span>
+            <span>💬 Quote via WhatsApp</span>
           </a>
           <a
             href={`tel:${company.phoneE164}`}

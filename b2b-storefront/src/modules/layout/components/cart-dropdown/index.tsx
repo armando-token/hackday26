@@ -114,7 +114,7 @@ const CartDropdown = ({
             data-testid="nav-cart-dropdown"
           >
             <div className="p-4 flex items-center justify-center">
-              <h3 className="text-large-semi">Carrito de Compras</h3>
+              <h3 className="text-large-semi">Shopping Cart</h3>
             </div>
             {cartState && cartState.items?.length ? (
               <>
@@ -162,7 +162,7 @@ const CartDropdown = ({
                                   data-testid="cart-item-quantity"
                                   data-value={item.quantity}
                                 >
-                                  Cantidad: {item.quantity}
+                                  Quantity: {item.quantity}
                                 </span>
                               </div>
                               <div className="flex justify-end">
@@ -179,7 +179,7 @@ const CartDropdown = ({
                             className="mt-1"
                             data-testid="cart-item-remove-button"
                           >
-                            Eliminar
+                            Remove
                           </DeleteButton>
                         </div>
                       </div>
@@ -219,12 +219,12 @@ const CartDropdown = ({
                   <div className="bg-gray-900 text-small-regular flex items-center justify-center w-6 h-6 rounded-full text-white">
                     <span>0</span>
                   </div>
-                  <span>Tu carrito de compras está vacío.</span>
+                  <span>Your shopping cart is empty.</span>
                   <div>
                     <LocalizedClientLink href="/store">
                       <>
-                        <span className="sr-only">Ir al catálogo de productos</span>
-                        <Button onClick={close}>Explorar catálogo</Button>
+                        <span className="sr-only">Go to product catalog</span>
+                        <Button onClick={close}>Browse catalog</Button>
                       </>
                     </LocalizedClientLink>
                   </div>

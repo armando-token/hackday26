@@ -5,9 +5,9 @@ import WhatsAppProductCTA from "@modules/common/components/whatsapp-product-cta"
 import { company } from "@lib/config/company"
 
 export const metadata: Metadata = {
-  title: "Casos de Éxito y Aplicaciones en Planta Industrial | Control Nautas Perú",
+  title: "Case Studies y Aplicaciones en Planta Industrial | Control Nautas United States",
   description:
-    "Proyectos reales de ingeniería ejecutados en Perú: trazado térmico en minería, aislamiento en calderas pesqueras, monitoreo AKCP en datacenters y control térmico en hidroeléctricas.",
+    "Real engineering projects: heat tracing in mining, boiler insulation, AKCP monitoring in data centers, and thermal control in hydropower.",
 }
 
 export default function CaseStudiesIndexPage() {
@@ -17,9 +17,9 @@ export default function CaseStudiesIndexPage() {
         
         {/* Breadcrumb */}
         <div className="text-xs text-neutral-500 mb-6 flex items-center gap-2">
-          <LocalizedClientLink href="/" className="hover:underline">Inicio</LocalizedClientLink>
+          <LocalizedClientLink href="/" className="hover:underline">Home</LocalizedClientLink>
           <span>/</span>
-          <span className="text-neutral-900 font-semibold">Casos de Éxito</span>
+          <span className="text-neutral-900 font-semibold">Case Studies</span>
         </div>
 
         {/* Hero Header */}
@@ -28,7 +28,7 @@ export default function CaseStudiesIndexPage() {
             Ingeniería de Aplicación en Campo
           </div>
           <h1 className="text-3xl md:text-4xl font-extrabold text-neutral-900 tracking-tight mb-4">
-            Casos de Éxito y Soluciones Industriales en Perú
+            Case Studies y Soluciones Industriales en United States
           </h1>
           <p className="text-sm text-neutral-600 max-w-3xl leading-relaxed">
             Descubra cómo nuestras soluciones de instrumentación, aislamiento térmico, automatización y trazado eléctrico han resuelto desafíos críticos de continuidad operativa, eficiencia energética y seguridad en los principales sectores industriales del país.
@@ -110,7 +110,7 @@ export default function CaseStudiesIndexPage() {
             <WhatsAppProductCTA
               variant="primary"
               ctaLocation="case_study"
-              customText="Consultar por WhatsApp"
+              customText="Ask via WhatsApp"
             />
           </div>
         </div>

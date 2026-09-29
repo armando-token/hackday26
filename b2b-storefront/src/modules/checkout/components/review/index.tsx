@@ -32,7 +32,7 @@ const Review = ({ cart }: { cart: any }) => {
               "text-gray-400 select-none": !isComplete,
             })}
           >
-            Revisión Final y Procesamiento de Orden
+            Final review & order processing
           </Heading>
         </div>
       </div>
@@ -41,13 +41,13 @@ const Review = ({ cart }: { cart: any }) => {
         <div className="pt-2">
           <div className="bg-[#F8FAFC] p-4 rounded-lg border border-[#E2E8F0] text-[13px] text-[#4A5568] mb-6 space-y-2">
             <p className="font-semibold text-[#131921]">
-              ✓ Al hacer clic en <strong className="text-[#C8102E]">"Confirmar y procesar orden"</strong>, se registrará su pedido formal en nuestro sistema central.
+              ✓ By clicking <strong className="text-[#C8102E]">"Confirm and place order"</strong>, your order will be registered in our system.
             </p>
             <p className="text-[12px] text-[#666]">
-              Se enviará automáticamente la confirmación con el resumen de ítems, precios con IGV y datos de cuenta bancaria para coordinar el despacho inmediato.
+              You will automatically receive a confirmation with item summary, tax-excluded prices, and payment instructions to coordinate fulfillment.
             </p>
             <p className="text-[11px] text-[#888] pt-1 border-t border-gray-200">
-              Operación amparada bajo el D.S. N° 016-2024-JUS, Ley 29733 de Protección de Datos Personales y garantía técnica de Control Nautas S.A.C.
+              Orders are processed under Control Nautas commercial terms and applicable data-protection policies.
             </p>
           </div>
 

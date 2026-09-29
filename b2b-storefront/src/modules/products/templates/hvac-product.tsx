@@ -60,7 +60,7 @@ export default function HvacProductTemplate({
       ;(window as any).dataLayer.push({
         event: "view_item",
         ecommerce: {
-          currency: "PEN",
+          currency: "USD",
           value: product.display.price?.amount || 0,
           items: [
             {
@@ -90,7 +90,7 @@ export default function HvacProductTemplate({
         ;(window as any).dataLayer.push({
           event: "add_to_cart",
           ecommerce: {
-            currency: "PEN",
+            currency: "USD",
             value: (product.display.price?.amount || 0) * qty,
             items: [
               {
@@ -137,7 +137,7 @@ export default function HvacProductTemplate({
         ? {
             "@type": "Offer",
             url: canonicalUrl,
-            priceCurrency: "PEN",
+            priceCurrency: "USD",
             price: priceAmount.toFixed(2),
             itemCondition: "https://schema.org/NewCondition",
             availability: schemaAvailability(product.display.availability),
@@ -183,7 +183,7 @@ export default function HvacProductTemplate({
             href="/store"
             className="text-[#0066CC] hover:underline"
           >
-            Categorías de producto
+            Product categories
           </LocalizedClientLink>
           {crumbs.map((c, idx) => (
             <React.Fragment key={c.slug}>
@@ -252,7 +252,7 @@ export default function HvacProductTemplate({
           </h1>
           <div className="text-[13px] text-[#666] flex flex-wrap gap-x-4 mb-4">
             <span>
-              Ítem{" "}
+              Item{" "}
               <b className="text-[#333]">#{product.pim.itemNumber}</b>
             </span>
             <span>
@@ -276,7 +276,7 @@ export default function HvacProductTemplate({
             <div className="flex flex-wrap gap-2.5 items-center">
               {product.display.canAddToCart && (
                 <>
-                  <label className="text-[13px] font-bold">Cant.</label>
+                  <label className="text-[13px] font-bold">Qty</label>
                   <input
                     type="number"
                     min={1}
@@ -295,15 +295,15 @@ export default function HvacProductTemplate({
                     {isAdding
                       ? "Agregando..."
                       : added
-                        ? "Añadido al Carrito ✓"
-                        : "Añadir al carrito"}
+                        ? "Added to cart ✓"
+                        : "Add to cart"}
                   </button>
                   {added && (
                     <LocalizedClientLink
                       href="/cart"
                       className="bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-[13px] px-5 py-3 rounded transition-colors"
                     >
-                      Ver Carrito y Pagar ›
+                      Ver Cart y Pagar ›
                     </LocalizedClientLink>
                   )}
                 </>
@@ -319,7 +319,7 @@ export default function HvacProductTemplate({
                 ctaLocation="product_detail"
                 variant="primary"
                 customText={
-                  isQuote ? "Cotizar por WhatsApp" : "Consultar por WhatsApp"
+                  isQuote ? "Quote via WhatsApp" : "Ask via WhatsApp"
                 }
               />
 
@@ -328,7 +328,7 @@ export default function HvacProductTemplate({
                 onClick={() => toggleList(product.handle)}
                 className="border border-[#CCC] text-[#333] font-medium text-[13px] px-4 py-3 bg-white hover:bg-gray-50 rounded"
               >
-                {onList ? "✓ En lista" : "Guardar"}
+                {onList ? "✓ On list" : "Save"}
               </button>
             </div>
           </div>
@@ -350,7 +350,7 @@ export default function HvacProductTemplate({
                   <td className="px-4 py-2">{product.brand?.name}</td>
                 </tr>
                 <tr className="border-b border-[#EEEEEE]">
-                  <td className="px-4 py-2 font-bold bg-[#FAFAFA]">Ítem #</td>
+                  <td className="px-4 py-2 font-bold bg-[#FAFAFA]">Item #</td>
                   <td className="px-4 py-2">{product.pim.itemNumber}</td>
                 </tr>
                 <tr className="border-b border-[#EEEEEE]">
@@ -381,7 +381,7 @@ export default function HvacProductTemplate({
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 px-4 py-2 text-[13px] font-bold text-white bg-[#C8102E] hover:bg-[#9B0C24] rounded transition-colors"
                   >
-                    📄 Descargar Ficha Técnica (PDF)
+                    📄 Download Datasheet (PDF)
                   </a>
                 )}
                 {(product.pim.manualPdf || isDemo) && (
@@ -407,7 +407,7 @@ export default function HvacProductTemplate({
         <div className="max-w-[1440px] mx-auto px-6 mt-2">
           <div className="border-b-2 border-[#C8102E] pb-2 mb-6">
             <h2 className="text-[18px] font-bold uppercase">
-              Productos relacionados
+              Products relacionados
             </h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -430,7 +430,7 @@ export default function HvacProductTemplate({
                   {p.title}
                 </div>
                 <div className="text-[12px] text-[#666] mt-1">
-                  Ítem #{p.pim.itemNumber}
+                  Item #{p.pim.itemNumber}
                 </div>
                 <div className="text-[#1E7E34] font-bold text-[14px] mt-1">
                   {p.display.priceLabel}

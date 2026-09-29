@@ -14,7 +14,7 @@ export default function AmazonSideDrawer({
   categories: { name: string; href: string }[]
 }) {
   const [sortedCategories] = useState(() =>
-    [...categories].sort((a, b) => a.name.localeCompare(b.name, "es"))
+    [...categories].sort((a, b) => a.name.localeCompare(b.name, "en"))
   )
 
   // Prevent background scrolling when drawer is open
@@ -55,7 +55,7 @@ export default function AmazonSideDrawer({
       <button
         onClick={onClose}
         className="fixed top-3 left-[375px] z-50 text-white font-bold text-3xl leading-none cursor-pointer hover:opacity-80 transition-opacity p-1"
-        aria-label="Cerrar menú"
+        aria-label="Close menu"
       >
         ✕
       </button>
@@ -73,7 +73,7 @@ export default function AmazonSideDrawer({
               <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
             </svg>
           </div>
-          <span>Hola, identifícate</span>
+          <span>Hello, sign in</span>
         </LocalizedClientLink>
 
         {/* Drawer Scrollable Content */}
@@ -90,7 +90,7 @@ export default function AmazonSideDrawer({
                   onClick={onClose}
                   className="block px-7 py-2.5 hover:bg-[#EAEDED] text-[#0F1111] transition-colors"
                 >
-                  Lo Más Vendido
+                  Best Sellers
                 </LocalizedClientLink>
               </li>
               <li>
@@ -99,7 +99,7 @@ export default function AmazonSideDrawer({
                   onClick={onClose}
                   className="block px-7 py-2.5 hover:bg-[#EAEDED] text-[#0F1111] transition-colors"
                 >
-                  Novedades y Productos Destacados
+                  New & Featured Products
                 </LocalizedClientLink>
               </li>
               <li>
@@ -108,7 +108,7 @@ export default function AmazonSideDrawer({
                   onClick={onClose}
                   className="block px-7 py-2.5 hover:bg-[#EAEDED] text-[#0F1111] transition-colors"
                 >
-                  Catálogo Completo de Productos
+                  Full Product Catalog
                 </LocalizedClientLink>
               </li>
               <li>
@@ -117,7 +117,7 @@ export default function AmazonSideDrawer({
                   onClick={onClose}
                   className="block px-7 py-2.5 hover:bg-[#EAEDED] text-[#0F1111] transition-colors font-medium text-[#0066CC]"
                 >
-                  Casos de Éxito en la Industria
+                  Industrial Case Studies
                 </LocalizedClientLink>
               </li>
             </ul>
@@ -128,7 +128,7 @@ export default function AmazonSideDrawer({
           {/* Section 2: Comprar por Categoría */}
           <div>
             <div className="text-[16px] font-bold text-[#111111] px-7 pt-1 pb-2">
-              Buscar por Categoría
+              Shop by Category
             </div>
             <ul>
               {sortedCategories.map((cat) => (
@@ -171,7 +171,7 @@ export default function AmazonSideDrawer({
                   onClick={onClose}
                   className="block px-7 py-2.5 hover:bg-[#EAEDED] text-[#0F1111] transition-colors"
                 >
-                  Contacto e Ingeniería
+                  Contact & Engineering
                 </LocalizedClientLink>
               </li>
               <li>
@@ -180,7 +180,7 @@ export default function AmazonSideDrawer({
                   onClick={onClose}
                   className="block px-7 py-2.5 hover:bg-[#EAEDED] text-[#0F1111] transition-colors"
                 >
-                  Envíos y Devoluciones
+                  Shipping & Returns
                 </LocalizedClientLink>
               </li>
             </ul>
@@ -188,10 +188,10 @@ export default function AmazonSideDrawer({
 
           <div className="border-b border-[#E5E7EB] my-3" />
 
-          {/* Section 4: Ayuda y Configuración */}
+          {/* Section 4: Help & Settings */}
           <div className="pb-6">
             <div className="text-[16px] font-bold text-[#111111] px-7 pt-1 pb-2">
-              Ayuda y Configuración
+              Help & Settings
             </div>
             <ul>
               <li>
@@ -200,7 +200,7 @@ export default function AmazonSideDrawer({
                   onClick={onClose}
                   className="block px-7 py-2.5 hover:bg-[#EAEDED] text-[#0F1111] transition-colors"
                 >
-                  Mi Cuenta
+                  Mi Account
                 </LocalizedClientLink>
               </li>
               <li>
@@ -209,7 +209,7 @@ export default function AmazonSideDrawer({
                   onClick={onClose}
                   className="block px-7 py-2.5 hover:bg-[#EAEDED] text-[#0F1111] transition-colors"
                 >
-                  Mis Pedidos
+                  My Orders
                 </LocalizedClientLink>
               </li>
               <li>
@@ -218,7 +218,7 @@ export default function AmazonSideDrawer({
                   onClick={onClose}
                   className="block px-7 py-2.5 hover:bg-[#EAEDED] text-[#0F1111] transition-colors"
                 >
-                  Contacto Comercial
+                  Sales Contact
                 </LocalizedClientLink>
               </li>
               <li>
@@ -227,7 +227,7 @@ export default function AmazonSideDrawer({
                   onClick={onClose}
                   className="block px-7 py-2.5 hover:bg-[#EAEDED] text-[#0F1111] transition-colors"
                 >
-                  Casos de Éxito
+                  Case Studies
                 </LocalizedClientLink>
               </li>
               <li>

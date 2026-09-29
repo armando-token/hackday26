@@ -26,7 +26,7 @@ export default function MobileHeaderNav({
             type="button"
             onClick={() => setIsDrawerOpen(true)}
             className="text-white p-1 hover:opacity-80 cursor-pointer flex items-center justify-center"
-            aria-label="Abrir menú"
+            aria-label="Open menu"
           >
             <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" strokeWidth={2.5} viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
@@ -41,7 +41,7 @@ export default function MobileHeaderNav({
           <LocalizedClientLink
             href="/account"
             className="flex items-center gap-1 text-[13px] text-white font-normal hover:underline p-1 cursor-pointer"
-            aria-label="Mi Cuenta / Iniciar Sesión"
+            aria-label="My Account / Sign in"
           >
             <span className="text-[13px] font-normal text-white">Ingresar ›</span>
             <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" strokeWidth={1.8} viewBox="0 0 24 24">
@@ -80,7 +80,7 @@ export default function MobileHeaderNav({
             <path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
             <path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
           </svg>
-          <span className="text-white font-normal">Despacho en Lima y Provincias (Perú)</span>
+          <span className="text-white font-normal">Ship to United States (USD)</span>
         </div>
       </div>
 

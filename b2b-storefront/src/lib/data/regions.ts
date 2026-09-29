@@ -5,23 +5,23 @@ import medusaError from "@lib/util/medusa-error"
 import { HttpTypes } from "@medusajs/types"
 import { getCacheOptions } from "./cookies"
 
-const PERU_FALLBACK_REGION: HttpTypes.StoreRegion = {
-  id: "reg_01M01FK2K4G93M9GKDRTPRP6ZB",
-  name: "Perú",
-  currency_code: "pen",
+const US_FALLBACK_REGION: HttpTypes.StoreRegion = {
+  id: "reg_01JUS00HACKDAY26DEMOUSD0000",
+  name: "United States",
+  currency_code: "usd",
   created_at: new Date().toISOString(),
   updated_at: new Date().toISOString(),
   deleted_at: null,
   metadata: null,
   countries: [
     {
-      id: "count_pe",
-      iso_2: "pe",
-      iso_3: "per",
-      num_code: "604",
-      name: "PERU",
-      display_name: "Peru",
-      region_id: "reg_01M01FK2K4G93M9GKDRTPRP6ZB",
+      id: "count_us",
+      iso_2: "us",
+      iso_3: "usa",
+      num_code: "840",
+      name: "UNITED STATES",
+      display_name: "United States",
+      region_id: "reg_01JUS00HACKDAY26DEMOUSD0000",
       metadata: null,
       created_at: new Date().toISOString(),
       updated_at: new Date().toISOString(),
@@ -41,8 +41,8 @@ export const listRegions = async () => {
       next,
       cache: "force-cache",
     })
-    .then(({ regions }) => (regions && regions.length > 0 ? regions : [PERU_FALLBACK_REGION]))
-    .catch(() => [PERU_FALLBACK_REGION])
+    .then(({ regions }) => (regions && regions.length > 0 ? regions : [US_FALLBACK_REGION]))
+    .catch(() => [US_FALLBACK_REGION])
 }
 
 export const retrieveRegion = async (id: string) => {
@@ -57,14 +57,14 @@ export const retrieveRegion = async (id: string) => {
       cache: "force-cache",
     })
     .then(({ region }) => region)
-    .catch(() => PERU_FALLBACK_REGION)
+    .catch(() => US_FALLBACK_REGION)
 }
 
 const regionMap = new Map<string, HttpTypes.StoreRegion>()
 
-export const getRegion = async (countryCode: string = "pe") => {
+export const getRegion = async (countryCode: string = "us") => {
   try {
-    const code = (countryCode || "pe").toLowerCase()
+    const code = (countryCode || "us").toLowerCase()
     if (regionMap.has(code)) {
       return regionMap.get(code)
     }
@@ -79,9 +79,9 @@ export const getRegion = async (countryCode: string = "pe") => {
       })
     }
 
-    const region = regionMap.get(code) || regionMap.get("pe") || regions?.[0] || PERU_FALLBACK_REGION
+    const region = regionMap.get(code) || regionMap.get("us") || regions?.[0] || US_FALLBACK_REGION
     return region
   } catch (e: any) {
-    return PERU_FALLBACK_REGION
+    return US_FALLBACK_REGION
   }
 }

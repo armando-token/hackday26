@@ -63,7 +63,7 @@ const ProfileBillingAddress: React.FC<MyInformationProps> = ({
 
   const currentInfo = useMemo(() => {
     if (!billingAddress) {
-      return "Sin dirección de facturación registrada"
+      return "No billing address on file"
     }
 
     const country =
@@ -93,7 +93,7 @@ const ProfileBillingAddress: React.FC<MyInformationProps> = ({
     <form action={formAction} onReset={() => clearState()} className="w-full">
       <input type="hidden" name="addressId" value={billingAddress?.id} />
       <AccountInfo
-        label="Dirección de facturación"
+        label="Address de billing"
         currentInfo={currentInfo}
         isSuccess={successState}
         isError={!!state.error}
@@ -118,13 +118,13 @@ const ProfileBillingAddress: React.FC<MyInformationProps> = ({
             />
           </div>
           <Input
-            label="Empresa / Razón Social"
+            label="Company / Legal name"
             name="company"
             defaultValue={billingAddress?.company || undefined}
             data-testid="billing-company-input"
           />
           <Input
-            label="Teléfono"
+            label="Phone"
             name="phone"
             type="phone"
             autoComplete="phone"
@@ -133,7 +133,7 @@ const ProfileBillingAddress: React.FC<MyInformationProps> = ({
             data-testid="billing-phone-input"
           />
           <Input
-            label="Dirección"
+            label="Address"
             name="address_1"
             defaultValue={billingAddress?.address_1 || undefined}
             required
@@ -147,14 +147,14 @@ const ProfileBillingAddress: React.FC<MyInformationProps> = ({
           />
           <div className="grid grid-cols-[144px_1fr] gap-x-2">
             <Input
-              label="Código postal"
+              label="Postal code"
               name="postal_code"
               defaultValue={billingAddress?.postal_code || undefined}
               required
               data-testid="billing-postcal-code-input"
             />
             <Input
-              label="Ciudad"
+              label="City"
               name="city"
               defaultValue={billingAddress?.city || undefined}
               required
@@ -162,7 +162,7 @@ const ProfileBillingAddress: React.FC<MyInformationProps> = ({
             />
           </div>
           <Input
-            label="Provincia / Departamento"
+            label="State / Departamento"
             name="province"
             defaultValue={billingAddress?.province || undefined}
             data-testid="billing-province-input"

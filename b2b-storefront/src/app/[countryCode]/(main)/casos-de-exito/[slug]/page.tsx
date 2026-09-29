@@ -28,14 +28,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   if (!caseStudy) {
     return {
-      title: "Caso de Éxito no encontrado | Control Nautas",
+      title: "Caso de Success no encontrado | Control Nautas",
     }
   }
 
   const canonicalUrl = `${company.siteUrl}/casos-de-exito/${caseStudy.slug}`
 
   return {
-    title: `${caseStudy.title} | Caso de Éxito Control Nautas`,
+    title: `${caseStudy.title} | Caso de Success Control Nautas`,
     description: caseStudy.summary,
     alternates: {
       canonical: canonicalUrl,
@@ -96,9 +96,9 @@ export default async function CaseStudyDetailPage({ params }: Props) {
         
         {/* Breadcrumbs */}
         <nav aria-label="Breadcrumb" className="text-xs text-neutral-500 mb-6 flex items-center gap-2">
-          <LocalizedClientLink href="/" className="hover:underline">Inicio</LocalizedClientLink>
+          <LocalizedClientLink href="/" className="hover:underline">Home</LocalizedClientLink>
           <span>/</span>
-          <LocalizedClientLink href="/casos-de-exito" className="hover:underline">Casos de Éxito</LocalizedClientLink>
+          <LocalizedClientLink href="/casos-de-exito" className="hover:underline">Case Studies</LocalizedClientLink>
           <span>/</span>
           <span className="text-neutral-900 font-semibold truncate max-w-xs md:max-w-md">{caseStudy.title}</span>
         </nav>
@@ -145,7 +145,7 @@ export default async function CaseStudyDetailPage({ params }: Props) {
             {/* El Desafío / Problema */}
             <section className="bg-white p-8 rounded-xl border border-neutral-200 shadow-sm">
               <h2 className="text-lg font-bold text-neutral-900 mb-4 flex items-center gap-2">
-                <span className="text-rose-600">⚠️</span> El Desafío Operativo en Planta
+                <span className="text-rose-600">⚠️</span> The operational challenge
               </h2>
               <ul className="space-y-3 text-xs text-neutral-700 leading-relaxed">
                 {caseStudy.problem.map((item, idx) => (
@@ -160,7 +160,7 @@ export default async function CaseStudyDetailPage({ params }: Props) {
             {/* La Solución Implementada */}
             <section className="bg-white p-8 rounded-xl border border-neutral-200 shadow-sm">
               <h2 className="text-lg font-bold text-neutral-900 mb-4 flex items-center gap-2">
-                <span className="text-blue-600">💡</span> Solución de Ingeniería Desarrollada
+                <span className="text-blue-600">💡</span> Engineering solution
               </h2>
               <ul className="space-y-3 text-xs text-neutral-700 leading-relaxed">
                 {caseStudy.solution.map((item, idx) => (
@@ -175,7 +175,7 @@ export default async function CaseStudyDetailPage({ params }: Props) {
             {/* Equipamiento y Tecnologías */}
             <section className="bg-white p-8 rounded-xl border border-neutral-200 shadow-sm">
               <h2 className="text-lg font-bold text-neutral-900 mb-4 flex items-center gap-2">
-                <span className="text-neutral-700">🛠️</span> Equipamiento y Tecnologías Suministradas
+                <span className="text-neutral-700">🛠️</span> Equipment & technologies supplied
               </h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
                 {caseStudy.technologies.map((t, idx) => (
@@ -193,9 +193,9 @@ export default async function CaseStudyDetailPage({ params }: Props) {
             
             {/* Direct WhatsApp Action Box */}
             <div className="bg-[#1C242E] text-white p-6 rounded-xl shadow-sm">
-              <h3 className="font-bold text-base mb-2">¿Necesita una solución similar?</h3>
+              <h3 className="font-bold text-base mb-2">Need a similar solution?</h3>
               <p className="text-xs text-neutral-300 mb-5 leading-relaxed">
-                Nuestros ingenieros de aplicaciones están disponibles para dimensionar su proyecto o cotizar suministros de inmediato.
+                Our application engineers can size your project or quote supplies right away.
               </p>
               <WhatsAppProductCTA
                 variant="primary"
@@ -207,9 +207,9 @@ export default async function CaseStudyDetailPage({ params }: Props) {
 
             {/* Related Category Box */}
             <div className="bg-white p-6 rounded-xl border border-neutral-200 shadow-sm">
-              <h3 className="font-bold text-sm text-neutral-900 mb-2">Categoría de Catálogo</h3>
+              <h3 className="font-bold text-sm text-neutral-900 mb-2">Catalog category</h3>
               <p className="text-xs text-neutral-600 mb-4 leading-normal">
-                Explore nuestra gama completa de productos relacionados con este caso:
+                Explore related products for this case study:
               </p>
               <LocalizedClientLink
                 href={`/store/${caseStudy.relatedCategorySlug}`}
@@ -222,10 +222,10 @@ export default async function CaseStudyDetailPage({ params }: Props) {
 
             {/* Institutional Trust */}
             <div className="bg-neutral-100 p-6 rounded-xl border border-neutral-200 text-xs text-neutral-600 space-y-2">
-              <div className="font-bold text-neutral-900">Garantía Control Nautas</div>
-              <p>• Productos 100% nuevos y certificados.</p>
-              <p>• Asesoría técnica especializada antes y después de la compra.</p>
-              <p>• Despachos a todo el territorio peruano.</p>
+              <div className="font-bold text-neutral-900">Warranty Control Nautas</div>
+              <p>• Products 100% nuevos y certificados.</p>
+              <p>• Specialized technical advisory before and after purchase.</p>
+              <p>• Fulfillment a todo el territorio peruano.</p>
             </div>
 
           </div>

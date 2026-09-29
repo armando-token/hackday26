@@ -47,7 +47,7 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
   )
 
   if (!product) {
-    return { title: "Producto no encontrado | Control Nautas" }
+    return { title: "Product not found | Control Nautas" }
   }
 
   const title =

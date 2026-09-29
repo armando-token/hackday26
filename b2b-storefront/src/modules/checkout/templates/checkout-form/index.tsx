@@ -29,16 +29,16 @@ export default async function CheckoutForm({
 
   return (
     <div className="w-full space-y-6">
-      {/* 1. Datos de Facturación y Entrega */}
+      {/* 1. Billing & Shipping */}
       <Addresses cart={cart} customer={customer} />
 
-      {/* 2. Modalidad de Envío y Despacho */}
+      {/* 2. Shipping method */}
       <Shipping cart={cart} availableShippingMethods={shippingMethods} />
 
-      {/* 3. Método de Pago y Cuentas Bancarias */}
+      {/* 3. Payment method y Bank Accounts */}
       <Payment cart={cart} availablePaymentMethods={paymentMethods.length > 0 ? paymentMethods : DEFAULT_PAYMENT_PROVIDERS} />
 
-      {/* 4. Revisión y Confirmación Final */}
+      {/* 4. Revisión y Final Confirmation */}
       <Review cart={cart} />
     </div>
   )

@@ -69,8 +69,8 @@ export default function SearchBar({
   const inputRef = useRef<HTMLInputElement>(null)
 
   const categories = [
-    { name: "Todas las Categorías", slug: "all" },
-    ...[...categoryFamilies].sort((a, b) => a.name.localeCompare(b.name, "es")),
+    { name: "All Categories", slug: "all" },
+    ...[...categoryFamilies].sort((a, b) => a.name.localeCompare(b.name, "en")),
   ]
 
   const selectedCategoryName =
@@ -214,7 +214,7 @@ export default function SearchBar({
                 }}
                 onFocus={() => setIsFocused(true)}
                 className="absolute inset-0 opacity-0 cursor-pointer w-full h-full text-black bg-white"
-                aria-label="Seleccionar categoría"
+                aria-label="Select category"
               >
                 {categories.map((cat) => (
                   <option key={cat.slug} value={cat.slug} className="text-black bg-white py-1">
@@ -244,7 +244,7 @@ export default function SearchBar({
               setActiveIndex(-1)
             }}
             onKeyDown={handleKeyDown}
-            placeholder="Buscar en Control Nautas (palabra clave, ítem, modelo o SKU)..."
+            placeholder="Search Control Nautas (keyword, item, model, or SKU)..."
             className="flex-1 px-3 text-[14px] text-[#0F1111] focus:outline-none placeholder-[#757575] font-normal bg-white min-w-0"
             autoComplete="off"
             spellCheck="false"
@@ -256,7 +256,7 @@ export default function SearchBar({
           {/* Botón Lupa Naranja Amazon */}
           <button
             type="submit"
-            aria-label="Buscar"
+            aria-label="Search"
             className="bg-[#FEBD69] hover:bg-[#F3A847] text-[#111111] w-[45px] transition-colors flex items-center justify-center flex-shrink-0 h-full cursor-pointer rounded-r-[5px]"
           >
             <svg
@@ -288,7 +288,7 @@ export default function SearchBar({
                   product.image ||
                   "/cn-media/categories/calefaccion-electrica.webp"
                 const isQuote =
-                  product.priceLabel === "Consultar precio" ||
+                  product.priceLabel === "Request price" ||
                   product.priceLabel.startsWith("Consultar")
 
                 return (
@@ -330,7 +330,7 @@ export default function SearchBar({
                       </div>
                     </div>
 
-                    {/* Precio / Cotización */}
+                    {/* Price / Quote */}
                     <div className="text-right flex-shrink-0 pl-2">
                       {!isQuote ? (
                         <span className="text-[13px] font-bold text-[#131921] block">
@@ -338,7 +338,7 @@ export default function SearchBar({
                         </span>
                       ) : (
                         <span className="text-[11px] font-bold text-[#C8102E] bg-red-50 px-2 py-0.5 rounded border border-red-200 inline-block">
-                          Cotizar
+                          Quote
                         </span>
                       )}
                     </div>

@@ -12,7 +12,7 @@ function CartMismatchBanner(props: {
 }) {
   const { customer, cart } = props
   const [isPending, setIsPending] = useState(false)
-  const [actionText, setActionText] = useState("Reintentar vinculación")
+  const [actionText, setActionText] = useState("Retry linking")
 
   if (!customer || !!cart.customer_id) {
     return
@@ -25,7 +25,7 @@ function CartMismatchBanner(props: {
 
       await transferCart()
     } catch {
-      setActionText("Reintentar vinculación")
+      setActionText("Retry linking")
       setIsPending(false)
     }
   }
@@ -35,7 +35,7 @@ function CartMismatchBanner(props: {
       <div className="flex flex-col small:flex-row small:gap-2 gap-1 items-center">
         <span className="flex items-center gap-1">
           <ExclamationCircleSolid className="inline" />
-          Ocurrió un problema al transferir tu carrito a tu cuenta
+          There was a problem transferring your cart to your account
         </span>
 
         <span>·</span>

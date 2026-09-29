@@ -17,7 +17,7 @@ export default function RecentProductCard({
   const isQuote = product.display.requiresQuote
 
   const whatsappHref = `https://wa.me/51950302141?text=${encodeURIComponent(
-    `Hola Control Nautas, solicito cotización para el producto:\n\n*${product.title}*\nÍtem #: ${product.pim.itemNumber}\nModelo fab.: ${product.pim.mfrModel || "N/A"}`
+    `Hello Control Nautas, please quote this product:\n\n*${product.title}*\nItem #: ${product.pim.itemNumber}\nModelo fab.: ${product.pim.mfrModel || "N/A"}`
   )}`
 
   const onAdd = (e: React.MouseEvent) => {
@@ -56,7 +56,7 @@ export default function RecentProductCard({
         </LocalizedClientLink>
 
         <div className="h-[18px] mt-[6px] overflow-hidden text-[#686B72] text-[14px] font-normal leading-[18px] whitespace-nowrap">
-          <span>Ítem #</span>
+          <span>Item #</span>
           <strong className="ml-[3px] text-[#000000] text-[14px] font-bold">
             {product.pim.itemNumber}
           </strong>
@@ -64,7 +64,7 @@ export default function RecentProductCard({
 
         <div className="mt-[15px]">
           <div className="h-[18px] flex items-center text-[#686B72] text-[14px] font-normal leading-[18px]">
-            <span>Precio</span>
+            <span>Price</span>
           </div>
           <div className="h-[22px] mt-[1px] flex items-baseline whitespace-nowrap">
             <strong className="text-[#1F7226] text-[16px] font-bold leading-[22px]">
@@ -86,7 +86,7 @@ export default function RecentProductCard({
         {!isQuote && (
           <label className="relative w-[56px] h-[40px] flex-shrink-0 border border-[#686B72] bg-white block">
             <span className="absolute -top-[8px] left-1/2 -translate-x-1/2 z-10 px-[3px] bg-white text-[#686B72] text-[11px] font-bold leading-[14px] whitespace-nowrap select-none">
-              Cant.
+              Qty
             </span>
             <input
               type="number"
@@ -96,7 +96,7 @@ export default function RecentProductCard({
                 setQty(Math.max(1, parseInt(e.target.value) || 1))
               }
               className="w-full h-full m-0 pt-[3px] border-0 outline-none bg-transparent text-[#000000] text-[14px] font-normal text-center leading-[38px] appearance-none"
-              aria-label="Cantidad"
+              aria-label="Quantity"
             />
           </label>
         )}
@@ -108,7 +108,7 @@ export default function RecentProductCard({
             rel="noopener noreferrer"
             className="h-[40px] min-w-0 flex-1 m-0 px-[10px] border-2 border-[#B9002E] rounded-[3px] bg-white text-[#B9002E] hover:bg-[#B9002E] hover:text-white text-[14px] font-bold leading-[36px] text-center whitespace-nowrap cursor-pointer transition-colors flex items-center justify-center no-underline"
           >
-            Cotizar
+            Quote
           </a>
         ) : (
           <button
@@ -117,7 +117,7 @@ export default function RecentProductCard({
             disabled={!product.display.canAddToCart}
             className="h-[40px] min-w-0 flex-1 m-0 px-[10px] border-2 border-[#B9002E] rounded-[3px] bg-white text-[#B9002E] hover:bg-[#B9002E] hover:text-white disabled:opacity-50 text-[14px] font-bold leading-[36px] text-center whitespace-nowrap cursor-pointer transition-colors flex items-center justify-center"
           >
-            {added ? "Añadido ✓" : "Añadir al carrito"}
+            {added ? "Added ✓" : "Add to cart"}
           </button>
         )}
       </div>

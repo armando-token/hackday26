@@ -82,7 +82,7 @@ export default function MobileImageModal({
             </div>
           ) : (
             <div className="text-[13px] font-semibold text-[#0066CC] mt-1">
-              💼 Modalidad de Cotización B2B
+              💼 Modalidad de Quote B2B
             </div>
           )}
         </div>

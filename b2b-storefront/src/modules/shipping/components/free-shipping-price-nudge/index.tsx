@@ -149,10 +149,10 @@ function FreeShippingInline({
             {price.target_reached ? (
               <div className="flex items-center gap-1.5">
                 <CheckCircleSolid className="text-green-500 inline-block" />{" "}
-                ¡Envío gratuito desbloqueado!
+                ¡Shipping gratuito desbloqueado!
               </div>
             ) : (
-              `Desbloquea Envío Gratuito`
+              `Desbloquea Shipping Gratuito`
             )}
           </div>
 
@@ -168,7 +168,7 @@ function FreeShippingInline({
                 currency_code: cart.currency_code,
               })}
             </span>{" "}
-            para envío gratis
+            para shipping gratis
           </div>
         </div>
         <div className="flex justify-between gap-1">
@@ -225,10 +225,10 @@ function FreeShippingPopup({
                 {price.target_reached ? (
                   <div className="flex items-center gap-1.5">
                     <CheckCircleSolid className="text-green-500 inline-block" />{" "}
-                    ¡Envío gratuito desbloqueado!
+                    ¡Shipping gratuito desbloqueado!
                   </div>
                 ) : (
-                  `Desbloquea Envío Gratuito`
+                  `Desbloquea Shipping Gratuito`
                 )}
               </div>
 
@@ -244,7 +244,7 @@ function FreeShippingPopup({
                     currency_code: cart.currency_code,
                   })}
                 </span>{" "}
-                para envío gratis
+                para shipping gratis
               </div>
             </div>
             <div className="flex justify-between gap-1">

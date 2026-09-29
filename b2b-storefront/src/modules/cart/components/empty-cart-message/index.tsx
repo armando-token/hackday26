@@ -9,13 +9,13 @@ const EmptyCartMessage = () => {
         level="h1"
         className="flex flex-row text-3xl-regular gap-x-2 items-baseline"
       >
-        Carrito de Compras
+        Shopping Cart
       </Heading>
       <Text className="text-base-regular mt-4 mb-6 max-w-[32rem]">
-        Tu carrito de compras está vacío. Explora nuestro catálogo técnico industrial para agregar productos o solicitar cotizaciones.
+        Your cart is empty. Browse our industrial technical catalog to add products or request quotes.
       </Text>
       <div>
-        <InteractiveLink href="/store">Explorar catálogo</InteractiveLink>
+        <InteractiveLink href="/store">Browse catalog</InteractiveLink>
       </div>
     </div>
   )

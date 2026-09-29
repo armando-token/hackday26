@@ -27,11 +27,11 @@ export default function TransferRequestForm() {
       <div className="grid sm:grid-cols-2 items-center gap-x-8 gap-y-4 w-full">
         <div className="flex flex-col gap-y-1">
           <Heading level="h3" className="text-lg text-neutral-950">
-            Transferencia de órdenes
+            Order transfer
           </Heading>
           <Text className="text-base-regular text-neutral-500">
-            ¿No encuentras la orden que estás buscando?
-            <br /> Vincula una orden previa a tu cuenta.
+            Can't find the order you are looking for?
+            <br /> Vincula una orden previa a tu account.
           </Text>
         </div>
         <form

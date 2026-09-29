@@ -3,9 +3,9 @@ import StoreTemplate from "@modules/store/templates"
 import { getCatalogCategoryTree, getL1Families } from "@lib/catalog/catalog-category-tree"
 
 export const metadata: Metadata = {
-  title: "Catálogo Control Nautas",
+  title: "Control Nautas Catalog",
   description:
-    "Calefacción eléctrica, trazado térmico, control industrial, sensores, monitoreo, PLC y aislamiento.",
+    "Electric heating, heat tracing, industrial control, sensors, monitoring, PLC, and insulation.",
 }
 
 type Params = {

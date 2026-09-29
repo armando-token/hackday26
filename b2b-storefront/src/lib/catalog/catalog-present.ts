@@ -52,7 +52,7 @@ export function getCatalogStockDisplay(product: CatalogProduct): {
       return { text: "● En stock (Entrega inmediata)", color: "text-[#1E7E34]" }
     case "backorder":
       return {
-        text: "● Disponible bajo pedido / Importación",
+        text: "● Available on request / Importación",
         color: "text-[#D97706]",
       }
     case "made_to_order":
@@ -62,12 +62,12 @@ export function getCatalogStockDisplay(product: CatalogProduct): {
       }
     case "discontinued":
       return {
-        text: "● Producto discontinuado",
+        text: "● Product discontinuado",
         color: "text-[#C8102E]",
       }
     default:
       return {
-        text: "● Sin stock para entrega inmediata · Cotizar",
+        text: "● Sin stock para entrega inmediata · Quote",
         color: "text-[#C8102E]",
       }
   }

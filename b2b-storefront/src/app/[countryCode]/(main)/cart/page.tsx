@@ -6,8 +6,8 @@ import CartTemplate from "@modules/cart/templates"
 export const dynamic = "force-dynamic"
 
 export const metadata: Metadata = {
-  title: "Carrito de Compras | Control Nautas Perú",
-  description: "Revise los suministros industriales en su carrito de compras.",
+  title: "Shopping Cart | Control Nautas United States",
+  description: "Review industrial supplies in your shopping cart.",
   robots: {
     index: false,
     follow: false,

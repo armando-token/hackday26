@@ -14,13 +14,13 @@ async function ProductOnboardingCta() {
     <Container className="max-w-4xl h-full bg-ui-bg-subtle w-full p-8">
       <div className="flex flex-col gap-y-4 center">
         <Text className="text-ui-fg-base text-xl">
-          ¡Tu producto de demostración se creó correctamente! 🎉
+          Your demo product was created successfully! 🎉
         </Text>
         <Text className="text-ui-fg-subtle text-small-regular">
-          Puedes continuar configurando y gestionando productos en el panel de administración.
+          You can continue configuring products in the admin panel.
         </Text>
         <a href="http://localhost:7001/a/orders?onboarding_step=create_order_nextjs">
-          <Button className="w-full">Continuar configuración en admin</Button>
+          <Button className="w-full">Continue setup in admin</Button>
         </a>
       </div>
     </Container>

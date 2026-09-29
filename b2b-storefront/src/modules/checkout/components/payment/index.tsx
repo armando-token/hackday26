@@ -78,7 +78,7 @@ const Payment = ({
               "text-gray-400 select-none": !hasShipping,
             })}
           >
-            Método de Pago y Facturación
+            Payment & invoicing
             {!isOpen && hasPayment && (
               <span className="text-[#1E7E34] text-[18px]">✓</span>
             )}
@@ -98,7 +98,7 @@ const Payment = ({
       {isOpen && hasShipping ? (
         <div className="pt-2">
           <p className="text-[13px] text-[#666] mb-4">
-            Seleccione la forma de liquidación y emisión de comprobante de pago:
+            Select payment and invoice method:
           </p>
 
           <RadioGroup
@@ -130,47 +130,47 @@ const Payment = ({
                   <div>
                     <div className="flex items-center gap-2">
                       <span className="font-bold text-[15px] text-[#131921]">
-                        🏦 Transferencia o Depósito Bancario (BCP / BBVA / Interbank / Yape)
+                        🏦 Bank transfer / corporate deposit
                       </span>
                       <span className="bg-blue-100 text-blue-800 text-[11px] font-bold px-2 py-0.5 rounded">
                         Recomendado B2B
                       </span>
                     </div>
                     <p className="text-[13px] text-[#555] mt-1">
-                      Aceptamos transferencias directas e interbancarias para empresas con emisión de Factura Electrónica y Guía de Remisión.
+                      We accept corporate bank transfers with electronic invoicing.
                     </p>
                   </div>
                 </div>
               </div>
 
-              {/* Información detallada de cuentas bancarias corporativas */}
+              {/* Información detallada de accounts bancarias corporativas */}
               <div className="mt-4 pt-4 border-t border-[#D0E2FF] grid grid-cols-1 md:grid-cols-2 gap-3 text-[12px] bg-white p-4 rounded border border-[#C2DBFE]">
                 <div>
-                  <p className="font-bold text-[#131921] mb-1">🏦 Banco de Crédito del Perú (BCP):</p>
-                  <p className="text-[#333]">Cta. Cte. Soles: <span className="font-mono font-bold">193-98765432-0-12</span></p>
+                  <p className="font-bold text-[#131921] mb-1">🏦 Primary corporate bank account:</p>
+                  <p className="text-[#333]">Cta. Cte. USD: <span className="font-mono font-bold">193-98765432-0-12</span></p>
                   <p className="text-[#666]">CCI: <span className="font-mono">002-193-0098765432012-14</span></p>
                 </div>
 
                 <div>
-                  <p className="font-bold text-[#131921] mb-1">🏦 BBVA Perú:</p>
-                  <p className="text-[#333]">Cta. Cte. Soles: <span className="font-mono font-bold">0011-0123-0100045678</span></p>
+                  <p className="font-bold text-[#131921] mb-1">🏦 BBVA United States:</p>
+                  <p className="text-[#333]">Cta. Cte. USD: <span className="font-mono font-bold">0011-0123-0100045678</span></p>
                   <p className="text-[#666]">CCI: <span className="font-mono">011-123-000100045678-55</span></p>
                 </div>
 
                 <div>
                   <p className="font-bold text-[#131921] mb-1">🏦 Interbank:</p>
-                  <p className="text-[#333]">Cta. Cte. Soles: <span className="font-mono font-bold">200-3001234567</span></p>
+                  <p className="text-[#333]">Cta. Cte. USD: <span className="font-mono font-bold">200-3001234567</span></p>
                   <p className="text-[#666]">CCI: <span className="font-mono">003-200-003001234567-21</span></p>
                 </div>
 
                 <div>
-                  <p className="font-bold text-[#131921] mb-1">📱 Yape / Plin Corporativo:</p>
-                  <p className="text-[#333]">Número: <span className="font-mono font-bold">{company.phoneDisplay}</span></p>
+                  <p className="font-bold text-[#131921] mb-1">📱 Corporate payment:</p>
+                  <p className="text-[#333]">Number: <span className="font-mono font-bold">{company.phoneDisplay}</span></p>
                   <p className="text-[#666]">Titular: <span className="font-semibold">{company.legalName}</span></p>
                 </div>
 
                 <div className="col-span-1 md:col-span-2 mt-2 pt-2 border-t border-gray-100 text-[11px] text-[#555]">
-                  Titular: <strong className="text-[#131921]">{company.legalName}</strong> · RUC: <strong className="text-[#131921]">{company.taxId}</strong>
+                  Titular: <strong className="text-[#131921]">{company.legalName}</strong> · Tax ID: <strong className="text-[#131921]">{company.taxId}</strong>
                 </div>
               </div>
             </RadioGroup.Option>
@@ -185,7 +185,7 @@ const Payment = ({
               isLoading={isLoading}
               data-testid="submit-payment-button"
             >
-              Continuar a Revisión Final ›
+              Continue to final review ›
             </Button>
           </div>
         </div>
@@ -194,17 +194,17 @@ const Payment = ({
           {hasPayment ? (
             <div className="pt-2 text-[13px] text-[#4A5568] bg-[#F8FAFC] p-4 rounded border border-[#EDF2F7]">
               <span className="font-bold text-[#131921] block mb-1">
-                Método seleccionado:
+                Selected method:
               </span>
               <p className="font-semibold text-[#2D3748]">
-                Transferencia Bancaria BCP / BBVA / Interbank (Factura Electrónica)
+                Bank transfer / corporate invoice (demo)
               </p>
               <p className="text-[12px] text-[#666] mt-0.5">
-                RUC: {company.taxId} - {company.legalName}
+                Tax ID: {company.taxId} - {company.legalName}
               </p>
             </div>
           ) : (
-            <p className="text-[13px] text-gray-400">Seleccione la modalidad de entrega primero.</p>
+            <p className="text-[13px] text-gray-400">Select la modalidad de entrega primero.</p>
           )}
         </div>
       )}

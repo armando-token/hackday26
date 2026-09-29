@@ -19,9 +19,9 @@ type ProductTemplateProps = {
 const getProductSpecs = (metadata?: Record<string, any>) => {
   if (!metadata) {
     return [
-      { label: "País de origen", value: "Estados Unidos / Internacional" },
+      { label: "Country of origin", value: "United States / International" },
       { label: "Certificaciones", value: "UL Listed, Conforme RoHS" },
-      { label: "Garantía", value: "1 año de garantía de fabricante" }
+      { label: "Warranty", value: "1-year manufacturer warranty" }
     ]
   }
 
@@ -29,7 +29,7 @@ const getProductSpecs = (metadata?: Record<string, any>) => {
   const specs = []
   
   if (metadata.brand) specs.push({ label: "Marca", value: metadata.brand })
-  if (metadata.item_number) specs.push({ label: "Nº de Ítem", value: metadata.item_number })
+  if (metadata.item_number) specs.push({ label: "Item #", value: metadata.item_number })
   if (metadata.mfr_model) specs.push({ label: "Modelo Fab.", value: metadata.mfr_model })
   
   // Add other PIM specs or metadata fields dynamically
@@ -42,9 +42,9 @@ const getProductSpecs = (metadata?: Record<string, any>) => {
 
   if (specs.length === 0) {
     specs.push(
-      { label: "País de origen", value: "Estados Unidos / Internacional" },
+      { label: "Country of origin", value: "United States / International" },
       { label: "Certificaciones", value: "UL Listed, Conforme RoHS" },
-      { label: "Garantía", value: "1 año de garantía de fabricante" }
+      { label: "Warranty", value: "1-year manufacturer warranty" }
     )
   }
 
@@ -65,9 +65,9 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
 
   // Format breadcrumbs
   const breadcrumbs = [
-    { label: "Inicio", href: "/" },
-    { label: "Catálogo Técnico", href: "/store" },
-    { label: product.title || "Detalles del Producto", href: `/products/${product.handle}` }
+    { label: "Home", href: "/" },
+    { label: "Technical Catalog", href: "/store" },
+    { label: product.title || "Detalles del Product", href: `/products/${product.handle}` }
   ]
 
   return (
@@ -112,7 +112,7 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
               
               {/* Item / Mfr Model details */}
               <div className="text-[13px] text-[#666666] flex flex-wrap items-center gap-x-4 mt-2">
-                <span>Ítem <span className="font-bold text-[#333333]">#{product.handle?.substring(0, 6).toUpperCase() || "N/A"}</span></span>
+                <span>Item <span className="font-bold text-[#333333]">#{product.handle?.substring(0, 6).toUpperCase() || "N/A"}</span></span>
                 <span className="text-[#CCCCCC]">|</span>
                 <span>Modelo Fab. <span className="font-bold text-[#333333]">#{(product.metadata?.mfr_model as string) || product.handle?.toUpperCase() || "N/A"}</span></span>
               </div>
@@ -123,19 +123,19 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
               <span>★★★★★</span>
               <span className="text-gray-500 font-normal text-[12px]">(5.0)</span>
               <span className="text-[#CCCCCC]">|</span>
-              <span className="text-[#666666] font-normal text-[12px]">Garantía Oficial de Fabricante</span>
+              <span className="text-[#666666] font-normal text-[12px]">Official manufacturer warranty</span>
             </div>
 
             {/* Sub-description */}
             <div className="text-[13px] text-[#333333] leading-relaxed pt-2">
               <p className="mb-2">
-                {product.description || "Equipo industrial de alta precisión diseñado para aplicaciones de control de procesos, automatización e instrumentación técnica. Cumple con estándares internacionales de calidad y eficiencia operativa."}
+                {product.description || "High-precision industrial equipment for process control, automation, and technical instrumentation. Meets international quality and performance standards."}
               </p>
             </div>
             
             {/* Catalog Brand Details */}
             <div className="text-[13px] text-[#666666] mt-2 font-normal">
-              Distribuidor Oficial en Perú · <LocalizedClientLink href="/contacto" className="font-bold text-[#0066CC] hover:underline">Soporte Técnico Especializado</LocalizedClientLink>
+              Authorized distributor · <LocalizedClientLink href="/contacto" className="font-bold text-[#0066CC] hover:underline">Specialized technical support</LocalizedClientLink>
             </div>
           </div>
 
@@ -160,7 +160,7 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
         <div className="mt-12 border-t border-[#CCCCCC] pt-8">
           <div className="border-b-2 border-black pb-1 mb-6">
             <h2 className="text-[18px] font-bold text-black uppercase tracking-wide">
-              Detalles del Producto
+              Detalles del Product
             </h2>
           </div>
           
@@ -184,11 +184,11 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
             {/* Documents Section */}
             <div className="lg:col-span-4 w-full">
               <h3 className="text-[18px] font-bold text-black border-b border-[#CCCCCC] pb-2 mb-4 uppercase tracking-wide">
-                Documentación Técnica
+                Technical Documentation
               </h3>
               <div className="flex flex-col gap-3">
                 <a 
-                  href={`https://wa.me/51950302141?text=${encodeURIComponent(`Hola Control Nautas, solicito el manual técnico y datasheet de: ${product.title}`)}`}
+                  href={`https://wa.me/51950302141?text=${encodeURIComponent(`Hello Control Nautas, please send the technical manual and datasheet for: ${product.title}`)}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 text-[13px] text-[#0066CC] font-bold hover:underline"
@@ -196,7 +196,7 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
                   <svg className="w-5 h-5 text-red-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M4 4a2 2 0 012-2h4.586A1 1 0 0113 2.586V6a1 1 0 001 1h3.414L18 8v9a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 2h8v2H6V6zm0 4h8v2H6v-2zm0 4h5v2H6v-2z" clipRule="evenodd"></path>
                   </svg>
-                  Solicitar Manual / Ficha Técnica (PDF)
+                  Request Manual / Datasheet (PDF)
                 </a>
                 <a 
                   href={`https://wa.me/51950302141?text=${encodeURIComponent(`Hola Control Nautas, solicito la Hoja de Seguridad (MSDS/SDS) de: ${product.title}`)}`}
@@ -221,7 +221,7 @@ const ProductTemplate: React.FC<ProductTemplateProps> = ({
           data-testid="related-products-container"
         >
           <h3 className="text-[18px] font-bold text-black mb-6 uppercase tracking-wide">
-            Productos Relacionados y Complementarios
+            Products Relacionados y Complementarios
           </h3>
           <Suspense fallback={<SkeletonRelatedProducts />}>
             <RelatedProducts product={product} countryCode={countryCode} />

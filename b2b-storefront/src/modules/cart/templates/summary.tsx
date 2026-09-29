@@ -32,7 +32,7 @@ const Summary = ({ cart }: SummaryProps) => {
       ;(window as any).dataLayer.push({
         event: "begin_checkout",
         ecommerce: {
-          currency: cart.currency_code?.toUpperCase() || "PEN",
+          currency: cart.currency_code?.toUpperCase() || "USD",
           value: cart.total || cart.subtotal || 0,
           items: cart.items?.map((item) => ({
             item_id: (item.variant?.metadata?.wc_id ? `gla_${item.variant?.metadata?.wc_id}` : item.variant?.sku || item.variant_id || item.id) as string,
@@ -48,7 +48,7 @@ const Summary = ({ cart }: SummaryProps) => {
   return (
     <div className="flex flex-col gap-y-4">
       <Heading level="h2" className="text-[2rem] leading-[2.75rem]">
-        Resumen de la Orden
+        Summary de la Orden
       </Heading>
       <DiscountCode cart={cart} />
       <Divider />

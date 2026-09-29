@@ -17,11 +17,11 @@ const sortOptions = [
   },
   {
     value: "price_asc",
-    label: "Precio: Menor a Mayor",
+    label: "Price: Menor a Mayor",
   },
   {
     value: "price_desc",
-    label: "Precio: Mayor a Menor",
+    label: "Price: Mayor a Menor",
   },
 ]
 

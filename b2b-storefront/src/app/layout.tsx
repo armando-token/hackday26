@@ -8,20 +8,20 @@ import WhatsAppFloatingLauncher from "@modules/common/components/whatsapp-floati
 export const metadata: Metadata = {
   metadataBase: new URL(company.siteUrl || getBaseURL()),
   title: {
-    default: "Control Nautas Perú | Instrumentación y Automatización Industrial B2B",
+    default: "Control Nautas | Industrial Instrumentation & Automation B2B",
     template: "%s | Control Nautas B2B",
   },
   description:
-    "Distribuidor e integrador en Perú de instrumentación industrial, controladores PLC/HMI, aislamiento térmico, calefacción eléctrica, sensores y monitoreo de procesos.",
+    "Industrial instrumentation distributor and integrator — PLC/HMI controllers, thermal insulation, electric heating, sensors, and process monitoring.",
   keywords: [
     "Control Nautas",
-    "Instrumentación Industrial Perú",
-    "Automatización PLC HMI",
-    "Calefacción Eléctrica Industrial",
-    "Lana de Roca Perú",
+    "Industrial Instrumentation",
+    "PLC HMI Automation",
+    "Industrial Electric Heating",
+    "Lana de Roca United States",
     "Heat Tracing Cables",
     "Sensores de Temperatura",
-    "Novus Perú",
+    "Novus United States",
     "Horner Automation",
     "AKCP Datacenter",
   ],
@@ -37,24 +37,24 @@ export const metadata: Metadata = {
     type: "website",
     locale: "es_PE",
     url: company.siteUrl,
-    title: "Control Nautas Perú | Catálogo y Soluciones de Ingeniería B2B",
+    title: "Control Nautas | B2B Engineering Catalog & Solutions",
     description:
-      "Catálogo técnico B2B de instrumentación, aislamiento térmico, sensores, calefacción eléctrica y automatización industrial.",
+      "B2B technical catalog for instrumentation, thermal insulation, sensors, electric heating, and industrial automation.",
     siteName: "Control Nautas",
     images: [
       {
         url: "/images/logo/control_nautas_logo_fondo_blanco.webp",
         width: 800,
         height: 250,
-        alt: "Control Nautas - Instrumentación y Automatización Industrial",
+        alt: "Control Nautas - Industrial Instrumentation & Automation",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Control Nautas Perú | Instrumentación Industrial B2B",
+    title: "Control Nautas | Industrial Instrumentation B2B",
     description:
-      "Catálogo técnico de instrumentación, sensores, automatización y calefacción eléctrica.",
+      "Technical catalog for instrumentation, sensors, automation, and electric heating.",
     images: ["/images/logo/control_nautas_logo_fondo_blanco.webp"],
   },
 }
@@ -88,19 +88,19 @@ export default function RootLayout(props: { children: React.ReactNode }) {
                   var href = target.getAttribute('href') || '';
                   var text = (target.innerText || '').toLowerCase();
 
-                  // 1. Clic en WhatsApp o Cotizar
+                  // 1. Clic en WhatsApp o Quote
                   if (href.indexOf('wa.me') !== -1 || href.indexOf('whatsapp.com') !== -1) {
                     gtag('event', 'click_whatsapp_cotizar', {
                       event_category: 'ecommerce',
                       event_label: href,
                       value: 1.0,
-                      currency: 'PEN'
+                      currency: 'USD'
                     });
                     gtag('event', 'generate_lead', {
                       event_category: 'whatsapp_b2b',
                       event_label: href,
                       value: 1.0,
-                      currency: 'PEN'
+                      currency: 'USD'
                     });
                     gtag('event', 'conversion', {
                       send_to: 'AW-11191602111'
@@ -111,7 +111,7 @@ export default function RootLayout(props: { children: React.ReactNode }) {
                       url: href
                     });
                   }
-                  // 2. Clic en Teléfono / Llamada
+                  // 2. Clic en Phone / Llamada
                   else if (href.indexOf('tel:') !== -1) {
                     gtag('event', 'contact', {
                       event_category: 'phone_call',
@@ -121,8 +121,8 @@ export default function RootLayout(props: { children: React.ReactNode }) {
                       send_to: 'AW-11191602111'
                     });
                   }
-                  // 3. Clic en botones de Cotizar
-                  else if (text.indexOf('cotizar') !== -1 || text.indexOf('solicitar cotización') !== -1) {
+                  // 3. Clic en botones de Quote
+                  else if (text.indexOf('cotizar') !== -1 || text.indexOf('solicitar quote') !== -1) {
                     gtag('event', 'click_whatsapp_cotizar', {
                       event_category: 'quote_intent'
                     });

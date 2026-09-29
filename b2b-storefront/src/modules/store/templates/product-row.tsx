@@ -15,7 +15,7 @@ export function HvacProductRow({ product }: { product: CnProduct }) {
           <div className="text-[11px] text-[#666] font-bold">{product.brand}</div>
           <h3 className="text-[#0066CC] font-bold text-[14px] group-hover:underline">{product.title}</h3>
           <div className="text-[12px] text-[#666]">
-            Ítem <b>#{product.itemNumber}</b> · Fab. <b>#{product.mfrModel}</b>
+            Item <b>#{product.itemNumber}</b> · Fab. <b>#{product.mfrModel}</b>
           </div>
         </div>
         <div className="text-[#1E7E34] font-bold text-[18px]">

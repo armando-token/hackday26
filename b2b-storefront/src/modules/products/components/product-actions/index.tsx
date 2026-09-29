@@ -59,7 +59,7 @@ export default function ProductActions({
       ;(window as any).dataLayer.push({
         event: "view_item",
         ecommerce: {
-          currency: "PEN",
+          currency: "USD",
           value: selectedPriceValue?.calculated_price_number || 0,
           items: [
             {
@@ -151,7 +151,7 @@ export default function ProductActions({
       ;(window as any).dataLayer.push({
         event: "add_to_cart",
         ecommerce: {
-          currency: "PEN",
+          currency: "USD",
           value: numericPrice * quantity,
           items: [
             {
@@ -203,14 +203,14 @@ export default function ProductActions({
       {/* 2. Web Price Header */}
       <div>
         <span className="text-[#666666] text-[12px] font-bold uppercase tracking-wide flex items-center gap-1">
-          Precio Web
+          Price Web
           <span className="w-3.5 h-3.5 rounded-full bg-white border border-[#999999] text-[#666666] font-bold text-[9px] flex items-center justify-center cursor-help">i</span>
         </span>
         <div className="text-[#1E7E34] text-[28px] font-bold leading-tight mt-1 flex items-baseline gap-1">
           {selectedPriceValue ? (
             <span>{selectedPriceValue.calculated_price}</span>
           ) : (
-            <span className="text-[#666666] text-base">Inicia sesión para ver precio</span>
+            <span className="text-[#666666] text-base">Sign in to see price</span>
           )}
           <span className="text-[12px] text-[#666666] font-normal">/ unidad</span>
         </div>
@@ -220,7 +220,7 @@ export default function ProductActions({
           </span>
         ) : (
           <span className="text-[11px] font-semibold text-[#555555] block mt-1">
-            ⏳ Vía Importación
+            ⏳ Import lead time
           </span>
         )}
       </div>
@@ -231,15 +231,15 @@ export default function ProductActions({
           <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
         </svg>
         <div>
-          <p className="font-bold">Disponible: {selectedVariant?.manage_inventory ? `${selectedVariant.inventory_quantity || 0} unidades` : "En stock"}</p>
-          <p className="text-[11px] text-[#137333]/90 mt-0.5">¡Despacho hoy si pides antes de las 5 PM!</p>
+          <p className="font-bold">Available: {selectedVariant?.manage_inventory ? `${selectedVariant.inventory_quantity || 0} unidades` : "En stock"}</p>
+          <p className="text-[11px] text-[#137333]/90 mt-0.5">Same-day dispatch if ordered before 5 PM!</p>
         </div>
       </div>
 
       {/* 3. Quantity input block & Add to Cart (Same Row - h=40px) */}
       <div className="flex items-center gap-3 mt-2 h-10">
         <div className="relative border border-[#CCCCCC] rounded-none w-[90px] h-[40px] flex items-center justify-between focus-within:border-gray-500 bg-white">
-          <label className="absolute -top-[7px] left-1 bg-white px-1 text-[9px] text-[#666666] font-bold uppercase leading-none">Cant.</label>
+          <label className="absolute -top-[7px] left-1 bg-white px-1 text-[9px] text-[#666666] font-bold uppercase leading-none">Qty</label>
           <button 
             onClick={() => setQuantity(Math.max(1, quantity - 1))}
             className="w-8 h-full flex items-center justify-center text-[#333333] hover:text-[#CC0000] font-bold pb-1 text-lg"
@@ -274,12 +274,12 @@ export default function ProductActions({
           className="flex-1 bg-[#CC0000] hover:bg-[#C8102E] text-white text-[15px] font-bold h-[40px] rounded-none transition-colors uppercase disabled:bg-gray-300 disabled:cursor-not-allowed select-none tracking-wider flex items-center justify-center"
         >
           {isAdding
-            ? "Añadiendo..."
+            ? "Adding..."
             : !selectedVariant
             ? "Seleccionar variante"
             : !inStock || !isValidVariant
             ? "Sin stock"
-            : "Añadir al carrito"}
+            : "Add to cart"}
         </button>
       </div>
 
@@ -299,7 +299,7 @@ export default function ProductActions({
           }`}>
             {deliveryMode === "ship" && <div className="w-2 h-2 rounded-full bg-[#0066CC]"></div>}
           </div>
-          <span className="text-[13px] font-bold text-gray-800">Envío a domicilio</span>
+          <span className="text-[13px] font-bold text-gray-800">Home delivery</span>
         </button>
 
         {/* Pickup Tab */}
@@ -326,7 +326,7 @@ export default function ProductActions({
           {isEditingZip ? (
             <div className="flex gap-2 items-center h-10">
               <div className="relative border border-[#CCCCCC] rounded-none w-[100px] h-[40px] flex items-center justify-center focus-within:border-gray-500">
-                <label className="absolute -top-[7px] left-1 bg-white px-1 text-[9px] text-[#666666] font-bold uppercase leading-none">Cód. Postal</label>
+                <label className="absolute -top-[7px] left-1 bg-white px-1 text-[9px] text-[#666666] font-bold uppercase leading-none">ZIP</label>
                 <input 
                   type="text" 
                   value={tempZip} 
@@ -338,12 +338,12 @@ export default function ProductActions({
                 onClick={() => { setZipCode(tempZip); setIsEditingZip(false); }}
                 className="bg-[#222222] hover:bg-[#333333] text-white text-[13px] font-bold px-4 h-[40px] rounded-none uppercase transition-colors"
               >
-                Guardar
+                Save
               </button>
             </div>
           ) : (
             <div className="flex items-center gap-1 text-[13px]">
-              <span>Enviar a código postal <span className="font-bold text-[#333333]">{zipCode}</span>. </span>
+              <span>Ship to ZIP <span className="font-bold text-[#333333]">{zipCode}</span>. </span>
               <button 
                 onClick={() => setIsEditingZip(true)}
                 className="text-[#0066CC] hover:underline font-bold"
@@ -353,15 +353,15 @@ export default function ProductActions({
             </div>
           )}
           <div className="text-[#666666] text-[12px] flex flex-col gap-1 font-normal">
-            <div>Peso de envío: <span className="font-bold text-gray-800">{product.weight ? `${product.weight} kg` : "0.82 kg"}</span></div>
-            <LocalizedClientLink href="/entregas-y-devoluciones" className="text-[#0066CC] hover:underline mt-1 block">Términos de disponibilidad de envío</LocalizedClientLink>
+            <div>Shipping weight: <span className="font-bold text-gray-800">{product.weight ? `${product.weight} kg` : "0.82 kg"}</span></div>
+            <LocalizedClientLink href="/entregas-y-devoluciones" className="text-[#0066CC] hover:underline mt-1 block">Shipping availability terms</LocalizedClientLink>
           </div>
         </div>
       ) : (
         <div className="text-[13px] text-gray-700 bg-white p-3 border border-[#CCCCCC] rounded-none">
-          <div className="font-bold text-gray-800">Recojo en Sede Central Jesús María</div>
-          <p className="text-gray-500 text-[12px] mt-1">Previa confirmación de pedido y stock.</p>
-          <LocalizedClientLink href="/contacto" className="text-[#0066CC] hover:underline font-bold text-[12px] mt-2 block">Ver dirección de sede central (Lima)</LocalizedClientLink>
+          <div className="font-bold text-gray-800">Pickup by arrangement</div>
+          <p className="text-gray-500 text-[12px] mt-1">Subject to order and stock confirmation.</p>
+          <LocalizedClientLink href="/contacto" className="text-[#0066CC] hover:underline font-bold text-[12px] mt-2 block">View warehouse address</LocalizedClientLink>
         </div>
       )}
 
@@ -378,7 +378,7 @@ export default function ProductActions({
         >
           {product.handle && list.includes(product.handle)
             ? "✓ En mi Lista de Deseos"
-            : "Añadir a mi Lista"}
+            : "Add to my list"}
         </button>
       </div>
 

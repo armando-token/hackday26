@@ -52,7 +52,7 @@ const Addresses = ({
             level="h2"
             className="text-[20px] font-bold text-[#131921] flex items-center gap-2"
           >
-            Datos de Facturación y Entrega
+            Billing & Shipping
             {!isOpen && cart?.shipping_address && (
               <span className="text-[#1E7E34] text-[18px]">✓</span>
             )}
@@ -64,7 +64,7 @@ const Addresses = ({
             className="text-[#0066CC] hover:underline text-[13px] font-bold"
             data-testid="edit-address-button"
           >
-            Editar datos
+            Edit datos
           </button>
         )}
       </div>
@@ -82,7 +82,7 @@ const Addresses = ({
             {!sameAsBilling && (
               <div className="mt-6 pt-6 border-t border-[#E2E8F0]">
                 <h3 className="text-[16px] font-bold text-[#131921] mb-4">
-                  Dirección y Razón Social de Facturación
+                  Billing address & company name
                 </h3>
                 <BillingAddress cart={cart} />
               </div>
@@ -93,7 +93,7 @@ const Addresses = ({
                 className="w-full sm:w-auto bg-[#C8102E] hover:bg-[#9B0C24] text-white font-bold py-3.5 px-8 rounded text-[14px] uppercase tracking-wider transition-colors shadow-sm"
                 data-testid="submit-address-button"
               >
-                Continuar a Opciones de Entrega ›
+                Continue a Opciones de Entrega ›
               </SubmitButton>
               <ErrorMessage error={message} data-testid="address-error-message" />
             </div>
@@ -117,7 +117,7 @@ const Addresses = ({
 
               <div>
                 <span className="font-bold text-[#131921] block mb-1">
-                  📞 Contacto & Notificaciones:
+                  📞 Contact & notifications:
                 </span>
                 <p>{cart.shipping_address.phone || "No especificado"}</p>
                 <p className="text-[#0066CC]">{cart.email}</p>
@@ -127,7 +127,7 @@ const Addresses = ({
                 <span className="font-bold text-[#131921] block mb-1">
                   📄 Comprobante:
                 </span>
-                <p>{sameAsBilling ? "Misma dirección y razón social" : "Facturación separada"}</p>
+                <p>{sameAsBilling ? "Same address and company" : "Separate billing"}</p>
               </div>
             </div>
           ) : (

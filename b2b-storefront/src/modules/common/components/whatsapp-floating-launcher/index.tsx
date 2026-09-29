@@ -6,16 +6,16 @@ import { company } from "@lib/config/company"
 
 // Mensajes claros y directos con alta legibilidad
 const B2B_MESSAGES_POOL = [
-  "¿Cotización con RUC? 📄",
-  "¡Asesoría técnica inmediata! ⚙️",
+  "Need a formal quote? 📄",
+  "Instant technical help! ⚙️",
   "Stock para entrega hoy 🚚",
-  "¿Dudas con tu proyecto? 💡",
-  "Envíos a todo el Perú 📦",
+  "Questions about your project? 💡",
+  "Shipping across the US 📦",
   "Descuentos por volumen 💼",
-  "Factura y Guía SUNAT 📑",
-  "¿Ficha técnica de equipos? 📋",
+  "Invoice & shipping docs 📑",
+  "Need a datasheet? 📋",
   "Chatea con un ingeniero 💬",
-  "Precios de distribuidor 🏷️",
+  "Prices de distribuidor 🏷️",
 ]
 
 const WA_ASSIGNED_KEY = "cn_wa_assigned"
@@ -34,32 +34,32 @@ export default function WhatsAppFloatingLauncher() {
     if (pathname.includes("/products/")) {
       const slug = pathname.split("/products/")[1]?.split("?")[0] || ""
       const cleanSlug = slug.replace(/-/g, " ")
-      return `Hola Control Nautas! Me interesa cotizar el producto: ${cleanSlug}. ¿Tienen stock y entrega inmediata?`
+      return `Hello Control Nautas! I want to quote: ${cleanSlug}. Do you have stock and fast delivery?`
     }
 
     if (pathname.includes("/cart")) {
-      return "Hola Control Nautas! Tengo productos en mi carrito y deseo coordinar la cotización formal y despacho."
+      return "Hola Control Nautas! Tengo productos en mi carrito y deseo coordinar la quote formal y fulfillment."
     }
 
     if (pathname.includes("/checkout")) {
-      return "Hola Control Nautas! Estoy en el proceso de checkout y requiero asistencia para validar mi pedido / Factura Electrónica."
+      return "Hello Control Nautas! I am at checkout and need help validating my order / invoice."
     }
 
     if (pathname.includes("/categories/") || pathname.includes("/store")) {
-      const cat = pathname.split("/store/")[1]?.split("?")[0] || pathname.split("/categories/")[1]?.split("?")[0] || "catálogo"
+      const cat = pathname.split("/store/")[1]?.split("?")[0] || pathname.split("/categories/")[1]?.split("?")[0] || "catalog"
       const cleanCat = cat.replace(/-/g, " ")
-      return `Hola Control Nautas! Estoy revisando la sección de ${cleanCat} y requiero asesoría técnica para un proyecto.`
+      return `Hello Control Nautas! I am browsing ${cleanCat} and need technical advice for a project.`
     }
 
     if (pathname.includes("/casos-de-exito")) {
-      return "Hola Control Nautas! Estuve revisando sus casos de éxito y deseo consultar una solución técnica similar para mi empresa."
+      return "Hello Control Nautas! I reviewed your case studies and want a similar technical solution."
     }
 
     if (pathname.includes("/contacto")) {
-      return "Hola Control Nautas! Deseo comunicarme con el área de ventas y proyectos."
+      return "Hello Control Nautas! Please connect me with sales and projects."
     }
 
-    return "Hola Control Nautas! Deseo información y cotización de equipos de instrumentación y automatización industrial."
+    return "Hello Control Nautas! I need information and a quote for industrial instrumentation and automation."
   }, [pathname])
 
   // Obtener número con soporte para rotación y stickiness
@@ -86,7 +86,7 @@ export default function WhatsAppFloatingLauncher() {
         event: "whatsapp_click",
         whatsapp_source: "floating_launcher",
         page_path: pathname,
-        currency: "PEN",
+        currency: "USD",
         value: 1,
       })
     }
@@ -195,7 +195,7 @@ export default function WhatsAppFloatingLauncher() {
         onClick={() => handleOpenWhatsApp()}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
-        aria-label="Consultar por WhatsApp a Control Nautas"
+        aria-label="Ask via WhatsApp a Control Nautas"
         className="cn-wa-launcher relative pointer-events-auto w-[64px] h-[64px] sm:w-[70px] sm:h-[70px] rounded-full bg-[#25D366] hover:bg-[#1EBE5D] text-white flex items-center justify-center shadow-[0_10px_28px_rgba(37,211,102,0.4)] hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer focus:outline-none focus:ring-4 focus:ring-[#25D366]/40"
       >
         {/* Ícono de WhatsApp SVG Oficial */}

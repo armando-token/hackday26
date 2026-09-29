@@ -55,7 +55,7 @@ export async function retrieveCart(cartId?: string, fields?: string) {
     })
 }
 
-export async function getOrSetCart(countryCode: string = "pe") {
+export async function getOrSetCart(countryCode: string = "us") {
   const region = await getRegion(countryCode)
 
   if (!region) {
@@ -120,7 +120,7 @@ export async function updateCart(data: HttpTypes.StoreUpdateCart) {
 export async function addToCart({
   variantId,
   quantity,
-  countryCode = "pe",
+  countryCode = "us",
 }: {
   variantId: string
   quantity: number
@@ -166,7 +166,7 @@ export async function addToCart({
 
 export async function syncCartFromClient(
   items: { variantId: string; quantity: number }[],
-  countryCode: string = "pe"
+  countryCode: string = "us"
 ): Promise<HttpTypes.StoreCart | null> {
   if (!items?.length) return null
 
@@ -451,7 +451,7 @@ export async function placeOrder(cartId?: string) {
   if (cartRes?.type === "order") {
     const order = cartRes.order
     const countryCode =
-      order.shipping_address?.country_code?.toLowerCase() || "pe"
+      order.shipping_address?.country_code?.toLowerCase() || "us"
 
     // Dispatch transactional order email asynchronously
     try {
@@ -464,7 +464,7 @@ export async function placeOrder(cartId?: string) {
         total: order.total || 0,
         currency: order.currency_code || "pen",
         items: (order.items || []).map((item: any) => ({
-          title: item.title || item.product_title || "Producto",
+          title: item.title || item.product_title || "Product",
           quantity: item.quantity,
           price: item.unit_price || 0,
         })),

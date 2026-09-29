@@ -102,7 +102,7 @@ const MobileActions: React.FC<MobileActionsProps> = ({
               ) : (
                 <div className="flex flex-col items-end">
                   <span className="text-[11px] font-semibold text-[#555555] block mt-0.5">
-                    ⏳ Vía Importación
+                    ⏳ Import lead time
                   </span>
                 </div>
               )}
@@ -136,7 +136,7 @@ const MobileActions: React.FC<MobileActionsProps> = ({
                   ? "Seleccionar variante"
                   : !inStock
                   ? "Sin stock"
-                  : "Añadir al carrito"}
+                  : "Add to cart"}
               </Button>
             </div>
           </div>

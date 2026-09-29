@@ -84,7 +84,7 @@ function buildProductCountIndex(
 }
 
 export const getCatalogCategoryTree = cache(
-  async (countryCode = "pe"): Promise<CnCategoryNode> => {
+  async (countryCode = "us"): Promise<CnCategoryNode> => {
     const [roots, products] = await Promise.all([
       fetchRootCategories(),
       listAllCatalogProducts(countryCode),
@@ -97,9 +97,9 @@ export const getCatalogCategoryTree = cache(
 
     return {
       slug: "catalogo",
-      name: "Catálogo",
+      name: "Catalog",
       description:
-        "Calefacción eléctrica, trazado térmico, control e instrumentación industrial, monitoreo, PLC y aislamiento.",
+        "Electric heating, heat tracing, industrial control and instrumentation, monitoring, PLC, and insulation.",
       productCount: products.length,
       children,
     }

@@ -41,7 +41,7 @@ export default function Logo({
     <LocalizedClientLink
       href={linkHref}
       className={`inline-flex items-center px-1 py-0.5 rounded-sm flex-shrink-0 cursor-pointer transition-all ${hoverOutline} ${className}`}
-      aria-label="Control Nautas - Inicio"
+      aria-label="Control Nautas - Home"
     >
       <img
         src={src}

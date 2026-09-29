@@ -2,7 +2,7 @@
  * Errores tipados del catálogo (plan maestro, sección 11).
  *
  * ContractError: la respuesta de Medusa no cumple el contrato; no se debe
- * degradar a datos vacíos ni inventar valores por defecto.
+ * degradar a datos emptys ni inventar valores por defecto.
  * NetworkError: fallo de red o del servidor; puede usarse caché previa si existe.
  */
 

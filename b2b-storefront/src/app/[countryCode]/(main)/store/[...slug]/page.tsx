@@ -89,14 +89,14 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
   const category = findCategoryInTree(slug, tree)
   if (!category) {
     return {
-      title: "Categoría no encontrada | Control Nautas",
+      title: "Category not found | Control Nautas",
     }
   }
 
-  const title = `${category.name} | Catálogo Industrial Control Nautas`
+  const title = `${category.name} | Control Nautas Industrial Catalog`
   const description =
     category.description ||
-    `Consulte especificaciones técnicas, modelos, disponibilidad y cotización de ${category.name} en Control Nautas Perú.`
+    `View technical specs, models, availability, and quotes for ${category.name} at Control Nautas.`
 
   const imageUrl = category.imageUrl || familyImage(category.slug)
   const canonicalUrl = `https://controlnautas.com/${countryCode}/store/${slug.join("/")}`

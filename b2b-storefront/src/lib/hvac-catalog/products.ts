@@ -781,7 +781,7 @@ export const HVAC_PRODUCTS: HvacProduct[] = [
   },
   {
     handle: "contactor-30a-2pole-24v",
-    title: "Definite Purpose Contactor, 30A, 2-Pole, 24V Coil",
+    title: "Definite Purpose Contactr, 30A, 2-Pole, 24V Coil",
     brand: "SQUARE D",
     itemNumber: "2C301",
     mfrModel: "8911DPSA32V02",

@@ -297,8 +297,8 @@ export function LeafCategoryListing({
 
   const sortLabelMap: Record<string, string> = {
     default: "Destacados",
-    price_asc: "Precio ↑",
-    price_desc: "Precio ↓",
+    price_asc: "Price ↑",
+    price_desc: "Price ↓",
     name: "A – Z",
   }
 
@@ -381,13 +381,13 @@ export function LeafCategoryListing({
 
         <div className="py-3 px-3 border-b border-[#CCCCCC]">
           <label className="block text-[12px] font-bold text-[#666] mb-1">
-            Buscar en resultados
+            Search within results
           </label>
           <input
             type="search"
             value={searchWithin}
             onChange={(e) => setSearchWithin(e.target.value)}
-            placeholder="Título, Ítem # o fab."
+            placeholder="Título, Item # o fab."
             className="w-full border border-[#CCC] p-1.5 text-[13px]"
           />
         </div>
@@ -420,8 +420,8 @@ export function LeafCategoryListing({
           >
             <option value="default">Destacados</option>
             <option value="name">Nombre A–Z</option>
-            <option value="price_asc">Precio: menor a mayor</option>
-            <option value="price_desc">Precio: mayor a menor</option>
+            <option value="price_asc">Price: low to high</option>
+            <option value="price_desc">Price: high to low</option>
           </select>
         </div>
 
@@ -497,7 +497,7 @@ export function LeafCategoryListing({
                     >
                       {expandedOpts
                         ? "Ver menos"
-                        : `Ver más (${facet.options.length - FACET_OPTIONS_PREVIEW})`}
+                        : `Show more (${facet.options.length - FACET_OPTIONS_PREVIEW})`}
                     </button>
                   )}
                 </div>
@@ -672,7 +672,7 @@ export function LeafCategoryListing({
         )}
 
         <p className="text-[11px] text-[#666] mt-8 border-t border-[#EEE] pt-4">
-          Disponibilidad y precios del catálogo Control Nautas. Haga clic en una fila para ver detalles sin salir de la página.
+          Availability y precios del catálogo Control Nautas. Haga clic en una fila para ver detalles sin salir de la página.
         </p>
       </div>
     </div>
@@ -739,7 +739,7 @@ export function LeafCategoryListing({
                   {col.title}
                 </h2>
                 <span className="text-[11.5px] text-[#565959] font-medium">
-                  {col.products.length} {col.products.length === 1 ? "ítem" : "ítems"}
+                  {col.products.length} {col.products.length === 1 ? "item" : "items"}
                 </span>
               </div>
             )}
@@ -851,7 +851,7 @@ function ProductCollection({
         </div>
         <p className="text-[13px] text-[#444] leading-snug max-w-3xl pt-1">
           {collection.description ||
-            `Consulte modelos y especificaciones de ${collection.title}. Seleccione una fila para ver imágenes y opciones de pedido.`}
+            `Consulte modelos y especificaciones de ${collection.title}. Select una fila para ver imágenes y opciones de pedido.`}
         </p>
       </div>
 
@@ -1003,7 +1003,7 @@ function ModelTable({
       <div className="bg-[#EEF5FC] border-b border-[#D0DFEF] px-3 py-2 flex items-center justify-between text-[12px] text-[#0066CC]">
         <div className="flex items-center gap-2 font-semibold">
           <span className="text-[14px]">💡</span>
-          <span><b>Vista Rápida:</b> Haga clic en cualquier fila para desplegar su ficha técnica, fotos en alta resolución y cotización sin salir de la página.</span>
+          <span><b>Quick View:</b> Click any row to expand the datasheet, high-res photos, and quote without leaving the page.</span>
         </div>
         <span className="text-[11px] text-[#666] font-normal hidden md:inline">
           [ 👆 Clic en fila = Abrir / Cerrar ]
@@ -1044,7 +1044,7 @@ function ModelTable({
                   className="font-bold hover:underline cursor-pointer"
                   onClick={() => onHeaderClick("price")}
                 >
-                  Precio
+                  Price
                   {sortMark("price")}
                 </button>
               </th>
@@ -1076,7 +1076,7 @@ function ModelTable({
                             ? "bg-[#CC0000] text-white rotate-0"
                             : "bg-[#EAEAEA] text-[#555] group-hover:bg-[#0066CC] group-hover:text-white"
                         }`}
-                        title={open ? "Cerrar detalles" : "Clic para ver detalles técnicos"}
+                        title={open ? "Close details" : "Click for technical details"}
                       >
                         {open ? "▼" : "▶"}
                       </span>
@@ -1111,7 +1111,7 @@ function ModelTable({
                       </span>
                     ) : p.display.availability === "backorder" ? (
                       <span className="text-[10px] font-semibold text-[#D97706] block mt-0.5">
-                        ⏳ Disponible bajo pedido
+                        ⏳ Available on request
                       </span>
                     ) : p.display.availability === "made_to_order" ? (
                       <span className="text-[10px] font-semibold text-[#475569] block mt-0.5">
@@ -1119,7 +1119,7 @@ function ModelTable({
                       </span>
                     ) : (
                       <span className="text-[10px] font-semibold text-[#555555] block mt-0.5">
-                        ⏳ Vía Importación
+                        ⏳ Import lead time
                       </span>
                     )}
                   </td>
@@ -1216,13 +1216,13 @@ function ExpandedRowPanel({
       : `/products/${product.handle}`
 
   const mailtoHref = `mailto:ventas@controlnautas.com?subject=${encodeURIComponent(
-    "Cotización " + (product.pim.itemNumber ?? "")
+    "Quote " + (product.pim.itemNumber ?? "")
   )}&body=${encodeURIComponent(
     [
-      "Solicito cotización:",
+      "Solicito quote:",
       product.title,
-      `Ítem #${product.pim.itemNumber ?? ""}`,
-      `Cantidad: ${qty}`,
+      `Item #${product.pim.itemNumber ?? ""}`,
+      `Quantity: ${qty}`,
       `URL: ${productUrl}`,
     ].join("\n")
   )}`
@@ -1233,7 +1233,7 @@ function ExpandedRowPanel({
         <div className="bg-[#FFF3CD] border-b border-[#FFEAA7] px-4 py-2 text-[12px] font-bold text-[#856404] flex items-center justify-between animate-pulse">
           <span className="flex items-center gap-2">
             <span className="text-[15px]">👆</span>
-            <span><b>Demostración de Vista Rápida:</b> Puede hacer clic en cualquier fila de la tabla para desplegar u ocultar su ficha técnica y cotización.</span>
+            <span><b>Demostración de Quick View:</b> Click any table row to expand or hide the datasheet and quote.</span>
           </span>
           <button
             type="button"
@@ -1286,7 +1286,7 @@ function ExpandedRowPanel({
         </p>
         <div className="text-[12px] text-[#666] flex flex-wrap gap-x-4 mb-3">
           <span>
-            Ítem <b className="text-[#333]">#{product.pim.itemNumber ?? ""}</b>
+            Item <b className="text-[#333]">#{product.pim.itemNumber ?? ""}</b>
           </span>
           <span>
             Modelo fab. <b className="text-[#333]">#{product.pim.mfrModel ?? ""}</b>
@@ -1331,14 +1331,14 @@ function ExpandedRowPanel({
           {product.display.availability === "in_stock"
             ? "● En stock"
             : product.display.availability === "backorder"
-            ? "● Disponible bajo pedido"
+            ? "● Available on request"
             : product.display.availability === "made_to_order"
             ? "● Suministro a pedido"
-            : "● Consultar disponibilidad"}
+            : "● Consultar availability"}
         </div>
         {!product.display.requiresQuote && (
           <div className="flex items-center gap-2">
-            <label className="text-[12px] font-bold">Cant.</label>
+            <label className="text-[12px] font-bold">Qty</label>
             <input
               type="number"
               min={1}
@@ -1355,7 +1355,7 @@ function ExpandedRowPanel({
             href={mailtoHref}
             className="bg-[#CC0000] text-white text-center font-bold text-[12px] px-3 py-2 uppercase"
           >
-            Cotizar
+            Quote
           </a>
         ) : (
           <button
@@ -1364,7 +1364,7 @@ function ExpandedRowPanel({
             disabled={product.display.availability !== "in_stock"}
             className="bg-[#CC0000] disabled:bg-[#999] text-white font-bold text-[12px] px-3 py-2 uppercase"
           >
-            {added ? "Añadido ✓" : "Añadir al carrito"}
+            {added ? "Added ✓" : "Add to cart"}
           </button>
         )}
         <button
@@ -1372,7 +1372,7 @@ function ExpandedRowPanel({
           onClick={() => toggleList(product.handle)}
           className="border border-[#333] text-[#333] font-bold text-[12px] px-3 py-1.5 bg-white hover:bg-gray-50 cursor-pointer"
         >
-          {onList ? "✓ En lista" : "Añadir a lista"}
+          {onList ? "✓ On list" : "Add to list"}
         </button>
         <button
           type="button"

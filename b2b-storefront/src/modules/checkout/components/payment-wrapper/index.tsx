@@ -35,7 +35,7 @@ const PaymentWrapper: React.FC<PaymentWrapperProps> = ({ cart, children }) => {
       ;(window as any).dataLayer.push({
         event: "begin_checkout",
         ecommerce: {
-          currency: cart.currency_code?.toUpperCase() || "PEN",
+          currency: cart.currency_code?.toUpperCase() || "USD",
           value: cart.total || cart.subtotal || 0,
           items: cart.items.map((item) => ({
             item_id: (item.variant?.metadata?.wc_id

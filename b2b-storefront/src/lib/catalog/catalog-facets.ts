@@ -73,7 +73,7 @@ export function buildCatalogFacets(
   if (priced.length > 0 && quote.length > 0) {
     facets.push({
       key: "priceMode",
-      label: "Precio",
+      label: "Price",
       options: [
         { value: "fixed", count: priced.length },
         { value: "quote", count: quote.length },
@@ -88,7 +88,7 @@ export function buildCatalogFacets(
   if (inStock > 0 && out > 0) {
     facets.push({
       key: "inStock",
-      label: "Disponibilidad",
+      label: "Availability",
       options: [
         { value: "in", count: inStock },
         { value: "out", count: out },
@@ -113,7 +113,7 @@ export function buildCatalogFacets(
   const allowAlways = new Set([
     "Voltaje",
     "Potencia",
-    "Garantía",
+    "Warranty",
     "Alimentación",
     "Tensión Nominal",
     "Tipo de Dispositivo",

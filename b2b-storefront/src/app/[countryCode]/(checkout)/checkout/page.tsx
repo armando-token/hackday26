@@ -11,8 +11,8 @@ import { company } from "@lib/config/company"
 export const dynamic = "force-dynamic"
 
 export const metadata: Metadata = {
-  title: "Procesar Pedido B2B | Control Nautas Perú",
-  description: "Finalice su pedido de equipos y suministros industriales con entrega a nivel nacional y facturación electrónica.",
+  title: "Procesar Order B2B | Control Nautas United States",
+  description: "Complete your industrial equipment order with nationwide delivery and invoicing.",
   robots: {
     index: false,
     follow: false,
@@ -28,15 +28,15 @@ export default async function Checkout() {
         <div className="w-20 h-20 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl">
           🛒
         </div>
-        <h1 className="text-[26px] font-black text-[#131921] mb-2 tracking-tight">Su carrito está vacío</h1>
+        <h1 className="text-[26px] font-black text-[#131921] mb-2 tracking-tight">Your cart is empty</h1>
         <p className="text-[14px] text-[#666] mb-8 max-w-md mx-auto">
-          Para procesar una compra formal o emitir una cotización técnica, agregue productos desde nuestro catálogo de instrumentación y suministros industriales.
+          To place an order or request a technical quote, add products from our instrumentation and industrial supplies catalog.
         </p>
         <LocalizedClientLink
           href="/store"
           className="inline-block bg-[#C8102E] hover:bg-[#9B0C24] text-white font-bold text-[14px] px-8 py-3.5 rounded shadow-sm transition-colors uppercase tracking-wider"
         >
-          Explorar Catálogo de Productos
+          Explorar Product Catalog
         </LocalizedClientLink>
       </div>
     )
@@ -52,17 +52,17 @@ export default async function Checkout() {
         <div className="mb-8 bg-white p-6 rounded-lg border border-[#E2E8F0] shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
             <div className="flex items-center gap-2 text-[12px] text-[#666] mb-1">
-              <LocalizedClientLink href="/store" className="hover:text-[#0066CC]">Catálogo</LocalizedClientLink>
+              <LocalizedClientLink href="/store" className="hover:text-[#0066CC]">Catalog</LocalizedClientLink>
               <span>›</span>
-              <LocalizedClientLink href="/cart" className="hover:text-[#0066CC]">Carrito</LocalizedClientLink>
+              <LocalizedClientLink href="/cart" className="hover:text-[#0066CC]">Cart</LocalizedClientLink>
               <span>›</span>
-              <span className="font-bold text-[#131921]">Finalizar Pedido</span>
+              <span className="font-bold text-[#131921]">Finalizar Order</span>
             </div>
             <h1 className="text-[26px] font-black text-[#131921] tracking-tight">
               Finalizar Compra / Generar Orden Formal
             </h1>
             <p className="text-[13px] text-[#555] mt-0.5">
-              Complete los datos de entrega y confirme la orden para emisión de Factura Electrónica y despacho.
+              Complete delivery details and confirm the order for invoicing and fulfillment.
             </p>
           </div>
 
@@ -71,13 +71,13 @@ export default async function Checkout() {
               🛡️ Compra Segura B2B
             </span>
             <span className="text-gray-300">|</span>
-            <span>RUC: <strong className="text-[#131921]">{company.taxId}</strong></span>
+            <span>Tax ID: <strong className="text-[#131921]">{company.taxId}</strong></span>
             <span className="text-gray-300">|</span>
-            <span className="font-semibold text-[#0066CC]">Facturación SUNAT</span>
+            <span className="font-semibold text-[#0066CC]">Billing SUNAT</span>
           </div>
         </div>
         
-        {/* Grid de 2 Columnas: Formulario de Pasos y Resumen */}
+        {/* Grid de 2 Columnas: Formulario de Pasos y Summary */}
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_420px] gap-8 items-start">
           <div className="space-y-6">
             <div className="hide-on-print">
@@ -90,13 +90,13 @@ export default async function Checkout() {
           <div className="space-y-6">
             <CheckoutSummary cart={cart} />
             
-            {/* Botón de Exportar Cotización Formal B2B */}
+            {/* Botón de Exportar Quote Formal B2B */}
             <div className="border border-[#E2E8F0] p-5 rounded-lg bg-white shadow-sm text-center hide-on-print">
               <h3 className="font-bold text-[14px] text-[#131921] mb-1">
-                ¿Requiere Aprobación Interna de Compras?
+                Need internal purchasing approval?
               </h3>
               <p className="text-[12px] text-[#666] mb-3">
-                Descargue un resumen de cotización técnica formal con RUC y desglose de precios para su área de logística.
+                Download a formal technical quote summary with tax ID and price breakdown for your purchasing team.
               </p>
               <ExportQuoteButton />
             </div>

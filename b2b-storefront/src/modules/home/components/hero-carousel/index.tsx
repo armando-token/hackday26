@@ -3,20 +3,20 @@ import LocalizedClientLink from "@modules/common/components/localized-client-lin
 const tiles = [
   {
     image: "/images/promo_valves.webp",
-    title: "Calefacción y control de proceso",
-    subtitle: "Cartuchos, bandas, PID y sensores en un solo catálogo.",
+    title: "Heating & process control",
+    subtitle: "Cartridges, band heaters, PIDs, and sensors in one catalog.",
     ctaHref: "/store/calefaccion-electrica",
   },
   {
     image: "/images/promo_support.webp",
-    title: "Soporte técnico de producto",
-    subtitle: "Respuestas a preguntas frecuentes de selección e instalación.",
+    title: "Product technical support",
+    subtitle: "Answers to common selection and installation questions.",
     ctaHref: "/store",
   },
   {
     image: "/images/promo_fluke.webp",
-    title: "El tiempo de inactividad no es opción",
-    subtitle: "Instrumentación y monitoreo para mantener su planta en marcha.",
+    title: "Downtime is not an option",
+    subtitle: "Instrumentation and monitoring to keep your plant running.",
     ctaHref: "/store/control-e-indicacion",
   },
 ]

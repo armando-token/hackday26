@@ -24,10 +24,10 @@ export default async function Nav() {
     // Safe fallback if Medusa backend (port 9000) is offline/timing out
   }
 
-  const tree = await getCatalogCategoryTree("pe").catch(() => null)
+  const tree = await getCatalogCategoryTree("us").catch(() => null)
   const l1Families = tree ? getL1Families(tree) : []
   const categories = l1Families
-    .sort((a, b) => a.name.localeCompare(b.name, "es"))
+    .sort((a, b) => a.name.localeCompare(b.name, "en"))
     .map((c) => ({
       name: c.name,
       href: `/store/${c.slug}`,
@@ -57,8 +57,8 @@ export default async function Nav() {
 
           {/* 4. Language Selector (ES / EN) */}
           <div className="flex items-center gap-1 px-1.5 py-2 hover:outline hover:outline-1 hover:outline-white rounded-sm cursor-pointer flex-shrink-0 select-none">
-            <span className="text-[13px]">🇵🇪</span>
-            <span className="text-[13px] font-bold text-white">ES</span>
+            <span className="text-[13px]">🇺🇸</span>
+            <span className="text-[13px] font-bold text-white">EN</span>
             <span className="text-[9px] text-[#A7ACB2]">▼</span>
           </div>
 
@@ -67,9 +67,9 @@ export default async function Nav() {
             href="/account"
             className="flex flex-col text-left leading-tight px-1.5 py-1 hover:outline hover:outline-1 hover:outline-white rounded-sm flex-shrink-0 select-none"
           >
-            <span className="text-[11px] text-[#CCCCCC] font-normal">Hola, identifícate</span>
+            <span className="text-[11px] text-[#CCCCCC] font-normal">Hello, sign in</span>
             <span className="text-[13px] font-bold text-white flex items-center gap-0.5 whitespace-nowrap">
-              Cuenta y Listas <span className="text-[9px] text-[#A7ACB2]">▼</span>
+              Account & Lists <span className="text-[9px] text-[#A7ACB2]">▼</span>
             </span>
           </LocalizedClientLink>
 
@@ -78,8 +78,8 @@ export default async function Nav() {
             href="/account/orders"
             className="flex flex-col text-left leading-tight px-1.5 py-1 hover:outline hover:outline-1 hover:outline-white rounded-sm flex-shrink-0 select-none"
           >
-            <span className="text-[11px] text-[#CCCCCC] font-normal">Devoluciones</span>
-            <span className="text-[13px] font-bold text-white whitespace-nowrap">y Pedidos</span>
+            <span className="text-[11px] text-[#CCCCCC] font-normal">Returns</span>
+            <span className="text-[13px] font-bold text-white whitespace-nowrap">& Orders</span>
           </LocalizedClientLink>
 
           {/* 7. Cart */}
@@ -112,7 +112,7 @@ export default async function Nav() {
           <a
             href={`tel:${company.phoneE164}`}
             className="hidden xl:flex items-center gap-1.5 font-bold text-[#FF9900] hover:underline cursor-pointer flex-shrink-0 pl-2 group select-none"
-            title="Llamar a ventas y soporte telefónico"
+            title="Call sales and phone support"
           >
             <span className="inline-flex items-center justify-center animate-phone-vibrate text-[#FF9900]">
               <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">

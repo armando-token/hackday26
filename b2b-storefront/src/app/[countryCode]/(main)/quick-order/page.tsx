@@ -187,10 +187,10 @@ export default function QuickOrderPage() {
     <div className="max-w-[1240px] mx-auto py-10 px-4 sm:px-6 font-[Arial,Helvetica,sans-serif] select-none text-[#333333]">
       <div className="border-b border-[#CCCCCC] pb-4 mb-8">
         <h1 className="text-2xl sm:text-3xl font-bold text-[#111111] tracking-tight">
-          Entrada de Pedido Rápido B2B
+          Entrada de Order Rápido B2B
         </h1>
         <p className="text-[14px] text-[#666666] mt-2 max-w-3xl leading-relaxed">
-          Herramienta para órdenes por volumen o compras corporativas recurrentes. Ingrese Códigos de Ítem, Números de Parte del Fabricante (MFR) o SKUs de su sistema ERP.
+          Herramienta para órdenes por volumen o compras corporativas recurrentes. Ingrese Códigos de Item, Números de Parte del Fabricante (MFR) o SKUs de su sistema ERP.
         </p>
       </div>
 
@@ -198,7 +198,7 @@ export default function QuickOrderPage() {
         <div className="lg:col-span-7 flex flex-col gap-4">
           <div className="flex items-center justify-between">
             <label className="text-[13px] font-bold text-[#333333] uppercase tracking-wide">
-              SKU y Cantidad (uno por línea)
+              SKU and Quantity (one per line)
             </label>
             <button
               type="button"
@@ -228,7 +228,7 @@ export default function QuickOrderPage() {
               disabled={parsedLines.length === 0}
               className="bg-[#C8102E] hover:bg-[#9B0C24] disabled:bg-gray-300 disabled:cursor-not-allowed text-white font-bold py-3.5 px-6 rounded-none transition-colors uppercase tracking-wider text-[13px]"
             >
-              Verificar Disponibilidad y Agregar a la Orden
+              Check availability and add to order
             </button>
 
             {inputText && (
@@ -250,13 +250,13 @@ export default function QuickOrderPage() {
             <div className="bg-[#E6F4EA] border border-[#137333] text-[#137333] p-4 text-[13px] flex items-center justify-between mt-2">
               <div className="flex items-center gap-2 font-bold">
                 <span>✓</span>
-                <span>¡Productos agregados correctamente al carrito de compras!</span>
+                <span>Products successfully added to cart!</span>
               </div>
               <LocalizedClientLink
                 href="/cart"
                 className="bg-[#137333] hover:bg-[#0e5c28] text-white px-4 py-1.5 font-bold uppercase text-[12px] transition-colors"
               >
-                Ver Carrito ›
+                View Cart ›
               </LocalizedClientLink>
             </div>
           )}
@@ -270,13 +270,13 @@ export default function QuickOrderPage() {
             <ul className="list-disc pl-5 space-y-2.5 text-[13px] text-[#555555]">
               <li>Copie y pegue directamente columnas desde Microsoft Excel o su sistema SAP / ERP.</li>
               <li>Formato recomendado: <code>CÓDIGO, CANTIDAD</code> (separados por coma, tabulación o espacio).</li>
-              <li>Los ítems en stock se agregan directamente al carro de compra con despacho nacional.</li>
-              <li>Los ítems de cotización o fabricación a medida se marcan para RFQ formal.</li>
+              <li>In-stock items are added directly to the cart for domestic shipping.</li>
+              <li>Quote or custom-build items are flagged for formal RFQ.</li>
             </ul>
           </div>
 
           <div className="mt-6 pt-4 border-t border-[#E5E5E5] text-[12px] text-[#666666]">
-            ¿Necesita cotizar más de 50 líneas o listas de materiales completas? Escríbanos a{" "}
+            Need to quote 50+ lines or full BOMs? Email{" "}
             <a href="mailto:ventas@controlnautas.com" className="text-[#0066CC] font-bold underline">
               ventas@controlnautas.com
             </a>{" "}
@@ -293,7 +293,7 @@ export default function QuickOrderPage() {
             </h3>
             <div className="flex items-center gap-4 text-[12px] font-semibold">
               <span className="text-[#137333]">● En Stock: {foundStockCount}</span>
-              <span className="text-[#D97706]">● Cotización / A Pedido: {foundQuoteCount}</span>
+              <span className="text-[#D97706]">● Quote / A Order: {foundQuoteCount}</span>
               <span className="text-[#C8102E]">● No Encontrado: {notFoundCount}</span>
             </div>
           </div>
@@ -303,11 +303,11 @@ export default function QuickOrderPage() {
               <thead className="bg-[#F2F2F2] border-b border-[#CCCCCC] text-left text-[12px] font-bold text-[#333333]">
                 <tr>
                   <th className="py-2.5 px-3">SKU Ingresado</th>
-                  <th className="py-2.5 px-3">Producto Encontrado</th>
+                  <th className="py-2.5 px-3">Matched Product</th>
                   <th className="py-2.5 px-3">Marca</th>
-                  <th className="py-2.5 px-3 text-center">Cant.</th>
-                  <th className="py-2.5 px-3 text-right">Precio Unit.</th>
-                  <th className="py-2.5 px-3">Disponibilidad</th>
+                  <th className="py-2.5 px-3 text-center">Qty</th>
+                  <th className="py-2.5 px-3 text-right">Unit Price</th>
+                  <th className="py-2.5 px-3">Availability</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-[#E5E5E5]">
@@ -347,12 +347,12 @@ export default function QuickOrderPage() {
                       )}
                       {item.status === "found_quote" && (
                         <span className="text-[#D97706] font-semibold text-[12px]">
-                          ⏳ Vía Cotización / Importación
+                          ⏳ Vía Quote / Importación
                         </span>
                       )}
                       {item.status === "not_found" && (
                         <span className="text-[#C8102E] font-semibold text-[12px]">
-                          Revisar SKU
+                          Review SKU
                         </span>
                       )}
                     </td>

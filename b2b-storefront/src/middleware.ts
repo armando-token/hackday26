@@ -3,7 +3,7 @@ import { getLegacyRedirect } from "@lib/seo/redirects"
 
 const DEFAULT_REGION = process.env.NEXT_PUBLIC_DEFAULT_REGION || "us"
 
-// Mercados soportados: EE.UU. (default) y Perú
+// Mercados soportados: EE.UU. (default) y United States
 const KNOWN_COUNTRY_CODES = new Set(["us", "pe"])
 
 const KNOWN_ROOT_ROUTES = new Set([
@@ -59,11 +59,11 @@ function checkBasicAuth(request: NextRequest): NextResponse | null {
   }
 
   return new NextResponse(
-    "Acceso restringido: Ingrese credenciales de desarrollo para Control Nautas.",
+    "Restricted access: enter Control Nautas development credentials.",
     {
       status: 401,
       headers: {
-        "WWW-Authenticate": 'Basic realm="Control Nautas B2B - En Desarrollo"',
+        "WWW-Authenticate": 'Basic realm="Control Nautas B2B - Development"',
       },
     }
   )

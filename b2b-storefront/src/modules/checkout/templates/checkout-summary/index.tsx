@@ -14,27 +14,27 @@ const CheckoutSummary = ({ cart }: { cart: any }) => {
       <div className="w-full bg-white border border-[#E2E8F0] rounded-lg p-6 shadow-sm">
         <div className="flex items-center justify-between pb-3 border-b border-[#E2E8F0] mb-4">
           <h2 className="text-[18px] font-black text-[#131921] tracking-tight">
-            Resumen de la Orden
+            Summary de la Orden
           </h2>
           <span className="bg-gray-100 text-[#4A5568] text-[12px] font-bold px-2.5 py-1 rounded">
-            {itemsCount} {itemsCount === 1 ? "ítem" : "ítems"}
+            {itemsCount} {itemsCount === 1 ? "item" : "items"}
           </span>
         </div>
 
-        {/* Totales de Carrito */}
+        {/* Totales de Cart */}
         <div className="mb-4">
           <CartTotals totals={cart} />
         </div>
 
-        {/* Lista de Productos en Checkout */}
+        {/* Lista de Products en Checkout */}
         <div className="pt-3 border-t border-[#E2E8F0] mb-4">
           <span className="text-[13px] font-bold text-[#131921] block mb-2">
-            Productos incluidos:
+            Products included:
           </span>
           <ItemsPreviewTemplate cart={cart} />
         </div>
 
-        {/* Código de Descuento o Promoción */}
+        {/* Discount or promo code */}
         <div className="pt-3 border-t border-[#E2E8F0]">
           <DiscountCode cart={cart} />
         </div>
@@ -43,20 +43,20 @@ const CheckoutSummary = ({ cart }: { cart: any }) => {
       {/* Asistencia Directa por WhatsApp */}
       <div className="bg-[#F0FDF4] border border-[#BBF7D0] rounded-lg p-4 text-center">
         <p className="text-[13px] font-bold text-[#166534] mb-1">
-          💬 ¿Requiere asistencia con su orden o crédito B2B?
+          💬 Need help with your order or B2B credit?
         </p>
         <p className="text-[12px] text-[#15803D] mb-3">
-          Un ingeniero especialista de Control Nautas puede validar sus requerimientos técnicos.
+          A Control Nautas applications engineer can validate your technical requirements.
         </p>
         <a
           href={`https://wa.me/${company.whatsappNumber}?text=${encodeURIComponent(
-            `Hola Control Nautas, estoy en el checkout del pedido y requiero asistencia técnica con los suministros industriales.`
+            `Hello Control Nautas — I'm at checkout and need technical help with industrial supplies.`
           )}`}
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center justify-center gap-2 w-full bg-[#25D366] hover:bg-[#1EBE5D] text-white font-bold py-2.5 px-4 rounded text-[13px] transition-colors shadow-sm"
         >
-          <span>💬</span> Chatear con Soporte Técnico
+          <span>💬</span> Chat with technical support
         </a>
       </div>
     </div>

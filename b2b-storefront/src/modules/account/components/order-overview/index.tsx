@@ -29,12 +29,12 @@ const OrderOverview = ({ orders }: { orders: HttpTypes.StoreOrder[] }) => {
     >
       <h2 className="text-large-semi">No hay pedidos registrados</h2>
       <p className="text-base-regular">
-        Aún no tienes órdenes registradas en tu cuenta.
+        You do not have any orders on your account yet.
       </p>
       <div className="mt-4">
         <LocalizedClientLink href="/store" passHref>
           <Button data-testid="continue-shopping-button">
-            Explorar catálogo
+            Browse catalog
           </Button>
         </LocalizedClientLink>
       </div>

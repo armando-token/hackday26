@@ -28,7 +28,7 @@ export async function sendOrderConfirmationEmail(data: OrderEmailData) {
     const smtpUser = process.env.SMTP_USER
     const smtpPass = process.env.SMTP_PASS
 
-    const subject = `Confirmación de Pedido #${data.displayId || data.orderId.slice(-6)} - ${company.legalName}`
+    const subject = `Confirmación de Order #${data.displayId || data.orderId.slice(-6)} - ${company.legalName}`
 
     const itemsHtml = data.items
       .map(
@@ -36,7 +36,7 @@ export async function sendOrderConfirmationEmail(data: OrderEmailData) {
           `<tr>
             <td style="padding: 8px; border-bottom: 1px solid #eee;">${i.title}</td>
             <td style="padding: 8px; border-bottom: 1px solid #eee; text-align: center;">${i.quantity}</td>
-            <td style="padding: 8px; border-bottom: 1px solid #eee; text-align: right;">S/. ${(i.price * i.quantity).toFixed(2)}</td>
+            <td style="padding: 8px; border-bottom: 1px solid #eee; text-align: right;">$ ${(i.price * i.quantity).toFixed(2)}</td>
           </tr>`
       )
       .join("")
@@ -45,7 +45,7 @@ export async function sendOrderConfirmationEmail(data: OrderEmailData) {
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; color: #333;">
         <div style="background-color: #1C242E; padding: 20px; text-align: center; color: white;">
           <h1 style="margin: 0; font-size: 22px;">CONTROL NAUTAS S.A.C.</h1>
-          <p style="margin: 5px 0 0; font-size: 13px; color: #ABB0B6;">RUC ${company.taxId} • Especialistas en Instrumentación y Control</p>
+          <p style="margin: 5px 0 0; font-size: 13px; color: #ABB0B6;">Tax ID ${company.taxId} • Especialistas en Instrumentación y Control</p>
         </div>
 
         <div style="padding: 24px 0; border-bottom: 1px solid #ddd;">
@@ -54,12 +54,12 @@ export async function sendOrderConfirmationEmail(data: OrderEmailData) {
         </div>
 
         <div style="padding: 16px 0;">
-          <h3 style="font-size: 15px; margin-bottom: 12px;">Resumen del Pedido</h3>
+          <h3 style="font-size: 15px; margin-bottom: 12px;">Order Summary</h3>
           <table style="width: 100%; border-collapse: collapse; font-size: 13px;">
             <thead>
               <tr style="background-color: #f8f8f8;">
-                <th style="padding: 8px; text-align: left;">Producto</th>
-                <th style="padding: 8px; text-align: center;">Cant.</th>
+                <th style="padding: 8px; text-align: left;">Product</th>
+                <th style="padding: 8px; text-align: center;">Qty</th>
                 <th style="padding: 8px; text-align: right;">Subtotal</th>
               </tr>
             </thead>
@@ -69,7 +69,7 @@ export async function sendOrderConfirmationEmail(data: OrderEmailData) {
             <tfoot>
               <tr>
                 <td colspan="2" style="padding: 12px 8px; font-weight: bold; text-align: right;">Total:</td>
-                <td style="padding: 12px 8px; font-weight: bold; text-align: right; color: #1E7E34; font-size: 16px;">S/. ${data.total.toFixed(2)} PEN</td>
+                <td style="padding: 12px 8px; font-weight: bold; text-align: right; color: #1E7E34; font-size: 16px;">$ ${data.total.toFixed(2)} USD</td>
               </tr>
             </tfoot>
           </table>
@@ -77,10 +77,10 @@ export async function sendOrderConfirmationEmail(data: OrderEmailData) {
 
         <div style="background-color: #f9f9f9; padding: 16px; border-radius: 6px; margin: 20px 0; font-size: 13px;">
           <h4 style="margin-top: 0; color: #1C242E;">Instrucciones para Transferencia Bancaria</h4>
-          <p>Titular: <strong>${company.legalName}</strong> (RUC: ${company.taxId})</p>
-          <p><strong>BCP Soles:</strong> 193-9483726-0-12 | CCI: 002-193-009483726012-14</p>
-          <p><strong>BBVA Soles:</strong> 0011-0175-0100083921 | CCI: 011-175-000100083921-72</p>
-          <p style="margin-bottom: 0;">Envíe su comprobante a <strong>${company.email}</strong> o al WhatsApp <strong>${company.phoneDisplay}</strong> indicando su número de pedido para iniciar el despacho.</p>
+          <p>Titular: <strong>${company.legalName}</strong> (Tax ID: ${company.taxId})</p>
+          <p><strong>BCP USD:</strong> 193-9483726-0-12 | CCI: 002-193-009483726012-14</p>
+          <p><strong>BBVA USD:</strong> 0011-0175-0100083921 | CCI: 011-175-000100083921-72</p>
+          <p style="margin-bottom: 0;">Envíe su comprobante a <strong>${company.email}</strong> o al WhatsApp <strong>${company.phoneDisplay}</strong> indicando su número de pedido para iniciar el fulfillment.</p>
         </div>
 
         <div style="font-size: 12px; color: #666; text-align: center; padding-top: 20px; border-top: 1px solid #eee;">

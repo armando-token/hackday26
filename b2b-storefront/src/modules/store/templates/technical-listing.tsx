@@ -77,7 +77,7 @@ export function TechnicalListing({
                 setPage(1)
               }}
             />
-            Solo cotización
+            Solo quote
           </label>
         </div>
         <div className="py-3 px-4 border-b border-[#CCCCCC]">
@@ -111,8 +111,8 @@ export function TechnicalListing({
           >
             <option value="default">Destacados</option>
             <option value="name">Nombre A–Z</option>
-            <option value="price_asc">Precio ↑</option>
-            <option value="price_desc">Precio ↓</option>
+            <option value="price_asc">Price ↑</option>
+            <option value="price_desc">Price ↓</option>
           </select>
         </div>
       </aside>
@@ -133,8 +133,8 @@ export function TechnicalListing({
                   </th>
                 ))}
                 <th className="px-3 py-2 font-bold">Marca</th>
-                <th className="px-3 py-2 font-bold">Ítem #</th>
-                <th className="px-3 py-2 font-bold text-right">Precio</th>
+                <th className="px-3 py-2 font-bold">Item #</th>
+                <th className="px-3 py-2 font-bold text-right">Price</th>
               </tr>
             </thead>
             <tbody>
@@ -271,16 +271,16 @@ export function TechnicalListing({
                 {selectedProduct.availabilityMode === "in_stock" || (selectedProduct.inStock && !selectedProduct.availabilityMode)
                   ? "● En stock"
                   : selectedProduct.availabilityMode === "backorder"
-                  ? "● Disponible bajo pedido"
+                  ? "● Available on request"
                   : selectedProduct.availabilityMode === "made_to_order"
                   ? "● Suministro a pedido"
                   : selectedProduct.inStock
                   ? "● En stock"
-                  : "● Consultar disponibilidad"}
+                  : "● Consultar availability"}
               </div>
               {selectedProduct.priceMode !== "quote" && (
                 <div className="flex items-center gap-2">
-                  <label className="text-[12px] font-bold">Cant.</label>
+                  <label className="text-[12px] font-bold">Qty</label>
                   <input
                     type="number"
                     min={1}
@@ -296,12 +296,12 @@ export function TechnicalListing({
               {selectedProduct.priceMode === "quote" ? (
                 <a
                   href={`mailto:ventas@controlnautas.com?subject=${encodeURIComponent(
-                    "Cotización " + selectedProduct.itemNumber
+                    "Quote " + selectedProduct.itemNumber
                   )}`}
                   className="bg-[#CC0000] text-white text-center font-bold text-[12px] px-3 py-2 uppercase"
                   onClick={(e) => e.stopPropagation()}
                 >
-                  Cotizar
+                  Quote
                 </a>
               ) : (
                 <button
@@ -313,7 +313,7 @@ export function TechnicalListing({
                   disabled={!selectedProduct.inStock}
                   className="bg-[#CC0000] disabled:bg-[#999] text-white font-bold text-[12px] px-3 py-2 uppercase"
                 >
-                  {added ? "Añadido ✓" : "Añadir al carrito"}
+                  {added ? "Added ✓" : "Add to cart"}
                 </button>
               )}
               <button

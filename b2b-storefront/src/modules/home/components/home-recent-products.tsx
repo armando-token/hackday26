@@ -78,7 +78,7 @@ export default function HomeRecentProducts({
     <section className="w-full mb-3 sm:mb-4 select-none">
       <div className="pt-0 pb-1 mb-1.5">
         <h2 className="text-[18px] sm:text-[20px] font-bold text-[#111111] font-[Roboto,Arial,Helvetica,sans-serif]">
-          Productos vistos recientemente
+          Products vistos recientemente
         </h2>
       </div>
 

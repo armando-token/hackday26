@@ -1,6 +1,6 @@
 import { lookupCatalogProductsBySkuTokens } from "@lib/catalog/catalog-source"
 
-/** Resolución batch SKU / ítem / handle para quick-order (server-only). */
+/** Resolución batch SKU / item / handle para quick-order (server-only). */
 export async function POST(req: Request) {
   let body: { skus?: string[]; countryCode?: string }
   try {

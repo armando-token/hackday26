@@ -76,7 +76,7 @@ export function buildCategoryFacets(
   if (priced.length > 0 && quote.length > 0) {
     facets.push({
       key: "priceMode",
-      label: "Precio",
+      label: "Price",
       options: [
         { value: "fixed", count: priced.length },
         { value: "quote", count: quote.length },
@@ -105,7 +105,7 @@ export function buildCategoryFacets(
     }
     facets.push({
       key: "priceRange",
-      label: "Precio",
+      label: "Price",
       options: buckets
         .filter((b) => b.count > 0)
         .map((b) => ({ value: b.value, count: b.count })),
@@ -117,7 +117,7 @@ export function buildCategoryFacets(
   if (inStock > 0 && out > 0) {
     facets.push({
       key: "inStock",
-      label: "Disponibilidad",
+      label: "Availability",
       options: [
         { value: "in", count: inStock },
         { value: "out", count: out },
@@ -141,7 +141,7 @@ export function buildCategoryFacets(
   const allowAlways = new Set([
     "Voltaje",
     "Potencia",
-    "Garantía",
+    "Warranty",
     "Alimentación",
     "Tensión Nominal",
     "Tipo de Dispositivo",
@@ -282,7 +282,7 @@ export function productMatchesFacets(
 
 export function facetValueLabel(facetKey: string, value: string): string {
   if (facetKey === "priceMode") {
-    return value === "quote" ? "Solicitar cotización" : "Precio publicado"
+    return value === "quote" ? "Solicitar quote" : "Price publicado"
   }
   if (facetKey === "inStock") {
     return value === "in" ? "En stock" : "Sin stock"

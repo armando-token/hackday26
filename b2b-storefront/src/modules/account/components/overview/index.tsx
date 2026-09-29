@@ -19,7 +19,7 @@ const Overview = ({ customer, orders }: OverviewProps) => {
             Hola, {customer?.first_name}
           </span>
           <span className="text-small-regular text-ui-fg-base">
-            Sesión iniciada como:{" "}
+            Signed in as:{" "}
             <span
               className="font-semibold"
               data-testid="customer-email"
@@ -67,7 +67,7 @@ const Overview = ({ customer, orders }: OverviewProps) => {
 
             <div className="flex flex-col gap-y-4">
               <div className="flex items-center gap-x-2">
-                <h3 className="text-large-semi">Pedidos recientes</h3>
+                <h3 className="text-large-semi">Orders recientes</h3>
               </div>
               <ul
                 className="flex flex-col gap-y-4"

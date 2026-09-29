@@ -6,16 +6,16 @@ const SignInPrompt = () => {
     <div className="bg-white flex items-center justify-between">
       <div>
         <Heading level="h2" className="txt-xlarge">
-          ¿Ya tienes una cuenta corporativa?
+          Already have a corporate account?
         </Heading>
         <Text className="txt-medium text-ui-fg-subtle mt-2">
-          Inicia sesión para gestionar tus cotizaciones y órdenes con precios técnicos B2B.
+          Sign in to manage quotes and orders with B2B technical pricing.
         </Text>
       </div>
       <div>
         <LocalizedClientLink href="/account">
           <Button variant="secondary" className="h-10" data-testid="sign-in-button">
-            Iniciar sesión
+            Sign in
           </Button>
         </LocalizedClientLink>
       </div>

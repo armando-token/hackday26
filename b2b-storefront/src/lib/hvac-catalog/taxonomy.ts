@@ -440,7 +440,7 @@ export const HVAC_ROOT: HvacCategoryNode = {
       name: "HVAC & Refrigeration Replacement Parts",
       children: [
         { slug: "capacitors", name: "Capacitors" },
-        { slug: "contactors-relays", name: "Contactors & Relays" },
+        { slug: "contactors-relays", name: "Contactrs & Relays" },
         { slug: "motors-blowers", name: "Motors & Blowers" },
         { slug: "sensors-probes", name: "Sensors & Probes" },
       ],

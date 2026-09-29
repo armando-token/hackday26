@@ -10,9 +10,9 @@ interface MobileSortSheetProps {
 }
 
 const SORT_OPTIONS = [
-  { value: "default", label: "Destacados (Relevancia técnica)" },
-  { value: "price_asc", label: "Precio: de menor a mayor (S/)" },
-  { value: "price_desc", label: "Precio: de mayor a menor (S/)" },
+  { value: "default", label: "Destacados (Technical relevance)" },
+  { value: "price_asc", label: "Price: de menor a mayor (S/)" },
+  { value: "price_desc", label: "Price: de mayor a menor (S/)" },
   { value: "name", label: "Nombre / Modelo (A – Z)" },
 ]
 
@@ -49,7 +49,7 @@ export default function MobileSortSheet({
         {/* Header */}
         <div className="flex items-center justify-between px-4 py-3.5 border-b border-[#E5E5E5] bg-white rounded-t-2xl">
           <h2 className="text-[16px] font-bold text-[#0F1111]">
-            Ordenar Productos
+            Ordenar Products
           </h2>
           <button
             type="button"

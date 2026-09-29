@@ -33,7 +33,7 @@ export default function HvacCategoryTemplate({
             href="/store"
             className="text-[#0066CC] hover:underline"
           >
-            Categorías de producto
+            Product categories
           </LocalizedClientLink>
           {breadcrumbs.map((crumb, idx) => (
             <span key={crumb.slug} className="flex items-center gap-1.5">
@@ -65,7 +65,7 @@ export default function HvacCategoryTemplate({
               {category.name}
             </h1>
             <p className="text-[12px] sm:text-[13px] text-[#666] mb-3 sm:mb-4">
-              Disponibles {aggregateCount} productos industriales
+              Availables {aggregateCount} productos industriales
             </p>
 
             {collections.length === 0 ? (

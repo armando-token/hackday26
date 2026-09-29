@@ -169,7 +169,7 @@ const KNOWN_MEDIA_ORIGIN_PREFIXES = [
 /**
  * Normaliza URLs de medios convirtiendo hosts conocidos a rutas relativas (same-origin).
  *
- * - Si url es nulo/vacío, retorna null.
+ * - Si url es nulo/empty, retorna null.
  * - Si url es de controlnautas.com / www / localhost:9000, remueve el origen y deja
  *   path relativo `/static/...` o `/cn-media/...`.
  * - En caso contrario, retorna url intacta.
@@ -260,7 +260,7 @@ function mapMedusaVariant(
 }
 
 /**
- * Disponibilidad derivada (§6.2). Primera versión conservadora: backorder no
+ * Availability derivada (§6.2). Primera versión conservadora: backorder no
  * habilita compra directa hasta aprobación de Negocio.
  */
 export function deriveAvailability(
@@ -301,7 +301,7 @@ export function formatPriceLabel(
   options?: { prefixDesde?: boolean }
 ): string {
   if (requiresQuote || !price || price.amount <= 0) {
-    return "Consultar precio"
+    return "Request price"
   }
 
   const symbol = price.currencyCode === "pen" ? "S/" : price.currencyCode.toUpperCase()
@@ -350,7 +350,7 @@ function resolvePrimaryVariant(
   meta?: { productId?: string; handle?: string }
 ): CatalogVariant {
   if (variants.length === 0) {
-    throw new CatalogContractError("El producto no tiene variantes", {
+    throw new CatalogContractError("Product has no variants", {
       ...meta,
       field: "variants",
     })

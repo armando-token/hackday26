@@ -23,14 +23,14 @@ const AccountLayout: React.FC<AccountLayoutProps> = ({
         </div>
         <div className="flex flex-col small:flex-row items-end justify-between small:border-t border-gray-200 py-12 gap-8">
           <div>
-            <h3 className="text-xl-semi mb-4">¿Tienes consultas técnicas o comerciales?</h3>
+            <h3 className="text-xl-semi mb-4">Have technical or commercial questions?</h3>
             <span className="txt-medium text-gray-600">
-              Contamos con ingenieros especializados para resolver tus requerimientos de instrumentación, cotizaciones y pedidos B2B.
+              Our engineers can help with instrumentation requirements, quotes, and B2B orders.
             </span>
           </div>
           <div>
             <UnderlineLink href="/customer-service">
-              Atención al Cliente
+              Customer Service
             </UnderlineLink>
           </div>
         </div>

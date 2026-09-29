@@ -186,7 +186,7 @@ export default function SearchResultsTemplate({
       chips.push({
         facetKey: "search",
         value: searchWithin,
-        label: `Búsqueda: "${searchWithin}"`,
+        label: `Search: "${searchWithin}"`,
       })
     }
     for (const [facetKey, values] of Object.entries(facetSel)) {
@@ -205,8 +205,8 @@ export default function SearchResultsTemplate({
 
   const sortLabelMap: Record<string, string> = {
     default: "Relevancia",
-    price_asc: "Precio ↑",
-    price_desc: "Precio ↓",
+    price_asc: "Price ↑",
+    price_desc: "Price ↓",
     name: "A – Z",
   }
 
@@ -240,13 +240,13 @@ export default function SearchResultsTemplate({
             {/* Search within results */}
             <div className="py-3 px-3 border-b border-[#CCCCCC]">
               <label className="block text-[12px] font-bold text-[#666] mb-1">
-                Buscar en resultados
+                Search within results
               </label>
               <input
                 type="search"
                 value={searchWithin}
                 onChange={(e) => setSearchWithin(e.target.value)}
-                placeholder="Título, Ítem # o modelo"
+                placeholder="Title, item #, or model"
                 className="w-full border border-[#CCC] p-1.5 text-[13px]"
               />
             </div>
@@ -282,10 +282,10 @@ export default function SearchResultsTemplate({
                 onChange={(e) => setSortOrder(e.target.value)}
                 className="w-full border border-[#CCC] p-1.5 text-[13px]"
               >
-                <option value="default">Relevancia técnica</option>
+                <option value="default">Technical relevance</option>
                 <option value="name">Nombre A–Z</option>
-                <option value="price_asc">Precio: menor a mayor</option>
-                <option value="price_desc">Precio: mayor a menor</option>
+                <option value="price_asc">Price: low to high</option>
+                <option value="price_desc">Price: high to low</option>
               </select>
             </div>
 
@@ -357,7 +357,7 @@ export default function SearchResultsTemplate({
                         >
                           {expandedOpts
                             ? "Ver menos"
-                            : `Ver más (${facet.options.length - FACET_OPTIONS_PREVIEW_SEARCH})`}
+                            : `Show more (${facet.options.length - FACET_OPTIONS_PREVIEW_SEARCH})`}
                         </button>
                       )}
                     </div>
@@ -370,7 +370,7 @@ export default function SearchResultsTemplate({
           {/* Right Main Table Content */}
           <div className="flex-1 min-w-0">
             <h1 className="text-[24px] font-bold text-[#333] mb-1">
-              {query ? `Resultados de búsqueda para “${query}”` : "Catálogo de Productos"}
+              {query ? `Search results for “${query}”` : "Product Catalog"}
             </h1>
             <p className="text-[13px] text-[#666] mb-4">
               Mostrando <b className="text-[#333]">{filtered.length}</b> productos · Haga clic en cualquier fila para expandir opciones de pedido
@@ -382,7 +382,7 @@ export default function SearchResultsTemplate({
                   No se encontraron productos para “{query}”.
                 </p>
                 <p className="text-[13px] text-[#666]">
-                  Intente verificar la ortografía o buscar con una palabra clave más general.
+                  Try checking the spelling or using a broader keyword.
                 </p>
               </div>
             ) : (
@@ -391,7 +391,7 @@ export default function SearchResultsTemplate({
                 <div className="bg-[#EEF5FC] border-b border-[#D0DFEF] px-3 py-2 flex items-center justify-between text-[12px] text-[#0066CC]">
                   <div className="flex items-center gap-2 font-semibold">
                     <span className="text-[14px]">💡</span>
-                    <span><b>Vista Rápida:</b> Haga clic en cualquier fila para desplegar su ficha técnica, fotos en alta resolución y cotización sin salir de la página.</span>
+                    <span><b>Quick View:</b> Click any row to expand the datasheet, high-res photos, and quote without leaving the page.</span>
                   </div>
                   <span className="text-[11px] text-[#666] font-normal hidden md:inline">
                     [ 👆 Clic en fila = Abrir / Cerrar ]
@@ -405,14 +405,14 @@ export default function SearchResultsTemplate({
                         <th className="px-2 py-2.5 font-bold w-[34px] text-center"></th>
                         <th className="px-2 py-2.5 font-bold w-[65px]">Foto</th>
                         <th className="px-3 py-2.5 font-bold">Marca</th>
-                        <th className="px-3 py-2.5 font-bold min-w-[220px]">Descripción / Modelo</th>
+                        <th className="px-3 py-2.5 font-bold min-w-[220px]">Description / Model</th>
                         {specCols.map((c) => (
                           <th key={c} className="px-3 py-2.5 font-bold whitespace-nowrap">
                             {c}
                           </th>
                         ))}
-                        <th className="px-3 py-2.5 font-bold">Ítem #</th>
-                        <th className="px-3 py-2.5 font-bold text-right">Precio</th>
+                        <th className="px-3 py-2.5 font-bold">Item #</th>
+                        <th className="px-3 py-2.5 font-bold text-right">Price</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -460,7 +460,7 @@ export default function SearchResultsTemplate({
                                       ? "bg-[#CC0000] text-white"
                                       : "bg-[#EAEAEA] text-[#555] group-hover:bg-[#0066CC] group-hover:text-white"
                                   }`}
-                                  title={open ? "Cerrar detalles" : "Clic para ver detalles técnicos"}
+                                  title={open ? "Close details" : "Click for technical details"}
                                 >
                                   {open ? "▼" : "▶"}
                                 </span>
@@ -506,7 +506,7 @@ export default function SearchResultsTemplate({
                                  </span>
                                ) : p.display.availability === "backorder" ? (
                                  <span className="text-[10px] font-semibold text-[#D97706] block mt-0.5">
-                                   ⏳ Disponible bajo pedido
+                                   ⏳ Available on request
                                  </span>
                                ) : p.display.availability === "made_to_order" ? (
                                  <span className="text-[10px] font-semibold text-[#475569] block mt-0.5">
@@ -514,7 +514,7 @@ export default function SearchResultsTemplate({
                                  </span>
                                ) : (
                                  <span className="text-[10px] font-semibold text-[#555555] block mt-0.5">
-                                   ⏳ Vía Importación
+                                   ⏳ Import lead time
                                  </span>
                                )}
                             </td>
@@ -556,7 +556,7 @@ export default function SearchResultsTemplate({
         <div className="block md:hidden w-full -mx-3">
           <div className="px-3 pb-2">
             <h1 className="text-[18px] font-bold text-[#0F1111] mb-0.5">
-              {query ? `Resultados para “${query}”` : "Búsqueda de Productos"}
+              {query ? `Resultados para “${query}”` : "Product Search"}
             </h1>
             <p className="text-[12px] text-[#666]">
               {filtered.length} productos encontrados
@@ -614,7 +614,7 @@ export default function SearchResultsTemplate({
                   No se encontraron productos para “{query}”
                 </h3>
                 <p className="text-[13px] text-[#565959] mb-4">
-                  Intente verificar la ortografía o borrar los filtros aplicados.
+                  Try checking the spelling or clearing applied filters.
                 </p>
                 {activeFiltersCount > 0 && (
                   <button
@@ -640,7 +640,7 @@ export default function SearchResultsTemplate({
                 onClick={() => setMobileDisplayLimit((prev) => prev + 50)}
                 className="w-full py-2.5 bg-white border border-[#0066CC] text-[#0066CC] rounded-full text-[13px] font-bold shadow-2xs hover:bg-blue-50 active:bg-blue-100 transition-colors cursor-pointer"
               >
-                Ver más productos ({filtered.length - mobileDisplayLimit} restantes) ↓
+                Show more products ({filtered.length - mobileDisplayLimit} remaining) ↓
               </button>
             </div>
           )}
@@ -705,16 +705,16 @@ function DesktopExpandedRowPanel({
       : `/products/${product.handle}`
 
   const mailtoHref = `mailto:ventas@controlnautas.com?subject=${encodeURIComponent(
-    `Cotización: ${product.title} (Ítem #${product.pim.itemNumber ?? ""})`
+    `Quote: ${product.title} (Item #${product.pim.itemNumber ?? ""})`
   )}&body=${encodeURIComponent(
     [
       `Hola Control Nautas,`,
-      `Solicito cotización formal para el siguiente producto:`,
-      `Producto: ${product.title}`,
+      `Please quote the following product:`,
+      `Product: ${product.title}`,
       `Marca: ${product.brand?.name ?? ""}`,
       `Modelo Fab.: ${product.pim.mfrModel ?? ""}`,
-      `Ítem #${product.pim.itemNumber ?? ""}`,
-      `Cantidad: ${qty}`,
+      `Item #${product.pim.itemNumber ?? ""}`,
+      `Quantity: ${qty}`,
       `URL: ${productUrl}`,
     ].join("\n")
   )}`
@@ -725,7 +725,7 @@ function DesktopExpandedRowPanel({
         <div className="bg-[#FFF3CD] border-b border-[#FFEAA7] px-4 py-2 text-[12px] font-bold text-[#856404] flex items-center justify-between animate-pulse">
           <span className="flex items-center gap-2">
             <span className="text-[15px]">👆</span>
-            <span><b>Demostración de Vista Rápida:</b> Puede hacer clic en cualquier fila de la tabla para desplegar u ocultar su ficha técnica y cotización.</span>
+            <span><b>Quick View demo:</b> Click any table row to expand or hide the datasheet and quote.</span>
           </span>
           <button
             type="button"
@@ -779,7 +779,7 @@ function DesktopExpandedRowPanel({
         </p>
         <div className="text-[12px] text-[#666] flex flex-wrap gap-x-4 mb-3">
           <span>
-            Ítem <b className="text-[#333]">#{product.pim.itemNumber ?? ""}</b>
+            Item <b className="text-[#333]">#{product.pim.itemNumber ?? ""}</b>
           </span>
           <span>
             Modelo fab. <b className="text-[#333]">#{product.pim.mfrModel ?? ""}</b>
@@ -825,14 +825,14 @@ function DesktopExpandedRowPanel({
           {product.display.availability === "in_stock"
             ? "● En stock"
             : product.display.availability === "backorder"
-            ? "● Disponible bajo pedido"
+            ? "● Available on request"
             : product.display.availability === "made_to_order"
             ? "● Suministro a pedido"
-            : "● Consultar disponibilidad"}
+            : "● Consultar availability"}
         </div>
         {!product.display.requiresQuote && (
           <div className="flex items-center gap-2">
-            <label className="text-[12px] font-bold">Cant.</label>
+            <label className="text-[12px] font-bold">Qty</label>
             <input
               type="number"
               min={1}
@@ -849,7 +849,7 @@ function DesktopExpandedRowPanel({
             href={mailtoHref}
             className="bg-[#CC0000] text-white text-center font-bold text-[12px] px-3 py-2 uppercase"
           >
-            Cotizar
+            Quote
           </a>
         ) : (
           <button
@@ -858,7 +858,7 @@ function DesktopExpandedRowPanel({
             disabled={product.display.availability !== "in_stock"}
             className="bg-[#CC0000] disabled:bg-[#999] text-white font-bold text-[12px] px-3 py-2 uppercase cursor-pointer"
           >
-            {added ? "Añadido ✓" : "Añadir al carrito"}
+            {added ? "Added ✓" : "Add to cart"}
           </button>
         )}
         <button
@@ -866,7 +866,7 @@ function DesktopExpandedRowPanel({
           onClick={() => toggleList(product.handle)}
           className="border border-[#333] text-[#333] font-bold text-[12px] px-3 py-1.5 bg-white hover:bg-gray-50 cursor-pointer"
         >
-          {onList ? "✓ En lista" : "Añadir a lista"}
+          {onList ? "✓ On list" : "Add to list"}
         </button>
         <button
           type="button"

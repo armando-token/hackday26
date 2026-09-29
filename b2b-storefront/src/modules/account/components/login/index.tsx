@@ -21,23 +21,23 @@ const Login = ({ setCurrentView }: Props) => {
       data-testid="login-page"
     >
       <Logo theme="light" variant="auth" className="mb-4" />
-      <h1 className="text-large-semi uppercase mb-6">Iniciar Sesión</h1>
+      <h1 className="text-large-semi uppercase mb-6">Sign In</h1>
       <p className="text-center text-base-regular text-ui-fg-base mb-8">
-        Accede a tu cuenta corporativa para gestionar tus cotizaciones, pedidos y precios técnicos B2B.
+        Access your corporate account to manage quotes, orders, and B2B technical pricing.
       </p>
       <form className="w-full" action={formAction}>
         <div className="flex flex-col w-full gap-y-2">
           <Input
-            label="Correo electrónico"
+            label="Email"
             name="email"
             type="email"
-            title="Ingresa un correo electrónico válido."
+            title="Enter a valid email address."
             autoComplete="email"
             required
             data-testid="email-input"
           />
           <Input
-            label="Contraseña"
+            label="Password"
             name="password"
             type="password"
             autoComplete="current-password"
@@ -48,17 +48,17 @@ const Login = ({ setCurrentView }: Props) => {
         </div>
         <ErrorMessage error={message} data-testid="login-error-message" />
         <SubmitButton data-testid="sign-in-button" className="w-full mt-6">
-          Iniciar sesión
+          Sign in
         </SubmitButton>
       </form>
       <span className="text-center text-ui-fg-base text-small-regular mt-6">
-        ¿No tienes una cuenta corporativa?{" "}
+        Don't have a corporate account?{" "}
         <button
           onClick={() => setCurrentView(LOGIN_VIEW.REGISTER)}
           className="underline font-semibold"
           data-testid="register-button"
         >
-          Regístrate aquí
+          Register here
         </button>
         .
       </span>

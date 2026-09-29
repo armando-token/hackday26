@@ -38,7 +38,7 @@ export default async function OrderCompletedTemplate({
           </Heading>
           <OrderDetails order={order} />
           <Heading level="h2" className="flex flex-row text-3xl-regular">
-            Resumen de la Orden
+            Summary de la Orden
           </Heading>
           <Items order={order} />
           <CartTotals totals={order} />

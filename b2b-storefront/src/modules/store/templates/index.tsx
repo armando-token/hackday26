@@ -30,17 +30,17 @@ export default function StoreTemplate({
         <div className="max-w-[1440px] mx-auto px-3 sm:px-6 py-2.5 sm:py-3 flex items-center justify-between text-[11.5px] sm:text-[12px] text-[#666]">
           <div className="flex items-center gap-1.5 flex-wrap">
             <LocalizedClientLink href="/" className="text-[#0066CC] hover:underline">
-              Inicio
+              Home
             </LocalizedClientLink>
             <span>/</span>
-            <span className="text-[#333]">Categorías de producto</span>
+            <span className="text-[#333]">Product categories</span>
           </div>
         </div>
       </div>
 
       <div className="max-w-[1440px] mx-auto px-3 sm:px-6 pt-3 sm:pt-6">
         <h1 className="text-[20px] sm:text-[28px] font-bold text-black mb-1">
-          Categorías de producto
+          Product categories
         </h1>
         <p className="text-[12px] sm:text-[13px] text-[#666666] mb-2">
           {(catalogRoot.productCount ?? 0).toLocaleString()} productos industriales disponibles

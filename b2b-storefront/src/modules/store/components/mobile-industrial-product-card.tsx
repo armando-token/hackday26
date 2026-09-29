@@ -157,10 +157,10 @@ export default function MobileIndustrialProductCard({
               ) : (
                 <div className="flex flex-col">
                   <span className="text-[13px] font-bold text-[#0066CC] leading-tight">
-                    Consultar Precio B2B
+                    Consultar Price B2B
                   </span>
                   <span className="text-[10.5px] text-[#666666]">
-                    Cotización formal con IGV
+                    Quote formal con sales tax
                   </span>
                 </div>
               )}
@@ -178,13 +178,13 @@ export default function MobileIndustrialProductCard({
                 }`}
               >
                 {isAdded ? (
-                  <>✓ Añadido a Cotización</>
+                  <>✓ Añadido a Quote</>
                 ) : (
                   <>
                     <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2.2} viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" />
                     </svg>
-                    Añadir a Cotización
+                    Añadir a Quote
                   </>
                 )}
               </button>
@@ -193,7 +193,7 @@ export default function MobileIndustrialProductCard({
                 href={`/products/${product.handle}`}
                 className="w-full py-1.5 px-3 rounded-full text-[12.5px] font-semibold bg-[#FFD814] hover:bg-[#F7CA00] active:bg-[#F0B800] border border-[#FCD200] text-[#0F1111] flex items-center justify-center gap-1.5 shadow-xs transition-all text-center"
               >
-                <span>Solicitar Cotización RFQ →</span>
+                <span>Request Quote (RFQ) →</span>
               </LocalizedClientLink>
             )}
           </div>

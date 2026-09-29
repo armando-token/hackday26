@@ -5,7 +5,7 @@
  */
 
 export const LEGACY_EXACT_REDIRECTS: Record<string, string> = {
-  // 1. Alias de Productos Prioritarios de GSC
+  // 1. Alias de Products Prioritarios de GSC
   "/panel-de-lana-de-roca-rockwool-prorox-sl-920": "/pe/store/aislamiento-termico/paneles-lana-roca",
   "/panel-de-lana-de-roca-rockwool-prorox-sl-920/": "/pe/store/aislamiento-termico/paneles-lana-roca",
   "/producto/panel-de-lana-de-roca-rockwool-prorox-sl-920": "/pe/store/aislamiento-termico/paneles-lana-roca",
@@ -35,7 +35,7 @@ export const LEGACY_EXACT_REDIRECTS: Record<string, string> = {
   "/producto/horner-x4-micro-ocs-series-plc-todo-en-uno": "/pe/store/automatizacion-plc-hmi",
   "/producto/horner-x4-micro-ocs-series-plc-todo-en-uno/": "/pe/store/automatizacion-plc-hmi",
 
-  // 2. Casos de Éxito Históricos con Fechas de WordPress
+  // 2. Case Studies Históricos con Fechas de WordPress
   "/2025/08/05/control-industrial-resistencias-electricas-peru": "/pe/casos-de-exito/resistencias-electricas-prevenir-cortocircuitos",
   "/2025/08/05/control-industrial-resistencias-electricas-peru/": "/pe/casos-de-exito/resistencias-electricas-prevenir-cortocircuitos",
   "/control-industrial-resistencias-electricas-peru": "/pe/casos-de-exito/resistencias-electricas-prevenir-cortocircuitos",

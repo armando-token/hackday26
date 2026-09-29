@@ -37,7 +37,7 @@ const ManualPaymentButton = ({ notReady }: { notReady: boolean }) => {
     try {
       await placeOrder()
     } catch (err: any) {
-      setErrorMessage(err.message || "Ocurrió un error al procesar el pedido.")
+      setErrorMessage(err.message || "An error occurred while processing the order.")
       setSubmitting(false)
     }
   }
@@ -52,11 +52,11 @@ const ManualPaymentButton = ({ notReady }: { notReady: boolean }) => {
       >
         {submitting ? (
           <>
-            <span className="animate-spin text-lg">⏳</span> Procesando Pedido Formal...
+            <span className="animate-spin text-lg">⏳</span> Processing order...
           </>
         ) : (
           <>
-            ✓ Confirmar y Procesar Orden de Compra ›
+            ✓ Confirm y Procesar Orden de Compra ›
           </>
         )}
       </button>

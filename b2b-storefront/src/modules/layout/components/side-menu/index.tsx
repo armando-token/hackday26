@@ -12,10 +12,10 @@ import { HttpTypes } from "@medusajs/types"
 import { Locale } from "@lib/data/locales"
 
 const SideMenuItems = {
-  Inicio: "/",
-  Catálogo: "/store",
-  "Mi Cuenta": "/account",
-  Carrito: "/cart",
+  Home: "/",
+  Catalog: "/store",
+  "Mi Account": "/account",
+  Cart: "/cart",
 }
 
 type SideMenuProps = {
@@ -39,7 +39,7 @@ const SideMenu = ({ regions, locales, currentLocale }: SideMenuProps) => {
                   data-testid="nav-menu-button"
                   className="relative h-full flex items-center transition-all ease-out duration-200 focus:outline-none hover:text-ui-fg-base"
                 >
-                  Menú
+                  Menu
                 </Popover.Button>
               </div>
 
@@ -126,7 +126,7 @@ const SideMenu = ({ regions, locales, currentLocale }: SideMenuProps) => {
                         />
                       </div>
                       <Text className="flex justify-between txt-compact-small">
-                        © {new Date().getFullYear()} Control Nautas S.A.C. Todos los derechos reservados.
+                        © {new Date().getFullYear()} Control Nautas S.A.C. All rights reserved.
                       </Text>
                     </div>
                   </div>

@@ -4,7 +4,7 @@ import SearchResultsTemplate from "@modules/search/templates/search-results"
 
 export const metadata: Metadata = {
   title: "Resultados de búsqueda | Control Nautas",
-  description: "Buscar en el catálogo Control Nautas.",
+  description: "Search the Control Nautas catalog.",
 }
 
 export default async function SearchPage(props: {

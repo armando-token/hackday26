@@ -68,7 +68,7 @@ export async function GET() {
       ? imageRaw
       : `${baseUrl}${imageRaw || "/cn-media/categories/calefaccion-electrica.webp"}`
     const availability = feedAvailability(p.display.availability)
-    const price = `${(p.display.price?.amount || 0).toFixed(2)} PEN`
+    const price = `${(p.display.price?.amount || 0).toFixed(2)} USD`
     const brand = cleanText(p.brand?.name || "Control Nautas")
     const mpn = cleanText(p.pim.mfrModel || p.pim.itemNumber || "CN-STD")
     const identifierExists =
@@ -87,7 +87,7 @@ export async function GET() {
       mpn,
       identifierExists,
       "Hardware > Industrial Tools & Machinery",
-      "PE::Envio Regular:0.00 PEN",
+      "PE::Envio Regular:0.00 USD",
     ].join("\t")
   })
 

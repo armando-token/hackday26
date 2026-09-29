@@ -14,11 +14,11 @@ type ProductTabsProps = {
 const ProductTabs = ({ product }: ProductTabsProps) => {
   const tabs = [
     {
-      label: "Información del Producto",
+      label: "Product Information",
       component: <ProductInfoTab product={product} />,
     },
     {
-      label: "Envíos y Devoluciones",
+      label: "Shipping & Returns",
       component: <ShippingInfoTab />,
     },
   ]
@@ -51,7 +51,7 @@ const ProductInfoTab = ({ product }: ProductTabsProps) => {
             <p>{product.material ? product.material : "-"}</p>
           </div>
           <div>
-            <span className="font-semibold">País de origen</span>
+            <span className="font-semibold">Country of origin</span>
             <p>{product.origin_country ? product.origin_country : "-"}</p>
           </div>
           <div>
@@ -85,9 +85,9 @@ const ShippingInfoTab = () => {
         <div className="flex items-start gap-x-2">
           <FastDelivery />
           <div>
-            <span className="font-semibold">Envío rápido</span>
+            <span className="font-semibold">Fast shipping</span>
             <p className="max-w-sm">
-              Tu pedido llegará en 3 a 5 días hábiles a tu dirección de envío o sucursal seleccionada.
+              Your order typically arrives in 3–5 business days to your shipping address.
             </p>
           </div>
         </div>
@@ -96,16 +96,16 @@ const ShippingInfoTab = () => {
           <div>
             <span className="font-semibold">Cambios sencillos</span>
             <p className="max-w-sm">
-              ¿El producto no coincide con tu requerimiento? Lo cambiamos sin inconvenientes.
+              Wrong item for your requirement? We'll help you exchange it.
             </p>
           </div>
         </div>
         <div className="flex items-start gap-x-2">
           <Back />
           <div>
-            <span className="font-semibold">Devoluciones garantizadas</span>
+            <span className="font-semibold">Returns garantizadas</span>
             <p className="max-w-sm">
-              Devuelve el producto dentro del plazo establecido y procesaremos tu reembolso de forma ágil y transparente.
+              Return the product within the stated window and we'll process your refund promptly.
             </p>
           </div>
         </div>

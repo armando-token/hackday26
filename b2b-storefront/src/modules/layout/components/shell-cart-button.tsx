@@ -36,17 +36,17 @@ export default function ShellCartButton({
         </div>
         {showText && (
           <span className="text-[14px] font-bold text-white leading-tight ml-1">
-            Carrito
+            Cart
           </span>
         )}
       </LocalizedClientLink>
 
       <div className="hidden group-hover:block absolute right-0 top-full z-50 w-[320px] bg-white border border-[#CCCCCC] shadow-lg text-[#333]">
         <div className="p-3 border-b border-[#CCCCCC] font-bold text-[13px]">
-          Carrito ({itemCount})
+          Cart ({itemCount})
         </div>
         {lines.length === 0 ? (
-          <div className="p-4 text-[13px] text-[#666]">Tu carrito está vacío.</div>
+          <div className="p-4 text-[13px] text-[#666]">Your cart is empty.</div>
         ) : (
           <ul className="max-h-64 overflow-y-auto">
             {lines.slice(0, 5).map((line) => (
@@ -64,7 +64,7 @@ export default function ShellCartButton({
                     {line.title}
                   </div>
                   <div className="text-[#666]">
-                    Cant. {line.quantity} · {line.priceLabel}
+                    Qty {line.quantity} · {line.priceLabel}
                   </div>
                 </div>
               </li>

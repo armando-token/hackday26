@@ -91,7 +91,7 @@ const Shipping: React.FC<ShippingProps> = ({
               "text-gray-400 select-none": !hasAddress,
             })}
           >
-            Modalidad de Envío y Despacho
+            Shipping method
             {!isOpen && hasShipping && (
               <span className="text-[#1E7E34] text-[18px]">✓</span>
             )}
@@ -111,7 +111,7 @@ const Shipping: React.FC<ShippingProps> = ({
       {isOpen && hasAddress ? (
         <div className="pt-2">
           <p className="text-[13px] text-[#666] mb-4">
-            Seleccione el método de despacho para sus suministros industriales en Perú:
+            Select a shipping method for your industrial supplies in the United States:
           </p>
 
           <RadioGroup
@@ -150,22 +150,22 @@ const Shipping: React.FC<ShippingProps> = ({
                         </span>
                         {isPickup && (
                           <span className="bg-emerald-100 text-emerald-800 text-[11px] font-bold px-2 py-0.5 rounded">
-                            Gratis
+                            Free
                           </span>
                         )}
                       </div>
                       
                       <p className="text-[13px] text-[#666] mt-1">
                         {isPickup
-                          ? "Retiro inmediato en Almacén Central: Av. General Eugenio Garzón 2099, Jesús María, Lima (Lun-Vie 8:30am - 6:00pm)."
-                          : "Entrega a domicilio, planta u obra en Lima Metropolitana (24-48 hrs) o Provincias vía Shalom / Olva / Carga Pesada (48-72 hrs)."}
+                          ? "Will-call pickup by arrangement (Mon–Fri 8:30am – 6:00pm PT)."
+                          : "Delivery to site or plant in the US (typically 2–5 business days)."}
                       </p>
                     </div>
                   </div>
 
                   <div className="text-right flex-shrink-0">
                     <span className="font-bold text-[14px] text-[#131921]">
-                      {option.amount === 0 ? "Gratis (S/ 0.00)" : `S/ ${(option.amount || 0).toFixed(2)}`}
+                      {option.amount === 0 ? "Free (S/ 0.00)" : `S/ ${(option.amount || 0).toFixed(2)}`}
                     </span>
                   </div>
                 </RadioGroup.Option>
@@ -182,7 +182,7 @@ const Shipping: React.FC<ShippingProps> = ({
               isLoading={isLoading}
               data-testid="submit-delivery-option-button"
             >
-              Continuar al Método de Pago ›
+              Continue to payment method ›
             </Button>
           </div>
         </div>
@@ -199,7 +199,7 @@ const Shipping: React.FC<ShippingProps> = ({
                 </p>
               </div>
               <span className="font-bold text-[#1E7E34]">
-                {selectedShippingMethod.amount === 0 ? "Gratis" : `S/ ${(selectedShippingMethod.amount || 0).toFixed(2)}`}
+                {selectedShippingMethod.amount === 0 ? "Free" : `S/ ${(selectedShippingMethod.amount || 0).toFixed(2)}`}
               </span>
             </div>
           ) : (

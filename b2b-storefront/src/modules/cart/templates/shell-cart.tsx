@@ -60,11 +60,11 @@ export default function ShellCartTemplate() {
     const itemsList = resolvedLines
       .map(
         (line) =>
-          `• *${line.title}*\n  Ítem: ${line.itemNumber || "N/A"} | Cant: ${line.quantity} | ${line.priceLabel}`
+          `• *${line.title}*\n  Item: ${line.itemNumber || "N/A"} | Cant: ${line.quantity} | ${line.priceLabel}`
       )
       .join("\n\n")
 
-    const msg = `Hola Control Nautas, deseo cotizar/comprar los siguientes suministros industriales:\n\n${itemsList}\n\n*Total Estimado:* ${formatPrice(subtotal)}\n\nPor favor confirmar disponibilidad y plazos de entrega.`
+    const msg = `Hola Control Nautas, deseo cotizar/comprar los siguientes suministros industriales:\n\n${itemsList}\n\n*Total Estimado:* ${formatPrice(subtotal)}\n\nPor favor confirmar availability y plazos de entrega.`
     return `https://wa.me/${company.whatsappNumber}?text=${encodeURIComponent(msg)}`
   }
 
@@ -72,13 +72,13 @@ export default function ShellCartTemplate() {
     const body = resolvedLines
       .map(
         (line) =>
-          `- ${line.title}\n  Ítem #${line.itemNumber || "N/A"} · Fab. ${line.mfrModel || "N/A"} · Cant. ${line.quantity} · ${line.priceLabel}`
+          `- ${line.title}\n  Item #${line.itemNumber || "N/A"} · Fab. ${line.mfrModel || "N/A"} · Qty ${line.quantity} · ${line.priceLabel}`
       )
       .join("\n\n")
     return `mailto:${company.email}?subject=${encodeURIComponent(
-      "Solicitud de cotización / pedido Control Nautas"
+      "Control Nautas quote / order request"
     )}&body=${encodeURIComponent(
-      `Solicito cotización formal / confirmación de stock:\n\n${body}\n\nSubtotal estimado (solo ítems con precio): ${formatPrice(subtotal)}\n\nEmpresa / RUC:\nContacto:\nTeléfono:\nDirección de entrega:`
+      `Please provide a formal quote / stock confirmation:\n\n${body}\n\nEstimated subtotal (priced items only): ${formatPrice(subtotal)}\n\nCompany / Tax ID:\nContact:\nPhone:\nDelivery address:`
     )}`
   }
 
@@ -88,15 +88,15 @@ export default function ShellCartTemplate() {
         <div className="w-20 h-20 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl">
           🛒
         </div>
-        <h1 className="text-[26px] font-bold mb-2 text-[#1C242E]">Tu carrito de compras está vacío</h1>
+        <h1 className="text-[26px] font-bold mb-2 text-[#1C242E]">Your shopping cart is empty</h1>
         <p className="text-[14px] text-[#666] mb-8 max-w-md mx-auto">
-          Explora nuestro catálogo técnico con más de 500 suministros industriales para calefacción, aislamiento, instrumentación y control.
+          Browse our technical catalog of industrial supplies for heating, insulation, instrumentation, and control.
         </p>
         <LocalizedClientLink
           href="/store"
           className="bg-[#C8102E] hover:bg-[#9B0C24] text-white font-bold text-[14px] px-8 py-3.5 inline-block rounded shadow-sm transition-colors"
         >
-          Explorar Catálogo de Productos
+          Explorar Product Catalog
         </LocalizedClientLink>
       </div>
     )
@@ -106,7 +106,7 @@ export default function ShellCartTemplate() {
     <div className="max-w-[1200px] mx-auto px-4 lg:px-6 py-10 font-[Arial,Helvetica,sans-serif] text-[#333]">
       <div className="flex items-center justify-between mb-6 pb-4 border-b border-[#E0E0E0]">
         <div>
-          <h1 className="text-[26px] font-black text-[#131921] tracking-tight">Carrito de Compras</h1>
+          <h1 className="text-[26px] font-black text-[#131921] tracking-tight">Shopping Cart</h1>
           <p className="text-[13px] text-[#666]">
             {resolvedLines.length} productos en su lista de pedido
             {isResolving ? " · actualizando precios…" : ""}
@@ -123,9 +123,9 @@ export default function ShellCartTemplate() {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
         <div className="lg:col-span-8 border border-[#E0E0E0] rounded bg-white shadow-sm overflow-hidden">
           <div className="bg-[#F8F9FA] px-4 py-3 text-[12px] font-bold border-b border-[#E0E0E0] grid grid-cols-12 text-[#555] uppercase tracking-wider">
-            <div className="col-span-6">Producto / Especificación</div>
-            <div className="col-span-2 text-center">Cant.</div>
-            <div className="col-span-2 text-right">Precio Unit.</div>
+            <div className="col-span-6">Product / Specification</div>
+            <div className="col-span-2 text-center">Qty</div>
+            <div className="col-span-2 text-right">Unit Price</div>
             <div className="col-span-2 text-right">Subtotal</div>
           </div>
 
@@ -152,18 +152,18 @@ export default function ShellCartTemplate() {
                       {line.title}
                     </LocalizedClientLink>
                     <div className="text-[11px] text-[#777] mt-0.5">
-                      Ítem #{line.itemNumber || "—"} · Mod. {line.mfrModel || "—"}
+                      Item #{line.itemNumber || "—"} · Mod. {line.mfrModel || "—"}
                     </div>
                     {line.requiresQuote && (
                       <span className="text-[11px] text-[#D97706] font-semibold mt-1 block">
-                        Solo cotización — no incluido en checkout
+                        Quote only — not included in checkout
                       </span>
                     )}
                     <button
                       onClick={() => removeItem(line.variantId)}
                       className="text-[11px] text-[#C8102E] mt-1 font-semibold hover:underline block"
                     >
-                      Eliminar
+                      Remove
                     </button>
                   </div>
                 </div>
@@ -190,7 +190,7 @@ export default function ShellCartTemplate() {
 
                 <div className="col-span-2 text-right font-black text-[#131921]">
                   {line.requiresQuote
-                    ? "Cotizar"
+                    ? "Quote"
                     : formatPrice(line.priceAmount * line.quantity)}
                 </div>
               </div>
@@ -201,7 +201,7 @@ export default function ShellCartTemplate() {
         <div className="lg:col-span-4 flex flex-col gap-4">
           <div className="border border-[#E0E0E0] rounded bg-white p-5 shadow-sm">
             <h2 className="font-bold text-[16px] text-[#131921] mb-4 pb-2 border-b border-[#EEE]">
-              Resumen del Pedido
+              Order Summary
             </h2>
 
             <div className="flex justify-between text-[14px] mb-2 text-[#555]">
@@ -211,12 +211,12 @@ export default function ShellCartTemplate() {
 
             {quoteLines.length > 0 && (
               <div className="text-[12px] text-[#D97706] mb-3">
-                {quoteLines.length} ítem(s) de cotización no se incluyen en el checkout.
+                {quoteLines.length} quote item(s) are not included in checkout.
               </div>
             )}
 
             <div className="flex justify-between text-[13px] mb-3 text-[#777]">
-              <span>Envío (Perú):</span>
+              <span>Shipping (US):</span>
               <span className="text-emerald-700 font-semibold">Calculado en checkout</span>
             </div>
 
@@ -238,7 +238,7 @@ export default function ShellCartTemplate() {
             >
               {isSyncing ? (
                 <>
-                  <span className="animate-spin text-lg">⏳</span> Sincronizando Pedido...
+                  <span className="animate-spin text-lg">⏳</span> Syncing order...
                 </>
               ) : (
                 <>Proceder al Checkout ›</>
@@ -251,14 +251,14 @@ export default function ShellCartTemplate() {
               rel="noopener noreferrer"
               className="w-full bg-[#25D366] hover:bg-[#1EBE5D] text-white font-bold py-3 px-4 rounded text-[13px] transition-colors flex items-center justify-center gap-2 mb-2"
             >
-              <span>💬</span> Cotizar Carrito por WhatsApp
+              <span>💬</span> Quote cart via WhatsApp
             </a>
 
             <a
               href={rfqMailto()}
               className="w-full border border-[#999] hover:bg-gray-50 text-[#333] font-bold py-2.5 px-4 rounded text-[12px] text-center block transition-colors"
             >
-              ✉️ Enviar Cotización por Correo
+              ✉️ Email quote
             </a>
           </div>
 
@@ -266,7 +266,7 @@ export default function ShellCartTemplate() {
             href="/store"
             className="text-center text-[13px] text-[#0066CC] hover:underline font-semibold py-2"
           >
-            ← Continuar comprando en el catálogo
+            ← Continue shopping
           </LocalizedClientLink>
         </div>
       </div>

@@ -35,7 +35,7 @@ export function formatPrice(
   price: number,
   mode?: "fixed" | "quote"
 ): string {
-  if (mode === "quote" || price <= 0) return "Consultar precio"
+  if (mode === "quote" || price <= 0) return "Request price"
   return `S/ ${price.toFixed(2)}`
 }
 

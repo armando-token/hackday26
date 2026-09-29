@@ -66,17 +66,17 @@ export default function HomeTemplate({
 
         <div className="bg-[#185394] p-8 rounded-sm mb-12">
           <h2 className="text-[28px] font-bold text-white mb-2">
-            Calor, control e instrumentación industrial
+            Heat, control & industrial instrumentation
           </h2>
           <p className="text-[16px] text-white max-w-3xl mb-6">
-            Soluciones integrales de Control Nautas: calefacción eléctrica,
-            trazado térmico, controladores PID, sensores, monitoreo ambiental, PLC y aislamiento industrial.
+            Control Nautas solutions: electric heating,
+            heat tracing, PID controllers, sensors, environmental monitoring, PLC, and industrial insulation.
           </p>
           <LocalizedClientLink
             href="/store/calefaccion-electrica"
             className="inline-block bg-white text-[#185394] font-bold text-[14px] px-6 py-3 rounded-sm hover:bg-gray-100 transition-colors"
           >
-            Explorar calefacción
+            Explore heating
           </LocalizedClientLink>
         </div>
 
@@ -87,12 +87,12 @@ export default function HomeTemplate({
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-            {/* Card 1: Casos de Éxito */}
+            {/* Card 1: Case Studies */}
             <div className="bg-[#F4F5F7] p-6 border border-[#E0E0E0] rounded-none flex flex-col justify-between">
               <div>
                 <div className="flex items-center justify-between mb-2">
                   <LocalizedClientLink href="/casos-de-exito" className="font-bold text-[16px] text-[#222222] hover:text-[#0066CC] flex items-center gap-1 font-['Roboto']">
-                    <span>Casos de Éxito en la Industria</span>
+                    <span>Industrial Case Studies</span>
                     <span className="text-[#0066CC]">›</span>
                   </LocalizedClientLink>
                   <div className="w-[32px] h-[32px] bg-[#CC0000] text-white flex items-center justify-center font-bold text-xs rounded-none">
@@ -100,24 +100,24 @@ export default function HomeTemplate({
                   </div>
                 </div>
                 <p className="text-[13px] text-[#444444] mb-4">
-                  Soluciones aplicadas en centrales hidroeléctricas, minería en alta montaña y centros de cómputo en el Perú.
+                  Solutions applied in power generation, mining, and data centers.
                 </p>
               </div>
               <div className="text-[12px] text-[#0066CC] font-normal flex flex-wrap gap-2 pt-4 border-t border-[#E0E0E0]">
-                <LocalizedClientLink href="/casos-de-exito/resistencias-electricas-prevenir-cortocircuitos" className="hover:underline font-['Roboto']">Generación</LocalizedClientLink>
+                <LocalizedClientLink href="/casos-de-exito/resistencias-electricas-prevenir-cortocircuitos" className="hover:underline font-['Roboto']">Power generation</LocalizedClientLink>
                 <span>|</span>
-                <LocalizedClientLink href="/casos-de-exito/heat-tracing-evitar-congelamiento" className="hover:underline font-['Roboto']">Minería</LocalizedClientLink>
+                <LocalizedClientLink href="/casos-de-exito/heat-tracing-evitar-congelamiento" className="hover:underline font-['Roboto']">Mining</LocalizedClientLink>
                 <span>|</span>
                 <LocalizedClientLink href="/casos-de-exito/control-temperatura-datacenters-akcp" className="hover:underline font-['Roboto']">Datacenters</LocalizedClientLink>
               </div>
             </div>
 
-            {/* Card 2: Líneas de Especialización */}
+            {/* Card 2: Product Lines */}
             <div className="bg-[#F4F5F7] p-6 border border-[#E0E0E0] rounded-none flex flex-col justify-between">
               <div>
                 <div className="flex items-center justify-between mb-2">
                   <LocalizedClientLink href="/store" className="font-bold text-[16px] text-[#222222] hover:text-[#0066CC] flex items-center gap-1 font-['Roboto']">
-                    <span>Líneas de Especialización</span>
+                    <span>Product Lines</span>
                     <span className="text-[#0066CC]">›</span>
                   </LocalizedClientLink>
                   <div className="w-[32px] h-[32px] bg-[#CC0000] text-white flex items-center justify-center font-bold text-xs rounded-none">
@@ -125,7 +125,7 @@ export default function HomeTemplate({
                   </div>
                 </div>
                 <p className="text-[13px] text-[#444444] mb-4">
-                  Suministros certificados de aislamiento térmico, trazado eléctrico, sensores e instrumentación de procesos.
+                  Certified thermal insulation, electric heat tracing, sensors, and process instrumentation.
                 </p>
               </div>
               <div className="text-[12px] text-[#0066CC] font-normal flex flex-wrap gap-2 pt-4 border-t border-[#E0E0E0]">
@@ -142,7 +142,7 @@ export default function HomeTemplate({
               <div>
                 <div className="flex items-center justify-between mb-2">
                   <LocalizedClientLink href="/contacto" className="font-bold text-[16px] text-[#222222] hover:text-[#0066CC] flex items-center gap-1 font-['Roboto']">
-                    <span>Soporte Técnico y Envíos</span>
+                    <span>Technical Support & Shipping</span>
                     <span className="text-[#0066CC]">›</span>
                   </LocalizedClientLink>
                   <div className="w-[32px] h-[32px] bg-[#CC0000] text-white flex items-center justify-center font-bold text-xs rounded-none">
@@ -150,22 +150,22 @@ export default function HomeTemplate({
                   </div>
                 </div>
                 <p className="text-[13px] text-[#444444] mb-4">
-                  Asesoría en dimensionamiento técnico, cotizaciones B2B rápidas y despacho a Lima y todas las regiones del país.
+                  Sizing support, fast B2B quotes, and shipping across the United States.
                 </p>
               </div>
               <div className="text-[12px] text-[#0066CC] font-normal flex flex-wrap gap-2 pt-4 border-t border-[#E0E0E0]">
-                <LocalizedClientLink href="/nosotros" className="hover:underline font-['Roboto']">Nosotros</LocalizedClientLink>
+                <LocalizedClientLink href="/nosotros" className="hover:underline font-['Roboto']">About Us</LocalizedClientLink>
                 <span>|</span>
-                <LocalizedClientLink href="/contacto" className="hover:underline font-['Roboto']">Asesoría Técnica</LocalizedClientLink>
+                <LocalizedClientLink href="/contacto" className="hover:underline font-['Roboto']">Technical Advisory</LocalizedClientLink>
                 <span>|</span>
-                <LocalizedClientLink href="/entregas-y-devoluciones" className="hover:underline font-['Roboto']">Despacho Nacional</LocalizedClientLink>
+                <LocalizedClientLink href="/entregas-y-devoluciones" className="hover:underline font-['Roboto']">Fulfillment Nacional</LocalizedClientLink>
               </div>
             </div>
           </div>
 
           {/* SEO Footer Text */}
           <p className="text-[11px] text-[#666666] leading-relaxed border-t border-[#E0E0E0] pt-6">
-            Control Nautas es el proveedor especializado en soluciones para control de procesos, calefacción eléctrica, trazado térmico, instrumentación industrial, sensores y automatización. Contamos con un amplio catálogo de productos de los principales fabricantes del sector, respaldados por asesoría técnica experta, soporte especializado y atención continua para mantener su planta e instalaciones operando con la máxima eficiencia.
+            Control Nautas specializes in process control, electric heating, heat tracing, industrial instrumentation, sensors, and automation — backed by expert technical support to keep your plant running efficiently.
           </p>
         </div>
       </div>

@@ -81,7 +81,7 @@ function normalizeSkuToken(token: string): string {
   return token.toLowerCase().replace(/[^a-z0-9-_]/g, "")
 }
 
-/** Resuelve tokens SKU / ítem / handle contra el catálogo activo (quick-order). */
+/** Resuelve tokens SKU / item / handle contra el catálogo activo (quick-order). */
 export async function lookupCatalogProductsBySkuTokens(
   tokens: string[],
   countryCode: string
