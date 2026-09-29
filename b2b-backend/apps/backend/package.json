@@ -35,7 +35,9 @@
     "catalog:remove-usd": "npm run catalog:remove-non-pen",
     "catalog:remove-usd:apply": "npm run catalog:remove-non-pen:apply",
     "catalog:migrate-category-images": "npx medusa exec ./src/scripts/migrate-category-images.ts",
-    "catalog:migrate-category-images:apply": "npx medusa exec ./src/scripts/migrate-category-images.ts apply"
+    "catalog:migrate-category-images:apply": "npx medusa exec ./src/scripts/migrate-category-images.ts apply",
+    "seed:demo": "npx medusa exec ./src/scripts/seed-hackday-demo.ts",
+    "seed:demo:revert": "npx medusa exec ./src/scripts/revert-hackday-demo.ts"
   },
   "dependencies": {
     "@medusajs/admin-sdk": "2.17.0",
