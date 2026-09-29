@@ -184,7 +184,7 @@ describe("GET /api/muse/v1/products/[variantId]", () => {
       expect(body.sku).toBe("CN-DEMO-PLC-DIN-420-MR1")
       expect(body.model).toBe("CN-DIN-PLC-A1")
       expect(body.title).toContain("Controlador Lógico Programable")
-      expect(body.product_url).toBe("http://52.20.66.203:8000/pe/products/cn-demo-plc-din-420-mr1")
+      expect(body.product_url).toBe("https://data.controlnautas.com/pe/products/cn-demo-plc-din-420-mr1")
       expect(body.demo).toBe(true)
       expect(body.request_id).toBeDefined()
 
@@ -243,7 +243,7 @@ describe("GET /api/muse/v1/products/[variantId]", () => {
       const body = response.body
       expect(body.sku).toBe("CN-DEMO-PID-PT100-RS1")
       expect(body.model).toBe("CN-PID-T1")
-      expect(body.product_url).toBe("http://52.20.66.203:8000/pe/products/cn-demo-pid-pt100-rs1")
+      expect(body.product_url).toBe("https://data.controlnautas.com/pe/products/cn-demo-pid-pt100-rs1")
       expect(body.demo).toBe(true)
       expect(body.facts.length).toBeGreaterThan(0)
     })
@@ -263,7 +263,7 @@ describe("GET /api/muse/v1/products/[variantId]", () => {
       const body = response.body
       expect(body.sku).toBe("CN-DEMO-PT100-3W-A1")
       expect(body.model).toBe("CN-RTD-P1")
-      expect(body.product_url).toBe("http://52.20.66.203:8000/pe/products/cn-demo-pt100-3w-a1")
+      expect(body.product_url).toBe("https://data.controlnautas.com/pe/products/cn-demo-pt100-3w-a1")
       expect(body.demo).toBe(true)
       expect(body.facts.length).toBeGreaterThan(0)
     })
