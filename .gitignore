@@ -1,0 +1,23 @@
+# AWS private keys — never commit
+aws-keys/
+*.pem
+
+# Env / secrets
+.env
+.env.*
+!.env.example
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
+*.swp
+
+# Dependencies / build
+node_modules/
+dist/
+build/
+__pycache__/
+*.pyc
+.venv/
+venv/
