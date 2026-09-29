@@ -1,0 +1,500 @@
+
+### 📁 aislamiento-termico **(Realizado)**
+
+- 📂 **paneles-lana-roca** **(Realizado)** *(12 productos)*
+  - 📦 [Rockwool] **Panel de Lana de Roca ROCKWOOL ProRox SL 920 NA (Ligero 48 kg/m³) para Aislamiento Térmico Intermedio (Hasta 650°C) en Paredes Verticales y Horizontales** `ProRox SL 920 NA`
+  - 📦 [Rockwool] **Panel de Lana de Roca ROCKWOOL ProRox SL 940 NA (Semirrígido) para Alta Temperatura (Hasta 650°C), Densidad Media (80 kg/m³) y Aislamiento de Tanques y Equipos** `ProRox SL 940 NA`
+  - 📦 [Rockwool] **Panel de Lana de Roca ROCKWOOL ProRox SL 960 NA (Rígido) para Alta Temperatura (Hasta 650°C / 1200°F), Resistente al Fuego y Corrosión, Ideal para Calderas y Hornos Industriales** `ProRox SL 960 NA (RHT 80)`
+  - 📦 [Rockwool] **Panel Rígido de Lana de Roca ROCKWOOL Durock 386 / Bigpanel (Doble Densidad 210/135 kg/m³) Incombustible para Aislamiento Térmico y Acústico de Cubiertas Deck Metálicas** `Durock 386 / Bigpanel`
+  - 📦 [Termolan] **Panel de Lana de Roca Termolan Rocterm PN100 (100 kg/m³) de Alta Densidad, Incombustible (Clase A1) para Aislamiento Acústico y Térmico Industrial (1200x600x50 mm)** `Rocterm PN100`
+  - 📦 [Perfect] **Panel de Lana de Roca Mineral de Alta Densidad (50 kg/m³) Placa Rígida 1200x600mm para Aislamiento Térmico, Acústico y Protección Ignífuga (Resiste +1000°C)** `1000`
+  - 📦 [Sinopan] **Panel de Cubierta SC-PW de Lana de Roca, Aislamiento Térmico y Acústico para Techos Metálicos, Alta Resistencia al Fuego** `Panel`
+  - 📦 [Sinopan] **Panel de Fachada SC-PW de Lana de Roca, Aislamiento Térmico y Acústico para Muros Exteriores, Resistente al Fuego** `Panel`
+  - 📦 [Sinopan] **Panel para Sala Blanca Sinopan, Aislante Antiestático y Antibacteriano, Alta Resistencia al Fuego y Ruido, Ideal para Ambientes Controlados y Quirófanos.** `Panel`
+  - 📦 [Perfect] **Cubos Hidropónicos de Lana de Roca – Sustrato Estéril para Agricultura sin Suelo** `Cubos`
+  - 📦 [Perfect] **Panel de Lana de Roca de Alta Densidad (100 kg/m³) – Aislamiento Térmico y Acústico (50mm)** `100`
+  - 📦 [Perfect] **Panel de Lana de Roca con Aluminio – Aislamiento Térmico Duradero e Ignífugo** `Panel`
+
+- 📂 **espuma-elastomerica** **(Realizado)** *(1 productos)*
+  - 📦 [Control Nautas] **Cinta de Aislamiento Térmico de Espuma Elastomérica (Célula Cerrada) Autoadhesiva con Recubrimiento de Polietileno para Tuberías de Aire Acondicionado y Refrigeración (Rollo 50mm x 10m)** `Cinta`
+
+- 📂 **pir-poliuretano** **(Realizado)** *(4 productos)*
+  - 📦 [Sinopan] **Panel Decorativo PU PESO 3800×380 mm, Poliuretano Ligero de 3.7 kg/m², Aislante Térmico e Impermeable, Acabado Estético Tipo Muro para Interiores** `Panel Decorativo PU PESO`
+  - 📦 [Sinopan] **Panel de Fachada SC‑PU de Poliuretano PIR, Panel Sándwich Aislante Térmico Ecológico sin Formaldehído, Acabado Metálico Decorativo para Muros Industriales y Comerciales** `SC‑PU`
+  - 📦 [Sinopan] **Panel de Cubierta SCR‑PU de Poliuretano PIR para Techos Metálicos, Panel Sándwich Aislante Térmico Impermeable, Alta Resistencia al Ruido, Corrosión y Carga Estructural** `SCR‑PU`
+  - 📦 [Sinopan] **Panel Frigorífico SC‑Pc de Poliuretano PIR para Cámaras de Frío, Panel Sándwich Aislante, Espesores 50–200 mm, Revestimiento Metálico, Alta Eficiencia Térmica y Resistente a Humedad** `SC‑Pc`
+
+- 📂 **mantas-canuelas** **(Realizado)** *(4 productos)*
+  - 📦 [Perfect] **Manta de Lana de Roca – Aislamiento Térmico y Protección contra Incendios de Alto Rendimiento** `Manta`
+  - 📦 [Perfect] **Cañuelas de Lana de Roca – Aislamiento Térmico Preformado para Tuberías Industriales y Comerciales** `Ca`
+  - 📦 [Perfect] **Cañuelas de Lana de Roca con Recubrimiento de Aluminio – Aislamiento Térmico de Alto Basalto** `Ca`
+  - 📦 [Perfect] **Manta de Lana de Roca con Malla de Alambre – Aislamiento Térmico y Acústico** `Manta`
+
+### 📁 sensores-transmisores **(Sin realizar)**
+
+- 📂 **temperatura-termopar-rtd** **(Sin realizar)** *(35 productos)*
+  - 📦 [MPI] **Sensor de Temperatura RTD Pt100 Industrial (-200°C a +600°C) con Cabezal de Conexión, Rosca a Proceso 1/2″ NPT/BSP y Vaina de Acero Inoxidable 316 para Gases y Líquidos** `200`
+  - 📦 [MPI] **Sensor RTD Pt100 Industrial (Completo) con Cabezal Aluminio DIN B, Termopozo de Protección Roscado/Bridado y Niple de Extensión para Reemplazo Fácil** `Sensor`
+  - 📦 [MPI] **Sensor de Temperatura RTD310 de Inmersión (Pt100 / Pt1000) con Cabezal de Conexión en Acero Inoxidable, Rosca a Proceso Configurable (NPT/BSP) y Precisión Ajustable (Hasta 1/10 DIN)** `RTD310 (Inmersión con Cabezal)`
+  - 📦 [MPI] **Sensor de Temperatura RTD Pt100 Sanitario (Clase A) con Conexión Tri-Clamp 1.5″, Cabezal Higiénico de Poliamida Blanco y Vaina de Acero Inoxidable 316L para Alimentos y Farmacéutica** `316L`
+  - 📦 [Novus] **Novus Sensor de Temperatura Ajustable Serie FSB (Termocupla J / Pt100) con Adaptador de Bayoneta, Resorte de Compresión y Cable Trenzado para Maquinaria Plástica** `Serie FSB (Bayoneta Ajustable)`
+  - 📦 [Novus] **Novus Sensor de Temperatura Portátil Serie HSC para Alimentos con Empuñadura Ergonómica, Varilla de Acero Inoxidable y Conector Miniatura (Tipo K / T)** `Serie HSC (Portátil con Cable)`
+  - 📦 [Novus] **Novus Sensor de Temperatura Pt100 Industrial (Serie SPH) con Cabezal de Aluminio, Sonda de Acero Inoxidable 316 (6×150 mm) y Rosca 1/2″ BSP para Procesos de hasta 300°C** `SPH (Sensor con Cabezal)`
+  - 📦 [Novus] **Sensores de Temperatura con Punta de Metal Serie SMT Novus (Pt100 / Termocupla)** `Serie SMT (Punta de Metal)`
+  - 📦 [Tzone] **Registrador de Datos en Tiempo Real Tzone TT18 4G con GPS, Sensor de Temperatura y Humedad, Batería Recargable de Larga Duración y Plataforma en la Nube para Logística** `TT18 4G (Registrador en Tiempo Real)`
+  - 📦 [Tzone] **Transmisor de Temperatura Integrado Tzone PTT04R con Sensor RTD Pt100, Salida Digital RS485 Modbus-RTU, Rango -200°C a +850°C, Acero Inoxidable IP65 para Automatización Industrial** `PTT04R (Transmisor de Temperatura Digital)`
+  - 📦 [Tzone] **Registrador de Datos Bluetooth Tzone TZ-BT06 con Pantalla LCD, Sensor de Temperatura y Humedad, Memoria de 32,000 Registros, Alcance Largo de 300 Metros y Batería Reemplazable de 1 Año** `TZ-BT06 (Bluetooth Data Logger con LCD)`
+  - 📦 [Novus] **NTC Novus – Sensor de Temperatura Cápsula de Acero Inoxidable 5x30mm con Cable TPE de 3m (-50 a 120°C)** `Sensor de Temperatura NTC Novus`
+  - 📦 [MPI] **Modelo Calentador de Cartucho con Sensor de Temperatura Interno MPI Morheat, Precisión y Control Integrado, Aprobado por CSAus** `Calentador`
+  - 📦 [MPI] **Termopar de Bayoneta Ajustable MPI Morheat, Configuraciones a Medida, Alta Temperatura** `Termopar`
+  - 📦 [MPI] **Termopar de Bayoneta Ajustable con Armadura Flexible MPI Morheat, Configuraciones a Medida** `Termopar`
+  - 📦 [MPI] **Termopar de Bayoneta de Profundidad Fija MPI Morheat, Configuraciones a Medida, Alta Temperatura** `Termopar`
+  - 📦 [MPI] **Termopar de Bayoneta Ajustable con Resorte y Armadura Flexible MPI Morheat, Configuraciones a Medida** `Termopar`
+  - 📦 [MPI] **Termopar de Cabeza y Ranura MPI Morheat, Configuraciones a Medida, Alta Temperatura** `Termopar`
+  - 📦 [MPI] **Termopar de Perno Roscado y Boquilla MPI Morheat, Configuraciones a Medida, Alta Temperatura** `Termopar`
+  - 📦 [MPI] **Termopar de Soldadura de Gota MPI Morheat, Configuraciones a Medida, Alta Temperatura** `Termopar`
+  - 📦 [MPI] **Termopar con Recubrimiento de Teflón MPI Morheat, Configuraciones a Medida** `Termopar`
+  - 📦 [MPI] **Termopar de Boquilla Newbury MPI Morheat, Curva de 90 Grados, Alta Temperatura** `Termopar`
+  - 📦 [MPI] **Termopar de Terminal de Anillo MPI Morheat, Múltiples Tamaños, Alta Temperatura** `Termopar`
+  - 📦 [MPI] **Termopar de Lámina MPI Morheat, Configuraciones a Medida, Alta Temperatura** `Termopar`
+  - 📦 [MPI] **Termopar Estilo Arburg MPI Morheat para Máquinas de Inyección, Sensor de Temperatura Tipo J y K, Resorte de Compresión, Malla de Acero Inoxidable, Alta Temperatura** `Termopar`
+  - 📦 [MPI] **Termopar de Aislamiento Mineral MPI Morheat para Medición Industrial, Sensor Dual Tipo J y K, Conexiones Roscadas, Inconel 600 y Acero Inoxidable** `Termopar`
+  - 📦 [MPI] **Termopar de Aislamiento Mineral con Bloque de Terminales MPI Morheat para Medición Industrial, Sensor Simple y Dual Tipo J y K, Acero Inoxidable e Inconel, Alta Temperatura** `Termopar`
+  - 📦 [MPI] **MPI Morheat Termopar de Aislamiento Mineral con Cable Espiral para Medición Industrial, Sensor Tipo J y K, Cable Retráctil Extensible, Inconel y Acero Inoxidable** `MPI`
+  - 📦 [MPI] **MPI Morheat Termopar para Tostadora de Café con Cabezal de Conexión para Tueste Industrial, Sensor Simple y Dual, Transmisor 4-20mA, Cabezales FDA y Aluminio** `MPI`
+  - 📦 [MPI] **MPI Morheat Termopar para Canal Caliente en Inyección de Plástico, Sensor de Temperatura Tipo J y K, Transición con Resorte, Acero Inoxidable e Inconel, Alta Temperatura** `MPI`
+  - 📦 [MPI] **MPI Morheat Termopar de Metal Base para Hornos Industriales, Sensor de Temperatura Tipo J y K, Aislantes Cerámicos, Calibre 8 y 14** `MPI`
+  - 📦 [MPI] **MPI Morheat Termopar de Metal Base con Tubo de Protección y Codo de 90 Grados para Hornos Industriales, Sensor Tipo J y K, Cabezal de Aluminio, Transmisor 4-20mA, Alta Temperatura** `MPI`
+  - 📦 [AKCP] **AKCP Cabinet Thermal Map Sensor – Sensor de Temperatura y Humedad para Racks, Mapa Térmico con Detección de Puntos Calientes (Hotspots), Extensión RJ-45 para Monitoreo en Centros de Datos** `RJ-45`
+  - 📦 [AKCP] **AKCP Thermocouple Sensor – Sensor de Temperatura Industrial Tipo J y K, Rango Extremo de -200°C a +900°C con Conexión RJ-45, Ideal para Monitoreo en Petroquímica y Metalurgia** `200`
+  - 📦 [AKCP] **AKCP Battery Terminal Temperature Sensor – Sensor de Temperatura para Bornes de Batería, Monitoreo de Salud Térmica con Precisión NIST, Conectividad RJ-45 para Sistemas de Respaldo Energético** `RJ-45`
+
+- 📂 **presion-proceso** **(Sin realizar)** *(7 productos)*
+  - 📦 [MPI] **Termopozos Industriales de Alta Presión (Hasta 2500#) en Acero Inoxidable y Aleaciones Exóticas (Monel, Hastelloy) con Conexión Bridada, Roscada o Soldada** `Termopozos`
+  - 📦 [MPI] **Discos de Ruptura para Extrusión (Burst Plugs) de Inconel – Seguridad Certificada para Extrusoras de Plástico (1/2-20 UNF y Métricas)** `RP1202-3500`
+  - 📦 [MPI] **Transductores de Presión de Fusión Certificados (Melt) – Reemplazo Universal 100% Compatible para Dynisco, Gefran y GP50 (mV/V, 4-20mA)** `Transductores`
+  - 📦 [King Electric] **Calefactor Industrial de Acero Inoxidable King Electric Serie KBS (1.5kW – 20kW), Gabinete NEMA 4 Sellado, Construcción 304 Resistente a Corrosión y Lavado a Presión para Plantas de Tratamiento** `Serie KBS (Stainless Steel Unit Heater)`
+  - 📦 [MPI] **Manguera Calefactada para la Industria del Plástico MPI Morheat, Alta Presión, Núcleo de PTFE T3** `Manguera`
+  - 📦 [MPI] **Mercurio mV/V – Transductor de Presión de Fusión MPI Morheat, Alta Temperatura** `Mercurio`
+  - 📦 [MPI] **Cables y Conectores para Transductores de Presión de Fusión MPI Morheat, Compatibilidad Universal** `Cables`
+
+- 📂 **transmisores** **(Sin realizar)** *(24 productos)*
+  - 📦 [Novus] **Sensores de Temperatura Inteligentes Serie BTS – Transmisor Incorporado (4-20mA / RS485)** `RS485`
+  - 📦 [Novus] **Transmisor de Humedad y Temperatura Novus RHT Climate (4-20mA / 0-10V) – Pantalla LCD, Modbus RTU y Cálculos Psicrométricos** `8804131101`
+  - 📦 [Novus] **Novus RHT-WM y RHT-DM (4-20mA) – Transmisores de Humedad y Temperatura Montaje Pared y Ducto con Alta Precisión** `8803006706`
+  - 📦 [Novus] **Transmisor de Temperatura de Cabezal Novus TxBlock-USB (4-20mA) – Entrada Universal, Configurable por USB y Alta Precisión** `8806000410`
+  - 📦 [Novus] **Transmisor de Temperatura Universal Novus TxRail-USB (4-20mA / 0-10V) – Configurable por USB para PT100 y Termocuplas** `8806037306`
+  - 📦 [Novus] **Novus RHT-P10 / RHT-XS (4-20mA) – Transmisor de Humedad y Temperatura Configurable, Alta Precisión para Ambientes Industriales** `8830000356`
+  - 📦 [Tzone] **Transmisor de Temperatura y Humedad Tipo Sonda Tzone TZ-THT02 con Salida RS485 Modbus, Sensor SHT3X de Alta Precisión, IP65 y Diseño Compacto para Conductos y Gabinetes** `TZ-THT02 (Transmisor Tipo Sonda)`
+  - 📦 [Tzone] **Transmisor de CO₂ Tzone TZ-CT01 con Tecnología NDIR de Doble Haz, Salida RS485 Modbus, Rango 0-10,000 ppm y Pantalla LCD para Control de Ventilación y Agricultura** `TZ-CT01 (Transmisor de Dióxido de Carbono)`
+  - 📦 [Tzone] **Transmisor de Temperatura y Humedad Tzone TZ-THT03R con Comunicación Digital RS485 Modbus, Pantalla LCD, Rango de -40°C a +120°C y Alta Precisión SHT30 para Automatización Industrial** `TZ-THT03R (Transmisor Digital RS485)`
+  - 📦 [Tzone] **Transmisor de Temperatura y Humedad Tzone TZ-THT03C con Pantalla LCD, Salida Analógica 4-20mA, Sensor SHT30 de Alta Precisión y Carcasa IP65 para HVAC y Automatización** `TZ-THT03C (Transmisor 4-20mA con LCD)`
+  - 📦 [Novus] **Brida Novus SS310 con Rosca 1/2 BSP para Transmisor RHT-P10 – Accesorio de Acero Inoxidable para Montaje Industrial** `Brida Novus SS310 para RHT-P10`
+  - 📦 [Novus] **Novus RHT-WM – Transmisor de Temperatura y Humedad, Sensor de Pared para Climatización Industrial con Salida Analógica 4-20mA** `Novus RHT-WM`
+  - 📦 [Novus] **Novus Telik Trafo Lite – Transmisor de Temperatura IoT para Transformadores Eléctricos** `Novus`
+  - 📦 [Novus] **Novus Telik Gardo – Monitoreo de Temperatura Inalámbrico para Subestaciones Eléctricas** `Novus`
+  - 📦 [Novus] **Novus TxIsoBlock-HRT – Transmisor de Temperatura Aislado con Protocolo HART para Riel DIN** `Novus`
+  - 📦 [Novus] **Novus TxMini – Transmisor de Temperatura Miniatura para Sensores Pt100** `Novus`
+  - 📦 [Novus] **Novus TxIsoLoop – Aislador de Lazo de Corriente 4-20 mA de 1 y 2 Canales para Riel DIN** `-20`
+  - 📦 [Novus] **Novus WL320 – Transmisor de Nivel Hidrostático Sumergible para Líquidos** `WL320`
+  - 📦 [Novus] **Novus WL420 – Transmisor de Nivel Hidrostático Sumergible de Alta Precisión en Acero Inoxidable 316L** `WL420`
+  - 📦 [Novus] **Novus RHT-P10/RHT-XS – Transmisores de Humedad y Temperatura para Aplicaciones Presurizadas o Espacios Reducidos** `P10/RHT-XS`
+  - 📦 [Tzone] **Tzone TZ-TT19 – Transmisor de Temperatura y Humedad con Tecnología LoRa de Largo Alcance** `TT19`
+  - 📦 [Tzone] **THT02C Sensor Transmisor de Temperatura y Humedad con Salida Analógica 4-20mA** `THT02C`
+  - 📦 [MPI] **NaK – Transductor y Transmisor de Presión de Fusión MPI Morheat, Alta Temperatura, Grado Alimenticio / Médico** `NaK`
+  - 📦 [AKCP] **AKCP Air Velocity Sensor Transmisor de Velocidad de Aire, Monitoreo Ambiental, Montaje en Ducto, RJ-45** `RJ-45`
+
+- 📂 **nivel** **(Sin realizar)** *(2 productos)*
+  - 📦 [King Electric] **Calefactor Radiante Infrarrojo SmartWave® de Fibra de Carbono con Alimentación 208V/240V, 2 Niveles de Calor y Temporizador de 24 Horas, Potencia 1500W, Protección IP55, Control Remoto, para Uso en Patios y Aplicaciones Comerciales** `208V/240V`
+  - 📦 [Novus] **Novus TL400 – Sensor de Nivel Ultrasónico Inteligente con Comunicación Bluetooth y Salida Analógica** `TL400`
+
+- 📂 **humedad-temperatura** **(Sin realizar)** *(1 productos)*
+  - 📦 [Novus] **Novus Climate-Air Plus – Sistema de Monitoreo Inalámbrico Solución IoT LoRa para Temperatura y Humedad** `Novus`
+
+### 📁 calefaccion-electrica **(Sin realizar)**
+
+- 📂 **sistemas-llave-en-mano** **(Sin realizar)** *(3 productos)*
+  - 📦 [Control Nautas] **Sistema de Calentamiento de Circulación 90KW (480V) – Panel Purga/Presurización y Registrador PPR-1800** `90KW`
+  - 📦 [Control Nautas] **Sistema de Calentamiento de Proceso 200KW (480V) – Controlador PID TEC-4100 y Potencia SCR 300A** `200KW`
+  - 📦 [MPI] **Sistema de Calentamiento para Tanque Profundo 10KW – Controlador PID TEC-4100 y Caja NEMA 4X** `10KW`
+
+- 📂 **termostatos-linea** **(Sin realizar)** *(15 productos)*
+  - 📦 [King Electric] **Calefactor Industrial Portátil de Acero Inoxidable King Electric Serie PKBS (5kW – 20kW), NEMA 4 Lavable a Presión, Construcción 304 Anticorrosiva y Termostato Integrado para Ambientes Húmedos** `Serie PKBS (Calefactor Portátil Inoxidable)`
+  - 📦 [King Electric] **Calentador de Utilidad para Casetas de Bombas King Electric Modelo U-SS (250W – 1000W), Acero Inoxidable 304, Cumple ASSE-1060, Elemento Incoloy 840 y Termostato Antihielo para Protección de Tuberías** `Serie U-SS (Calefactor para Casetas de Bombas)`
+  - 📦 [King Electric] **Termostato de Protección Contra Congelamiento TRF115-005 NEMA 4X con Alimentación 24 VAC, Sensor Remoto de 5 ft, Rango de Temperatura Ajustable 0120°F (-1748°C), Capacidad 25A @ 24/120/208/240V y 22A @ 277V, Protección IP Resistente a la Intemperie, Ideal para Aplicaciones Industriales y Exteriores** `Termostato`
+  - 📦 [King Electric] **Calefactor Montado en Superficie Modelo WSC con Certificación UL2021 para Uso Exterior, Elemento de Calentamiento NiChrome, Termostato Incorporado (40°F a 90°F), Protección Inteligente contra Sobrecalentamiento, Diseño Antihumedad y Aplicaciones de Protección contra Congelamiento** `UL2021`
+  - 📦 [King Electric] **Termostato Mecánico N.E.M.A.4X TF115 con Alimentación 24/120/208/240V, 3 Cables SPDT, Rango de Temperatura 40-100°F, Precisión ±2°F, Protección NEMA 4X para Refrigeración, Calefacción y Ventilación Industrial** `Termostato`
+  - 📦 [King Electric] **Termostato Mecánico N.E.M.A.4X TH109 con Alimentación 24 VAC, 6 Cables SPDT, Rango de Temperatura 40-100°F, Precisión ±2°F, Protección NEMA 4X para Refrigeración, Calefacción y Ventilación Industrial** `Termostato`
+  - 📦 [King Electric] **Termostato Programable WIFI Modelo HOOT – Blanco, Control con App, Pantalla Táctil LCD, Multi-Voltaje 120/208/240V, Rango de Temperatura 41-90°F, Precisión ±1°F, Actualizaciones OTA** `Termostato`
+  - 📦 [King Electric] **Termostato Programable K302PE para Calefactores Eléctricos, Panel Acrílico, Dual Voltaje 120/208/240V, Control de Temperatura Preciso ±1°F, Pantalla LCD Retroiluminada, Ahorro de Energía del 28%** `Termostato`
+  - 📦 [King Electric] **Termostato Mecánico de Polo Único K101 con Sensor Bi-Metal, Rango de Operación 41°-90°F (3°-32°C), Ajuste Fácil, Sin Cable de Tierra, para Uso en Hogar y Oficina** `Termostato`
+  - 📦 [King Electric] **Termostato Mecánico de Doble Polo MODEL K102 con Sensor Bi-Metal, Rango de Operación 41°-90°F (3°-32°C), Ajuste Fácil, Sin Cable de Tierra, para Uso en Hogar y Oficina** `Termostato`
+  - 📦 [King Electric] **Termostato de Enfriamiento K101-C con Sensor Bi-Metal, Sin Cable de Tierra, Rango de Operación 41°-90°F (3°-32°C), Instalación Fácil, Para Aplicaciones de Voltaje de Línea** `Termostato`
+  - 📦 [King Electric] **Modelo U King Electric Calentador de Utilidad Industrial, Protección Anticongelante para Válvulas y Bombas con Termostato Integrado** `Modelo`
+  - 📦 [King Electric] **Modelo KRF-B-KIT King Electric Kit de Termostato Inalámbrico Multisistema ThermaLink para Bombas de Calor y Calefacción de Respaldo, Pantalla Táctil Programable 7 Días, Cumple con Códigos de Energía** `KRF-B-KIT`
+  - 📦 [King Electric] **Modelo KRF-HEAT-KIT King Electric Kit de Termostato Inalámbrico ThermaLink, Control para Calefactores Eléctricos, Programable 7 Días** `KRF-HEAT-KIT`
+  - 📦 [King Electric] **Modelo HOOT WIFI King Electric Termostato Programable Inteligente, Pantalla Táctil LCD, Control por App para Smartphone, Ahorro de Energía, Voltaje de Línea Múltiple 120/208/240V, Color Blanco** `HOOT`
+
+- 📂 **pared-conveccion** **(Sin realizar)** *(28 productos)*
+  - 📦 [King Electric] **Calefactor Marino de Acero Inoxidable DAW-SS con 7 Niveles de Calor, Envolvente de Acero Inoxidable 304, Protección Contra Congelación, Ventilador Silencioso Tipo Squirrel Cage, Indicador Luminoso Verde y Bajo Consumo Energético para RVs, Embarcaciones, Cabinas y Usos Industriales** `304`
+  - 📦 [King Electric] **PAW-SS Calefactor Marino de Acero Inoxidable – Pic-A-Watt® con Envolvente de Acero 304, Blower Silencioso, Protección Smart Limit®, Montaje Empotrado o en Superficie, y Opciones de Potencia de 250 a 2250W para Barcos y Aplicaciones Marinas** `PAW-SS`
+  - 📦 [King Electric] **Calefactor Marino de Acero Inoxidable MKT-SS – Diseño de Bajo Perfil, Acero 304, Resistente a la Corrosión, Doble Potencia, Protección Smart Limit®, Ventilador Tangencial Silencioso, Elemento de Calor NiChrome, Ideal para Embarcaciones y Áreas de Alta Humedad** `304`
+  - 📦 [King Electric] **Calefactor de Pared Modelo W Diseño Económico con Elemento NiChrome para Transferencia Rápida de Calor Motor C-Frame y Ventilador de 4 Aspas de Aluminio Protección Patented Smart Limit Compatible con Termostato Integrado o de Pared Apto para Instalaciones en Ubicaciones Húmedas** `Calefactor`
+  - 📦 [King Electric] **Calefactor Electrónico de Garaje King Electric KB ECO2S+® (5kW – 15kW) de 2 Etapas con Sensor Remoto Inalámbrico, Compatible con NEST/WiFi, Modos de Temporizador y Ventilador de Verano, Montaje en Pared/Techo** `KB ECO2S+ Series (Smart Unit Heater)`
+  - 📦 [King Electric] **Calefactor de Convección Compacto King Electric Serie KCC (1500W – 5000W) con Núcleo Cerámico de Alta Masa, Gabinete de Acero Calibre 18, Montaje Dual Superficial/Empotrado y Acabado Texturizado** `Serie KCC (Compact Convection Cabinet)`
+  - 📦 [King Electric] **Calefactor Radiante Infrarrojo King Electric SmartWave® (1500W, 120V) de Fibra de Carbono con Control Remoto, Clasificación IP55 Resistente al Agua y Polvo, Montaje en Pared/Techo para Patios y Terrazas** `SmartWave® Series (1500W Plug-In)`
+  - 📦 [King Electric] **Calentador Portátil de Garaje King Electric PGH2440TB (240V, 3750W), Calefactor Eléctrico para Taller con Termostato Incorporado, Protección SureStop™ y Soporte de Montaje en Techo/Pared (Color Gris)** `PGH2440TB (Serie PGH)`
+  - 📦 [King Electric] **Ventilador Oscilante de Alta Velocidad WFO-24 de 24» para Montaje en Pared, Motor para Exteriores, 3 Velocidades, 7500 CFM** `Ventilador`
+  - 📦 [King Electric] **Ventilador Oscilante de Alta Velocidad WFO-30 de 30» para Montaje en Pared, Motor para Exteriores, 3 Velocidades, 8200 CFM** `Ventilador`
+  - 📦 [King Electric] **PX ECO2S PRO King Electric Calentador de Pared Programable** `PX`
+  - 📦 [King Electric] **PX COMFORTCRAFT King Electric Calentador de Pared de Diseño** `PX`
+  - 📦 [King Electric] **PAW ULTRA King Electric Calentador de Pared de Diseñador** `PAW`
+  - 📦 [King Electric] **PAW King Electric Calentador de Pared de Aleta de Acero** `PAW`
+  - 📦 [King Electric] **W King Electric Calentador de Pared Económico** `CN-13099`
+  - 📦 [King Electric] **WHFC King Electric Calentador Pequeño de Techo** `WHFC`
+  - 📦 [King Electric] **WHF-HM King Electric Calentador de Pared de Montaje Alto** `WHF-HM`
+  - 📦 [King Electric] **WSC King Electric Calentador de Superficie para Exteriores** `WSC`
+  - 📦 [King Electric] **Modelo KCF Safe Touch King Electric Calentador de Gabinete Comercial, Superficie Segura al Tacto Máx 120°F, Núcleo de Cerámica de Alta Masa, Ideal para Guarderías y Residencias, 5 Colores Disponibles** `KCF`
+  - 📦 [King Electric] **Modelo KCF King Electric Calentador de Gabinete Compacto, Calor Forzado, Operación Silenciosa, Diseño Delgado** `KCF`
+  - 📦 [King Electric] **Modelo LPW ECO2S PRO King Electric Calentador de Pared Inteligente, Termostato Programable 7 Días, Sensor Remoto y Ahorro de Energía** `LPW`
+  - 📦 [King Electric] **Modelo LPW ComfortCraft King Electric Calentador de Pared de Diseño, Potencia Seleccionable Pic-A-Watt hasta 4500W, Termostato Integrado y Selector de 3 Posiciones** `LPW`
+  - 📦 [King Electric] **Modelo LPWC King Electric Calentador de Techo Comercial e Industrial, Potencia Seleccionable Pic-A-Watt 1250-4500W, Interruptor a Prueba de Manipulaciones** `LPWC`
+  - 📦 [King Electric] **Modelo LPWA King Electric Calentador de Pared Arquitectónico, Potencia Pic-A-Watt, Termostato Antimanipulación, Ideal para Pasillos Comerciales** `LPWA`
+  - 📦 [King Electric] **Modelo LPWV King Electric Calentador Antivandálico, Rejilla de Acero 3/16″, Pic-A-Watt, Ideal para Áreas Públicas y Prisiones** `LPWV`
+  - 📦 [King Electric] **Modelo KBP Series 2 King Electric Calentador de Unidad Compacto Multivataje Pic-A-Watt, Termostato de Alta Precisión Integrado, Flujo de 385 CFM, Soporte Universal Pared/Techo** `KBP`
+  - 📦 [King Electric] **Modelo KBP-LHP Series King Electric Calentador de Unidad Compacto Multivataje con Interruptor Alto/Bajo, Luces Piloto, Termostato Integrado, Pic-A-Watt, Soporte de Pared/Techo** `KBP-LHP`
+  - 📦 [King Electric] **Modelo EFW-LD SAFE TOUCH King Electric Calentador de Pared de Baja Densidad, Superficie Segura Máx 120°F, Elemento NiChrome, Ideal para Guarderías y Residencias** `EFW-LD`
+
+- 📂 **portatiles** **(Sin realizar)** *(7 productos)*
+  - 📦 [King Electric] **Calefactor Compacto Modelo KBP – Elemento Pic-A-Watt®, Múltiples Opciones de Potencia, Termostato Integrado, Protección Smart Limit®, Ideal para Garajes, Talleres y Invernaderos** `Calefactor`
+  - 📦 [King Electric] **Calefactor Industrial King KB PlatinumX: Unidad Electrónica Pesada con Termostato Integrado, Compatible con NEST, Ideal para Almacenes, Garajes, Edificios Altos y Áreas Expuestas – Hasta 25kW** `Calefactor`
+  - 📦 [King Electric] **Calefactor Portátil Industrial con Ruedas King Electric Serie PCKW (10kW – 25kW), 1500 CFM, NEMA 12 Resistente a Polvo/Aceite, Termostato Integrado y Protección Smart Limit® para Secado de Obras** `PCKW Series (Portable Wheeled Unit Heater)`
+  - 📦 [King Electric] **Calefactor Portátil Industrial Electrónico King Electric PKB Platinum (7.5kW – 20kW) con Pantalla LED, Control Remoto, Termostato de Alta Precisión, Temporizador y Modos de Ventilador para Sitios de Trabajo** `PKB Platinum Series (Electronic Portable Heater)`
+  - 📦 [King Electric] **Calefactor Portátil Industrial King Electric PKB-FM (5kW – 20kW), Diseño Apilable para Construcción con Termostato Incorporado, Protección Smart Limit™, Lamas Ajustables y Modo «Solo Ventilador»** `PKB-FM Series (Industrial Portable Unit Heater)`
+  - 📦 [King Electric] **Calefactor Portátil de Metal King Electric PUH1215T (120V, 1500W/750W), Calentador Utilitario de Cerámica con Termostato Ajustable, Doble Interruptor de Potencia y Cable de 6 Pies** `PUH1215T (Portable Utility Heater)`
+  - 📦 [King Electric] **Calentador Portátil de Garaje PSH2440TB (240V, 3750W), Calefactor de Taller Tipo «Yellow Jacket» con Termostato Incorporado, Soporte de Montaje Universal y Cable de 6 Pies** `PSH2440TB (Yellow Jacket Junior)`
+
+- 📂 **ducto-mau-plenum** **(Sin realizar)** *(6 productos)*
+  - 📦 [King Electric] **Calefactor Portátil Ductable King Electric Serie PKB-DT (5kW – 15kW) con Collar de 12″, Termostato Integrado, Motor Sellado y Protección Smart Limit® para Secado de Obras y Carpas** `Serie PKB-DT (Calefactor Portátil para Conductos)`
+  - 📦 [King Electric] **Calefactor Portátil Industrial para Exteriores King Electric Serie PCKF (10kW – 25kW), 240V/480V, Aprobado por la FAA, Resistente a la Intemperie (UL Outdoor), Control de 24V con Termostato Remoto y Ductable para Secado y Carpas** `PCKF Series (Portable Outdoor Rated Unit Heater)`
+  - 📦 [King Electric] **Horno Eléctrico King Electric Serie KF/KFS ECO2S® (4kW – 35kW), Calefacción Central de 2 Etapas con Motor ECM de Alta Eficiencia, Ahorro de Energía del 15%, Montaje Multi-Posición y Filtro Incluido** `Serie KF / KFS ECO2S®`
+  - 📦 [King Electric] **Calefactor de Ducto Eléctrico Serie E de King Electric (Hasta 600V, Personalizable), Diseño Patentado Reversible «Flippable» con Instalación en 6 Posiciones, Control SSR y Certificación UL para Sistemas HVAC/VAV** `Serie E (Electric Duct Heater)`
+  - 📦 [King Electric] **Unidad de Aire de Reposición Clear Air MAU (700–1770 CFM) con Calefacción Eléctrica 3.8–34.5 kW, Motor ECM de Alta Eficiencia, Termostato Proporcional y Certificación Plenum para HVAC** `Clear Air MAU Series`
+  - 📦 [King Electric] **Modelo KBU PLATINUMX BMS King Electric Calentador Compacto para Pleno (Plenum), Cero Espacio Libre a Combustibles, Compatible con NEST y BMS, Termostato Electrónico Integrado con Control Remoto** `KBU`
+
+- 📂 **antiexplosion** **(Sin realizar)** *(2 productos)*
+  - 📦 [King Electric] **Calefactor de Convección Antiexplosivo Ruffneck™ CX1 ProVector® (0.75kW – 10kW), Certificación Clase I y II (Div. 1 y 2), Elementos Incoloy® 840, Gabinete Inclinado de Acero Calibre 14 para Petróleo y Gas** `Serie Ruffneck™ CX1 ProVector®`
+  - 📦 [King Electric] **Calefactor A Prueba de Explosiones King Electric Serie FX6 (3kW – 35kW), Certificación cULus para Clases I y II (Div. 1 y 2), Gabinete de Acero Calibre 12, Motor Arctic Duty y Protección Triple para Refinerías y Zonas Peligrosas** `Serie FX6 (Calefactor Antiexplosivo)`
+
+- 📂 **radiante-infrarrojo** **(Sin realizar)** *(3 productos)*
+  - 📦 [King Electric] **Calefactor Radiante Infrarrojo King Electric SmartWave® 3000W (Serie RK 2-Lámparas), Calentador de Doble Fibra de Carbono con Clasificación IP55, Control Remoto y Montaje Ajustable para Patios y Terrazas** `RK2430-RMT-BLK / RK2030-RMT-BLK (Según Voltaje)`
+  - 📦 [King Electric] **Calefactor Radiante Infrarrojo King Electric SmartWave® 4500W (Serie RK 3-Lámparas), Calentador de Fibra de Carbono IP55 con Control Remoto, Temporizador 24H y Soportes Ajustables para Patios Comerciales y Terrazas** `RK2445-RMT-BLK / RK2045-RMT-BLK (Según Voltaje)`
+  - 📦 [King Electric] **Modelo OKB King Electric Calentador Radiante para Uso en Interiores, Elemento Incoloy®, Extensión de 60°, Calentamiento Focalizado (Spot Heating)** `OKB`
+
+- 📂 **zocalo** **(Sin realizar)** *(8 productos)*
+  - 📦 [King Electric] **KTW King Electric Calentador de Zócalo Convertible Horizontal/Vertical** `KTW`
+  - 📦 [King Electric] **KT-MW King Electric Calentador de Zócalo Multivataje** `KT-MW`
+  - 📦 [King Electric] **Modelo K King Electric Calentador de Zócalo Eléctrico por Convección Natural, Elemento a Prueba de Aplastamiento, Límite de Seguridad SureStop, Operación Silenciosa, Ideal para Apartamentos y Dormitorios** `Modelo`
+  - 📦 [King Electric] **Modelo KPH1210 King Electric Calentador de Zócalo Portátil Compacto, Termostato Integrado, 120V, Calor por Convección Silencioso, Elemento a Prueba de Aplastamiento, Interruptor Antivuelco, Ideal para Dormitorios** `KPH1210`
+  - 📦 [King Electric] **Modelo KP1210 King Electric Calentador de Zócalo Portátil, Termostato Integrado, 120V, Calor por Convección Silencioso, Elemento a Prueba de Aplastamiento, Interruptor Antivuelco** `KP1210`
+  - 📦 [King Electric] **Modelo KP1215-ECO King Electric Calentador de Zócalo Portátil Inteligente, 2 Etapas, Ahorro de Energía ECO-Stat, 120V, Antivuelco** `KP1215-ECO`
+  - 📦 [King Electric] **Modelo CB – 120 VOLT King Electric Calentador de Zócalo con Núcleo de Cerámica, Calor de Baja Densidad, SureStop, Convección Natural** `CB`
+  - 📦 [King Electric] **Modelo EZ-CONNECT™ K Series Backwired King Electric Calentador de Zócalo de Instalación Rápida, Cableado Posterior, Alivio de Tensión Integrado, SureStop** `EZ-CONNECT`
+
+- 📂 **unit-heaters-compactos** **(Sin realizar)** *(3 productos)*
+  - 📦 [King Electric] **Modelo KBP ECO2S King Electric Calentador Electrónico Inteligente de 2 Etapas con Termostato ECO2S y Control Remoto** `KBP`
+  - 📦 [King Electric] **Modelo KBP ECO2S PRO King Electric Calentador de Unidad Inteligente de 2 Etapas, Termostato Inalámbrico Programable 7 Días, Diseño ECO2S, Compatible con Sensores y Zonas de Calor** `KBP`
+  - 📦 [King Electric] **Modelo KBP-RCS King Electric Calentador de Unidad Reforzado de Arranque en Frío hasta -40°F, Precalentamiento de Motor, Pic-A-Watt, Estándar Militar Antivibración, Compatible con Termostato 24V** `KBP-RCS`
+
+- 📂 **unit-heaters-industriales** **(Sin realizar)** *(3 productos)*
+  - 📦 [King Electric] **Modelo KBP PLATINUMX BMS King Electric Calentador Electrónico Industrial, Compatible con NEST y Sistemas BMS, Control Remoto** `KBP`
+  - 📦 [King Electric] **Modelo KBP PLATINUMX PRO King Electric Calentador de Unidad Comercial, Termostato Inalámbrico Programable 7 Días, Compatible con NEST y BMS, Zonas de Calor Inteligentes, Pic-A-Watt** `KBP`
+  - 📦 [King Electric] **Modelo KBSH King Electric Calentador de Unidad de Acero Inoxidable para Alta Temperatura, Hasta 160°F, Panel de Control Remoto, Gabinete NEMA 4 Lavable, Ideal para Plantas de Alimentos y Laboratorios** `KBSH`
+
+- 📂 **cartuchos** **(Sin realizar)** *(7 productos)*
+  - 📦 [MPI] **Calentadores de Cartucho MPI Morheat Calefacción Industrial Localizada de Precisión, Construcción en Acero Inoxidable/INCOLOY, Hasta 1400°F** `1400`
+  - 📦 [MPI] **Calentador de Cartucho MPI Morheat para Calefacción Industrial de Precisión, Construcción en Acero Inoxidable/INCOLOY, Hasta 1400°F** `Calentador`
+  - 📦 [MPI] **Calentador de Cartucho para Matriz de Peletizadora Subacuática MPI Morheat, Alta Densidad, Brida de Montaje Inoxidable** `Calentador`
+  - 📦 [MPI] **Calentador de Cartucho Cuadrado MPI Morheat para Ranuras Fresadas, Diseño Estampado de Alta Densidad, Aprobado por CSAus** `Calentador`
+  - 📦 [MPI] **Modelo Calentador de Cartucho Tipo Perno MPI Morheat, Diseño Estampado de Alta Densidad, Aprobado por CSAus** `Calentador`
+  - 📦 [MPI] **Modelo Calentador de Cartucho de Funda Dividida MPI Morheat, Alta Eficiencia, Aprobado por CSAus** `Calentador`
+  - 📦 [MPI] **Modelo Calentador de Cartucho Miniatura MPI Morheat, Precisión y Alta Durabilidad, Aprobado por CSAus** `Calentador`
+
+- 📂 **inmersion** **(Sin realizar)** *(1 productos)*
+  - 📦 [MPI] **Modelo Calentador de Cartucho de Inmersión MPI Morheat, Aprobado por CSAus, Envío Rápido** `Calentador`
+
+- 📂 **bandas** **(Sin realizar)** *(6 productos)*
+  - 📦 [MPI] **Calentador de Banda de Mica MPI Morheat, Alta Eficiencia, Aprobado por CSAus** `Calentador`
+  - 📦 [MPI] **Calentador de Banda de Cerámica MPI Morheat, Alta Temperatura, Aislamiento Térmico Eficiente** `Calentador`
+  - 📦 [MPI] **Calentador de Banda de Aluminio MPI Morheat, Alta Conductividad Térmica, Enfriamiento Rápido** `Calentador`
+  - 📦 [MPI] **Calentador de Banda con Aislamiento Mineral MPI Morheat, Alta Temperatura, Perfil Delgado** `Calentador`
+  - 📦 [MPI] **Calentador de Banda Tubular MPI Morheat, Alta Temperatura, Cobertura Uniforme** `Calentador`
+  - 📦 [MPI] **Discos de Ruptura Personalizados para Extrusoras MPI Morheat, Diseños a Medida, Hasta 20000 psi** `Discos`
+
+- 📂 **strips** **(Sin realizar)** *(7 productos)*
+  - 📦 [MPI] **Calentador de Tambor de Goma de Silicona MPI Morheat, Termostato Ajustable, Listado cUL** `Calentador`
+  - 📦 [MPI] **Calentador de Bobina con Abrazadera Axial MPI Morheat, Diseño de Bajo Perfil, Alta Transferencia Térmica** `Calentador`
+  - 📦 [MPI] **Calentador Fundido para Cabezal de Extrusión MPI Morheat, Alta Resistencia, Diseño Personalizado** `Calentador`
+  - 📦 [MPI] **Calentador de Tira de Mica MPI Morheat, Alta Personalización, Temperatura Máxima 482 °C** `Calentador`
+  - 📦 [MPI] **Calentador de Tira de Cerámica MPI Morheat, Alta Capacidad Térmica, Altamente Personalizable** `Calentador`
+  - 📦 [MPI] **Calentador de Tira de Canal Aleteado MPI Morheat, Alta Disipación de Calor, Funda de Acero Inoxidable** `Calentador`
+  - 📦 [MPI] **Calentador de Tira de Alta Temperatura MPI Morheat, Funda INCOLOY®, 816 °C (1500 °F)** `Calentador`
+
+### 📁 control-e-indicacion **(Sin realizar)**
+
+- 📂 **controladores-pid** **(Sin realizar)** *(56 productos)*
+  - 📦 [Control Nautas] **Calentador de Aire de Proceso 70KW (380V) – Controlador PID TEC-4100 y Soplador 1500 CFM** `Calentador`
+  - 📦 [Novus] **Novus N1040 (1/16 DIN 48x48mm) – Controlador de Temperatura Novus Económico, Compacto y con Conexión USB** `8104210000`
+  - 📦 [Novus] **Novus N1050 (1/16 DIN) – Controlador PID de Temperatura Pantalla LCD Multicolor, Rampa y Meseta y Conexión USB** `N1050`
+  - 📦 [Novus] **Novus N1200 (1/16 DIN 48x48mm) – Controlador PID Alta Velocidad, PID Auto-Adaptativo y Programador de Rampas** `8120200224`
+  - 📦 [Novus] **Novus N2000 (1/8 DIN 48x96mm) – Controlador de Procesos Universal PID Auto-Sintonía, Rampa y Meseta y USB** `8200200130`
+  - 📦 [Novus] **Novus N3000 (1/4 DIN 96x96mm) – Controlador de Procesos Universal PID, Entrada Universal, Modbus RTU y USB** `8300200130`
+  - 📦 [Novus] **Novus N323 Pt100 RS485 – Controlador de Temperatura Termostato Digital Industrial con 3 Relés y Comunicación Modbus** `8032301030`
+  - 📦 [Novus] **Novus N480D (1/16 DIN 48x48mm) – Controlador de Temperatura Entrada Universal, PID con Auto-Sintonía y Salida Doble (Relé + Pulso)** `80480D2120`
+  - 📦 [Novus] **Novus N960 (1/4 DIN 96x96mm) – Controlador de Temperatura Entrada Universal, PID Auto-Sintonía y Display Gigante** `8096200020`
+  - 📦 [Novus] **Novus N323 – Controlador de Temperatura Termostato Digital Industrial con 3 Relés (Montaje en Panel)** `Novus N323 Pt100`
+  - 📦 [Novus] **Controlador Digital de Temperatura N322 para Pt100 y NTC/J-K-T – 2 Setpoints  Independientes, Salidas Relay SPDT (16 A) y SPST-NA (3 A), Compensación de  Offset, Rango –50 a 300 °C** `N322-PT100`
+  - 📦 [Novus] **Novus N1030T – Controlador Termostato PID y Temporizador Digital de Alto Rendimiento, Diseño Compacto 35mm, Entrada Pt100/Termocupla con Salida Dual** `Controlador Novus N1030T`
+  - 📦 [Novus] **Novus N1050 – Controlador de Temperatura Termostato PID Industrial con Pantalla LCD Alfanumérica, 5 Programas de Rampas y Mesetas, Salida Dual (Pulso SSR/Relé) y Configuración USB** `Novus N1050`
+  - 📦 [Novus] **Novus N1200 USB – Controlador Termostato PID Auto-Adaptativo con Entrada Universal y 2 Relés (48x48mm)** `Novus N1200 USB (2 Relés)`
+  - 📦 [Novus] **Novus N1200 24V RS485 – Controlador de Procesos Termostato PID con Conectividad, Entrada Universal y 3 Relés (48x48mm)** `Novus N1200 USB RS485 24V (3 Relés)`
+  - 📦 [Novus] **Novus N1200 RS485 – Controlador Termostato PID Avanzado con Conectividad, Entrada Universal y 4 Relés (48x48mm)** `Novus N1200 USB RS485 (4 Relés)`
+  - 📦 [Novus] **Novus N2000 USB RS485 – Controlador de Procesos Termostato PID Avanzado con 4 Relés, Entrada Universal y Comunicación Modbus (48x96mm)** `Novus N2000 USB RS485`
+  - 📦 [Novus] **Novus N3000 USB RS485 – Controlador de Procesos Termostato PID de Alto Desempeño con 4 Relés, Pantalla de Gran Visibilidad y Comunicación Modbus (96x96mm)** `Novus N3000 USB RS485`
+  - 📦 [Novus] **Novus N3000 USB RS485 24V – Controlador de Procesos Termostato PID de Alto Desempeño con 4 Relés, Alimentación de Bajo Voltaje y Comunicación Modbus (96x96mm)** `Novus N3000 USB RS485 24V`
+  - 📦 [Novus] **Novus N323-RHT – Controlador de Temperatura y Humedad Termostato Digital Industrial Dual (Sensor no incluido)** `Novus N323-RHT`
+  - 📦 [Novus] **Sensor Novus S35 RHT-PROBE – Sonda de Humedad y Temperatura con Cable de 3m para Controladores N32X y XS** `Sensor Novus S35 RHT-PROBE`
+  - 📦 [Novus] **Novus N20K48 – Controlador de Procesos Modular Termostato PID Expandible con Bluetooth y Módulos ClickNGo (48x48mm)** `Novus N20K48`
+  - 📦 [Novus] **Novus N2000S – Controlador de Válvulas y Servoactuadores Termostato PID Universal con Salidas de Control Proporcional de Tiempo (48x96mm)** `Novus N2000S`
+  - 📦 [Novus] **Novus N321R – Controlador de Temperatura para Refrigeración Termostato Electrónico con Ciclo de Deshielo y Relé de 1 HP (Montaje en Panel)** `Novus N321R`
+  - 📦 [Novus] **Novus N322S – Controlador de Temperatura Diferencial Termostato Digital con 2 Sensores y 2 Relés para Sistemas Solares y Chillers** `Novus N322S`
+  - 📦 [Novus] **Novus N323TR – Controlador de Temperatura con Temporizador Termostato Digital Industrial con 3 Relés para Hornos e Incubadoras** `Controlador N323TR`
+  - 📦 [Novus] **Novus DigiRail OEE – Módulo I/O Inteligente Monitoreo Industrial para Sistemas MES y Eficiencia de Equipos** `Novus`
+  - 📦 [Novus] **Novus DigiRail Connect – Módulo de I/O Remoto Inteligente con Interfaz Ethernet para Riel DIN** `Novus`
+  - 📦 [Novus] **Novus DigiRail-VA – Módulo de Adquisición de Datos de Potencia y Energía para Riel DIN** `Novus`
+  - 📦 [King Electric] **PYROBOX3/19 King Electric Controlador para Deshielo de Nieve** `PYROBOX3/19`
+  - 📦 [King Electric] **PYROBOX3C/19 King Electric Controlador para Deshielo de Nieve** `PYROBOX3C/19`
+  - 📦 [King Electric] **PYROBOX5/19 King Electric Controlador para Deshielo de Nieve** `PYROBOX5/19`
+  - 📦 [King Electric] **PYROCON19 King Electric Controlador Principal de Deshielo** `PYROCON19`
+  - 📦 [King Electric] **GF PRO King Electric Controlador Automático de Deshielo con GFEP** `GF`
+  - 📦 [MPI] **Panel de Control de Temperatura y Potencia MPI Morheat, Diseño Personalizado, Aprobación UL** `Panel`
+  - 📦 [MPI] **Controlador de Temperatura y Procesos BTC-2500 MPI Morheat, Lógica Difusa y PID, Aprobado por UL** `BTC-2500`
+  - 📦 [MPI] **Controlador de Temperatura y Procesos BTC-4300 MPI Morheat, Lógica Difusa y PID, Aprobado por UL** `BTC-4300`
+  - 📦 [MPI] **Controlador de Temperatura y Procesos BTC-8300 MPI Morheat, Lógica Difusa y PID, Aprobado por UL** `BTC-8300`
+  - 📦 [MPI] **Controlador de Temperatura y Procesos BTC-9300 MPI Morheat, Lógica Difusa y PID, Aprobado por UL** `BTC-9300`
+  - 📦 [MPI] **Controlador de Temperatura Electrónico C21 MPI Morheat, Tamaño 1/32 DIN, Lógica Difusa y PID, Aprobado por UL/CSA** `C21`
+  - 📦 [MPI] **Controlador de Temperatura Electrónico C91 MPI Morheat, Lógica Difusa y PID, Aprobado por UL/CSA** `C91`
+  - 📦 [MPI] **Controlador de Temperatura Electrónico BTC-4100 MPI Morheat, Lógica Difusa y PID, Aprobado por UL/CSA** `BTC-4100`
+  - 📦 [MPI] **Controlador de Temperatura Electrónico BTC-7100 MPI Morheat, Lógica Difusa y PID, Aprobado por UL/CSA** `BTC-7100`
+  - 📦 [MPI] **Controlador de Temperatura Electrónico BTC-8100 MPI Morheat, Lógica Difusa y PID, Aprobado por UL/CSA** `BTC-8100`
+  - 📦 [MPI] **Controlador de Temperatura Electrónico BTC-9100 MPI Morheat, Lógica Difusa y PID, Aprobado por UL/CSA** `BTC-9100`
+  - 📦 [MPI] **Controlador de Temperatura Electrónico BTC-9090 MPI Morheat, Lógica Difusa y PID, Aprobado por UL/CSA** `BTC-9090`
+  - 📦 [MPI] **Controlador de Límite de Seguridad L41 MPI Morheat, Sobretemperatura, Alta Precisión 18 bits** `L41`
+  - 📦 [MPI] **Controlador de Límite de Seguridad L91 MPI Morheat, Sobretemperatura, Alta Precisión 18 bits** `L91`
+  - 📦 [MPI] **Controlador de Temperatura Analógico BTC901 MPI Morheat, Diseño Compacto, Aprobado por UL/cUL** `BTC901`
+  - 📦 [MPI] **Controlador de Temperatura Analógico BTC-905 MPI Morheat, Diseño Compacto, Aprobado por UL/cUL** `BTC-905`
+  - 📦 [MPI] **Controlador de Temperatura Analógico BTC-704 MPI Morheat, Diseño Compacto, Aprobado por UL/cUL** `BTC-704`
+  - 📦 [MPI] **Controlador de Temperatura Analógico BTC-404 MPI Morheat, Alta Precisión 1%, Diseño Compacto, Aprobado por UL/cUL** `BTC-404`
+  - 📦 [MPI] **Controlador de Temperatura de Perfiles P41 MPI Morheat, Rampa y Mantenimiento (Ramp/Soak), Lógica Difusa y PID** `P41`
+  - 📦 [MPI] **Controlador de Temperatura de Perfiles P91 MPI Morheat, Rampa y Mantenimiento (Ramp/Soak), Lógica Difusa y PID** `P91`
+  - 📦 [MPI] **Serie MT50 Controlador de Temperatura PID Autotune MPI Morheat, Pantalla Dual** `Serie`
+  - 📦 [AKCP] **AKCP Ultra Cold Temperature Sensor – Sensor de Temperatura Ultra Fría PT100 (RTD), Rango Extremo de -200°C a +150°C, Conectividad RJ-45, Exclusivo para Controladores sensorProbe+ en Almacenamiento Criogénico** `PT100`
+
+- 📂 **indicadores-proceso** **(Sin realizar)** *(9 productos)*
+  - 📦 [Novus] **Novus N1500 (1/8 DIN 96x48mm) – Indicador de Procesos Universal Alta Resolución, Entrada Universal y 4 Alarmas** `8150000100`
+  - 📦 [Novus] **Indicador Digital N1500-LC para Celdas de Carga – Entrada Configurable (mV/mA),  Display LED de 6 Dígitos, Fuente de 10 V para Excitación, Hasta 4 Relés de Alarma,  Retransmisión 4–20 mA y RS-485 Modbus** `N1500-LC`
+  - 📦 [Novus] **Indicador Universal N1500-G – Entrada Configurable (Pt100, Termocupla, 4–20 mA, 0–50 mV, 0–5 V), Display LED de 5 Dígitos de 56 mm, 24 V de Excitación para Transmisores, Dos Relés de Alarma, Retransmisión Analógica y RS-485 Modbus** `N1500-G`
+  - 📦 [Novus] **Novus N150 – Indicador Universal Pantalla Digital para Procesos Industriales con Entrada Universal y 2 Alarmas (48x48mm)** `Novus N150`
+  - 📦 [Novus] **Novus N1540 – Indicador de Procesos Universal Panel Digital Compacto con Pantalla LED, 2 Alarmas y Conexión USB (96x48mm)** `Novus N1540`
+  - 📦 [Novus] **Novus N1500G – Indicador de Procesos de Gran Formato Panel Digital con Pantalla Gigante de 56mm, Entrada Universal y Alarmas** `Novus N1500G`
+  - 📦 [Novus] **Novus NT240 – Temporizador y Contador Programable Relé de Tiempo Digital con Pantalla Dual y 11 Funciones (48x48mm)** `Temporizador NT240`
+  - 📦 [AKCP] **AKCP Sensor Status Light – Luz Indicadora de Estado Visual y Auditivo, Alerta LED de 3 Colores con Zumbador Integrado, Conectividad RJ-45 para Monitoreo de Gabinetes Inteligentes en Centros de Datos** `RJ-45`
+  - 📦 [AKCP] **AKCP Programmable Sensor LCD Display – Pantalla LCD Programable con Luz de Fondo, Indicadores LED de Alarma y Monitoreo de Sensores, Conectividad RJ-45 para Gabinetes Inteligentes** `RJ-45`
+
+- 📂 **termostatos-industriales** **(Sin realizar)** *(1 productos)*
+  - 📦 [Novus] **Novus N321 NTC 24V – Termostato Digital Industrial ON/OFF con 1 Relé de 16A y Sensor NTC Incluido para Refrigeración o Calefacción** `Novus N321 NTC 24V`
+
+### 📁 registro-de-datos **(Realizado)**
+
+- 📂 **loggers-industriales** **(Realizado)** *(6 productos)*
+  - 📦 [Novus] **Registrador de Datos Industrial Novus FieldLogger (512k/SD) – 8 Canales Universales, Ethernet, USB y Modbus** `8812120000`
+  - 📦 [Novus] **Novus LogBox-LTE – Registrador de Datos IoT Multicanal Data Logger Celular con MQTT, Entradas Universales y Batería de Respaldo** `Novus LogBox-LTE`
+  - 📦 [Novus] **Novus LogBox Wi-Fi – Registrador de Datos IoT Wi-Fi Data Logger Inalámbrico con MQTT, Modbus TCP y 3 Entradas Universales** `Novus LogBox Wi-Fi`
+  - 📦 [Novus] **Novus LogBox-BLE – Registrador de Datos con Bluetooth Multicanal con Entradas Universales y Pantalla LCD** `Serie LogBox Bluetooth`
+  - 📦 [Novus] **Novus LogBox-DA – Data Logger Dual Industrial con Entradas Digital y Analógica (IP65)** `Registrador de Datos Dual (Analógico / Digital)`
+  - 📦 [Novus] **Novus LogBox-AA – Data Logger Autónomo de 2 Canales Analógicos para Registro de Datos** `Novus`
+
+- 📂 **loggers-cadena-frio** **(Realizado)** *(13 productos)*
+  - 📦 [Tzone] **Registrador de Temperatura USB Multiuso Tzone TempU04 con Pantalla LCD, Generación Automática de PDF/CSV, Memoria de 32,000 Registros y Batería Reemplazable para Cadena de Frío** `Tzone TempU04 (Multiuso USB)`
+  - 📦 [Tzone] **Registrador de Datos Bluetooth Tzone TZ-BT04B de Temperatura y Humedad, Sensor de Alta Precisión, Rango -25°C a 60°C, Memoria de 12,000 Puntos, App Móvil Gratuita y Batería de Larga Duración (Reemplazable)** `TZ-BT04B (Bluetooth Data Logger)`
+  - 📦 [Tzone] **Registrador de Datos de Temperatura y Humedad Tzone TempU07B con Sonda Externa, Pantalla LCD, Generación Automática de PDF/CSV, Memoria de 34,560 Registros y Protección IP65 para Cadena de Frío** `Tzone TempU07B (Versión con sonda externa)`
+  - 📦 [Tzone] **Tzone BT07 – Data Logger de Temperatura Bluetooth (BLE) Formato Tarjeta Ultra Delgada** `BT07`
+  - 📦 [Tzone] **Tzone TempU09 – Data Logger de Temperatura de un Solo Uso con Reporte PDF/CSV Automático** `TempU09`
+  - 📦 [Tzone] **Termómetro Portátil Tzone – Medición y Registro de Precisión Multicanal** `Term`
+  - 📦 [Tzone] **Tzone TempU08 / TempU08B – Data Logger de un Solo Uso con Pantalla LCD y Reporte PDF/CSV** `Tzone`
+  - 📦 [Tzone] **Tzone TempU06 Series – Data Logger de Ultra Baja Temperatura con Conectividad Bluetooth y USB** `Tzone`
+  - 📦 [Tzone] **Tzone BT05 – Data Logger de Temperatura Bluetooth con Sensor Externo** `BT05`
+  - 📦 [Tzone] **Tzone TempU05 – Data Logger de Temperatura de un Solo Uso con Reporte PDF Automático** `TempU05`
+  - 📦 [Tzone] **Tzone TempU02 – Data Logger de Temperatura de un Solo Uso (Versión Actualizada)** `TempU02 (Upgrade)`
+  - 📦 [Tzone] **TempU07TH Registrador de Datos de Temperatura y Humedad USB Multiuso** `TempU07TH`
+  - 📦 [Tzone] **TZONE TT20SI Registrador de Datos de Temperatura en Tiempo Real 4G LTE, Sensor Digital de Luz y Vibración, Batería de Larga Duración** `TZONE`
+
+- 📂 **gateways** **(Realizado)** *(7 productos)*
+  - 📦 [Novus] **Novus Convertidor USB-i485 – Interfaz Aislada USB a RS485/RS422** `Novus Convertidor USB-i485`
+  - 📦 [Novus] **Novus DigiRail-IoT – Gateway Industrial Módulo de Adquisición de Datos con Wi-Fi, Ethernet y MQTT para Riel DIN** `Novus`
+  - 📦 [Novus] **Novus AirGate 4G Lite – Gateway Industrial IoT Enrutador Celular VPN con Dual SIM, RS485 y Puerto Ethernet** `RS485`
+  - 📦 [Novus] **Novus DigiGate Profibus – Gateway Industrial Convertidor de Protocolos Modbus RTU a Profibus DP** `Novus`
+  - 📦 [Novus] **Novus AirGate Modbus – Gateway Inalámbrico Industrial para Redes Modbus RTU** `Novus`
+  - 📦 [Novus] **Novus Telik Geter – Gateway de Datos Industrial para Monitoreo de Redes Eléctricas** `Novus`
+  - 📦 [Tzone] **LoRa Gateway Kit A Prueba de Agua – Sistema de Monitoreo Inalámbrico de Largo Alcance IP54** `LoRa`
+
+### 📁 automatizacion-plc-hmi **(Realizado)**
+
+- 📂 **plc-hmi** **(Realizado)** *(23 productos)*
+  - 📦 [Horner] **Controlador PLC + HMI Horner X2 OCS (HE-X2) con Pantalla Transflectiva 2.2″, Teclado Integrado, E/S Flexibles y Comunicación Serial/CAN** `X2 OCS (Serie HE-X2A / HE-X2R)`
+  - 📦 [Horner] **Controlador PLC + HMI Horner XLEe OCS (HE-XE) con Pantalla 2.2″, Teclado Físico, Ethernet y E/S Configurables para Automatización Compacta** `XLEe OCS (Serie HE-XE)`
+  - 📦 [Horner] **Controlador PLC + HMI Horner XLTe OCS (HE-XT) con Pantalla Táctil 3.5″ Solar, Ethernet, Datalogging y E/S Configurables para Exteriores** `XLTe OCS (Serie HE-XT)`
+  - 📦 [Horner] **Controlador PLC + HMI Horner XL4 OCS (HE-XC) con Pantalla Táctil 3.5″ Color, Ethernet, E/S Configurables y Datalogging en Formato 1/4 DIN** `XL4 OCS (Serie HE-XC)`
+  - 📦 [Horner] **Controlador PLC + HMI Horner EXL6 OCS (HE-EXL6) con Pantalla Táctil 5.7″ VGA, Ethernet, CAN y E/S Avanzadas para Ambientes Industriales** `EXL6 OCS (Serie HE-EXL6)`
+  - 📦 [Horner] **Controlador PLC + HMI Horner EXLW OCS (HE-EXLWE) con Pantalla Táctil 7″ Panorámica, Ethernet, Datalogging y E/S Configurables para Industria Crítica** `EXLW OCS (Serie HE-EXLWE)`
+  - 📦 [Horner] **Controlador PLC + HMI Horner XL7 OCS (HE-XW) con Pantalla Táctil 7″ WVGA, Doble Ethernet, Doble CAN y E/S de Precisión para Automatización** `XL7 OCS (Serie HE-XW)`
+  - 📦 [Horner] **Controlador PLC + HMI Horner EXL10 OCS (HE-EXV) con Pantalla Táctil 10.4″ VGA, Doble Ethernet, Doble CAN y 24 Entradas Digitales para Automatización Avanzada** `EXL10 OCS (Serie HE-EXV)`
+  - 📦 [Horner] **Controlador PLC + HMI Horner XL15+ OCS (HE-XV) con Pantalla Táctil 15″ XGA, Procesador Dual Core, Doble Ethernet y 4GB de Almacenamiento para Supervisión Industrial** `XL15+ OCS (Ref: HE-XP7E0 a HE-XP7E6)`
+  - 📦 [Horner] **Controlador PLC + HMI Horner XLEe OCS (HE-XE) con Pantalla 2.2″, Teclado Físico, Ethernet Integrado y E/S para Automatización en Espacios Reducidos** `XLEe OCS (Ref: HE-XE1E0 a HE-XE1E6)`
+  - 📦 [Horner] **Controlador PLC + HMI Horner XLTe OCS (HE-XT) con Pantalla Táctil 3.5″, Ethernet Integrado, E/S Flexibles y Datalogging para Automatización Industrial** `XLTe OCS (Ref: HE-XT1E0 a HE-XT1E6)`
+  - 📦 [Horner] **Controlador PLC + HMI Horner Micro OCS X4 (HE-X4) con Pantalla Táctil 4.3″ Color, E/S Integradas y Ethernet para Automatización Económica** `Micro OCS X4 (Ref: HE-X4A / HE-X4R)`
+  - 📦 [Horner] **Controlador PLC + HMI Horner Micro OCS X5 (HE-X5) con Pantalla Táctil 4.3″ Color, E/S Integradas, Ethernet, MicroSD y Certificación UL Clase I Div 2 para Zonas Peligrosas** `Micro OCS X5 (Ref: HE-X5A / HE-X5R)`
+  - 📦 [Horner] **Controlador PLC + HMI Horner Micro OCS X7 (HE-X7) con Pantalla Táctil de 7″ Color, E/S Integradas, Ethernet, CAN y Modbus para Automatización de Maquinaria** `Micro OCS X7 (Ref: HE-X7A / HE-X7R)`
+  - 📦 [Horner] **Controlador PLC + HMI Horner Micro OCS X10 (HE-X10) con Pantalla Táctil de 10″ Color, E/S Digitales y Analógicas, Ethernet, Modbus y Datalogger Integrado** `Micro OCS X10 (Ref: HE-X10R / HE-X10A)`
+  - 📦 [Horner] **Kit de Arranque Controlador Micro OCS Horner Serie X2 (HA-345) con Pantalla HMI Integrada, CPU ARM 32-bit, E/S Digitales/Analógicas y Puertos RS485/CAN para Automatización Compacta** `Micro OCS Serie X2 (Parte del Kit HA-345)`
+  - 📦 [Horner] **Modelo Serie Micro CPU de Horner Automation Controladores Modulares (CPU200, CPU250, CPU300), Comunicaciones Ethernet/CAN, Expandibles con OCS-I/O** `Serie`
+  - 📦 [Horner] **Modelo Canvas 4 Horner Automation Controlador All-in-One, Motor Gráfico Cscape 10, Pantalla 3.5″ QVGA, I/O Integradas, Ethernet, MQTT, WebMI** `Canvas`
+  - 📦 [Horner] **Modelo Canvas 5 Horner Automation Controlador All-in-One, Pantalla 4.3″ TFT, 12 I/O Integradas, Motor Gráfico Cscape 10, Ethernet, MQTT, WebMI** `Canvas`
+  - 📦 [Horner] **Modelo Canvas 7 Horner Automation Controlador All-in-One, Pantalla 7″ WVGA, Hasta 42 I/O Integradas, Motor Gráfico Cscape 10, Ethernet, MQTT, WebMI** `Canvas`
+  - 📦 [Horner] **Modelo Canvas 7D Horner Automation Controlador All-in-One, Pantalla 7″ WVGA con Teclas Físicas, Doble Ethernet y Doble CAN, Hasta 42 I/O, Motor Gráfico Cscape 10** `Canvas`
+  - 📦 [Horner] **Modelo Canvas 10D Horner Automation Controlador All-in-One, Pantalla 10.1″ WSVGA, Doble Ethernet y Doble CAN, Hasta 42 I/O, Motor Gráfico Cscape 10** `Canvas`
+  - 📦 [Horner] **Horner Simulador Universal para Entrenamiento y Prototipado, Panel de Pruebas de E/S, Entradas Analógicas y Digitales, 24VDC** `24VDC`
+
+- 📂 **expansion-io** **(Realizado)** *(7 productos)*
+  - 📦 [Novus] **Novus DigiRail NXProg – Micro PLC Programable con I/O Integrado y Comunicación Ethernet** `Novus`
+  - 📦 [Horner] **Horner Bases SmartRail Módulos de Expansión de Entradas y Salidas, Protocolos de Red y CsCAN, Control a Distancia, Alta Escalabilidad** `Horner`
+  - 📦 [Horner] **Horner Módulos SmartRail de Expansión de Entradas y Salidas, Analógicas y Digitales, Bus de Campo, Automatización Industrial** `Horner`
+  - 📦 [Horner] **Horner SmartBlock Módulos de Expansión de Entradas y Salidas para Redes CsCAN, Control Analógico de Alta Resolución, Relés y Monitoreo de Potencia Trifásica** `Horner`
+  - 📦 [Horner] **Horner SmartStix Módulos de Expansión de Entradas y Salidas para Automatización, E/S Remotas CsCAN, Relés y Señales Digitales** `Horner`
+  - 📦 [Horner] **Horner SmartMod Módulos de Expansión de E/S, Protocolo Modbus RTU RS485, Entradas Analógicas y Digitales, Aislamiento Óptico** `RS485`
+  - 📦 [Horner] **Horner IO Link Master to Modbus RTU Convertidor de Señales IIoT, Módulos HE-IOLINK2CHRTU y HE-IOLINK4CHRTU, Conectores M12, IP68** `M12`
+
+- 📂 **controladores-remotos** **(Realizado)** *(4 productos)*
+  - 📦 [Horner] **Horner RCC6512 PLC Controlador Compacto Remoto sin Pantalla, Expansión de E/S, Conectividad Ethernet y Red CAN, 12V/24VDC** `RCC6512`
+  - 📦 [Horner] **Horner RCC972 Controlador Compacto Remoto sin Pantalla para Automatización, PLC de Expansión de E/S, Conectividad Ethernet y Red CsCAN, Entradas Analógicas y Digitales** `RCC972`
+  - 📦 [Horner] **Horner RCC1410-75 Controlador Compacto Remoto sin Pantalla para Automatización de Procesos, PLC de Expansión de 24 E/S Digitales, Red CsCAN y Ethernet, 12V/24VDC** `RCC1410-75`
+  - 📦 [Horner] **Horner RCC8842-75 Controlador Compacto Remoto sin Pantalla para Automatización, PLC de Expansión de E/S, Conectividad Ethernet y Red CsCAN, Entradas Analógicas y Digitales** `RCC8842-75`
+
+### 📁 otros **(Sin realizar)**
+
+- 📂 **ventilacion** **(Sin realizar)** *(5 productos)*
+  - 📦 [King Electric] **Ventilador Oscilante Comercial King PFO-24 con Motor Enclavado para Exteriores, 3 Velocidades, 7500 CFM, Altura Ajustable de 145 a 190 cm, Protección Contra Agua para Uso en Talleres, Almacenes y Fábricas** `Ventilador`
+  - 📦 [King Electric] **Ventilador Oscilante Comercial King PFO-30 de Alta Velocidad, Motor Enclavado para Exteriores, 3 Velocidades, 8200 CFM, Altura Ajustable de 145 a 190 cm, Protección Contra Agua para Uso en Talleres, Almacenes y Fábricas** `Ventilador`
+  - 📦 [King Electric] **Kit de Nebulización PFO-MISTKIT para Ventiladores PFO y WFO, Enfriamiento Eficiente en Áreas Exteriores, Instalación Rápida, Conexión a Manguera de Jardín, Válvula de Cierre** `Kit`
+  - 📦 [King Electric] **Funda Resistente al Agua FO-COVER-24 para Ventiladores de 24», Protección contra Polvo y Agua, Instalación Rápida con Cremallera** `Funda`
+  - 📦 [King Electric] **Funda Resistente al Agua FO-COVER-30 para Ventiladores de 30», Protección contra Polvo y Agua, Instalación Rápida con Cremallera** `Funda`
+
+### 📁 trazado-termico **(Sin realizar)**
+
+- 📂 **techos-canalones** **(Sin realizar)** *(10 productos)*
+  - 📦 [King Electric] **Calefactor de Unidad de Alta Velocidad King Electric KFUH ECO2S® (5kW – 35kW) con Motor ECM de 5 Velocidades, Calefacción de 2 Etapas, Montaje Universal Vertical/Horizontal para Almacenes y Techos Altos** `Serie KFUH ECO2S® (High Air Velocity Unit Heater)`
+  - 📦 [King Electric] **Cable Calefactor Autoregulable Preensamblado Serie SRP 120V (6–150 ft), Kit Plug-and-Play de 6W/ft con Protección Contra Congelación hasta -40°F, Enchufe NEMA 5-15 y Aislamiento de Fluoropolímero** `Serie SRP 120V (Pre-Assembled)`
+  - 📦 [King Electric] **Cable Calefactor Autoregulable Preensamblado Serie SRP 240V (6–200 ft), Kit Plug-and-Play de 6W/ft con Protección Contra Congelación hasta -40°F, Aislamiento de Fluoropolímero y Chaqueta de PVC** `Serie SRP 240V (Pre-Assembled)`
+  - 📦 [King Electric] **Cable Calefactor Autoregulable Serie SR (120V/240V) para Protección Contra Congelación de Tuberías, 3W/5W/8W/10W por Pie Lineal, Aislamiento de Fluoropolímero y Chaqueta de PVC Resistente** `Serie SR (Self-Regulating)`
+  - 📦 [Huanrui] **Serie RSR Cable Calefactor Autorregulable para Descongelación de Techos y Canalones** `Serie`
+  - 📦 [Huanrui] **HRSHTV Cable Calefactor Anti-UV para Descongelación de Techos y Canalones** `HRSHTV`
+  - 📦 [Huanrui] **Serie RSR Cable Calefactor Autorregulable para Descongelación de Techos y Canalones** `Serie`
+  - 📦 [Huanrui] **HRSHTV Cable Calefactor Anti-UV para Descongelación de Techos y Canalones** `HRSHTV`
+  - 📦 [King Electric] **SRP King Electric Cable Calefactor Autorregulable para Techos y Canalones** `SRP`
+  - 📦 [King Electric] **SR King Electric Cable Calefactor Autorregulable para Techos y Canalones** `SR`
+
+- 📂 **cable-autorregulable** **(Sin realizar)** *(13 productos)*
+  - 📦 [Huanrui] **Serie HPC Cable Calefactor Autorregulable de Alta Temperatura (260 °C) – Trazado Térmico Industrial** `Serie`
+  - 📦 [Huanrui] **Serie RDP Cable Calefactor Paralelo de Potencia Constante – Trazado Térmico Industrial** `Serie`
+  - 📦 [Huanrui] **Serie RDC Cable Calefactor de Potencia Constante – Trazado Térmico Industrial** `Serie`
+  - 📦 [Huanrui] **Kit MSR de Cable Calefactor Autorregulable para Protección contra Congelación de Tuberías** `Kit`
+  - 📦 [Huanrui] **Serie LSR Cable Calefactor Autorregulable de Protección contra Congelación para Tuberías Estándar** `Serie`
+  - 📦 [Huanrui] **Serie FSR Cable Calefactor Autorregulable de Baja Temperatura para Aplicaciones Industriales y Residenciales** `Serie`
+  - 📦 [Huanrui] **Serie LSR Cable Calefactor Autorregulable de Protección contra Congelación para Tuberías Estándar** `Serie`
+  - 📦 [Huanrui] **TXLP Cable Calefactor de Un Solo Conductor con Empalme Oculto en Losa** `TXLP`
+  - 📦 [Huanrui] **Cable BHS Calefactor para Curado de Hormigón** `Cable`
+  - 📦 [Huanrui] **HM-mat Alfombra Calefactora para Deshielo en Exteriores** `HM-mat`
+  - 📦 [King Electric] **CT King Electric Cable Calefactor Autorregulable para Protección de Tuberías** `CT`
+  - 📦 [King Electric] **TC King Electric Cable Calefactor para Almacenamiento Térmico** `TC`
+  - 📦 [MPI] **Cable Calefactor Autorregulable de Baja Temperatura MPI Morheat, 66 °C (150 °F), Protección contra Congelamiento** `150`
+
+- 📂 **deshielo-nieve** **(Sin realizar)** *(3 productos)*
+  - 📦 [Huanrui] **HM Cable Calefactor para Derretir Nieve en Hormigón y Asfalto Cable** `HM`
+  - 📦 [King Electric] **SC Cable Calefactor para Deshielo de Nieve de King Electric** `SC`
+  - 📦 [King Electric] **SCM King Electric Alfombra Calefactora para Deshielo de Nieve** `SCM`
+
+- 📂 **suelo-radiante** **(Sin realizar)** *(12 productos)*
+  - 📦 [Huanrui] **I20 Cable Calefactor de Doble Conductor para Suelo Radiante en Solera Cable** `I20`
+  - 📦 [Huanrui] **HRDVT Cable Calefactor Coaxial de Doble Conductor para Suelo Radiante y Deshielo** `HRDVT`
+  - 📦 [Huanrui] **UT-Mat Alfombrilla Calefactora de Doble Conductor para Suelo Radiante** `UT-Mat`
+  - 📦 [Huanrui] **Cable S Calefactor de Suelo Radiante Monoconductor Extrafino** `Cable`
+  - 📦 [Huanrui] **Cable T Calefactor de Doble Conductor para Suelo Radiante Bajo Baldosas** `Cable`
+  - 📦 [Huanrui] **F-Mat Lámina Calefactora Extrafina de FEP para Suelo Radiante** `F-Mat`
+  - 📦 [Huanrui] **S-Mat Alfombra Calefactora Monoconductor Personalizada para Bajo Baldosas** `S-Mat`
+  - 📦 [Huanrui] **T-Mat Alfombra Calefactora de Doble Conductor para Bajo Baldosas** `T-Mat`
+  - 📦 [Huanrui] **HRTP Mat Alfombra Calefactora para Descongelación de Suelos en Exteriores** `HRTP`
+  - 📦 [King Electric] **TCM King Electric Alfombra Calefactora para Almacenamiento Térmico** `TCM`
+  - 📦 [King Electric] **UDG-4999 King Electric Termostato Programable para Suelo Radiante con GFCI** `UDG-4999`
+  - 📦 [King Electric] **USG-4000 King Electric Relé Esclavo para Termostato de Suelo Radiante** `USG-4000`
+
+- 📂 **controles-deshielo** **(Sin realizar)** *(1 productos)*
+  - 📦 [King Electric] **PYROSENSE/19 King Electric Sensor Electrónico de Nieve y Hielo** `PYROSENSE/19`
+
+### 📁 monitoreo-data-center **(Sin realizar)**
+
+- 📂 **plataformas** **(Sin realizar)** *(5 productos)*
+  - 📦 [AKCP] **SensorProbe1+ AKCP, Monitor Ambiental Expandible con Soporte SNMP y Sensores Inteligentes, Ideal para Data Centers, Cuartos Técnicos y Ambientes Críticos.** `SensorProbe1+`
+  - 📦 [AKCP] **In-Line Power Meter AKCP – Medidor de Energía en Tiempo Real con Monitoreo de Voltaje,  Corriente y kWh, Soporte SNMP, Compatible con SensorProbe+, Ideal para Racks, PDU  y Centros de Datos (16A/32A)** `ILPM-16A / ILPM-32A (In-Line Power Meter)`
+  - 📦 [AKCP] **AKCP SensorProbe2+ LCD (SP2+LCD) – Monitor Ambiental Inteligente SNMP con 4 Puertos de Sensores, Pantalla LCD y Alertas por Email/Trap para Centros de Datos** `AKCP SensorProbe2+ LCD (SP2+LCD)`
+  - 📦 [AKCP] **AKCP securityProbe 5ESV Dispositivo de Monitoreo Ambiental, Soporte para 500 Sensores, 4 Cámaras HD y Servidor Web Linux** `500`
+  - 📦 [AKCP] **AKCP probeSwitch – Interruptor de Llave para Mantenimiento, Desactivación Física de Notificaciones, Conectividad RJ-45 para Sistemas securityProbe y sensorProbe+** `RJ-45`
+
+- 📂 **io-relays** **(Sin realizar)** *(21 productos)*
+  - 📦 [AKCP] **AKCP sensorProbe2+ – Plataforma de monitoreo ambiental IP con 4 puertos de sensores y hasta 20 entradas de contacto seco.** `AKCP`
+  - 📦 [AKCP] **AKCP sensorProbeX+ Dispositivo de Monitoreo de Sensores para Infraestructura Crítica, Escalable con Puertos Modbus y BACnet, Alertas Multicanal** `AKCP`
+  - 📦 [AKCP] **AKCP securityProbe5E Dispositivo de Monitoreo Ambiental y Seguridad, Servidor Web con Linux, Soporte para 500 Sensores y 4 Cámaras, Modbus y SNMP** `500`
+  - 📦 [AKCP] **AKCP securityProbe 5E-X20 Dispositivo de Monitoreo Ambiental con 20 Contactos Secos, Soporte para 500 Sensores, 4 Cámaras y Servidor Web Linux** `X20`
+  - 📦 [AKCP] **AKCP securityProbe 5E-X60 Dispositivo de Monitoreo Ambiental con 60 Contactos Secos, Soporte para 500 Sensores, 4 Cámaras y Servidor Web Linux** `X60`
+  - 📦 [AKCP] **AKCP securityProbe 5ES Dispositivo de Monitoreo Ambiental Estándar, Soporte para 500 Sensores, Servidor Web Linux y Puerta de Enlace Modbus a SNMP** `500`
+  - 📦 [AKCP] **AKCP securityProbe 5ES-X20 Dispositivo de Monitoreo Ambiental con 20 Contactos Secos, Soporte para 500 Sensores, Servidor Web Linux y Puerta de Enlace** `X20`
+  - 📦 [AKCP] **AKCP securityProbe 5ES-X60 Dispositivo de Monitoreo Ambiental con 60 Contactos Secos, Soporte para 500 Sensores, Servidor Web Linux y Puerta de Enlace** `X60`
+  - 📦 [AKCP] **AKCP securityProbe 5ESV-X20 Dispositivo de Monitoreo Ambiental con 20 Contactos Secos, 4 Cámaras HD, Soporte para 500 Sensores y Servidor Web** `X20`
+  - 📦 [AKCP] **AKCP securityProbe 5ESV-X60 Dispositivo de Monitoreo Ambiental con 60 Contactos Secos, 4 Cámaras HD, Soporte para 500 Sensores y Servidor Web** `X60`
+  - 📦 [AKCP] **AKCP E-Opto16 Módulo de Expansión de 16 Contactos Secos Optoaislados, Conexión en Cadena (Daisy Chain), Montaje Rack 1U** `AKCP`
+  - 📦 [AKCP] **AKCP sensorProbe+ Wireless Tunnel Server (SP-WTS) Dispositivo de Monitoreo LoRa, Servidor Web, Soporte para 30 Dispositivos Inalámbricos** `AKCP`
+  - 📦 [AKCP] **AKCP 4-20mAmp Converter – Convertidor de Señal Analógica de Alta Precisión, Conectividad RJ-45 con Gestión Web para Monitoreo de Sensores Remotos en Control de Procesos** `RJ-45`
+  - 📦 [AKCP] **AKCP 5 Dry Contact Inputs – Sensor de Contactos Secos de 5 Entradas, Alertas SNMP y Correo Electrónico, Conexión RJ-45 para Monitoreo de UPS y Seguridad (SP1+ / SP2+ Only)** `RJ-45`
+  - 📦 [AKCP] **AKCP 8 Port Relay – Relé Multi-Puerto Controlado por Sensor, Automatización SNMP con 8 Entradas, Conectividad RJ-45 para Control de Procesos y Gestión de Energía** `RJ-45`
+  - 📦 [AKCP] **AKCP AC Sensor Controlled Relay – Relé de Corriente Alterna Controlado por Sensor, Automatización SNMP con Protección MOV y Fusible de 10A, Conectividad RJ-45 para Gestión de Energía en Centros de Datos** `10A`
+  - 📦 [AKCP] **AKCP Power Monitor Sensor – Medidor de Energía Eléctrica Monofásico y Trifásico, Monitoreo de Voltaje y Factor de Potencia, Integración Modbus RS485 para Cálculos PUE en Centros de Datos** `RS485`
+  - 📦 [AKCP] **AKCP Vibration Sensor – Detector de Vibración y Rotura de Cristales, Interruptor con Contactos de Plata y Sensibilidad Ajustable, Conectividad RJ-45 para Monitoreo de Seguridad en Ventanas y Gabinetes** `RJ-45`
+  - 📦 [AKCP] **AKCP Modbus to SNMP Adapter – Adaptador de Conversión RJ-45 a Bloque de Terminales para Bus Serial RS485, Integración Industrial de Equipos Modbus a Redes SNMP** `RJ-45`
+  - 📦 [AKCP] **AKCP Sensor Adapter – Adaptador Universal para Sensores Analógicos de 0-10V y Contactos Secos, Conectividad RJ-45 para Integración de Equipos de Terceros en Redes SNMP** `-10V`
+  - 📦 [AKCP] **AKCP Wireless Tunnel™ (SP-WT) – Nodo de Radio LoRa para Sensores Inalámbricos, Escalable hasta 120 Sensores, Comunicación de Largo Alcance para Monitoreo Remoto** `120`
+
+- 📂 **sensores-ambientales** **(Sin realizar)** *(15 productos)*
+  - 📦 [AKCP] **AKCP E-Sensor8 Módulo de Expansión de 8 Puertos para Sensores Inteligentes, Conexión en Cadena (Daisy Chain), Montaje Rack 1U** `AKCP`
+  - 📦 [AKCP] **AKCP Airflow Sensor de Flujo de Aire, Alarma On/Off, Monitoreo Ambiental, RJ-45, Plug-and-Play** `RJ-45`
+  - 📦 [AKCP] **AKCP Sensor Ambiental 4 en 1, Calidad del Aire, Temperatura, Humedad y Presión Estática** `AKCP`
+  - 📦 [AKCP] **AKCP Sensor de Calidad del Aire para Centro de Datos, Monitoreo de Partículas (PM), VOC, NOx y CO2** `AKCP`
+  - 📦 [AKCP] **AKCP Cabinet Analysis Sensor (CAS), Mapa Térmico y Presión Diferencial para Gabinetes de TI** `AKCP`
+  - 📦 [AKCP] **AKCP Locate Rope Water Sensor Detector de Fugas con Ubicación Precisa, Cable Sensor, RJ-45** `RJ-45`
+  - 📦 [AKCP] **AKCP Single Port Temperature and Humidity Sensor, Monitoreo Dual de Clima, RJ-45, Calibración NIST** `RJ-45`
+  - 📦 [AKCP] **AKCP SNMP Temperature Sensor de Monitoreo Remoto, Acero Inoxidable, Calibración NIST, RJ-45** `RJ-45`
+  - 📦 [AKCP] **AKCP Spot Water Sensor – Detector de Fugas de Agua Destilada, Sensor Impermeable Encapsulado en Epoxi, Conectividad RJ-45 con Alertas SNMP para Monitoreo Ambiental en Centros de Datos** `RJ-45`
+  - 📦 [AKCP] **AKCP PIR Hardware Motion Detector – Sensor de Movimiento Infrarrojo Pasivo, Detección de 60º, Alta Inmunidad a Interferencias RFI, Conectividad RJ-45 para Sistemas de Seguridad en Centros de Datos** `RJ-45`
+  - 📦 [AKCP] **AKCP Security Sensor – Sensor Magnético de Seguridad para Puertas y Ventanas, Conexión en Serie Ilimitada con Alertas SNMP, Conectividad RJ-45 para Monitoreo de Acceso en Centros de Datos** `RJ-45`
+  - 📦 [AKCP] **AKCP Siren and Strobe Light – Sirena de 100dB y Luz Estroboscópica LED, Alarma Audiovisual con Control SNMP, Conectividad RJ-45 para Monitoreo de Seguridad en Centros de Datos** `RJ-45`
+  - 📦 [AKCP] **AKCP Smoke Detector – Detector de Humo Fotoeléctrico, Alarma Acústica de 85dB con Batería de Respaldo, Conectividad RJ-45 con Alertas SNMP para Monitoreo de Seguridad en Centros de Datos** `RJ-45`
+  - 📦 [AKCP] **AKCP Rope Fuel Sensor – Sensor de Fuga de Combustible Tipo Cuerda, Detección de Hidrocarburos con Localización de Falla, Conectividad RJ-45 para Generadores y Tanques** `RJ-45`
+  - 📦 [AKCP] **AKCP Tank Depth Sensor – Sensor de Nivel de Combustible por Presión Hidráulica, Monitoreo de Tanques con Alertas de Robo, Conectividad RJ-45 para Gestión de Generadores** `RJ-45`

@@ -1,0 +1,14 @@
+{
+  "apply": false,
+  "penBefore": 459,
+  "penAfter": 459,
+  "nonPenBefore": 20,
+  "nonPenAfter": 20,
+  "byCurrencyBefore": {
+    "eur": 20
+  },
+  "byCurrencyAfter": {
+    "eur": 20
+  },
+  "removedIds": 0
+}

@@ -1,0 +1,13 @@
+{
+  "apply": true,
+  "penBefore": 459,
+  "penAfter": 459,
+  "usdBefore": 480,
+  "usdAfter": 0,
+  "removedIds": 480,
+  "pricePreferencesRemoved": [
+    "prpref_01KW0RTPQAWRFACAZ7P0Y8296H",
+    "prpref_01KW0RTPQAYBHEH706SRJAJ2RK",
+    "prpref_01KW0RTPR3P11VE95NDRG764W6"
+  ]
+}

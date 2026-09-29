@@ -1,0 +1,54 @@
+{
+  "generatedAt": "2026-09-04T18:15:24.419Z",
+  "gatesBloqueantesFallidos": 0,
+  "findings": [
+    {
+      "gate": "Productos publicados",
+      "severity": "info",
+      "expected": "498",
+      "actual": "498",
+      "passed": true
+    },
+    {
+      "gate": "Exactamente 1 categoria hoja",
+      "severity": "blocker",
+      "expected": "498/498",
+      "actual": "498/498",
+      "passed": true
+    },
+    {
+      "gate": "PIM huerfanos",
+      "severity": "blocker",
+      "expected": "0",
+      "actual": "0",
+      "passed": true
+    },
+    {
+      "gate": "Precio PEN unico por variante",
+      "severity": "blocker",
+      "expected": "0",
+      "actual": "0",
+      "passed": true
+    },
+    {
+      "gate": "Paridad precio JSON vs Medusa",
+      "severity": "blocker",
+      "expected": "0",
+      "actual": "0",
+      "passed": true
+    },
+    {
+      "gate": "Productos con galeria image[]",
+      "severity": "blocker",
+      "expected": "0 sin images",
+      "actual": "0",
+      "passed": true
+    }
+  ],
+  "samples": {
+    "sinHoja": [],
+    "multiHoja": [],
+    "priceDiffs": [],
+    "penDupes": []
+  }
+}

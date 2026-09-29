@@ -1,0 +1,9 @@
+{
+  "generatedAt": "2026-08-31T23:27:40.364Z",
+  "mode": "dry-run",
+  "decision": "D3 — soft delete de huerfanos (aprobada 2026-08-31)",
+  "productosExistentes": 498,
+  "pimActivos": 498,
+  "huerfanos": [],
+  "duplicados": []
+}

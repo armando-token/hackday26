@@ -1,0 +1,11 @@
+handle,titulo,precio,categoria
+novus-ssr-4810,"Novus SSR-4810 – Relé de Estado Sólido Monofásico 10A 480VAC con Conmutación Zero Cross",145,control-e-indicacion/reles-ssr
+novus-ssr-4825,"Novus SSR-4825 – Relé de Estado Sólido Monofásico 25A 480VAC con Conmutación Zero Cross",195,control-e-indicacion/reles-ssr
+novus-ssr-4840,"Novus SSR-4840 – Relé de Estado Sólido Monofásico 40A 480VAC con Conmutación Zero Cross",265,control-e-indicacion/reles-ssr
+novus-ssr-4880,"Novus SSR-4880 – Relé de Estado Sólido Monofásico 80A 480VAC Heavy Duty",420,control-e-indicacion/reles-ssr
+novus-ssr-3ph-40a,"Novus SSR-3PH-40A – Relé de Estado Sólido Trifásico 40A 480VAC",580,control-e-indicacion/reles-ssr
+novus-power-controller-60a,"Novus Power Controller 60A – Controlador Proporcional de Potencia Tiristor SCR 60A",1150,control-e-indicacion/reles-ssr
+novus-power-controller-100a,"Novus Power Controller 100A – Controlador Proporcional de Potencia Tiristor SCR 100A",1850,control-e-indicacion/reles-ssr
+novus-power-controller-200a,"Novus Power Controller 200A – Controlador de Potencia Industrial SCR 200A Heavy Duty",2950,control-e-indicacion/reles-ssr
+novus-interface-relay-nio-24v,"Novus NIO 24V – Módulo de Relé de Interfaz Electromecánico ultra-delgado 6mm para Riel DIN 24VDC",65,control-e-indicacion/reles-ssr
+novus-interface-relay-nio-220v,"Novus NIO 220V – Módulo de Relé de Interfaz Electromecánico 6mm para Riel DIN 220VAC",75,control-e-indicacion/reles-ssr

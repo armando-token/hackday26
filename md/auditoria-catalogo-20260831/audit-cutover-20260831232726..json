@@ -1,0 +1,236 @@
+{
+  "generatedAt": "2026-08-31T23:27:26.134Z",
+  "mode": "dry-run",
+  "totals": {
+    "productosMedusa": 498,
+    "productosJson": 498,
+    "pimTotal": 498,
+    "pimHuerfanos": 0,
+    "buyNow": 149,
+    "variantesConPen": 149
+  },
+  "gatesBloqueantesFallidos": 2,
+  "findings": [
+    {
+      "id": "productos-publicados",
+      "gate": "Productos publicados",
+      "severity": "info",
+      "expected": "498",
+      "actual": "498",
+      "passed": true
+    },
+    {
+      "id": "brand-link",
+      "gate": "Productos con enlace de marca",
+      "severity": "blocker",
+      "expected": "498/498",
+      "actual": "498/498",
+      "passed": true,
+      "sample": []
+    },
+    {
+      "id": "pim-huerfanos",
+      "gate": "PIM huerfanos (sin producto activo)",
+      "severity": "blocker",
+      "expected": "0",
+      "actual": "0",
+      "passed": true,
+      "sample": []
+    },
+    {
+      "id": "pim-duplicados",
+      "gate": "product_id duplicados en PIM",
+      "severity": "blocker",
+      "expected": "0",
+      "actual": "0",
+      "passed": true,
+      "sample": []
+    },
+    {
+      "id": "pim-cobertura",
+      "gate": "Productos con exactamente 1 PIM",
+      "severity": "blocker",
+      "expected": "498/498",
+      "actual": "498/498",
+      "passed": true,
+      "sample": []
+    },
+    {
+      "id": "variantes",
+      "gate": "Productos con al menos 1 variante",
+      "severity": "blocker",
+      "expected": "498/498",
+      "actual": "498/498",
+      "passed": true,
+      "sample": []
+    },
+    {
+      "id": "skus",
+      "gate": "Variantes con SKU",
+      "severity": "blocker",
+      "expected": "0 sin SKU",
+      "actual": "0 productos con variante sin SKU",
+      "passed": true,
+      "sample": []
+    },
+    {
+      "id": "categoria-hoja",
+      "gate": "Productos con exactamente 1 categoria hoja",
+      "severity": "blocker",
+      "expected": "498/498",
+      "actual": "489/498",
+      "passed": false,
+      "sample": [
+        {
+          "handle": "cubos-hidroponicos-de-lana-de-roca",
+          "hojas": 0
+        },
+        {
+          "handle": "horner-simulador-universal",
+          "hojas": 0
+        },
+        {
+          "handle": "registrador-de-datos-en-tiempo-real-tt18-con-sensor-de-temperatura-y-humedad",
+          "hojas": 2
+        },
+        {
+          "handle": "registrador-tz-bt06",
+          "hojas": 2
+        },
+        {
+          "handle": "calentadores-de-unidad-kbs",
+          "hojas": 2
+        },
+        {
+          "handle": "calefactor-radiante-infrarrojo-smartwave",
+          "hojas": 2
+        },
+        {
+          "handle": "calentador-de-cartucho-con-sensor",
+          "hojas": 2
+        },
+        {
+          "handle": "manguera-calefactada-mpi-morheat",
+          "hojas": 2
+        },
+        {
+          "handle": "nak-transductor-y-transmisor-mpi",
+          "hojas": 2
+        }
+      ]
+    },
+    {
+      "id": "categorias-inactivas",
+      "gate": "Categorias inactivas con productos publicados",
+      "severity": "warning",
+      "expected": "0",
+      "actual": "0",
+      "passed": true,
+      "sample": []
+    },
+    {
+      "id": "assets",
+      "gate": "Productos sin imagen principal",
+      "severity": "blocker",
+      "expected": "0",
+      "actual": "0",
+      "passed": true,
+      "sample": []
+    },
+    {
+      "id": "enums",
+      "gate": "Valores de enum invalidos en PIM",
+      "severity": "blocker",
+      "expected": "0",
+      "actual": "0",
+      "passed": true,
+      "sample": []
+    },
+    {
+      "id": "lead-time",
+      "gate": "lead_time_days coherente con availability_mode",
+      "severity": "warning",
+      "expected": "0 incoherencias",
+      "actual": "1",
+      "passed": false,
+      "sample": [
+        {
+          "product_id": "prod_01M01FKQEXS5Z6GES9D94ZEJ48",
+          "availability_mode": "lead_time",
+          "lead_time_days": null
+        }
+      ]
+    },
+    {
+      "id": "precio-duplicado",
+      "gate": "Variantes con precio PEN duplicado",
+      "severity": "blocker",
+      "expected": "0",
+      "actual": "1",
+      "passed": false,
+      "sample": [
+        {
+          "handle": "sensores-con-punta-de-metal",
+          "precios_pen": [
+            283.2,
+            283.2
+          ]
+        }
+      ]
+    },
+    {
+      "id": "buynow-precio",
+      "gate": "buy_now con precio PEN",
+      "severity": "blocker",
+      "expected": "149/149",
+      "actual": "149/149",
+      "passed": true,
+      "sample": []
+    },
+    {
+      "id": "paridad-handles",
+      "gate": "Handles presentes en ambas fuentes",
+      "severity": "blocker",
+      "expected": "0 discrepancias",
+      "actual": "0 solo JSON, 0 solo Medusa",
+      "passed": true,
+      "sample": []
+    },
+    {
+      "id": "precio-x100",
+      "gate": "Precios con sospecha de factor x100",
+      "severity": "blocker",
+      "expected": "0",
+      "actual": "0",
+      "passed": true,
+      "sample": []
+    },
+    {
+      "id": "precio-divergente",
+      "gate": "Divergencia de precio JSON vs Medusa",
+      "severity": "warning",
+      "expected": "0",
+      "actual": "1",
+      "passed": false,
+      "sample": [
+        {
+          "handle": "sensores-con-punta-de-metal",
+          "json": 89,
+          "medusa": 283.2,
+          "ratio": 3.182,
+          "sospecha_x100": false
+        }
+      ]
+    }
+  ],
+  "diferenciasPrecioCompletas": [
+    {
+      "handle": "sensores-con-punta-de-metal",
+      "json": 89,
+      "medusa": 283.2,
+      "ratio": 3.182,
+      "sospecha_x100": false
+    }
+  ],
+  "errores": []
+}

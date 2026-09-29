@@ -1,0 +1,61 @@
+{
+  "fecha_corte": "2026-08-16",
+  "alcance": {
+    "csv_total": 401,
+    "csv_publicados": 400,
+    "csv_no_publicados": 1,
+    "ems_csv_excluidos": 0,
+    "catalogo_actual_total": 523,
+    "ems_actuales_excluidos": 113,
+    "productos_heredados_auditados": 400,
+    "productos_no_ems_no_heredados": 10
+  },
+  "cobertura": {
+    "publicados_encontrados": 400,
+    "publicados_faltantes": 0,
+    "fila_no_migrada_id": 13276,
+    "fila_no_migrada_publicado": -1
+  },
+  "datos": {
+    "titulos_equivalentes": 400,
+    "marcas_equivalentes_o_completadas": 400,
+    "precios_efectivos_correctos": 400,
+    "precios_rebajados_usados": 109,
+    "productos_cotizacion": 256,
+    "productos_precio_fijo": 144,
+    "backorder_mostrados_como_en_stock": 77,
+    "productos_con_campos_anadidos": 387,
+    "campos_anadidos_sin_presencia_en_csv": 2177,
+    "productos_con_valores_modificados": 76,
+    "valores_modificados": 168,
+    "atributos_antiguos_ausentes": 84,
+    "productos_con_atributos_antiguos_ausentes": 53,
+    "productos_con_senales_de_conflicto_semantico": 243,
+    "grupos_potencialmente_contradictorios": 416,
+    "titulos_h1_recortados": 305,
+    "descripciones_con_corte_evidente": 72,
+    "descripciones_largas_antiguas": 400,
+    "descripciones_largas_visibles_actuales": 0
+  },
+  "imagenes_heredadas": {
+    "referencias": 610,
+    "http_ok": 610,
+    "mime_valido": 610,
+    "productos_sin_imagen": 0,
+    "productos_con_una_imagen": 320,
+    "productos_con_multiples_imagenes": 80,
+    "imagenes_baja_resolucion_en_muestra_medible": 27,
+    "productos_afectados_baja_resolucion": 23,
+    "grupos_hash_duplicado": 12
+  },
+  "runtime": {
+    "pdp_probadas": 523,
+    "pdp_http_200": 523,
+    "rutas_subcategoria_probadas": 53,
+    "rutas_subcategoria_http_200": 53,
+    "backend_medusa_disponible": false,
+    "postgres_disponible": false,
+    "causa_inmediata": "medusa-db detenido; ECONNREFUSED 127.0.0.1:5432"
+  },
+  "dictamen": "NO APROBADO para publicacion abierta como catalogo tecnico hasta resolver P0 y P1"
+}

@@ -1,0 +1,82 @@
+{
+  "name": "medusa-next",
+  "version": "1.0.3",
+  "private": true,
+  "author": "Kasper Fabricius Kristensen <kasper@medusajs.com> & Victor Gerbrands <victor@medusajs.com> (https://www.medusajs.com)",
+  "description": "Next.js Starter to be used with Medusa V2",
+  "keywords": [
+    "medusa-storefront"
+  ],
+  "scripts": {
+    "dev": "next dev -p 8000",
+    "dev:turbo": "next dev --turbopack -p 8000",
+    "build": "next build",
+    "start": "next start -p 8000",
+    "lint": "next lint",
+    "analyze": "ANALYZE=true next build",
+    "cn:etl": "node --experimental-strip-types scripts/cn-etl.mjs",
+    "cn:etl:images": "DOWNLOAD_IMAGES=1 node --experimental-strip-types scripts/cn-etl.mjs",
+    "test:unit": "jest --runInBand",
+    "catalog:contract": "npx tsx scripts/catalog-contract-check.ts pe",
+    "catalog:canary": "npx tsx scripts/catalog-smoke-canary.ts pe",
+    "catalog:smoke": "npx tsx scripts/catalog-smoke-staging.ts pe"
+  },
+  "dependencies": {
+    "@headlessui/react": "^2.2.0",
+    "@medusajs/icons": "latest",
+    "@medusajs/js-sdk": "latest",
+    "@medusajs/ui": "latest",
+    "@radix-ui/react-accordion": "^1.2.1",
+    "@stripe/react-stripe-js": "^5.3.0",
+    "@stripe/stripe-js": "^8.2.0",
+    "altcha": "^3.2.1",
+    "altcha-lib": "^2.3.2",
+    "lodash": "^4.17.21",
+    "next": "15.3.9",
+    "nodemailer": "^9.0.5",
+    "pg": "^8.11.3",
+    "qs": "^6.12.1",
+    "react": "19.0.5",
+    "react-country-flag": "^3.1.0",
+    "react-dom": "19.0.5",
+    "server-only": "^0.0.1",
+    "tailwindcss-radix": "^2.8.0",
+    "webpack": "^5",
+    "zod": "^4.5.4"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.17.5",
+    "@medusajs/types": "latest",
+    "@medusajs/ui-preset": "latest",
+    "@swc/jest": "^0.2.39",
+    "@types/jest": "^30.0.0",
+    "@types/lodash": "^4.14.195",
+    "@types/node": "17.0.21",
+    "@types/nodemailer": "^8.0.1",
+    "@types/pg": "^8.11.0",
+    "@types/react": "19.0.5",
+    "@types/react-dom": "19.0.5",
+    "@types/react-instantsearch-dom": "^6.12.3",
+    "ansi-colors": "^4.1.3",
+    "autoprefixer": "^10.4.2",
+    "babel-loader": "^8.2.3",
+    "eslint": "8.10.0",
+    "eslint-config-next": "15.0.8",
+    "jest": "^30.5.0",
+    "playwright": "^1.61.1",
+    "postcss": "^8.4.8",
+    "prettier": "^2.8.8",
+    "tailwindcss": "^3.0.23",
+    "tsx": "^4.23.13",
+    "typescript": "^5.3.2"
+  },
+  "resolutions": {
+    "@types/react": "19.0.5",
+    "@types/react-dom": "19.0.5"
+  },
+  "overrides": {
+    "react": "19.0.5",
+    "react-dom": "19.0.5"
+  },
+  "packageManager": "yarn@4.12.0"
+}

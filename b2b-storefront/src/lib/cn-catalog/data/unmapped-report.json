@@ -1,0 +1,37 @@
+{
+  "generatedAt": "2026-08-07T02:34:34.600Z",
+  "count": 2,
+  "note": "Products mapped to otros or flagged uncertain — review manually",
+  "items": [
+    {
+      "wcId": 12655,
+      "handle": "novus-convertidor-usb-i485",
+      "title": "Novus Convertidor USB-i485 – Interfaz Aislada USB a RS485/RS422",
+      "brand": "Novus",
+      "wcCategories": [
+        "comunicacion-y-datos"
+      ],
+      "mappedTo": [
+        "registro-de-datos",
+        "gateways"
+      ],
+      "reason": "novus-comms",
+      "uncertain": true
+    },
+    {
+      "wcId": 13108,
+      "handle": "wsc-king-electric-calentador",
+      "title": "WSC King Electric Calentador de Superficie para Exteriores",
+      "brand": "King Electric",
+      "wcCategories": [
+        "calentadores-electricos"
+      ],
+      "mappedTo": [
+        "calefaccion-electrica",
+        "pared-conveccion"
+      ],
+      "reason": "heater-default",
+      "uncertain": true
+    }
+  ]
+}

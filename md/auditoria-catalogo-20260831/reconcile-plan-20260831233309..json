@@ -1,0 +1,2508 @@
+{
+  "generatedAt": "2026-08-31T23:33:09.504Z",
+  "mode": "apply",
+  "decisions": [
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "D5"
+  ],
+  "totalActions": 498,
+  "byStep": {
+    "category-dedupe": 1,
+    "inventory": 497
+  },
+  "actions": [
+    {
+      "step": "category-dedupe",
+      "target": "unit-heaters-industriales",
+      "detail": "desactivar duplicado; canonica=unit-heaters"
+    },
+    {
+      "step": "inventory",
+      "target": "cintas-aislante-foam-tape",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "sensor-rtd-con-cabezal-y-conexion-a-proceso",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "sensor-rtd-con-cabezal-din-b",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "sensor-rtd-con-cabezal-de-acero-inoxidable",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "sensor-rtd-con-termopozo-higienico",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "termopozos",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "sensor-flexible-novus-fsb",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "sensores-con-empunadura-y-cable-serie-hsc",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "sensores-con-cabezal-de-proteccion-sph",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "sensores-con-punta-de-metal",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "sensores-con-transmisor-incorporado-serie-bts",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "sistema-de-calefaccion-electrico-para-la-circulacion-de-combustible",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "sistema-de-calefaccion-electrico-para-conductos",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "sistema-de-calefaccion-electrico-para-la-circulacion-de-fluidos-diversos",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "sistema-de-calefaccion-de-inmersion-con-caja-electrica",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "registrador-de-datos-industrial-multicanales-fieldlogger",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "controlador-de-temperatura-n1040-novus",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "controlador-de-temperatura-n1050",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "controlador-de-proceso-n1200-novus",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "indicador-de-proceso-universal-n1500",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "controlador-universal-n2000",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "controlador-de-procesos-universal-n3000",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "controlador-novus-n323-pt100-rs485",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "controlador-de-temperatura-n480d-novus",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "controlador-de-temperatura-novus-n960",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "transmisor-de-temperatura-y-humedad-rht-climate",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "transmisor-de-temperatura-y-humedad-rht-wm-y-rht-dm",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "transmisor-temperatura-para-cabezal-txblock-usb",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "transmisor-temperatura-para-riel-din-txrail-usb",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "transmisor-de-temperatura-y-humedad-rht-p10-rht-xs",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "discos-de-ruptura-para-extrusoras",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "transmisores-y-transductores-industriales-de-presion-mpi-dynisco-gefran-gentran",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "x2-ocs-micro-plc-todo-en-uno",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "horner-xlee-xl-ocs",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "horner-xlte-xl-ocs",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "horner-xl4-xl-series-ocs-plc-todo-en-uno",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "horner-exl6-ocs-horner",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "horner-exlw-ocs",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "horner-xl7-ocs-horner",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "horner-exl10-ocs",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "controlador-de-automatizacion-horner-xl15-plus-ocs",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "controlador-de-automatizacion-horner-xlee-ocs",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "controlador-de-automatizacion-xlte-ocs",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "horner-micro-ocs-x4-series-plc-todo-en-uno",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "horner-x5-micro-ocs-series-plc-todo-en-uno",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "horner-micro-ocs-x7-series-plc-todo-en-uno",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "horner-x10-micro-ocs-series-plc-todo-en-uno",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "horner-kit-de-inicio-ocs-micro-series-plc-todo-en-uno",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "panel-lana-de-roca-alta-densidad",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "panel-de-lana-de-roca-con-aluminio",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "registrador-de-datos-en-tiempo-real-tt18-con-sensor-de-temperatura-y-humedad",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "registrador-de-datos-multiuso-tempu04",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "controlador-de-temperatura-tz-tht02",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "transmisor-co2-tz-ct01",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "transmisor-tz-tht03r",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "transmisor-tz-tht03c",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "transmisor-de-temperatura-integrado-ptt04r",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "registrador-tz-bt06",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "registrador-de-datos-bluetooth-tz-bt04b",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "datos-tempu07b",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "kings-pkbs-calentador-portatil",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "calentador-de-utilidad-model-u-ss",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "calentadores-de-unidad-kbs",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "calefactor-marino-de-acero-inoxidable-daw-ss",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "paw-ss-calefactor-marino",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "calefactor-marino-mkt-ss",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "calefactor-compacto-kbp",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "calefactor-industrial-king-kb",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "termostato-de-proteccion-trf115-005",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "calefactor-de-pared-modelo-w",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "calefactor-modelo-wsc",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "calefactor-pkb-dt",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "calefactor-a-prueba-de-explosiones-cx1",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "calefactor-a-prueba-de-explosiones-fx6",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "calentador-portatil-industrial-pckw",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "calefactor-portatil-pkb-platinum",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "calefactor-portatil-industrial-pkb-fm",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "calefactor-portatil-pckf",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ventilador-king-pfo-24",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ventilador-king-pfo-30",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "calefactor-electronico-kb-eco2s",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "calefactor-king-kfuh-eco2s",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "calefacto-compacto-kcc",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "calefactor-radiante-infrarrojo-smartwave",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "calefactor-infrarrojo-smartwave",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "calefactor-infrarrojo-smartwave-con-3-lamparas",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "horno-electrico-eco2s-kf-kfs",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "calefactor-serie-e-king",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "calefactor-radiante-infrarrojo",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "calefactor-portatil-puh1215t",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "calentador-portatil-pgh2440tb",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "calentador-portatil-psh2440tb",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "cable-calefactor-serie-srp",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "cable-calefactor-serie-srp-240v",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "cable-calefactor-serie-sr",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "unidad-de-aire-de-reposicion-clear-air-mau",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "termostato-n-e-m-a-4x-tf115",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "termostato-n-e-m-a-4x-th109",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "termostato-wifi-modelo-hoot",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "termostato-programable-k302pe",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "termostato-mecanico-k101",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "termostato-mecanico-k102",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "termostato-enfriamiento-k101-c",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ventilador-oscilante-wfo-24",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ventilador-oscilante-wfo-30",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "kit-de-nebulizacion-pfo-mistkit",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "funda-resistente-al-agua-fo-cover-24",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "funda-resistente-al-agua-fo-cover-30",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "panel-de-cubierta-sc-pw-de-lana-de-roca",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "panel-de-fachada-sc-pw-de-lana-de-roca",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "panel-decorativo-pu-peso",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "panel-de-fachada-sc-pu-de-poliuretano",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "panel-de-cubierta-scr-pu-de-poliuretano",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "panel-frigorifico-sc-pc-de-poliuretano",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "panel-para-sala-blanca-sinopan",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "sensorprobe1-plus-akcp",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "sensorprobe2-plus-akcp",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "in-line-power-meter-akcp",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "sensorprobe2-lcd-akcp",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "controlador-de-temperatura-novus-n323",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "controlador-de-temperatura-n322-pt100",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "indicador-digital-n1500-lc",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "indicador-universal-n1500-g",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "novus-convertidor-usb-i485",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "controlador-novus-n1030t",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "controlador-de-temperatura-novus-n1050",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "controlador-novus-n1200-usb",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "controlador-novus-n1200-24v-rs485",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "controlador-novus-n1200-rs485-termostato",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "controlador-novus-n2000-usb-rs485",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "controlador-novus-n3000-usb-rs485",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "controlador-novus-n3000-usb-rs485-24v",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "novus-n321-ntc-24v",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "sensor-de-temperatura-ntc-novus",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "brida-novus-ss310",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "novus-n323-rht",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "sensor-novus-s35-rht-probe",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "novus-rht-wm-pared",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "controlador-novus-n20k48",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "controlador-novus-n2000s",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "indicador-universal-novus-n150",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "indicador-de-procesos-novus-n1540",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "indicador-de-procesos-novus-n1500g",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "controlador-novus-n321r",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "novus-n322s-controlador",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "controlador-novus-n323tr",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "novus-nt240-temporizador",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "registrador-novus-logbox-lte",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "novus-logbox-wi-fi-registrador-de-datos",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "novus-logbox-ble-data-logger",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "registrador-de-datos-dual-novus-logbox-da",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "novus-climate-air-plus",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "gateway-industrial-novus-digirail-iot",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "gateway-iot-novus-airgate-4g-lite",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "novus-digirail-oee-modulo-i-o",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "novus-telik-trafo-lite-transmisor",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "novus-telik-gardo-monitoreo",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "novus-digigate-profibus-gateway",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "novus-digirail-connect",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "novus-airgate-modbus",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "novus-digirail-va",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "novus-txisoblock-hrt",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "novus-txmini-transmisor",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "novus-txisoloop",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "novus-wl320-transmisor",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "novus-wl420-transmisor",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "novus-tl400-sensor-de-nivel-ultrasonico",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "novus-rht-p10-rht-xs-transmisores",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "novus-logbox-aa-data-logger",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "novus-digirail-nxprog-micro-plc",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "novus-telik-geter-gateway",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "tzone-tz-tt19-transmisor",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "tzone-bt07-data-logger",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "tzone-tempu09-data-logger",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "termometro-portatil-tzone",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "lora-gateway-kit",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "tzone-tempu08-tempu08b",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "tzone-tempu06-data-logger",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "tzone-bt05-data-logger",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "tzone-tempu05-data-logger",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "tzone-tempu02-data-logger",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "manta-de-lana-de-roca-aislamiento",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "canuelas-de-lana-de-roca-aislamiento",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "cubos-hidroponicos-de-lana-de-roca",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "canuelas-de-lana-de-roca-aluminio",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "manta-de-lana-de-roca-con-malla",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "serie-hpc-cable-calefactor",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "serie-rdp-cable-calefactor",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "serie-rdc-cable-calefactor",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "serie-rsr-cable-calefactor",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "kit-msr-de-cable-calefactor",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "serie-lsr-cable-calefactor",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "tempu07th-registrador-de-datos",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "tht02c-sensor-transmisor",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "serie-fsr-cable-calefactor",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "hrshtv-cable-calefactor-anti-uv",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "hm-cable-calefactor",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "serie-rsr-cable-calefactor-2",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "serie-lsr-cable-calefactor-2",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "txlp-cable-calefactor",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "i20-cable-calefactor",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "hrdvt-cable-calefactor",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "ut-mat-alfombrilla-calefactora",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "cable-s-calefactor",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "cable-t-calefactor",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "f-mat-lamina-calefactora",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "s-mat-alfombra-calefactora",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "t-mat-alfombra-calefactora",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "hrtp-mat-alfombra-calefactora",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "cable-bhs-calefactor",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "hm-mat-alfombra-calefactora",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "hrshtv-cable-calefactor",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "sc-cable-calefactor-king-electric",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "scm-king-electric-alfombra-calefactora",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "srp-king-electric-cable-calefactor",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "sr-king-electric-cable-calefactor",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "ct-king-electric-cable-calefactor",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "tc-king-electric-cable-calefactor",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "tcm-king-electric-alfombra-calefactora",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "udg-4999-king-electric-termostato",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "usg-4000-king-electric-rele",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "pyrobox3-19-king-electric-controlador",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "pyrobox3c-19-king-electric-controlador",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "pyrobox5-19-king-electric-controlador",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "pyrosense-19-king-electric-sensor",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "pyrocon19-king-electric-controlador",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "gf-pro-king-electric-controlador",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "ktw-king-electric-calentador",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "kt-mw-king-electric-calentador",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "px-eco2s-pro-king-electric-calentador",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "px-comfortcraft-king-electric",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "paw-ultra-king-electric-calentador",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "paw-king-electric-calentador",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "w-king-electric-calentador",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "whfc-king-electric-calentador",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "whf-hm-king-electric-calentador",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "wsc-king-electric-calentador",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "modelo-u-king-electric-calentador",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "kcf-safe-touch-king-electric-calentador",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "kcf-king-electric-calentador",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "lpw-eco2s-pro-king-electric",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "lpw-comfortcraft-king-calentador",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "lpwc-king-electric-calentador",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "lpwa-king-electric-calentador",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "lpwv-king-electric-calentador",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "kbp-eco2s-king-calentador",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "kbp-platinumx-bms-king-calentador",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "kbp-series-2-king-calentador",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "kbp-eco2s-pro-calentador",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "kbp-platinumx-pro-calentador",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "modelo-krf-b-kit-king-electric",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "krf-heat-kit-king-electric",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "kbsh-king-electric-calentador",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "kbp-rcs-king-electric-calentador",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "hoot-wifi-king-electric-termostato",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "kbp-lhp-king-electric-calentador",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "efw-ld-safe-touch-calentador",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "kbu-platinumx-bms-calentador",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "modelo-k-king-electric-calentador",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "kph1210-king-electric-calentador",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "kp1210-king-electric-calentador",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "kp1215-eco-king-electric-calentador",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "modelo-cb-120-volt-calentador",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "ez-connect-k-calentador",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "okb-king-electric-calentador",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "serie-micro-cpu-controladores",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "canvas-4-horner-controlador",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "canvas-5-horner-controlador",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "canvas-7-horner-controlador",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "canvas-7d-horner-controlador",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "canvas-10d-horner-controlador",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "calentadores-de-cartucho-mpi",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "calentador-de-cartucho-alta-temperatura",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "calentador-de-cartucho-para-matriz-de-peletizadora-subacuatica",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "calentador-de-cartucho-cuadrado",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "calentador-de-cartucho-tipo-perno",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "calentador-de-cartucho-de-inmersion",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "calentador-de-cartucho-de-funda-dividida",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "calentador-de-cartucho-miniatura",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "calentador-de-cartucho-con-sensor",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "calentador-de-banda-de-mica",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "calentador-de-banda-de-ceramica",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "calentador-de-banda-de-aluminio",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "calentador-de-tambor-de-goma",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "calentador-de-bobina-con-abrazadera-axial",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "calentador-fundido-para-cabezal",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "calentador-de-banda-con-aislamiento",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "calentador-de-banda-tubular",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "calentador-de-tira-de-mica-mpi",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "calentador-de-tira-de-ceramica",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "calentador-de-tira-de-canal-aleteado",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "calentador-de-tira-de-alta-temperatura",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "manguera-calefactada-mpi-morheat",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "cable-calefactor-autorregulable-de-baja-temperatura",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "panel-de-control-de-temperatura-y-potencia",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "nak-transductor-y-transmisor-mpi",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "mercurio-mv-v-transductor-mpi",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "cables-y-conectores-transductores",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "discos-de-ruptura-extrusoras",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "termopar-de-bayoneta-ajustable",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "termopar-de-bayoneta-ajustable-con-armadura-flexible",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "termopar-de-bayoneta-de-profundidad",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "termopar-de-bayoneta-ajustable-con-resorte-y-armadura-flexible",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "termopar-de-cabeza-y-ranura",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "termopar-de-perno-roscado-y-boquilla",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "termopar-de-soldadura-de-gota",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "termopar-con-recubrimiento-de-teflon",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "termopar-de-boquilla-newbury",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "termopar-de-terminal-de-anillo",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "termopar-de-lamina-mpi",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "termopar-estilo-arburg-mpi",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "termopar-de-aislamiento-mineral",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "termopar-de-aislamiento-mineral-con-bloque-de-terminales",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "termopar-de-aislamiento-mineral-con-cable-espiral",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "termopar-para-tostadora-de-cafe",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "termopar-para-canal-caliente",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "termopar-de-metal-base",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "termopar-de-metal-base-con-tubo",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "horner-rcc6512-plc-controlador",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "horner-rcc972-controlador-compacto",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "horner-rcc1410-75-controlador",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "horner-rcc8842-75-controlador",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "horner-bases-smartrail",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "horner-modulos-smartrail",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "horner-smartblock-modulos",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "horner-smartstix-modulos",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "horner-smartmod-modulos",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "horner-simulador-universal",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "horner-io-link-master-to-modbus-rtu",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "akcp-sensorprobex",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "akcp-securityprobe5e",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "akcp-securityprobe-5e-x20",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "akcp-securityprobe-5e-x60",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "akcp-securityprobe-5es",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "akcp-securityprobe-5es-x20",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "akcp-securityprobe-5es-x60",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "akcp-securityprobe-5esv",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "akcp-securityprobe-5esv-x20",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "akcp-securityprobe-5esv-x60",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "akcp-e-sensor8-modulo",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "akcp-e-opto16-modulo",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "akcp-sensorprobe-wireless-tunnel-server",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "akcp-airflow-sensor-de-flujo-de-aire",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "akcp-sensor-ambiental-4-en-1",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "akcp-sensor-de-calidad-del-aire",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "akcp-air-velocity-sensor",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "akcp-cabinet-analysis-sensor",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "akcp-locate-rope-water-sensor",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "akcp-single-port-temperature-and-humidity-sensor",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "akcp-snmp-temperature-sensor",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "akcp-spot-water-sensor",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "akcp-cabinet-thermal-map-sensor",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "akcp-thermocouple-sensor",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "akcp-ultra-cold-temperature-sensor",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "akcp-4-20mamp-converter",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "akcp-5-dry-contact-inputs",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "akcp-8-port-relay",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "akcp-ac-sensor-controlled-relay",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "akcp-power-monitor-sensor",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "akcp-pir-hardware-motion-detector",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "akcp-security-sensor",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "akcp-sensor-status-light",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "akcp-siren-and-strobe-light",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "akcp-smoke-detector",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "akcp-vibration-sensor",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "akcp-battery-terminal-temperature-sensor",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "akcp-programmable-sensor-lcd-display",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "akcp-modbus-to-snmp-adapter",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "akcp-probeswitch",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "akcp-rope-fuel-sensor",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "akcp-sensor-adapter",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "akcp-tank-depth-sensor",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "akcp-wireless-tunnel-sp-wt",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "tzone-tt20si-registrador-de-datos",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "novus-ssr-4810",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "novus-ssr-4825",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "novus-ssr-4840",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "novus-ssr-4880",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "novus-ssr-3ph-40a",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "novus-power-controller-60a",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "novus-power-controller-100a",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "novus-power-controller-200a",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "novus-interface-relay-nio-24v",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "novus-interface-relay-nio-220v",
+      "detail": "stock 50 -> 0"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-ts-1xx-temperature-sensor",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-ts-3xx-temperature-sensor",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-ts-412-413-portable-temperature-sensor",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-tt-391-wireless-temperature-sensor",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-tt-3xx-temperature-transmitter",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-tt-4xx-temperature-transmitter-display",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-st-3xx-temp-humidity-transmitter",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-nt-3xx-humidity-transmitter",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-st-4xx-temp-humidity-transmitter-display",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-st-2xx-duct-temp-humidity-transmitter",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-nt-2xx-duct-humidity-transmitter",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-dt-3xx-outdoor-temp-humidity-transmitter",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-ss-412-portable-temp-humidity-sensor",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-nt-391-wireless-humidity-sensor",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-st-391-wireless-temp-humidity-sensor",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-kt-3x1-co2-transmitter",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-kt-3x9-co2-transmitter-high-range",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-kt-4x1-co2-transmitter-display",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-kt-4x9-co2-transmitter-display-high-range",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-kt-5xx-temp-humidity-co2-transmitter",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-kt-6xx-temp-humidity-co2-transmitter-display",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-at-3xx-ammonia-transmitter",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-at-4xx-ammonia-transmitter-display",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-et-3xx-ethylene-transmitter",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-et-4xx-ethylene-transmitter-display",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-ut-3xx-so2-transmitter",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-ut-4xx-so2-transmitter-display",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-ct-3xx-co-transmitter",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-ct-4xx-co-transmitter-display",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-ot-3xx-o2-transmitter",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-ot-4xx-o2-transmitter-display",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-ks-412-portable-co2-sensor",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-ks-415-portable-co2-sensor",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-ks-419-portable-co2-sensor",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-ks-612-portable-temp-humidity-co2-sensor",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-as-412-portable-ammonia-sensor",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-es-412-portable-ethylene-sensor",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-us-412-portable-so2-sensor",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-cs-412-portable-co-sensor",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-os-412-portable-o2-sensor",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-kt-391-wireless-co2-sensor",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-at-391-wireless-ammonia-sensor",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-et-391-wireless-ethylene-sensor",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-ut-391-wireless-so2-sensor",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-ct-391-wireless-co-sensor",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-ot-391-wireless-o2-sensor",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-bd-355-differential-pressure-switch",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-bt-3x1-3x2-differential-pressure-transmitter",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-bt-3x4-3x5-differential-pressure-transmitter",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-bt-4x1-4x2-differential-pressure-display",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-bt-4x4-4x5-differential-pressure-display",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-bs-412-413-portable-differential-pressure",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-bs-414-415-portable-differential-pressure",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-bt-391-wireless-differential-pressure",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-ys-111-capacitive-sensor-m18",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-ys-112-capacitive-sensor-m30",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-ae-321-stainless-sensor-accessory",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-ae-322-stainless-duct-probe",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-ae-323-stainless-screw-probe",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-ae-331-plastic-sensor-accessory",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-ae-332-wall-mounting-accessory",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-ae-333-duct-mounting-accessory",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-ae-341-co2-wall-mounting",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-ae-342-co2-duct-mounting",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-ae-351-co2-wall-apparatus",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-ae-361-gas-wall-mounting",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-ae-362-gas-duct-mounting",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-ae-501-502-ip65-socket-connection",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-ae-311-threaded-thermowell",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-ae-601-12vdc-adapter",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-ae-901-differential-pressure-filter",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-ht-2xx-air-velocity-transmitter",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-sm-310-ortak-temp-humidity-rf-sensor",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-sm-320-ortak-temp-humidity-co2-rf-sensor",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-wm-310-ortak-temperature-wifi-sensor",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-wm-320-ortak-temp-humidity-wifi-sensor",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-wm-410-ortak-temp-humidity-co2-wifi-sensor",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-wm-510-ortak-temp-8ntc-wifi-sensor",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-mt-010-wireless-analogue-master",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-mt-016-wireless-modbus-master",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-km-390-sensor-kit",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-mk-261-modbus-protection-card",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-tr-4xx-temperature-control-device",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-nr-4xx-humidity-control-device",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-sr-4xx-temp-humidity-control-device",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-kr-4x1-co2-control-device",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-kr-4x5-co2-control-device-high",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-kr-4x9-co2-control-device-xhigh",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-br-4x1-4x2-diff-pressure-control",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-br-4x4-4x5-diff-pressure-control-high",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-ar-4x1-ammonia-control-device",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-er-4x1-ethylene-control-device",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-ur-4x1-so2-control-device",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-cr-4x1-co-control-device",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-or-4x1-o2-control-device",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-tr-711-panel-temperature-control",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-nr-711-panel-humidity-control",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-sr-711-panel-temp-humidity-control",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-kr-711-panel-co2-control",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-kr-715-panel-co2-control-mid",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-kr-719-panel-co2-control-high",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-kr-751-panel-temp-humidity-co2-control",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-ar-711-panel-ammonia-control",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-er-711-panel-ethylene-control",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-ur-711-panel-so2-control",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-cr-711-panel-co-control",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-or-711-panel-o2-control",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-mm-010-ortak-large-master-gsm",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-mm-011-ortak-large-master-gsm-phase",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-mm-012-ortak-large-master-wifi",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-mm-02x-ortak-small-master",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-sm-420-loadcell-tracking-module",
+      "detail": "stock 50 -> 1"
+    },
+    {
+      "step": "inventory",
+      "target": "ems-sm-410-water-consumption-module",
+      "detail": "stock 50 -> 1"
+    }
+  ]
+}

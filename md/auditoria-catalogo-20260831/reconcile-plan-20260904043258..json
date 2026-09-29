@@ -1,0 +1,28 @@
+{
+  "generatedAt": "2026-09-04T04:32:58.010Z",
+  "mode": "dry-run",
+  "decisions": [
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "D5"
+  ],
+  "totalActions": 2,
+  "byStep": {
+    "images": 1,
+    "category-dedupe": 1
+  },
+  "actions": [
+    {
+      "step": "images",
+      "target": "catalog",
+      "detail": "Paso de imagenes omitido por defecto para proteger imagenes cargadas por Marketing en Medusa Admin. Usar ALLOW_IMAGE_RECONCILE=1 para forzar."
+    },
+    {
+      "step": "category-dedupe",
+      "target": "unit-heaters-industriales",
+      "detail": "desactivar duplicado; canonica=unit-heaters"
+    }
+  ]
+}
