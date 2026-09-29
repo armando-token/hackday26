@@ -93,6 +93,76 @@ export function authenticateMuseRequest(req: any, res: any): MuseAuthResult {
 }
 
 /**
+ * Verifies Bearer authentication for an incoming Muse request.
+ * Can be called with (req) or (req, res). If res is provided and authentication fails,
+ * formats and sends the 401 response directly.
+ * Returns { authenticated: boolean, success: boolean, requestId: string, token?: string, error?: { code: string, message: string } }.
+ */
+export function verifyMuseAuth(
+  req: any,
+  res?: any
+): {
+  authenticated: boolean
+  success: boolean
+  requestId: string
+  token?: string
+  error?: {
+    code: string
+    message: string
+  }
+} {
+  const requestId = getOrGenerateRequestId(req)
+
+  if (req) {
+    req.requestId = requestId
+    req.id = requestId
+  }
+
+  const authHeader = req?.headers?.["authorization"]
+  const token = extractBearerToken(authHeader)
+
+  if (!token || !validateMuseToken(token)) {
+    if (res) {
+      applySecurityHeaders(res, requestId)
+      attachMuseResponseLogger(req, res, requestId)
+      formatErrorResponse(
+        res,
+        401,
+        MUSE_ERROR_CODE_UNAUTHORIZED,
+        MUSE_ERROR_MSG_UNAUTHORIZED,
+        requestId
+      )
+    }
+    return {
+      authenticated: false,
+      success: false,
+      requestId,
+      error: {
+        code: MUSE_ERROR_CODE_UNAUTHORIZED,
+        message: MUSE_ERROR_MSG_UNAUTHORIZED,
+      },
+    }
+  }
+
+  if (req) {
+    req.museAuthenticated = true
+    req.museToken = token
+  }
+
+  if (res) {
+    applySecurityHeaders(res, requestId)
+    attachMuseResponseLogger(req, res, requestId)
+  }
+
+  return {
+    authenticated: true,
+    success: true,
+    requestId,
+    token,
+  }
+}
+
+/**
  * Middleware estándar Express / Medusa para proteger rutas bajo `/api/muse/v1/*`.
  */
 export function museAuthMiddleware(

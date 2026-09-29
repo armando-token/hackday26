@@ -2,6 +2,10 @@ export * from "./schema-validator"
 export * from "./common"
 export * from "./db"
 export * from "./evaluator"
+export * from "./idempotency"
+export * from "./pdf-generator"
+export * from "./money"
+export * from "./offer"
 export {
   maskToken,
   getMuseAuthConfig,
@@ -11,6 +15,7 @@ export {
 } from "./config"
 export {
   authenticateMuseRequest,
+  verifyMuseAuth,
   museAuthMiddleware,
   withMuseAuth,
 } from "./auth-guard"

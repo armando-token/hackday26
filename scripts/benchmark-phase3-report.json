@@ -1,0 +1,924 @@
+{
+  "timestamp": "2026-09-29T19:44:48.285Z",
+  "host": "ip-172-31-94-6",
+  "baseUrl": "http://127.0.0.1:9000",
+  "maskedToken": "mus_3f...0965",
+  "variantId": "variant_01M3QB0TNPYNQ353R7EC58E927",
+  "sku": "CN-DEMO-PLC-DIN-420-MR1",
+  "targets": {
+    "offerP95Ms": 50,
+    "preliminaryQuotesP95Ms": 500,
+    "pdfDownloadP95Ms": 100
+  },
+  "summary": {
+    "offerP50Ms": 12.71,
+    "offerP95Ms": 18.99,
+    "offerP99Ms": 25.51,
+    "quotesP50Ms": 37.31,
+    "quotesP95Ms": 98.16,
+    "quotesP99Ms": 105.8,
+    "pdfP50Ms": 10.14,
+    "pdfP95Ms": 22.37,
+    "pdfP99Ms": 27.71,
+    "allTargetsMet": true
+  },
+  "endpoints": [
+    {
+      "name": "GET /api/muse/v1/products/{variantId}/offer",
+      "method": "GET",
+      "url": "http://127.0.0.1:9000/api/muse/v1/products/variant_01M3QB0TNPYNQ353R7EC58E927/offer?quantity=1",
+      "repetitions": 50,
+      "successfulRequests": 50,
+      "failedRequests": 0,
+      "minMs": 7.08,
+      "meanMs": 13.21,
+      "medianMs": 12.71,
+      "p95Ms": 18.99,
+      "p99Ms": 25.51,
+      "maxMs": 28.72,
+      "stdDevMs": 3.8,
+      "targetMaxMeanMs": 50,
+      "targetMaxP95Ms": 50,
+      "meanTargetMet": true,
+      "p95TargetMet": true,
+      "allTargetsMet": true,
+      "iterations": [
+        {
+          "iteration": 1,
+          "status": 200,
+          "latencyMs": 16.125193,
+          "bodySnippet": "{\"variant_id\":\"variant_01M3QB0TNPYNQ353R7EC58E927\",\"sku\":\"CN-DEMO-PLC-DIN-420-MR1\",\"model\":\"CN-DIN-PLC-A1\",\"title\":\"Controlador Lógico Programable DIN 4-20 mA (",
+          "requestId": "76e19d3d-f81b-4442-b996-a88787340686",
+          "contentType": "application/json; charset=utf-8",
+          "success": true
+        },
+        {
+          "iteration": 2,
+          "status": 200,
+          "latencyMs": 14.771388,
+          "bodySnippet": "{\"variant_id\":\"variant_01M3QB0TNPYNQ353R7EC58E927\",\"sku\":\"CN-DEMO-PLC-DIN-420-MR1\",\"model\":\"CN-DIN-PLC-A1\",\"title\":\"Controlador Lógico Programable DIN 4-20 mA (",
+          "requestId": "015e47ca-f478-4a73-9fef-652fdcca58f3",
+          "contentType": "application/json; charset=utf-8",
+          "success": true
+        },
+        {
+          "iteration": 3,
+          "status": 200,
+          "latencyMs": 11.480816,
+          "bodySnippet": "{\"variant_id\":\"variant_01M3QB0TNPYNQ353R7EC58E927\",\"sku\":\"CN-DEMO-PLC-DIN-420-MR1\",\"model\":\"CN-DIN-PLC-A1\",\"title\":\"Controlador Lógico Programable DIN 4-20 mA (",
+          "requestId": "51aba60d-1e22-460c-8e7d-5895e255a854",
+          "contentType": "application/json; charset=utf-8",
+          "success": true
+        },
+        {
+          "iteration": 4,
+          "status": 200,
+          "latencyMs": 8.649001,
+          "bodySnippet": "{\"variant_id\":\"variant_01M3QB0TNPYNQ353R7EC58E927\",\"sku\":\"CN-DEMO-PLC-DIN-420-MR1\",\"model\":\"CN-DIN-PLC-A1\",\"title\":\"Controlador Lógico Programable DIN 4-20 mA (",
+          "requestId": "fee702f0-b9f5-431a-8f32-a2432ae7f385",
+          "contentType": "application/json; charset=utf-8",
+          "success": true
+        },
+        {
+          "iteration": 5,
+          "status": 200,
+          "latencyMs": 10.584281,
+          "bodySnippet": "{\"variant_id\":\"variant_01M3QB0TNPYNQ353R7EC58E927\",\"sku\":\"CN-DEMO-PLC-DIN-420-MR1\",\"model\":\"CN-DIN-PLC-A1\",\"title\":\"Controlador Lógico Programable DIN 4-20 mA (",
+          "requestId": "71afd574-4a33-4da0-b128-0768b51a5bc3",
+          "contentType": "application/json; charset=utf-8",
+          "success": true
+        },
+        {
+          "iteration": 6,
+          "status": 200,
+          "latencyMs": 11.028163,
+          "bodySnippet": "{\"variant_id\":\"variant_01M3QB0TNPYNQ353R7EC58E927\",\"sku\":\"CN-DEMO-PLC-DIN-420-MR1\",\"model\":\"CN-DIN-PLC-A1\",\"title\":\"Controlador Lógico Programable DIN 4-20 mA (",
+          "requestId": "fb958591-276a-4eae-b819-db552e090507",
+          "contentType": "application/json; charset=utf-8",
+          "success": true
+        },
+        {
+          "iteration": 7,
+          "status": 200,
+          "latencyMs": 9.545396,
+          "bodySnippet": "{\"variant_id\":\"variant_01M3QB0TNPYNQ353R7EC58E927\",\"sku\":\"CN-DEMO-PLC-DIN-420-MR1\",\"model\":\"CN-DIN-PLC-A1\",\"title\":\"Controlador Lógico Programable DIN 4-20 mA (",
+          "requestId": "edbb05fe-20c5-4ccc-960d-2528048d6d6a",
+          "contentType": "application/json; charset=utf-8",
+          "success": true
+        },
+        {
+          "iteration": 8,
+          "status": 200,
+          "latencyMs": 9.024596,
+          "bodySnippet": "{\"variant_id\":\"variant_01M3QB0TNPYNQ353R7EC58E927\",\"sku\":\"CN-DEMO-PLC-DIN-420-MR1\",\"model\":\"CN-DIN-PLC-A1\",\"title\":\"Controlador Lógico Programable DIN 4-20 mA (",
+          "requestId": "17124902-73a3-4212-a430-27b9588bc360",
+          "contentType": "application/json; charset=utf-8",
+          "success": true
+        },
+        {
+          "iteration": 9,
+          "status": 200,
+          "latencyMs": 7.853837,
+          "bodySnippet": "{\"variant_id\":\"variant_01M3QB0TNPYNQ353R7EC58E927\",\"sku\":\"CN-DEMO-PLC-DIN-420-MR1\",\"model\":\"CN-DIN-PLC-A1\",\"title\":\"Controlador Lógico Programable DIN 4-20 mA (",
+          "requestId": "079737cd-a752-4004-a602-cc0a801a3974",
+          "contentType": "application/json; charset=utf-8",
+          "success": true
+        },
+        {
+          "iteration": 10,
+          "status": 200,
+          "latencyMs": 7.079944,
+          "bodySnippet": "{\"variant_id\":\"variant_01M3QB0TNPYNQ353R7EC58E927\",\"sku\":\"CN-DEMO-PLC-DIN-420-MR1\",\"model\":\"CN-DIN-PLC-A1\",\"title\":\"Controlador Lógico Programable DIN 4-20 mA (",
+          "requestId": "dcaef978-469e-4b46-8337-f0ceea67ac51",
+          "contentType": "application/json; charset=utf-8",
+          "success": true
+        },
+        {
+          "iteration": 11,
+          "status": 200,
+          "latencyMs": 8.846779,
+          "bodySnippet": "{\"variant_id\":\"variant_01M3QB0TNPYNQ353R7EC58E927\",\"sku\":\"CN-DEMO-PLC-DIN-420-MR1\",\"model\":\"CN-DIN-PLC-A1\",\"title\":\"Controlador Lógico Programable DIN 4-20 mA (",
+          "requestId": "1d3dbbe7-768d-433a-ae86-acb4efbece29",
+          "contentType": "application/json; charset=utf-8",
+          "success": true
+        },
+        {
+          "iteration": 12,
+          "status": 200,
+          "latencyMs": 8.01691,
+          "bodySnippet": "{\"variant_id\":\"variant_01M3QB0TNPYNQ353R7EC58E927\",\"sku\":\"CN-DEMO-PLC-DIN-420-MR1\",\"model\":\"CN-DIN-PLC-A1\",\"title\":\"Controlador Lógico Programable DIN 4-20 mA (",
+          "requestId": "6a2e296f-f878-4af2-a5f7-d48c74e21467",
+          "contentType": "application/json; charset=utf-8",
+          "success": true
+        },
+        {
+          "iteration": 13,
+          "status": 200,
+          "latencyMs": 14.128158,
+          "bodySnippet": "{\"variant_id\":\"variant_01M3QB0TNPYNQ353R7EC58E927\",\"sku\":\"CN-DEMO-PLC-DIN-420-MR1\",\"model\":\"CN-DIN-PLC-A1\",\"title\":\"Controlador Lógico Programable DIN 4-20 mA (",
+          "requestId": "a87bbdcf-2e02-436e-979d-b47529edca9e",
+          "contentType": "application/json; charset=utf-8",
+          "success": true
+        },
+        {
+          "iteration": 14,
+          "status": 200,
+          "latencyMs": 11.823633,
+          "bodySnippet": "{\"variant_id\":\"variant_01M3QB0TNPYNQ353R7EC58E927\",\"sku\":\"CN-DEMO-PLC-DIN-420-MR1\",\"model\":\"CN-DIN-PLC-A1\",\"title\":\"Controlador Lógico Programable DIN 4-20 mA (",
+          "requestId": "1ca7ba23-111d-4bbc-a4b0-c6bc99f242b6",
+          "contentType": "application/json; charset=utf-8",
+          "success": true
+        },
+        {
+          "iteration": 15,
+          "status": 200,
+          "latencyMs": 11.689352,
+          "bodySnippet": "{\"variant_id\":\"variant_01M3QB0TNPYNQ353R7EC58E927\",\"sku\":\"CN-DEMO-PLC-DIN-420-MR1\",\"model\":\"CN-DIN-PLC-A1\",\"title\":\"Controlador Lógico Programable DIN 4-20 mA (",
+          "requestId": "1b632174-e23c-41e9-8f89-001b990a4b92",
+          "contentType": "application/json; charset=utf-8",
+          "success": true
+        },
+        {
+          "iteration": 16,
+          "status": 200,
+          "latencyMs": 13.544251,
+          "bodySnippet": "{\"variant_id\":\"variant_01M3QB0TNPYNQ353R7EC58E927\",\"sku\":\"CN-DEMO-PLC-DIN-420-MR1\",\"model\":\"CN-DIN-PLC-A1\",\"title\":\"Controlador Lógico Programable DIN 4-20 mA (",
+          "requestId": "0c66ba94-3c53-4747-9c23-f6331248970d",
+          "contentType": "application/json; charset=utf-8",
+          "success": true
+        },
+        {
+          "iteration": 17,
+          "status": 200,
+          "latencyMs": 12.956021,
+          "bodySnippet": "{\"variant_id\":\"variant_01M3QB0TNPYNQ353R7EC58E927\",\"sku\":\"CN-DEMO-PLC-DIN-420-MR1\",\"model\":\"CN-DIN-PLC-A1\",\"title\":\"Controlador Lógico Programable DIN 4-20 mA (",
+          "requestId": "eca12a0a-c6d6-4143-80a5-c17a316a7390",
+          "contentType": "application/json; charset=utf-8",
+          "success": true
+        },
+        {
+          "iteration": 18,
+          "status": 200,
+          "latencyMs": 14.624622,
+          "bodySnippet": "{\"variant_id\":\"variant_01M3QB0TNPYNQ353R7EC58E927\",\"sku\":\"CN-DEMO-PLC-DIN-420-MR1\",\"model\":\"CN-DIN-PLC-A1\",\"title\":\"Controlador Lógico Programable DIN 4-20 mA (",
+          "requestId": "04d833b3-2b0d-44d2-81e5-1f232a61c7a6",
+          "contentType": "application/json; charset=utf-8",
+          "success": true
+        },
+        {
+          "iteration": 19,
+          "status": 200,
+          "latencyMs": 11.037908,
+          "bodySnippet": "{\"variant_id\":\"variant_01M3QB0TNPYNQ353R7EC58E927\",\"sku\":\"CN-DEMO-PLC-DIN-420-MR1\",\"model\":\"CN-DIN-PLC-A1\",\"title\":\"Controlador Lógico Programable DIN 4-20 mA (",
+          "requestId": "7ceea1a8-b690-4859-8fba-505a4881410d",
+          "contentType": "application/json; charset=utf-8",
+          "success": true
+        },
+        {
+          "iteration": 20,
+          "status": 200,
+          "latencyMs": 18.871468,
+          "bodySnippet": "{\"variant_id\":\"variant_01M3QB0TNPYNQ353R7EC58E927\",\"sku\":\"CN-DEMO-PLC-DIN-420-MR1\",\"model\":\"CN-DIN-PLC-A1\",\"title\":\"Controlador Lógico Programable DIN 4-20 mA (",
+          "requestId": "394e109a-4d95-42f6-9df8-df5dc49827f8",
+          "contentType": "application/json; charset=utf-8",
+          "success": true
+        },
+        {
+          "iteration": 21,
+          "status": 200,
+          "latencyMs": 13.289372,
+          "bodySnippet": "{\"variant_id\":\"variant_01M3QB0TNPYNQ353R7EC58E927\",\"sku\":\"CN-DEMO-PLC-DIN-420-MR1\",\"model\":\"CN-DIN-PLC-A1\",\"title\":\"Controlador Lógico Programable DIN 4-20 mA (",
+          "requestId": "66671e8c-fa9e-4075-a29c-39111418f5c0",
+          "contentType": "application/json; charset=utf-8",
+          "success": true
+        },
+        {
+          "iteration": 22,
+          "status": 200,
+          "latencyMs": 11.673648,
+          "bodySnippet": "{\"variant_id\":\"variant_01M3QB0TNPYNQ353R7EC58E927\",\"sku\":\"CN-DEMO-PLC-DIN-420-MR1\",\"model\":\"CN-DIN-PLC-A1\",\"title\":\"Controlador Lógico Programable DIN 4-20 mA (",
+          "requestId": "bdc613a3-8421-42d3-999a-ff61c1fe2591",
+          "contentType": "application/json; charset=utf-8",
+          "success": true
+        },
+        {
+          "iteration": 23,
+          "status": 200,
+          "latencyMs": 18.937942,
+          "bodySnippet": "{\"variant_id\":\"variant_01M3QB0TNPYNQ353R7EC58E927\",\"sku\":\"CN-DEMO-PLC-DIN-420-MR1\",\"model\":\"CN-DIN-PLC-A1\",\"title\":\"Controlador Lógico Programable DIN 4-20 mA (",
+          "requestId": "51a505e9-5ae0-465f-93b9-9eefd4483e92",
+          "contentType": "application/json; charset=utf-8",
+          "success": true
+        },
+        {
+          "iteration": 24,
+          "status": 200,
+          "latencyMs": 12.148058,
+          "bodySnippet": "{\"variant_id\":\"variant_01M3QB0TNPYNQ353R7EC58E927\",\"sku\":\"CN-DEMO-PLC-DIN-420-MR1\",\"model\":\"CN-DIN-PLC-A1\",\"title\":\"Controlador Lógico Programable DIN 4-20 mA (",
+          "requestId": "9c48bdf2-082f-46dd-91b5-7c4546d15354",
+          "contentType": "application/json; charset=utf-8",
+          "success": true
+        },
+        {
+          "iteration": 25,
+          "status": 200,
+          "latencyMs": 12.305135,
+          "bodySnippet": "{\"variant_id\":\"variant_01M3QB0TNPYNQ353R7EC58E927\",\"sku\":\"CN-DEMO-PLC-DIN-420-MR1\",\"model\":\"CN-DIN-PLC-A1\",\"title\":\"Controlador Lógico Programable DIN 4-20 mA (",
+          "requestId": "a94e04ee-a8d6-41f4-9499-c83848701088",
+          "contentType": "application/json; charset=utf-8",
+          "success": true
+        },
+        {
+          "iteration": 26,
+          "status": 200,
+          "latencyMs": 12.071465,
+          "bodySnippet": "{\"variant_id\":\"variant_01M3QB0TNPYNQ353R7EC58E927\",\"sku\":\"CN-DEMO-PLC-DIN-420-MR1\",\"model\":\"CN-DIN-PLC-A1\",\"title\":\"Controlador Lógico Programable DIN 4-20 mA (",
+          "requestId": "2d659820-3451-40fc-a815-3128c098b0ea",
+          "contentType": "application/json; charset=utf-8",
+          "success": true
+        },
+        {
+          "iteration": 27,
+          "status": 200,
+          "latencyMs": 28.717242,
+          "bodySnippet": "{\"variant_id\":\"variant_01M3QB0TNPYNQ353R7EC58E927\",\"sku\":\"CN-DEMO-PLC-DIN-420-MR1\",\"model\":\"CN-DIN-PLC-A1\",\"title\":\"Controlador Lógico Programable DIN 4-20 mA (",
+          "requestId": "86682f3a-8e72-4e33-a3b0-be1c026db722",
+          "contentType": "application/json; charset=utf-8",
+          "success": true
+        },
+        {
+          "iteration": 28,
+          "status": 200,
+          "latencyMs": 12.859964,
+          "bodySnippet": "{\"variant_id\":\"variant_01M3QB0TNPYNQ353R7EC58E927\",\"sku\":\"CN-DEMO-PLC-DIN-420-MR1\",\"model\":\"CN-DIN-PLC-A1\",\"title\":\"Controlador Lógico Programable DIN 4-20 mA (",
+          "requestId": "b92fe5c7-ccf8-489d-b21d-ad38b57c41ff",
+          "contentType": "application/json; charset=utf-8",
+          "success": true
+        },
+        {
+          "iteration": 29,
+          "status": 200,
+          "latencyMs": 11.548175,
+          "bodySnippet": "{\"variant_id\":\"variant_01M3QB0TNPYNQ353R7EC58E927\",\"sku\":\"CN-DEMO-PLC-DIN-420-MR1\",\"model\":\"CN-DIN-PLC-A1\",\"title\":\"Controlador Lógico Programable DIN 4-20 mA (",
+          "requestId": "3ba0f6b2-d80f-4d13-ab57-77fe81c69a28",
+          "contentType": "application/json; charset=utf-8",
+          "success": true
+        },
+        {
+          "iteration": 30,
+          "status": 200,
+          "latencyMs": 10.630811,
+          "bodySnippet": "{\"variant_id\":\"variant_01M3QB0TNPYNQ353R7EC58E927\",\"sku\":\"CN-DEMO-PLC-DIN-420-MR1\",\"model\":\"CN-DIN-PLC-A1\",\"title\":\"Controlador Lógico Programable DIN 4-20 mA (",
+          "requestId": "499c001f-ae4c-41a0-b4dd-b346173e54bc",
+          "contentType": "application/json; charset=utf-8",
+          "success": true
+        },
+        {
+          "iteration": 31,
+          "status": 200,
+          "latencyMs": 12.643077,
+          "bodySnippet": "{\"variant_id\":\"variant_01M3QB0TNPYNQ353R7EC58E927\",\"sku\":\"CN-DEMO-PLC-DIN-420-MR1\",\"model\":\"CN-DIN-PLC-A1\",\"title\":\"Controlador Lógico Programable DIN 4-20 mA (",
+          "requestId": "256f54c6-97af-45f0-a5ac-03a34b8d4112",
+          "contentType": "application/json; charset=utf-8",
+          "success": true
+        },
+        {
+          "iteration": 32,
+          "status": 200,
+          "latencyMs": 12.727045,
+          "bodySnippet": "{\"variant_id\":\"variant_01M3QB0TNPYNQ353R7EC58E927\",\"sku\":\"CN-DEMO-PLC-DIN-420-MR1\",\"model\":\"CN-DIN-PLC-A1\",\"title\":\"Controlador Lógico Programable DIN 4-20 mA (",
+          "requestId": "e8254704-8a5b-437b-92b7-8757f5efd9ec",
+          "contentType": "application/json; charset=utf-8",
+          "success": true
+        },
+        {
+          "iteration": 33,
+          "status": 200,
+          "latencyMs": 12.760009,
+          "bodySnippet": "{\"variant_id\":\"variant_01M3QB0TNPYNQ353R7EC58E927\",\"sku\":\"CN-DEMO-PLC-DIN-420-MR1\",\"model\":\"CN-DIN-PLC-A1\",\"title\":\"Controlador Lógico Programable DIN 4-20 mA (",
+          "requestId": "5bbb60b0-d3a3-416e-99ba-2f8c644e5140",
+          "contentType": "application/json; charset=utf-8",
+          "success": true
+        },
+        {
+          "iteration": 34,
+          "status": 200,
+          "latencyMs": 9.923566,
+          "bodySnippet": "{\"variant_id\":\"variant_01M3QB0TNPYNQ353R7EC58E927\",\"sku\":\"CN-DEMO-PLC-DIN-420-MR1\",\"model\":\"CN-DIN-PLC-A1\",\"title\":\"Controlador Lógico Programable DIN 4-20 mA (",
+          "requestId": "5a6aeae1-8563-4438-885a-2190f37417ec",
+          "contentType": "application/json; charset=utf-8",
+          "success": true
+        },
+        {
+          "iteration": 35,
+          "status": 200,
+          "latencyMs": 10.110188,
+          "bodySnippet": "{\"variant_id\":\"variant_01M3QB0TNPYNQ353R7EC58E927\",\"sku\":\"CN-DEMO-PLC-DIN-420-MR1\",\"model\":\"CN-DIN-PLC-A1\",\"title\":\"Controlador Lógico Programable DIN 4-20 mA (",
+          "requestId": "ae211172-607c-4f84-924a-93a8e07ad425",
+          "contentType": "application/json; charset=utf-8",
+          "success": true
+        },
+        {
+          "iteration": 36,
+          "status": 200,
+          "latencyMs": 14.094072,
+          "bodySnippet": "{\"variant_id\":\"variant_01M3QB0TNPYNQ353R7EC58E927\",\"sku\":\"CN-DEMO-PLC-DIN-420-MR1\",\"model\":\"CN-DIN-PLC-A1\",\"title\":\"Controlador Lógico Programable DIN 4-20 mA (",
+          "requestId": "78b5c2d2-16dd-4707-8c8d-f5031549d419",
+          "contentType": "application/json; charset=utf-8",
+          "success": true
+        },
+        {
+          "iteration": 37,
+          "status": 200,
+          "latencyMs": 17.605636,
+          "bodySnippet": "{\"variant_id\":\"variant_01M3QB0TNPYNQ353R7EC58E927\",\"sku\":\"CN-DEMO-PLC-DIN-420-MR1\",\"model\":\"CN-DIN-PLC-A1\",\"title\":\"Controlador Lógico Programable DIN 4-20 mA (",
+          "requestId": "7d52f045-5f1f-4486-9cef-f5c72c704b95",
+          "contentType": "application/json; charset=utf-8",
+          "success": true
+        },
+        {
+          "iteration": 38,
+          "status": 200,
+          "latencyMs": 14.643454,
+          "bodySnippet": "{\"variant_id\":\"variant_01M3QB0TNPYNQ353R7EC58E927\",\"sku\":\"CN-DEMO-PLC-DIN-420-MR1\",\"model\":\"CN-DIN-PLC-A1\",\"title\":\"Controlador Lógico Programable DIN 4-20 mA (",
+          "requestId": "b77f8631-b8d1-42da-b1e7-da7c0e9b7b5d",
+          "contentType": "application/json; charset=utf-8",
+          "success": true
+        },
+        {
+          "iteration": 39,
+          "status": 200,
+          "latencyMs": 16.277692,
+          "bodySnippet": "{\"variant_id\":\"variant_01M3QB0TNPYNQ353R7EC58E927\",\"sku\":\"CN-DEMO-PLC-DIN-420-MR1\",\"model\":\"CN-DIN-PLC-A1\",\"title\":\"Controlador Lógico Programable DIN 4-20 mA (",
+          "requestId": "cd8be1d1-c29a-475c-a9b9-40a049010628",
+          "contentType": "application/json; charset=utf-8",
+          "success": true
+        },
+        {
+          "iteration": 40,
+          "status": 200,
+          "latencyMs": 22.175308,
+          "bodySnippet": "{\"variant_id\":\"variant_01M3QB0TNPYNQ353R7EC58E927\",\"sku\":\"CN-DEMO-PLC-DIN-420-MR1\",\"model\":\"CN-DIN-PLC-A1\",\"title\":\"Controlador Lógico Programable DIN 4-20 mA (",
+          "requestId": "c6873a2a-f5ec-4571-8de8-8142ad4519f3",
+          "contentType": "application/json; charset=utf-8",
+          "success": true
+        },
+        {
+          "iteration": 41,
+          "status": 200,
+          "latencyMs": 13.755209,
+          "bodySnippet": "{\"variant_id\":\"variant_01M3QB0TNPYNQ353R7EC58E927\",\"sku\":\"CN-DEMO-PLC-DIN-420-MR1\",\"model\":\"CN-DIN-PLC-A1\",\"title\":\"Controlador Lógico Programable DIN 4-20 mA (",
+          "requestId": "b6c5df8f-31e7-410d-a50b-a37d15eab3eb",
+          "contentType": "application/json; charset=utf-8",
+          "success": true
+        },
+        {
+          "iteration": 42,
+          "status": 200,
+          "latencyMs": 12.686364,
+          "bodySnippet": "{\"variant_id\":\"variant_01M3QB0TNPYNQ353R7EC58E927\",\"sku\":\"CN-DEMO-PLC-DIN-420-MR1\",\"model\":\"CN-DIN-PLC-A1\",\"title\":\"Controlador Lógico Programable DIN 4-20 mA (",
+          "requestId": "1554ab54-e064-4243-82fd-d9714bb1ea21",
+          "contentType": "application/json; charset=utf-8",
+          "success": true
+        },
+        {
+          "iteration": 43,
+          "status": 200,
+          "latencyMs": 16.157852,
+          "bodySnippet": "{\"variant_id\":\"variant_01M3QB0TNPYNQ353R7EC58E927\",\"sku\":\"CN-DEMO-PLC-DIN-420-MR1\",\"model\":\"CN-DIN-PLC-A1\",\"title\":\"Controlador Lógico Programable DIN 4-20 mA (",
+          "requestId": "d385c0d3-0620-4ed0-a1ab-5045c395bbe3",
+          "contentType": "application/json; charset=utf-8",
+          "success": true
+        },
+        {
+          "iteration": 44,
+          "status": 200,
+          "latencyMs": 17.136545,
+          "bodySnippet": "{\"variant_id\":\"variant_01M3QB0TNPYNQ353R7EC58E927\",\"sku\":\"CN-DEMO-PLC-DIN-420-MR1\",\"model\":\"CN-DIN-PLC-A1\",\"title\":\"Controlador Lógico Programable DIN 4-20 mA (",
+          "requestId": "6537bb79-fa3d-40b5-9d91-a48a8af6748c",
+          "contentType": "application/json; charset=utf-8",
+          "success": true
+        },
+        {
+          "iteration": 45,
+          "status": 200,
+          "latencyMs": 19.040927,
+          "bodySnippet": "{\"variant_id\":\"variant_01M3QB0TNPYNQ353R7EC58E927\",\"sku\":\"CN-DEMO-PLC-DIN-420-MR1\",\"model\":\"CN-DIN-PLC-A1\",\"title\":\"Controlador Lógico Programable DIN 4-20 mA (",
+          "requestId": "b89f420c-a53b-4c4a-918b-939c87ca0db4",
+          "contentType": "application/json; charset=utf-8",
+          "success": true
+        },
+        {
+          "iteration": 46,
+          "status": 200,
+          "latencyMs": 13.964141,
+          "bodySnippet": "{\"variant_id\":\"variant_01M3QB0TNPYNQ353R7EC58E927\",\"sku\":\"CN-DEMO-PLC-DIN-420-MR1\",\"model\":\"CN-DIN-PLC-A1\",\"title\":\"Controlador Lógico Programable DIN 4-20 mA (",
+          "requestId": "bc337444-4d44-44d9-a6a8-e4d8a1d94139",
+          "contentType": "application/json; charset=utf-8",
+          "success": true
+        },
+        {
+          "iteration": 47,
+          "status": 200,
+          "latencyMs": 11.271912,
+          "bodySnippet": "{\"variant_id\":\"variant_01M3QB0TNPYNQ353R7EC58E927\",\"sku\":\"CN-DEMO-PLC-DIN-420-MR1\",\"model\":\"CN-DIN-PLC-A1\",\"title\":\"Controlador Lógico Programable DIN 4-20 mA (",
+          "requestId": "e416d16e-1e57-44d4-b55d-d552a2e4f8ef",
+          "contentType": "application/json; charset=utf-8",
+          "success": true
+        },
+        {
+          "iteration": 48,
+          "status": 200,
+          "latencyMs": 13.703948,
+          "bodySnippet": "{\"variant_id\":\"variant_01M3QB0TNPYNQ353R7EC58E927\",\"sku\":\"CN-DEMO-PLC-DIN-420-MR1\",\"model\":\"CN-DIN-PLC-A1\",\"title\":\"Controlador Lógico Programable DIN 4-20 mA (",
+          "requestId": "7afa7f7c-04e7-44bb-b85f-63bc93e7615f",
+          "contentType": "application/json; charset=utf-8",
+          "success": true
+        },
+        {
+          "iteration": 49,
+          "status": 200,
+          "latencyMs": 12.955196,
+          "bodySnippet": "{\"variant_id\":\"variant_01M3QB0TNPYNQ353R7EC58E927\",\"sku\":\"CN-DEMO-PLC-DIN-420-MR1\",\"model\":\"CN-DIN-PLC-A1\",\"title\":\"Controlador Lógico Programable DIN 4-20 mA (",
+          "requestId": "59110145-9a4b-42a9-8190-8312715931d7",
+          "contentType": "application/json; charset=utf-8",
+          "success": true
+        },
+        {
+          "iteration": 50,
+          "status": 200,
+          "latencyMs": 11.017474,
+          "bodySnippet": "{\"variant_id\":\"variant_01M3QB0TNPYNQ353R7EC58E927\",\"sku\":\"CN-DEMO-PLC-DIN-420-MR1\",\"model\":\"CN-DIN-PLC-A1\",\"title\":\"Controlador Lógico Programable DIN 4-20 mA (",
+          "requestId": "5ef48da4-5870-463c-b2f4-bb9d9df159a6",
+          "contentType": "application/json; charset=utf-8",
+          "success": true
+        }
+      ]
+    },
+    {
+      "name": "POST /api/muse/v1/preliminary-quotes",
+      "method": "POST",
+      "url": "http://127.0.0.1:9000/api/muse/v1/preliminary-quotes",
+      "repetitions": 20,
+      "successfulRequests": 20,
+      "failedRequests": 0,
+      "minMs": 35.47,
+      "meanMs": 50.64,
+      "medianMs": 37.31,
+      "p95Ms": 98.16,
+      "p99Ms": 105.8,
+      "maxMs": 107.71,
+      "stdDevMs": 21.32,
+      "targetMaxMeanMs": 500,
+      "targetMaxP95Ms": 500,
+      "meanTargetMet": true,
+      "p95TargetMet": true,
+      "allTargetsMet": true,
+      "iterations": [
+        {
+          "iteration": 1,
+          "status": 201,
+          "latencyMs": 57.068909,
+          "bodySnippet": "{\"quote_id\":\"pquote_1790711086512_24702377\",\"opaque_public_id\":\"f0f14ae8cbb5d56776a218d783efb929\",\"status\":\"priced\",\"observed_at\":\"2026-09-29T19:44:46.512Z\",\"ex",
+          "requestId": "d13de236-2d1f-4fef-9cdd-73689e3ba8e1",
+          "contentType": "application/json; charset=utf-8",
+          "success": true
+        },
+        {
+          "iteration": 2,
+          "status": 201,
+          "latencyMs": 97.658982,
+          "bodySnippet": "{\"quote_id\":\"pquote_1790711086589_99e9d165\",\"opaque_public_id\":\"426a434595ef5dd2487e2dae46974980\",\"status\":\"priced\",\"observed_at\":\"2026-09-29T19:44:46.589Z\",\"ex",
+          "requestId": "d5018675-59ff-47ff-a170-134082d88acf",
+          "contentType": "application/json; charset=utf-8",
+          "success": true
+        },
+        {
+          "iteration": 3,
+          "status": 201,
+          "latencyMs": 47.184331,
+          "bodySnippet": "{\"quote_id\":\"pquote_1790711086697_cd6b11d2\",\"opaque_public_id\":\"70279c796eb327515118719b4b63555c\",\"status\":\"priced\",\"observed_at\":\"2026-09-29T19:44:46.697Z\",\"ex",
+          "requestId": "0375bd2e-70b5-49cc-8eb6-0042464e72f7",
+          "contentType": "application/json; charset=utf-8",
+          "success": true
+        },
+        {
+          "iteration": 4,
+          "status": 201,
+          "latencyMs": 36.116662,
+          "bodySnippet": "{\"quote_id\":\"pquote_1790711086755_02a97fdc\",\"opaque_public_id\":\"240446b0a3515b40d5ab4e0aa85fd891\",\"status\":\"priced\",\"observed_at\":\"2026-09-29T19:44:46.755Z\",\"ex",
+          "requestId": "81a3d308-51d2-4b2e-b0f6-33a9461f65a0",
+          "contentType": "application/json; charset=utf-8",
+          "success": true
+        },
+        {
+          "iteration": 5,
+          "status": 201,
+          "latencyMs": 36.259456,
+          "bodySnippet": "{\"quote_id\":\"pquote_1790711086807_4cd6b9d5\",\"opaque_public_id\":\"cb7e6f130153c27e539a64352f231e2b\",\"status\":\"priced\",\"observed_at\":\"2026-09-29T19:44:46.807Z\",\"ex",
+          "requestId": "ff7013d4-8651-42fa-b9b4-13de2c04e810",
+          "contentType": "application/json; charset=utf-8",
+          "success": true
+        },
+        {
+          "iteration": 6,
+          "status": 201,
+          "latencyMs": 48.198534,
+          "bodySnippet": "{\"quote_id\":\"pquote_1790711086858_9b68909d\",\"opaque_public_id\":\"cd85c358badd17c099c21a82e3614b01\",\"status\":\"priced\",\"observed_at\":\"2026-09-29T19:44:46.858Z\",\"ex",
+          "requestId": "18b3025e-83d6-4fd6-ab49-862012498eeb",
+          "contentType": "application/json; charset=utf-8",
+          "success": true
+        },
+        {
+          "iteration": 7,
+          "status": 201,
+          "latencyMs": 69.491968,
+          "bodySnippet": "{\"quote_id\":\"pquote_1790711086927_27b36a74\",\"opaque_public_id\":\"5d2760691f9ccbdec883da20cbd5ff28\",\"status\":\"priced\",\"observed_at\":\"2026-09-29T19:44:46.927Z\",\"ex",
+          "requestId": "0ac32b2b-5d28-4f57-b901-1cdba119e278",
+          "contentType": "application/json; charset=utf-8",
+          "success": true
+        },
+        {
+          "iteration": 8,
+          "status": 201,
+          "latencyMs": 40.205327,
+          "bodySnippet": "{\"quote_id\":\"pquote_1790711087008_ccae6e02\",\"opaque_public_id\":\"da2cbefb97d04a00851d8948b819a377\",\"status\":\"priced\",\"observed_at\":\"2026-09-29T19:44:47.008Z\",\"ex",
+          "requestId": "fc4a812b-ec02-4d2e-b849-8f59489c4415",
+          "contentType": "application/json; charset=utf-8",
+          "success": true
+        },
+        {
+          "iteration": 9,
+          "status": 201,
+          "latencyMs": 37.226703,
+          "bodySnippet": "{\"quote_id\":\"pquote_1790711087063_1b1d1e53\",\"opaque_public_id\":\"f4b65c7c6677a63f16a8bc8b7384593c\",\"status\":\"priced\",\"observed_at\":\"2026-09-29T19:44:47.063Z\",\"ex",
+          "requestId": "23e20d09-3f52-42e6-ae6d-ae1013e64999",
+          "contentType": "application/json; charset=utf-8",
+          "success": true
+        },
+        {
+          "iteration": 10,
+          "status": 201,
+          "latencyMs": 36.902342,
+          "bodySnippet": "{\"quote_id\":\"pquote_1790711087115_8a5d0066\",\"opaque_public_id\":\"35734c0614ebef4e39420484bcd825b6\",\"status\":\"priced\",\"observed_at\":\"2026-09-29T19:44:47.115Z\",\"ex",
+          "requestId": "589615bc-7594-4eae-97f6-3bb8a25d8bca",
+          "contentType": "application/json; charset=utf-8",
+          "success": true
+        },
+        {
+          "iteration": 11,
+          "status": 201,
+          "latencyMs": 107.714223,
+          "bodySnippet": "{\"quote_id\":\"pquote_1790711087176_db4597ca\",\"opaque_public_id\":\"6e9c3d5c6ca3bde8932aa943a4b87d73\",\"status\":\"priced\",\"observed_at\":\"2026-09-29T19:44:47.176Z\",\"ex",
+          "requestId": "04d055ae-4652-48f5-954b-4af172190183",
+          "contentType": "application/json; charset=utf-8",
+          "success": true
+        },
+        {
+          "iteration": 12,
+          "status": 201,
+          "latencyMs": 74.613836,
+          "bodySnippet": "{\"quote_id\":\"pquote_1790711087296_0d86598a\",\"opaque_public_id\":\"5124d4188b116fd31c8682d1f2f39f4e\",\"status\":\"priced\",\"observed_at\":\"2026-09-29T19:44:47.296Z\",\"ex",
+          "requestId": "d22d3964-f558-4d7a-9151-2cc4f9819232",
+          "contentType": "application/json; charset=utf-8",
+          "success": true
+        },
+        {
+          "iteration": 13,
+          "status": 201,
+          "latencyMs": 35.899206,
+          "bodySnippet": "{\"quote_id\":\"pquote_1790711087380_7ff87cbc\",\"opaque_public_id\":\"1fd126a502363b9bbae31d15176d43b3\",\"status\":\"priced\",\"observed_at\":\"2026-09-29T19:44:47.380Z\",\"ex",
+          "requestId": "f70dea46-7207-4d1a-bfde-746db58bf4c3",
+          "contentType": "application/json; charset=utf-8",
+          "success": true
+        },
+        {
+          "iteration": 14,
+          "status": 201,
+          "latencyMs": 36.766381,
+          "bodySnippet": "{\"quote_id\":\"pquote_1790711087431_57353f05\",\"opaque_public_id\":\"c4368b4e6847e866f8de9255a1bf518a\",\"status\":\"priced\",\"observed_at\":\"2026-09-29T19:44:47.431Z\",\"ex",
+          "requestId": "992188f8-df3e-44ac-b1b5-358731234524",
+          "contentType": "application/json; charset=utf-8",
+          "success": true
+        },
+        {
+          "iteration": 15,
+          "status": 201,
+          "latencyMs": 35.474599,
+          "bodySnippet": "{\"quote_id\":\"pquote_1790711087484_91747e1d\",\"opaque_public_id\":\"547817d1b8380bf04593c46692920d73\",\"status\":\"priced\",\"observed_at\":\"2026-09-29T19:44:47.484Z\",\"ex",
+          "requestId": "028df223-85a1-4fcd-9b20-9c67743ae862",
+          "contentType": "application/json; charset=utf-8",
+          "success": true
+        },
+        {
+          "iteration": 16,
+          "status": 201,
+          "latencyMs": 36.61542,
+          "bodySnippet": "{\"quote_id\":\"pquote_1790711087534_e8bc5c8c\",\"opaque_public_id\":\"d659c8ae4bd21c80c16a11f7975aa010\",\"status\":\"priced\",\"observed_at\":\"2026-09-29T19:44:47.534Z\",\"ex",
+          "requestId": "f4669d9c-5729-4419-8629-89e525bb3c7c",
+          "contentType": "application/json; charset=utf-8",
+          "success": true
+        },
+        {
+          "iteration": 17,
+          "status": 201,
+          "latencyMs": 36.256911,
+          "bodySnippet": "{\"quote_id\":\"pquote_1790711087586_9783feee\",\"opaque_public_id\":\"d18833b192d1661c5cfd22412a6a8fab\",\"status\":\"priced\",\"observed_at\":\"2026-09-29T19:44:47.586Z\",\"ex",
+          "requestId": "7a86a615-b1ea-4273-a2f0-0d1d4873e7a6",
+          "contentType": "application/json; charset=utf-8",
+          "success": true
+        },
+        {
+          "iteration": 18,
+          "status": 201,
+          "latencyMs": 37.401098,
+          "bodySnippet": "{\"quote_id\":\"pquote_1790711087638_e8b62830\",\"opaque_public_id\":\"7267bf466dbb17eb5259cef58ff245ff\",\"status\":\"priced\",\"observed_at\":\"2026-09-29T19:44:47.638Z\",\"ex",
+          "requestId": "5b36a5a6-f8e1-4797-a17a-18b89f95c664",
+          "contentType": "application/json; charset=utf-8",
+          "success": true
+        },
+        {
+          "iteration": 19,
+          "status": 201,
+          "latencyMs": 36.810106,
+          "bodySnippet": "{\"quote_id\":\"pquote_1790711087690_56ddd5a6\",\"opaque_public_id\":\"5d466f60a6f9c7b094f0c16f40a8daa8\",\"status\":\"priced\",\"observed_at\":\"2026-09-29T19:44:47.690Z\",\"ex",
+          "requestId": "e802e6b3-b4e1-455c-b910-5a14a2d97843",
+          "contentType": "application/json; charset=utf-8",
+          "success": true
+        },
+        {
+          "iteration": 20,
+          "status": 201,
+          "latencyMs": 68.853486,
+          "bodySnippet": "{\"quote_id\":\"pquote_1790711087743_dc8c35b7\",\"opaque_public_id\":\"078b9502e5f7bbaa3f8f3583bfbde09a\",\"status\":\"priced\",\"observed_at\":\"2026-09-29T19:44:47.743Z\",\"ex",
+          "requestId": "7139a230-0c87-4f47-bb76-f29d1d269fda",
+          "contentType": "application/json; charset=utf-8",
+          "success": true
+        }
+      ]
+    },
+    {
+      "name": "GET /api/muse/v1/quotes/{quoteId}/pdf",
+      "method": "GET",
+      "url": "http://127.0.0.1:9000/api/muse/v1/quotes/f0f14ae8cbb5d56776a218d783efb929/pdf?token=fd7427738af37884957d2ee1c739577f5e005f90e35ee5b7",
+      "repetitions": 20,
+      "successfulRequests": 20,
+      "failedRequests": 0,
+      "minMs": 5.44,
+      "meanMs": 11.46,
+      "medianMs": 10.14,
+      "p95Ms": 22.37,
+      "p99Ms": 27.71,
+      "maxMs": 29.05,
+      "stdDevMs": 5.78,
+      "targetMaxMeanMs": 100,
+      "targetMaxP95Ms": 100,
+      "meanTargetMet": true,
+      "p95TargetMet": true,
+      "allTargetsMet": true,
+      "iterations": [
+        {
+          "iteration": 1,
+          "status": 200,
+          "latencyMs": 6.170345,
+          "bodySnippet": "[PDF binary: 5657 bytes, validHeader=true]",
+          "requestId": "ec784481-9f59-4d5c-b18a-2632515c2bd4",
+          "contentType": "application/pdf",
+          "contentLength": 5657,
+          "success": true
+        },
+        {
+          "iteration": 2,
+          "status": 200,
+          "latencyMs": 22.017774,
+          "bodySnippet": "[PDF binary: 5657 bytes, validHeader=true]",
+          "requestId": "eafd739e-c55b-42e0-8fb9-323f7ba49a96",
+          "contentType": "application/pdf",
+          "contentLength": 5657,
+          "success": true
+        },
+        {
+          "iteration": 3,
+          "status": 200,
+          "latencyMs": 11.300325,
+          "bodySnippet": "[PDF binary: 5657 bytes, validHeader=true]",
+          "requestId": "ecbbcc1f-16b2-416f-ae9d-7a5066745320",
+          "contentType": "application/pdf",
+          "contentLength": 5657,
+          "success": true
+        },
+        {
+          "iteration": 4,
+          "status": 200,
+          "latencyMs": 9.817197,
+          "bodySnippet": "[PDF binary: 5657 bytes, validHeader=true]",
+          "requestId": "8b7c7252-8e94-423e-9acc-881d0b1fa4d6",
+          "contentType": "application/pdf",
+          "contentLength": 5657,
+          "success": true
+        },
+        {
+          "iteration": 5,
+          "status": 200,
+          "latencyMs": 11.5725,
+          "bodySnippet": "[PDF binary: 5657 bytes, validHeader=true]",
+          "requestId": "fc089dfc-61d7-40aa-84c1-49f501322d49",
+          "contentType": "application/pdf",
+          "contentLength": 5657,
+          "success": true
+        },
+        {
+          "iteration": 6,
+          "status": 200,
+          "latencyMs": 29.0457,
+          "bodySnippet": "[PDF binary: 5657 bytes, validHeader=true]",
+          "requestId": "69b9badc-11da-4f3d-8dc6-7a24aaa8e081",
+          "contentType": "application/pdf",
+          "contentLength": 5657,
+          "success": true
+        },
+        {
+          "iteration": 7,
+          "status": 200,
+          "latencyMs": 10.459103,
+          "bodySnippet": "[PDF binary: 5657 bytes, validHeader=true]",
+          "requestId": "f74dfeca-3a1f-4d59-9a23-38de87f7af03",
+          "contentType": "application/pdf",
+          "contentLength": 5657,
+          "success": true
+        },
+        {
+          "iteration": 8,
+          "status": 200,
+          "latencyMs": 8.523323,
+          "bodySnippet": "[PDF binary: 5657 bytes, validHeader=true]",
+          "requestId": "fe62a0db-8c25-4993-95df-a5ee91199db0",
+          "contentType": "application/pdf",
+          "contentLength": 5657,
+          "success": true
+        },
+        {
+          "iteration": 9,
+          "status": 200,
+          "latencyMs": 10.732881,
+          "bodySnippet": "[PDF binary: 5657 bytes, validHeader=true]",
+          "requestId": "2963cbd3-653b-4352-ade6-aaf3b1138735",
+          "contentType": "application/pdf",
+          "contentLength": 5657,
+          "success": true
+        },
+        {
+          "iteration": 10,
+          "status": 200,
+          "latencyMs": 12.141677,
+          "bodySnippet": "[PDF binary: 5657 bytes, validHeader=true]",
+          "requestId": "b325a3d5-c33d-4a3e-a182-cde3d8948912",
+          "contentType": "application/pdf",
+          "contentLength": 5657,
+          "success": true
+        },
+        {
+          "iteration": 11,
+          "status": 200,
+          "latencyMs": 16.062169,
+          "bodySnippet": "[PDF binary: 5657 bytes, validHeader=true]",
+          "requestId": "5a4f24a7-dc80-48a2-b45e-35d4250b5c1b",
+          "contentType": "application/pdf",
+          "contentLength": 5657,
+          "success": true
+        },
+        {
+          "iteration": 12,
+          "status": 200,
+          "latencyMs": 17.282689,
+          "bodySnippet": "[PDF binary: 5657 bytes, validHeader=true]",
+          "requestId": "bf49d762-a725-4acd-bc59-e800d27a6d56",
+          "contentType": "application/pdf",
+          "contentLength": 5657,
+          "success": true
+        },
+        {
+          "iteration": 13,
+          "status": 200,
+          "latencyMs": 13.71356,
+          "bodySnippet": "[PDF binary: 5657 bytes, validHeader=true]",
+          "requestId": "630e1e57-f69c-4c98-90fd-e5441144802e",
+          "contentType": "application/pdf",
+          "contentLength": 5657,
+          "success": true
+        },
+        {
+          "iteration": 14,
+          "status": 200,
+          "latencyMs": 7.795095,
+          "bodySnippet": "[PDF binary: 5657 bytes, validHeader=true]",
+          "requestId": "2c697d81-789b-41c4-a998-1c14f1bd69f5",
+          "contentType": "application/pdf",
+          "contentLength": 5657,
+          "success": true
+        },
+        {
+          "iteration": 15,
+          "status": 200,
+          "latencyMs": 9.441708,
+          "bodySnippet": "[PDF binary: 5657 bytes, validHeader=true]",
+          "requestId": "287697ba-97bd-44e4-8c2a-fdc9c0f17606",
+          "contentType": "application/pdf",
+          "contentLength": 5657,
+          "success": true
+        },
+        {
+          "iteration": 16,
+          "status": 200,
+          "latencyMs": 9.42401,
+          "bodySnippet": "[PDF binary: 5657 bytes, validHeader=true]",
+          "requestId": "5b91c608-e64b-4895-b31b-d3f96f9737cc",
+          "contentType": "application/pdf",
+          "contentLength": 5657,
+          "success": true
+        },
+        {
+          "iteration": 17,
+          "status": 200,
+          "latencyMs": 5.67195,
+          "bodySnippet": "[PDF binary: 5657 bytes, validHeader=true]",
+          "requestId": "afa39d19-7533-44b3-88f3-9aa0d8596425",
+          "contentType": "application/pdf",
+          "contentLength": 5657,
+          "success": true
+        },
+        {
+          "iteration": 18,
+          "status": 200,
+          "latencyMs": 7.072679,
+          "bodySnippet": "[PDF binary: 5657 bytes, validHeader=true]",
+          "requestId": "577d68c1-b62a-43fb-bc94-13f065b0408d",
+          "contentType": "application/pdf",
+          "contentLength": 5657,
+          "success": true
+        },
+        {
+          "iteration": 19,
+          "status": 200,
+          "latencyMs": 5.436282,
+          "bodySnippet": "[PDF binary: 5657 bytes, validHeader=true]",
+          "requestId": "3160edec-97c7-481c-9201-baf8276d35a8",
+          "contentType": "application/pdf",
+          "contentLength": 5657,
+          "success": true
+        },
+        {
+          "iteration": 20,
+          "status": 200,
+          "latencyMs": 5.446136,
+          "bodySnippet": "[PDF binary: 5657 bytes, validHeader=true]",
+          "requestId": "9228e8d2-a84c-4a79-b2c0-f3496ecf4d54",
+          "contentType": "application/pdf",
+          "contentLength": 5657,
+          "success": true
+        }
+      ]
+    }
+  ],
+  "overallSuccess": true
+}

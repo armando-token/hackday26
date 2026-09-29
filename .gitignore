@@ -18,8 +18,13 @@ logs/
 *.tsbuildinfo
 
 # Node & dependencies
+node_modules
 node_modules/
 **/node_modules/
+
+# Generated Quote PDFs
+storage/quotes/*.pdf
+!storage/quotes/.gitkeep
 # Next.js & Medusa builds
 .next/
 **/.next/
