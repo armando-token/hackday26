@@ -120,25 +120,11 @@ const altchaAuthMiddleware = async (req: MedusaRequest, res: MedusaResponse, nex
   return next()
 }
 
-const ALLOWED_CORS_ORIGINS = new Set([
-  "http://localhost:8000",
-  "http://127.0.0.1:8000",
-  "http://52.20.66.203:8000",
-  "http://localhost:9000",
-  "http://127.0.0.1:9000",
-  "http://52.20.66.203:9000",
-  "http://localhost:5173",
-  "http://localhost:3000",
-])
-
-function isOriginAllowed(origin?: string): boolean {
-  if (!origin) return false
-  const trimmed = origin.trim().replace(/\/+$/, "")
-  if (trimmed.toLowerCase().includes("controlnautas.com")) {
-    return false
-  }
-  return ALLOWED_CORS_ORIGINS.has(trimmed)
-}
+import {
+  ALLOWED_CORS_ORIGINS,
+  isForbiddenOrigin,
+  isOriginAllowed,
+} from "../lib/cors-security"
 
 const corsSecurityMiddleware = (
   req: MedusaRequest,

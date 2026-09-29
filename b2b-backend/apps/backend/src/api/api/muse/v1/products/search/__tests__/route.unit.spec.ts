@@ -216,7 +216,7 @@ describe("GET /api/muse/v1/products/search", () => {
         expect(prod.model).toMatch(/^CN-/)
         expect(prod).toHaveProperty("title")
         expect(prod).toHaveProperty("product_url")
-        expect(prod.product_url).toMatch(/^http:\/\/52\.20\.66\.203:8000\/pe\/products\//)
+        expect(prod.product_url).toMatch(/^(https:\/\/data\.controlnautas\.com|http:\/\/52\.20\.66\.203:8000)\/pe\/products\//)
         expect(prod).toHaveProperty("technical_summary")
         expect(typeof prod.technical_summary).toBe("string")
         expect(prod.demo).toBe(true)

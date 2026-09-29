@@ -3,6 +3,8 @@ const { loadEnv, defineConfig } = require('@medusajs/framework/utils')
 loadEnv(process.env.NODE_ENV || 'development', process.cwd())
 
 const REQUIRED_CORS_ORIGINS = [
+  "https://data.controlnautas.com",
+  "https://www.data.controlnautas.com",
   "http://localhost:8000",
   "http://127.0.0.1:8000",
   "http://52.20.66.203:8000",
@@ -11,12 +13,32 @@ const REQUIRED_CORS_ORIGINS = [
   "http://52.20.66.203:9000",
 ]
 
+function isForbiddenOrigin(origin) {
+  if (!origin) return false
+  const trimmed = origin.trim().replace(/\/+$/, "")
+  try {
+    const url = new URL(trimmed.startsWith("http") ? trimmed : `http://${trimmed}`)
+    const host = url.hostname.toLowerCase()
+    return host === "controlnautas.com" || host === "www.controlnautas.com"
+  } catch {
+    const lower = trimmed.toLowerCase()
+    return (
+      lower === "https://controlnautas.com" ||
+      lower === "http://controlnautas.com" ||
+      lower === "https://www.controlnautas.com" ||
+      lower === "http://www.controlnautas.com" ||
+      lower === "controlnautas.com" ||
+      lower === "www.controlnautas.com"
+    )
+  }
+}
+
 function resolveCorsOrigins(originsEnv, extraOrigins = []) {
   const parsed = (originsEnv || "")
     .split(",")
     .map((origin) => origin.trim())
     .filter(Boolean)
-    .filter((origin) => !origin.toLowerCase().includes("controlnautas.com"))
+    .filter((origin) => !isForbiddenOrigin(origin))
 
   const merged = Array.from(new Set([...parsed, ...REQUIRED_CORS_ORIGINS, ...extraOrigins]))
   return merged.join(",")

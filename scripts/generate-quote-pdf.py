@@ -336,7 +336,7 @@ def build_branding_header(styles: Dict[str, ParagraphStyle], quote_data: Dict[st
         Spacer(1, 1.5),
         Paragraph("División de Soluciones Industriales, Automatización e Instrumentación", styles['brand_sub']),
         Spacer(1, 1),
-        Paragraph("Portal B2B: <u>http://52.20.66.203:8000</u> &nbsp;|&nbsp; RUC: 20601234567 &nbsp;|&nbsp; Cotizaciones Técnicas", styles['brand_meta']),
+        Paragraph("Portal B2B: <u>https://data.controlnautas.com</u> &nbsp;|&nbsp; RUC: 20601234567 &nbsp;|&nbsp; Cotizaciones Técnicas", styles['brand_meta']),
     ]
 
     if is_priced:

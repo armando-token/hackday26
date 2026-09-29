@@ -568,3 +568,329 @@ flowchart TD
 
 
 
+
+---
+
+## 19. Arquitectura del Proxy Inverso Caddy y Emisión Automática de TLS Let's Encrypt (Caddy Reverse Proxy & Automatic Let's Encrypt TLS Architecture)
+
+### A. Justificación de la Selección de Caddy v2
+Para la Puerta 4 (Ingreso Público y Terminación TLS de Alta Seguridad), se seleccionó **Caddy v2** sobre Nginx tradicional o Traefik por las siguientes ventajas deterministas de ingeniería:
+1. **Gestión Totalmente Automatizada de Certificados ACME (Zero-Touch PKI):** Caddy integra nativamente el protocolo ACME con Let's Encrypt y ZeroSSL, gestionando de forma autónoma el aprovisionamiento, validación HTTP-01 / TLS-ALPN-01 y renovación preventiva antes de los 90 días sin requerir tareas cron ni scripts externos (`certbot`).
+2. **Seguridad de Memoria y Resiliencia en Go:** Al estar compilado en Go, Caddy es inmune por diseño a desbordamientos de búfer (*buffer overflows*) y vulnerabilidades de punteros de memoria habituales en servidores web basados en C.
+3. **Soporte Nativo de TLS 1.3 y HTTP/2 Multiplexado:** Soporte predeterminado para ALPN HTTP/2, negociación de suites de cifrado modernas y protección estricta contra downgrade de protocolos.
+
+### B. Configuración del Archivo `/etc/caddy/Caddyfile`
+El archivo de configuración `/etc/caddy/Caddyfile` fue validado (`caddy validate`) y desplegado en modo de servicio activo:
+
+```caddy
+{
+    email admin@controlnautas.com
+}
+
+www.data.controlnautas.com {
+    redir https://data.controlnautas.com{uri} permanent
+}
+
+data.controlnautas.com {
+    # Bloqueo estricto del panel de administración de Medusa
+    @admin {
+        path /admin*
+        path /app*
+    }
+    handle @admin {
+        respond "Forbidden: Admin panel is disabled on the public demo gateway." 403
+    }
+
+    # API de Agente Muse y Healthcheck -> Medusa v2 Backend en puerto 9000
+    handle /api/muse/* {
+        reverse_proxy 127.0.0.1:9000 {
+            transport http {
+                dial_timeout 60s
+                response_header_timeout 60s
+                read_timeout 60s
+                write_timeout 60s
+            }
+            header_up Host {host}
+            header_up X-Real-IP {remote_host}
+            header_up X-Forwarded-For {remote_host}
+            header_up X-Forwarded-Proto https
+        }
+    }
+
+    handle /healthz {
+        reverse_proxy 127.0.0.1:9000 {
+            transport http {
+                dial_timeout 60s
+                response_header_timeout 60s
+                read_timeout 60s
+                write_timeout 60s
+            }
+            header_up Host {host}
+            header_up X-Real-IP {remote_host}
+            header_up X-Forwarded-For {remote_host}
+            header_up X-Forwarded-Proto https
+        }
+    }
+
+    # Recursos estáticos de demostración y Storefront Next.js -> Puerto 8000
+    handle /demo/* {
+        reverse_proxy 127.0.0.1:8000 {
+            header_up Host {host}
+            header_up X-Real-IP {remote_host}
+            header_up X-Forwarded-For {remote_host}
+            header_up X-Forwarded-Proto https
+        }
+    }
+
+    handle {
+        reverse_proxy 127.0.0.1:8000 {
+            header_up Host {host}
+            header_up X-Real-IP {remote_host}
+            header_up X-Forwarded-For {remote_host}
+            header_up X-Forwarded-Proto https
+        }
+    }
+}
+```
+
+### C. Parámetros Verificados del Certificado Digital
+La verificación en vivo mediante `openssl s_client` y `curl -Iv` sobre `https://data.controlnautas.com/healthz` certifica los siguientes parámetros operativos:
+
+| Atributo Criptográfico | Valor Empírico Registrado en Host | Estado de Cumplimiento |
+| :--- | :--- | :---: |
+| **Sujeto (CN)** | `CN = data.controlnautas.com` | ✅ Válido |
+| **Autoridad Emisora** | `C = US, O = Let's Encrypt, CN = YE1` | ✅ Let's Encrypt CA |
+| **Periodo de Validez** | `Sep 29 19:12:36 2026 GMT` a `Dec 28 19:12:35 2026 GMT` | ✅ Activo (90 días) |
+| **Protocolo de Negociación** | `TLSv1.3` | ✅ Máximo estándar |
+| **Suite de Cifrado** | `TLS_AES_128_GCM_SHA256` (Curva `X25519`, `id-ecPublicKey`) | ✅ Perfect Forward Secrecy |
+| **Protocolo de Aplicación** | `HTTP/2` multiplexado (`h2`, ALPN) | ✅ Baja latencia M2M |
+| **Redirección HTTP -> HTTPS** | `HTTP/1.1 308 Permanent Redirect` hacia `https://data.controlnautas.com` | ✅ HSTS Compatible |
+| **Redirección WWW -> Raíz** | `301 / 308 Permanent Redirect` hacia `https://data.controlnautas.com` | ✅ Normalización de host |
+
+---
+
+## 20. Política de Enrutamiento de Dominio Público y Aislamiento de Administración (Public Domain Routing & Admin Isolation Policy)
+
+### A. Matriz de Enrutamiento por Prefijo de Ruta
+El punto de entrada unificado bajo `https://data.controlnautas.com` segrega estrictamente el tráfico según la capa de aplicación correspondiente:
+
+```mermaid
+flowchart TD
+    Client["Cliente / Agente Meta Muse / Jueces"] -->|HTTPS :443| Caddy["Proxy Inverso Caddy (data.controlnautas.com)"]
+    
+    Caddy -->|/admin* o /app*| BlockAdmin["HTTP 403 Forbidden\n(Aislamiento de Administración)"]
+    Caddy -->|/api/muse/*| MedusaAPI["Medusa v2 Backend (:9000)\nAPI de Agente-Comercio M2M"]
+    Caddy -->|/healthz| MedusaHealth["Medusa v2 Backend (:9000)\nLiveness & Commit Hash"]
+    Caddy -->|/demo/datasheets/*| StorefrontDemoPDF["Storefront Next.js (:8000)\nDatasheets Técnicos PDF"]
+    Caddy -->|/demo/specs/*| StorefrontDemoMD["Storefront Next.js (:8000)\nEspecificaciones Técnicas Markdown"]
+    Caddy -->|/products/* y /*| StorefrontHuman["Storefront Next.js (:8000)\nPDP con Disclaimers de Demostración"]
+```
+
+| Prefijo de Ruta | Destino Interno | Autenticación Requerida | Comportamiento y Aislamiento |
+| :--- | :--- | :--- | :--- |
+| **`/admin*`, `/app*`** | Ninguno (Interceptado en Caddy) | N/A | **HTTP 403 Forbidden**. El panel de administración está completamente bloqueado en el dominio público. |
+| **`/api/muse/v1/*`** | Medusa Backend (`127.0.0.1:9000`) | Bearer Token (`MUSE_API_TOKEN`) / Token Opaco | Endpoints transaccionales M2M para Meta Muse (Búsqueda, Ficha, Evaluación, Oferta Viva, Cotización). |
+| **`/api/muse/v1/quotes/:id/pdf`** | Medusa Backend (`127.0.0.1:9000`) | Token de descarga opaco en query (`?token=...`) | Descarga pública de documento PDF inmutable. Prohíbe Bearer Token en URL. Expiración a las 24h (`HTTP 410`). |
+| **`/healthz`** | Medusa Backend (`127.0.0.1:9000`) | Público | Retorna estado `ok`, versión y commit hash para sondas de liveness y balanceadores. |
+| **`/demo/datasheets/*`** | Next.js Storefront (`127.0.0.1:8000`) | Público | Servicio de datasheets sintéticos en PDF generados para la demo con hash SHA-256 verificable. |
+| **`/demo/specs/*`** | Next.js Storefront (`127.0.0.1:8000`) | Público | Especificaciones técnicas en Markdown citables para análisis semántico por agentes de IA. |
+| **`/pe/products/*`, `/*`** | Next.js Storefront (`127.0.0.1:8000`) | Público | Páginas de detalle de producto (PDP) orientadas a humanos, con avisos de advertencia industrial. |
+
+### B. Filosofía de Defensa en Profundidad (Zero Admin Attack Surface)
+1. **Bloqueo Inmediato en Capa de Ingreso:** Las solicitudes a `/admin` o `/app` no consumen ciclos de cómputo en Node.js ni interactúan con Express/Medusa. Caddy emite la respuesta `403 Forbidden` de manera síncrona en memoria.
+2. **Protección de Credenciales de Backoffice:** Impide ataques de fuerza bruta, escaneo automatizado de vulnerabilidades de paneles Medusa y filtración de sesiones administrativas desde redes externas.
+3. **Respuesta Estandarizada:** Texto plano explícito `"Forbidden: Admin panel is disabled on the public demo gateway."`, indicando con claridad a evaluadores y auditores que el aislamiento es una directiva intencional de diseño.
+
+---
+
+## 21. Política de Intercambio de Recursos de Origen Cruzado para 'data.controlnautas.com' (CORS Policy)
+
+### A. Objetivos de Seguridad y Aislamiento de Producción
+La política CORS implementada en el módulo `/home/ubuntu/hackday26/b2b-backend/apps/backend/src/lib/cors-security.ts` y en `src/api/middlewares.ts` resuelve un doble desafío:
+1. Habilitar la interacción fluida del dominio público de demostración `https://data.controlnautas.com`, entornos locales de prueba y herramientas cliente autorizadas.
+2. **Prohibición Taxativa de Dominios de Producción:** Bloquear cualquier solicitud originada en el dominio apex `controlnautas.com` o `www.controlnautas.com` para evitar contaminación cruzada de datos, suplantación o interferencias con sitios web preexistentes.
+
+### B. Especificación del Validador de Orígenes (`cors-security.ts`)
+```typescript
+export const ALLOWED_CORS_ORIGINS = [
+  "https://data.controlnautas.com",
+  "https://www.data.controlnautas.com",
+  "http://localhost:8000",
+  "http://127.0.0.1:8000",
+  "http://localhost:9000",
+  "http://127.0.0.1:9000",
+  "http://52.20.66.203:8000",
+  "http://52.20.66.203:9000",
+  "http://localhost:5173",
+  "http://localhost:3000",
+] as const;
+
+export const FORBIDDEN_CORS_ORIGINS = [
+  "https://controlnautas.com",
+  "http://controlnautas.com",
+  "https://www.controlnautas.com",
+  "http://www.controlnautas.com",
+] as const;
+```
+
+### C. Reglas de Validación y Preflight OPTIONS
+- **Orígenes Permitidos:**
+  - Si el encabezado `Origin` coincide con `https://data.controlnautas.com` o cualquiera de los orígenes de desarrollo autorizados:
+    - Retorna `Access-Control-Allow-Origin: <origin>`
+    - Retorna `Access-Control-Allow-Credentials: true`
+    - Retorna `Access-Control-Allow-Methods: GET, HEAD, POST, PUT, PATCH, DELETE, OPTIONS`
+    - Retorna `Access-Control-Allow-Headers: Authorization, Content-Type, X-Request-Id, x-request-id, x-altcha-payload, x-publishable-api-key`
+    - Retorna `Access-Control-Expose-Headers: X-Request-Id, x-request-id, Content-Length, Content-Type`
+  - Solicitudes Preflight `OPTIONS`: Retornan inmediatamente **`HTTP 204 No Content`**.
+- **Orígenes Prohibidos / No Autorizados:**
+  - Solicitudes Preflight `OPTIONS` con origen prohibido (ej. `https://controlnautas.com`): Retornan inmediatamente **`HTTP 403 Forbidden`** sin adjuntar cabeceras CORS de acceso.
+  - Solicitudes regulares: La ejecución continúa sin exponer las cabeceras `Access-Control-Allow-*`, activando el bloqueo de seguridad estándar del navegador.
+
+---
+
+## 22. Persistencia Mediante Systemd y Supervivencia ante Reinicio (Systemd Services Persistence & Reboot Survivability)
+
+### A. Arquitectura de Supervisión de Procesos
+Para garantizar la operación desatendida del prototipo durante la evaluación de los jueces, se erradicó la dependencia de terminales interactivas o sesiones de depuración en primer plano, migrando toda la pila a servicios nativos de **systemd** en Ubuntu 24.04 LTS.
+
+```mermaid
+graph TD
+    Boot["Inicio del Sistema (Linux Boot / Reboot)"] --> Network["network.target"]
+    Network --> Postgres["postgresql.service (DB PostgreSQL 16)"]
+    Postgres --> MedusaService["hackday-medusa.service (:9000)"]
+    MedusaService --> StorefrontService["hackday-storefront.service (:8000)"]
+    Network --> CaddyService["caddy.service (:80 / :443 TLS)"]
+    
+    subgraph Supervisor["Políticas de Resiliencia Systemd"]
+        MedusaService -.->|Crash| AutoRestart1["Restart=always\nRestartSec=5s"]
+        StorefrontService -.->|Crash| AutoRestart2["Restart=always\nRestartSec=5s"]
+        CaddyService -.->|Crash| AutoRestart3["Restart=on-failure\nRestartSec=5s"]
+    end
+```
+
+### B. Unidades de Servicio Creadas y Habilitadas
+
+#### 1. Backend Medusa v2 (`/etc/systemd/system/hackday-medusa.service`)
+```ini
+[Unit]
+Description=Hackday Medusa Backend
+After=network.target postgresql.service
+Wants=postgresql.service
+
+[Service]
+Type=simple
+User=ubuntu
+Group=ubuntu
+WorkingDirectory=/home/ubuntu/hackday26/b2b-backend/apps/backend
+Environment=PORT=9000
+EnvironmentFile=/home/ubuntu/hackday26/b2b-backend/apps/backend/.env
+ExecStart=node node_modules/.bin/medusa start
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
+```
+
+#### 2. Storefront Next.js 15 (`/etc/systemd/system/hackday-storefront.service`)
+```ini
+[Unit]
+Description=Hackday Next.js Storefront
+After=network.target hackday-medusa.service
+Wants=hackday-medusa.service
+
+[Service]
+Type=simple
+User=ubuntu
+Group=ubuntu
+WorkingDirectory=/home/ubuntu/hackday26/b2b-storefront
+ExecStart=npx next dev -p 8000 -H 0.0.0.0
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
+```
+
+#### 3. Proxy Inverso Caddy (`/usr/lib/systemd/system/caddy.service`)
+- Servicio oficial del paquete Ubuntu `caddy`, configurado con `/etc/caddy/Caddyfile`.
+- Enlace en `/etc/systemd/system/multi-user.target.wants/caddy.service`.
+
+### C. Verificación de Habilitación y Recuperación Automática
+- **Verificación de Habilitación:** Se confirmó mediante `systemctl is-enabled` que los cuatro servicios críticos se encuentran en estado **`enabled`**:
+  - `postgresql`: `enabled`
+  - `caddy`: `enabled`
+  - `hackday-medusa`: `enabled`
+  - `hackday-storefront`: `enabled`
+- **Tolerancia a Fallos:** Si cualquiera de los procesos sufre una excepción no capturada o es terminado mediante `kill -9`, systemd lo reinicia de forma automática en un intervalo de 5 segundos (`RestartSec=5`).
+- **Trazabilidad de Logs:** Centralización de salidas estándar y errores mediante `journalctl -u hackday-medusa -f` y `journalctl -u hackday-storefront -f`.
+
+---
+
+## 23. Protocolo de Demostración Integral para Jueces y Auditoría de Meta Muse (Meta Muse End-to-End Judge Demonstration Protocol)
+
+### A. Propósito y Modalidades de Demostración
+Para presentar de manera convincente e ininterrumpida el impacto de la alianza **Controlnautas × Meta Muse**, se desarrolló un ejecutable autónomo en TypeScript con wrapper de terminal Bash:
+- **Ruta del Script:** `/home/ubuntu/hackday26/scripts/demo-e2e-pitch.ts`
+- **Wrapper Ejecutable:** `/home/ubuntu/hackday26/scripts/demo-e2e-pitch.sh`
+- **Modalidades de Ejecución:**
+  1. **Modo Pitch Interactivo para Jueces (`--interactive`):** Hace pausas teatrales tras cada etapa solicitando pulsar `[ENTER]`, ideal para proyectar en pantalla grande mientras se explica la arquitectura a los jueces.
+  2. **Modo Ensayo Automatizado y Auditoría Cursor (`--auto --fast`):** Ejecuta la secuencia completa de extremo a extremo sin esperas artificiales en menos de 700 ms, emitiendo un scorecard formal con código de salida `0` si todas las etapas superan las verificaciones.
+
+### B. Las 6 Etapas Canónicas del Recorrido del Agente Autónomo
+El protocolo simula con fidelidad matemática el ciclo completo de abastecimiento de componentes industriales por parte de un agente de IA:
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor Judge as Juez Hack Day / Auditor
+    participant Pitch as Script demo-e2e-pitch.sh
+    participant Ingress as Caddy HTTPS (data.controlnautas.com)
+    participant Medusa as Medusa v2 Backend (:9000)
+    participant Storefront as Storefront Next.js (:8000)
+    participant DB as PostgreSQL 16
+    
+    Judge->>Pitch: Ejecuta ./scripts/demo-e2e-pitch.sh
+    Pitch->>Ingress: 1. GET /api/muse/v1/products/search?q=PLC
+    Ingress->>Medusa: Proxy /api/muse/*
+    Medusa-->>Pitch: Lista de componentes (Cero fuga de precios/stock)
+    
+    Pitch->>Ingress: 2. GET /api/muse/v1/products/{variantId}
+    Ingress->>Medusa: Consulta PIM Técnico
+    Medusa-->>Pitch: 7 Hechos normalizados + Citaciones + SHA-256 de Datasheet
+    
+    Pitch->>Ingress: 3. POST /api/muse/v1/evaluate (Predicados de Montaje, Voltaje, AI, Bus)
+    Ingress->>Medusa: Motor Determinista Relacional
+    Medusa-->>Pitch: overall_satisfied = true (100% Match) + Contraejemplo DAC rechazado
+    
+    Pitch->>Ingress: 4. GET /api/muse/v1/products/{variantId}/offer?quantity=1
+    Ingress->>Medusa: Motor de Oferta Viva
+    Medusa->>DB: Consulta precio vivo (PEN) e inventario atómico
+    Medusa-->>Pitch: 89000 centavos (S/. 890.00), Stock: 3, Cache-Control: no-store
+    
+    Pitch->>Ingress: 5. POST /api/muse/v1/preliminary-quotes (Idempotency-Key)
+    Ingress->>Medusa: Creación Atómica Snapshot + PDF Python ReportLab
+    Medusa->>DB: Registro snapshot inmutable en preliminary_quote
+    Medusa-->>Pitch: Quote ID + Opaque Public ID + Token de descarga opaco
+    Note over Pitch,Medusa: Replay Idempotente verificado (Retorna misma cotización sin duplicar)
+    
+    Pitch->>Ingress: 6. GET /api/muse/v1/quotes/{id}/pdf?token=... (Sin Bearer Token)
+    Ingress->>Medusa: Validación de token opaco y vigencia 24h
+    Medusa-->>Pitch: Stream PDF binario (%PDF-, 5.5 KB, SHA-256 verificado)
+    
+    Pitch-->>Judge: Scorecard 6/6 PASS en ~640 ms | VERDICT: PITCH READY
+```
+
+### C. Cuadro de Mando del Veredicto de Demostración (Scorecard)
+En cada corrida del protocolo, el sistema evalúa y presenta a los evaluadores la siguiente matriz de rendimiento y garantías:
+
+| Paso | Etapa de Interacción del Agente | Método HTTP | Latencia Típica (HTTPS) | Criterios Clave Demostrados |
+| :---: | :--- | :---: | :---: | :--- |
+| **1** | Descubrimiento y Búsqueda | `GET` | `~40 ms` | Variantes demo localizadas. Cero fuga de campos de precio o stock en el PIM técnico. |
+| **2** | Inspección Técnica Profunda | `GET` | `~30 ms` | 7 hechos técnicos normalizados. Citas documentales exactas con sección, página y SHA-256. |
+| **3** | Evaluación de Compatibilidad | `POST` | `~35 ms` | Motor puramente relacional y determinista (cero alucinaciones LLM). Rechazo seguro de contraejemplos. |
+| **4** | Oferta Comercial en Vivo | `GET` | `~12 ms` | Precios vivos en centavos enteros (`89000` minor units = S/. 890.00). Consulta atómica de inventario. Cabecera `no-store`. |
+| **5** | Cotización Preliminar Idempotente | `POST` | `~115 ms` | Snapshot inmutable en PostgreSQL. Generación síncrona de PDF con ReportLab. Replay 100% idempotente (RFC 7231). |
+| **6** | Descarga Pública de Documento PDF | `GET` | `~15 ms` | Acceso sin credenciales Bearer en URL. Validación de magic bytes `%PDF-`, sellos de demostración y checksum SHA-256. |
+
+---

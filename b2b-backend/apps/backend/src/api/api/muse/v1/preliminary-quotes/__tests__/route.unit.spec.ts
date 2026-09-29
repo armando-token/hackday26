@@ -271,7 +271,7 @@ describe("POST /api/muse/v1/preliminary-quotes", () => {
       expect(body.status).toBe("priced")
       expect(body.observed_at).toBeDefined()
       expect(body.expires_at).toBeDefined()
-      expect(body.pdf_url).toContain(`http://52.20.66.203:9000/api/muse/v1/quotes/${body.opaque_public_id}/pdf?token=`)
+      expect(body.pdf_url).toContain(`https://data.controlnautas.com/api/muse/v1/quotes/${body.opaque_public_id}/pdf?token=`)
       expect(body.request_id).toBe("req-quote-test-unit-001")
 
       // Verify summary fields
@@ -283,6 +283,7 @@ describe("POST /api/muse/v1/preliminary-quotes", () => {
       expect(body.summary.unit_price).toBe(890)
       expect(body.summary.subtotal).toBe(1780)
       expect(body.summary.availability.status).toBe("in_stock")
+      expect(body.summary.product_url).toContain("https://data.controlnautas.com/pe/products/")
 
       createdQuoteId = body.quote_id
       createdPublicId = body.opaque_public_id
@@ -313,6 +314,7 @@ describe("POST /api/muse/v1/preliminary-quotes", () => {
       expect(row.download_token).toBe(downloadToken)
       expect(row.tax_status).toBe("tax_excluded")
       expect(row.shipping_status).toBe("to_be_confirmed")
+      expect(row.product_url).toBe("https://data.controlnautas.com/pe/products/cn-demo-plc-din-420-mr1")
     })
   })
 
@@ -379,6 +381,66 @@ describe("POST /api/muse/v1/preliminary-quotes", () => {
       expect(resp.body.error.code).toBe("IDEMPOTENCY_CONFLICT")
       expect(resp.body.error.message).toContain("different request payload")
       expect(resp.headers["Cache-Control"]).toBe("no-store")
+    })
+  })
+
+  describe("7. Base URL Configuration and PUBLIC_MUSE_BASE_URL Support", () => {
+    const originalBaseUrl = process.env.PUBLIC_MUSE_BASE_URL
+
+    afterEach(() => {
+      if (originalBaseUrl !== undefined) {
+        process.env.PUBLIC_MUSE_BASE_URL = originalBaseUrl
+      } else {
+        delete process.env.PUBLIC_MUSE_BASE_URL
+      }
+    })
+
+    it("uses default https://data.controlnautas.com when PUBLIC_MUSE_BASE_URL is not set", async () => {
+      delete process.env.PUBLIC_MUSE_BASE_URL
+      const testKey = `unit-test-url-default-${Date.now()}`
+      const { req, res, getResponse } = createMockContext({
+        headers: { authorization: `Bearer ${TEST_TOKEN}` },
+        body: {
+          variant_id: PLC_VARIANT_ID,
+          quantity: 1,
+          idempotency_key: testKey,
+        },
+      })
+
+      await POST(req, res)
+      const resp = getResponse()
+
+      expect(resp.status).toBe(201)
+      expect(resp.body.pdf_url).toMatch(
+        /^https:\/\/data\.controlnautas\.com\/api\/muse\/v1\/quotes\/[a-f0-9]{32}\/pdf\?token=[a-f0-9]{48}$/
+      )
+      expect(resp.body.summary.product_url).toBe(
+        "https://data.controlnautas.com/pe/products/cn-demo-plc-din-420-mr1"
+      )
+    })
+
+    it("respects PUBLIC_MUSE_BASE_URL when defined", async () => {
+      process.env.PUBLIC_MUSE_BASE_URL = "https://custom-muse.example.com"
+      const testKey = `unit-test-url-custom-${Date.now()}`
+      const { req, res, getResponse } = createMockContext({
+        headers: { authorization: `Bearer ${TEST_TOKEN}` },
+        body: {
+          variant_id: PLC_VARIANT_ID,
+          quantity: 1,
+          idempotency_key: testKey,
+        },
+      })
+
+      await POST(req, res)
+      const resp = getResponse()
+
+      expect(resp.status).toBe(201)
+      expect(resp.body.pdf_url).toMatch(
+        /^https:\/\/custom-muse\.example\.com\/api\/muse\/v1\/quotes\/[a-f0-9]{32}\/pdf\?token=[a-f0-9]{48}$/
+      )
+      expect(resp.body.summary.product_url).toBe(
+        "https://custom-muse.example.com/pe/products/cn-demo-plc-din-420-mr1"
+      )
     })
   })
 })
