@@ -120,11 +120,72 @@ const altchaAuthMiddleware = async (req: MedusaRequest, res: MedusaResponse, nex
   return next()
 }
 
+const ALLOWED_CORS_ORIGINS = new Set([
+  "http://localhost:8000",
+  "http://127.0.0.1:8000",
+  "http://52.20.66.203:8000",
+  "http://localhost:9000",
+  "http://127.0.0.1:9000",
+  "http://52.20.66.203:9000",
+  "http://localhost:5173",
+  "http://localhost:3000",
+])
+
+function isOriginAllowed(origin?: string): boolean {
+  if (!origin) return false
+  const trimmed = origin.trim().replace(/\/+$/, "")
+  if (trimmed.toLowerCase().includes("controlnautas.com")) {
+    return false
+  }
+  return ALLOWED_CORS_ORIGINS.has(trimmed)
+}
+
+const corsSecurityMiddleware = (
+  req: MedusaRequest,
+  res: MedusaResponse,
+  next: MedusaNextFunction
+) => {
+  const origin = req.headers.origin as string | undefined
+
+  if (origin && isOriginAllowed(origin)) {
+    res.setHeader("Access-Control-Allow-Origin", origin)
+    res.setHeader("Access-Control-Allow-Credentials", "true")
+    res.setHeader(
+      "Access-Control-Allow-Methods",
+      "GET, HEAD, POST, PUT, PATCH, DELETE, OPTIONS"
+    )
+    res.setHeader(
+      "Access-Control-Allow-Headers",
+      "Authorization, Content-Type, X-Request-Id, x-request-id, x-altcha-payload, x-publishable-api-key"
+    )
+    res.setHeader(
+      "Access-Control-Expose-Headers",
+      "X-Request-Id, x-request-id, Content-Length, Content-Type"
+    )
+  }
+
+  // Ensure request ID is attached to response if present
+  const reqId = (req as any).requestId || req.headers["x-request-id"]
+  if (reqId && typeof reqId === "string") {
+    res.setHeader("X-Request-Id", reqId)
+  }
+
+  // Preflight handling for custom routes matching /* that aren't consumed by internal cors
+  if (req.method === "OPTIONS") {
+    if (origin && !isOriginAllowed(origin)) {
+      return res.status(403).end()
+    }
+    return res.status(204).end()
+  }
+
+  return next()
+}
+
 export default defineMiddlewares({
   routes: [
     {
       matcher: "/*",
-      middlewares: [staticMediaMiddleware, altchaAuthMiddleware],
+      middlewares: [corsSecurityMiddleware, staticMediaMiddleware, altchaAuthMiddleware],
     },
     // Validacion del upsert de PIM (plan, seccion 9.1). El resultado queda en
     // req.validatedBody, ya saneado y sin claves desconocidas.

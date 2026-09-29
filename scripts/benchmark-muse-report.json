@@ -1,0 +1,416 @@
+{
+  "timestamp": "2026-09-29T19:11:41.031Z",
+  "host": "ip-172-31-94-6",
+  "baseUrl": "http://127.0.0.1:9000",
+  "maskedToken": "mus_3f...0965",
+  "variantId": "variant_01M3Q974QF1HZECRQV1MK969WX",
+  "sku": "CN-DEMO-PLC-DIN-420-MR1",
+  "totalIterationsPerEndpoint": 10,
+  "endpoints": [
+    {
+      "name": "GET /healthz",
+      "method": "GET",
+      "url": "http://127.0.0.1:9000/healthz",
+      "repetitions": 10,
+      "successfulRequests": 10,
+      "failedRequests": 0,
+      "minMs": 4.19,
+      "meanMs": 8.99,
+      "medianMs": 8.52,
+      "maxMs": 18.59,
+      "p95Ms": 16.56,
+      "stdDevMs": 4.2,
+      "targetMeanMs": 20,
+      "targetP95Ms": 20,
+      "meanTargetMet": true,
+      "p95TargetMet": true,
+      "allTargetsMet": true,
+      "iterations": [
+        {
+          "iteration": 1,
+          "status": 200,
+          "latencyMs": 9.817838,
+          "bodySnippet": "{\"status\":\"ok\",\"version\":\"1.0.0\",\"commit\":\"bcff68d\"}",
+          "requestId": "ac2876d8-d42a-47a6-b09f-dfd9d64b3c27",
+          "success": true
+        },
+        {
+          "iteration": 2,
+          "status": 200,
+          "latencyMs": 5.19656,
+          "bodySnippet": "{\"status\":\"ok\",\"version\":\"1.0.0\",\"commit\":\"bcff68d\"}",
+          "requestId": "c674862b-6ef6-4045-95cb-8188bb523289",
+          "success": true
+        },
+        {
+          "iteration": 3,
+          "status": 200,
+          "latencyMs": 9.811399,
+          "bodySnippet": "{\"status\":\"ok\",\"version\":\"1.0.0\",\"commit\":\"bcff68d\"}",
+          "requestId": "51e4f081-9eb7-48dd-8b88-019ca59c53c7",
+          "success": true
+        },
+        {
+          "iteration": 4,
+          "status": 200,
+          "latencyMs": 6.676109,
+          "bodySnippet": "{\"status\":\"ok\",\"version\":\"1.0.0\",\"commit\":\"bcff68d\"}",
+          "requestId": "5d0016a0-3547-4059-8166-1bac6f1b3943",
+          "success": true
+        },
+        {
+          "iteration": 5,
+          "status": 200,
+          "latencyMs": 8.520589,
+          "bodySnippet": "{\"status\":\"ok\",\"version\":\"1.0.0\",\"commit\":\"bcff68d\"}",
+          "requestId": "10eb946c-c8d8-4e92-a4cc-e542e003fcd4",
+          "success": true
+        },
+        {
+          "iteration": 6,
+          "status": 200,
+          "latencyMs": 4.188715,
+          "bodySnippet": "{\"status\":\"ok\",\"version\":\"1.0.0\",\"commit\":\"bcff68d\"}",
+          "requestId": "c9a87078-9917-4a9b-9a1d-3806f3c96580",
+          "success": true
+        },
+        {
+          "iteration": 7,
+          "status": 200,
+          "latencyMs": 7.488992,
+          "bodySnippet": "{\"status\":\"ok\",\"version\":\"1.0.0\",\"commit\":\"bcff68d\"}",
+          "requestId": "25d37c15-07a0-4b25-88f9-d2184e4ec3da",
+          "success": true
+        },
+        {
+          "iteration": 8,
+          "status": 200,
+          "latencyMs": 5.559379,
+          "bodySnippet": "{\"status\":\"ok\",\"version\":\"1.0.0\",\"commit\":\"bcff68d\"}",
+          "requestId": "dfd4d8ac-e0da-4614-afb9-0a35099575d0",
+          "success": true
+        },
+        {
+          "iteration": 9,
+          "status": 200,
+          "latencyMs": 14.082532,
+          "bodySnippet": "{\"status\":\"ok\",\"version\":\"1.0.0\",\"commit\":\"bcff68d\"}",
+          "requestId": "48ef14aa-8a50-4ad4-bcf8-cd0e37a6910b",
+          "success": true
+        },
+        {
+          "iteration": 10,
+          "status": 200,
+          "latencyMs": 18.589086,
+          "bodySnippet": "{\"status\":\"ok\",\"version\":\"1.0.0\",\"commit\":\"bcff68d\"}",
+          "requestId": "faaa3a6b-8dcb-4c64-afa0-2182d0530f89",
+          "success": true
+        }
+      ]
+    },
+    {
+      "name": "GET /api/muse/v1/products/search?q=din",
+      "method": "GET",
+      "url": "http://127.0.0.1:9000/api/muse/v1/products/search?q=din",
+      "repetitions": 10,
+      "successfulRequests": 10,
+      "failedRequests": 0,
+      "minMs": 8.74,
+      "meanMs": 15.33,
+      "medianMs": 16.54,
+      "maxMs": 22.99,
+      "p95Ms": 21.95,
+      "stdDevMs": 4.54,
+      "targetMeanMs": 50,
+      "targetP95Ms": 50,
+      "meanTargetMet": true,
+      "p95TargetMet": true,
+      "allTargetsMet": true,
+      "iterations": [
+        {
+          "iteration": 1,
+          "status": 200,
+          "latencyMs": 14.027268,
+          "bodySnippet": "{\"products\":[{\"variant_id\":\"variant_01M3Q9754C928521HWWBVHB5GR\",\"sku\":\"CN-DEMO-PID-PT100-RS1\",\"model\":\"CN-PID-T1\",\"title",
+          "requestId": "1fd5259b-5718-453f-abca-8641aa484485",
+          "success": true
+        },
+        {
+          "iteration": 2,
+          "status": 200,
+          "latencyMs": 12.581193,
+          "bodySnippet": "{\"products\":[{\"variant_id\":\"variant_01M3Q9754C928521HWWBVHB5GR\",\"sku\":\"CN-DEMO-PID-PT100-RS1\",\"model\":\"CN-PID-T1\",\"title",
+          "requestId": "f894873d-5a32-4e27-9b62-3342d9afc70c",
+          "success": true
+        },
+        {
+          "iteration": 3,
+          "status": 200,
+          "latencyMs": 8.740508,
+          "bodySnippet": "{\"products\":[{\"variant_id\":\"variant_01M3Q9754C928521HWWBVHB5GR\",\"sku\":\"CN-DEMO-PID-PT100-RS1\",\"model\":\"CN-PID-T1\",\"title",
+          "requestId": "c026c843-19d9-40ab-9626-a70eb97eb707",
+          "success": true
+        },
+        {
+          "iteration": 4,
+          "status": 200,
+          "latencyMs": 10.255105,
+          "bodySnippet": "{\"products\":[{\"variant_id\":\"variant_01M3Q9754C928521HWWBVHB5GR\",\"sku\":\"CN-DEMO-PID-PT100-RS1\",\"model\":\"CN-PID-T1\",\"title",
+          "requestId": "b06b6e43-08ec-4c16-8862-c411ee8b0282",
+          "success": true
+        },
+        {
+          "iteration": 5,
+          "status": 200,
+          "latencyMs": 16.544223,
+          "bodySnippet": "{\"products\":[{\"variant_id\":\"variant_01M3Q9754C928521HWWBVHB5GR\",\"sku\":\"CN-DEMO-PID-PT100-RS1\",\"model\":\"CN-PID-T1\",\"title",
+          "requestId": "f2de519d-6e18-4a1e-a98e-7e82e1717c77",
+          "success": true
+        },
+        {
+          "iteration": 6,
+          "status": 200,
+          "latencyMs": 22.991643,
+          "bodySnippet": "{\"products\":[{\"variant_id\":\"variant_01M3Q9754C928521HWWBVHB5GR\",\"sku\":\"CN-DEMO-PID-PT100-RS1\",\"model\":\"CN-PID-T1\",\"title",
+          "requestId": "f85e613c-9597-4f09-9eaf-4f30af4762fc",
+          "success": true
+        },
+        {
+          "iteration": 7,
+          "status": 200,
+          "latencyMs": 18.682508,
+          "bodySnippet": "{\"products\":[{\"variant_id\":\"variant_01M3Q9754C928521HWWBVHB5GR\",\"sku\":\"CN-DEMO-PID-PT100-RS1\",\"model\":\"CN-PID-T1\",\"title",
+          "requestId": "3d01f387-b4aa-4441-8cf0-f6c7e26724ec",
+          "success": true
+        },
+        {
+          "iteration": 8,
+          "status": 200,
+          "latencyMs": 17.99303,
+          "bodySnippet": "{\"products\":[{\"variant_id\":\"variant_01M3Q9754C928521HWWBVHB5GR\",\"sku\":\"CN-DEMO-PID-PT100-RS1\",\"model\":\"CN-PID-T1\",\"title",
+          "requestId": "229b9e1e-6e74-42ec-acdf-1591559dbacf",
+          "success": true
+        },
+        {
+          "iteration": 9,
+          "status": 200,
+          "latencyMs": 20.686226,
+          "bodySnippet": "{\"products\":[{\"variant_id\":\"variant_01M3Q9754C928521HWWBVHB5GR\",\"sku\":\"CN-DEMO-PID-PT100-RS1\",\"model\":\"CN-PID-T1\",\"title",
+          "requestId": "2bd01a00-7a91-45b9-953c-a913575a3f8c",
+          "success": true
+        },
+        {
+          "iteration": 10,
+          "status": 200,
+          "latencyMs": 10.781628,
+          "bodySnippet": "{\"products\":[{\"variant_id\":\"variant_01M3Q9754C928521HWWBVHB5GR\",\"sku\":\"CN-DEMO-PID-PT100-RS1\",\"model\":\"CN-PID-T1\",\"title",
+          "requestId": "ac6377c7-8f29-4df2-b05d-8e1bfdfb507d",
+          "success": true
+        }
+      ]
+    },
+    {
+      "name": "GET /api/muse/v1/products/{variantId}",
+      "method": "GET",
+      "url": "http://127.0.0.1:9000/api/muse/v1/products/variant_01M3Q974QF1HZECRQV1MK969WX",
+      "repetitions": 10,
+      "successfulRequests": 10,
+      "failedRequests": 0,
+      "minMs": 11.94,
+      "meanMs": 17.99,
+      "medianMs": 18.68,
+      "maxMs": 23.87,
+      "p95Ms": 23.4,
+      "stdDevMs": 4.16,
+      "targetMeanMs": 50,
+      "targetP95Ms": 50,
+      "meanTargetMet": true,
+      "p95TargetMet": true,
+      "allTargetsMet": true,
+      "iterations": [
+        {
+          "iteration": 1,
+          "status": 200,
+          "latencyMs": 18.679189,
+          "bodySnippet": "{\"variant_id\":\"variant_01M3Q974QF1HZECRQV1MK969WX\",\"sku\":\"CN-DEMO-PLC-DIN-420-MR1\",\"model\":\"CN-DIN-PLC-A1\",\"title\":\"Cont",
+          "requestId": "529962a6-29f5-4756-aa47-7b4ce9407a82",
+          "success": true
+        },
+        {
+          "iteration": 2,
+          "status": 200,
+          "latencyMs": 13.903916,
+          "bodySnippet": "{\"variant_id\":\"variant_01M3Q974QF1HZECRQV1MK969WX\",\"sku\":\"CN-DEMO-PLC-DIN-420-MR1\",\"model\":\"CN-DIN-PLC-A1\",\"title\":\"Cont",
+          "requestId": "787e1c26-d60b-4a98-82d6-53e12697ed27",
+          "success": true
+        },
+        {
+          "iteration": 3,
+          "status": 200,
+          "latencyMs": 11.940707,
+          "bodySnippet": "{\"variant_id\":\"variant_01M3Q974QF1HZECRQV1MK969WX\",\"sku\":\"CN-DEMO-PLC-DIN-420-MR1\",\"model\":\"CN-DIN-PLC-A1\",\"title\":\"Cont",
+          "requestId": "2b5005b8-ec34-4e5b-bca5-ca7d6a5be47f",
+          "success": true
+        },
+        {
+          "iteration": 4,
+          "status": 200,
+          "latencyMs": 13.40031,
+          "bodySnippet": "{\"variant_id\":\"variant_01M3Q974QF1HZECRQV1MK969WX\",\"sku\":\"CN-DEMO-PLC-DIN-420-MR1\",\"model\":\"CN-DIN-PLC-A1\",\"title\":\"Cont",
+          "requestId": "a9e7faf9-1784-476c-8056-df5f2d1d56e6",
+          "success": true
+        },
+        {
+          "iteration": 5,
+          "status": 200,
+          "latencyMs": 23.865925,
+          "bodySnippet": "{\"variant_id\":\"variant_01M3Q974QF1HZECRQV1MK969WX\",\"sku\":\"CN-DEMO-PLC-DIN-420-MR1\",\"model\":\"CN-DIN-PLC-A1\",\"title\":\"Cont",
+          "requestId": "7779ec31-55b0-42ea-88a0-203ba342ddb2",
+          "success": true
+        },
+        {
+          "iteration": 6,
+          "status": 200,
+          "latencyMs": 17.785188,
+          "bodySnippet": "{\"variant_id\":\"variant_01M3Q974QF1HZECRQV1MK969WX\",\"sku\":\"CN-DEMO-PLC-DIN-420-MR1\",\"model\":\"CN-DIN-PLC-A1\",\"title\":\"Cont",
+          "requestId": "ed9c2b26-cefc-4158-9037-376a0ec1d40a",
+          "success": true
+        },
+        {
+          "iteration": 7,
+          "status": 200,
+          "latencyMs": 21.92077,
+          "bodySnippet": "{\"variant_id\":\"variant_01M3Q974QF1HZECRQV1MK969WX\",\"sku\":\"CN-DEMO-PLC-DIN-420-MR1\",\"model\":\"CN-DIN-PLC-A1\",\"title\":\"Cont",
+          "requestId": "02292d4b-337c-407f-a735-737f567d19dd",
+          "success": true
+        },
+        {
+          "iteration": 8,
+          "status": 200,
+          "latencyMs": 22.832628,
+          "bodySnippet": "{\"variant_id\":\"variant_01M3Q974QF1HZECRQV1MK969WX\",\"sku\":\"CN-DEMO-PLC-DIN-420-MR1\",\"model\":\"CN-DIN-PLC-A1\",\"title\":\"Cont",
+          "requestId": "f4f74aa3-3810-4193-81f1-2d39290da1a9",
+          "success": true
+        },
+        {
+          "iteration": 9,
+          "status": 200,
+          "latencyMs": 21.307914,
+          "bodySnippet": "{\"variant_id\":\"variant_01M3Q974QF1HZECRQV1MK969WX\",\"sku\":\"CN-DEMO-PLC-DIN-420-MR1\",\"model\":\"CN-DIN-PLC-A1\",\"title\":\"Cont",
+          "requestId": "872f50fe-3b52-4108-8e89-6ca928d6b647",
+          "success": true
+        },
+        {
+          "iteration": 10,
+          "status": 200,
+          "latencyMs": 14.246583,
+          "bodySnippet": "{\"variant_id\":\"variant_01M3Q974QF1HZECRQV1MK969WX\",\"sku\":\"CN-DEMO-PLC-DIN-420-MR1\",\"model\":\"CN-DIN-PLC-A1\",\"title\":\"Cont",
+          "requestId": "d6ef4059-2765-478c-9cad-71e2d8becbd3",
+          "success": true
+        }
+      ]
+    },
+    {
+      "name": "POST /api/muse/v1/evaluate",
+      "method": "POST",
+      "url": "http://127.0.0.1:9000/api/muse/v1/evaluate",
+      "repetitions": 10,
+      "successfulRequests": 10,
+      "failedRequests": 0,
+      "minMs": 13.45,
+      "meanMs": 20.89,
+      "medianMs": 21.87,
+      "maxMs": 25.18,
+      "p95Ms": 25.06,
+      "stdDevMs": 4,
+      "targetMeanMs": 50,
+      "targetP95Ms": 50,
+      "meanTargetMet": true,
+      "p95TargetMet": true,
+      "allTargetsMet": true,
+      "iterations": [
+        {
+          "iteration": 1,
+          "status": 200,
+          "latencyMs": 24.254796,
+          "bodySnippet": "{\"variant_id\":\"variant_01M3Q974QF1HZECRQV1MK969WX\",\"sku\":\"CN-DEMO-PLC-DIN-420-MR1\",\"overall_satisfied\":true,\"evaluations",
+          "requestId": "a31bc968-35a2-40d6-b51c-633b89475a89",
+          "success": true
+        },
+        {
+          "iteration": 2,
+          "status": 200,
+          "latencyMs": 20.894096,
+          "bodySnippet": "{\"variant_id\":\"variant_01M3Q974QF1HZECRQV1MK969WX\",\"sku\":\"CN-DEMO-PLC-DIN-420-MR1\",\"overall_satisfied\":true,\"evaluations",
+          "requestId": "b7295ed1-fd63-418d-a5d9-a0cf416280fe",
+          "success": true
+        },
+        {
+          "iteration": 3,
+          "status": 200,
+          "latencyMs": 24.91342,
+          "bodySnippet": "{\"variant_id\":\"variant_01M3Q974QF1HZECRQV1MK969WX\",\"sku\":\"CN-DEMO-PLC-DIN-420-MR1\",\"overall_satisfied\":true,\"evaluations",
+          "requestId": "60db9a8c-9c80-42a8-8b4e-cd4efe92b755",
+          "success": true
+        },
+        {
+          "iteration": 4,
+          "status": 200,
+          "latencyMs": 16.471355,
+          "bodySnippet": "{\"variant_id\":\"variant_01M3Q974QF1HZECRQV1MK969WX\",\"sku\":\"CN-DEMO-PLC-DIN-420-MR1\",\"overall_satisfied\":true,\"evaluations",
+          "requestId": "28168d14-96be-483f-a1e4-830ffc280b79",
+          "success": true
+        },
+        {
+          "iteration": 5,
+          "status": 200,
+          "latencyMs": 24.245191,
+          "bodySnippet": "{\"variant_id\":\"variant_01M3Q974QF1HZECRQV1MK969WX\",\"sku\":\"CN-DEMO-PLC-DIN-420-MR1\",\"overall_satisfied\":true,\"evaluations",
+          "requestId": "b033f214-bfd4-4df9-ad1b-79deba08c2fc",
+          "success": true
+        },
+        {
+          "iteration": 6,
+          "status": 200,
+          "latencyMs": 21.852093,
+          "bodySnippet": "{\"variant_id\":\"variant_01M3Q974QF1HZECRQV1MK969WX\",\"sku\":\"CN-DEMO-PLC-DIN-420-MR1\",\"overall_satisfied\":true,\"evaluations",
+          "requestId": "4c098030-db7c-4c5b-ae7b-a1745fe9a969",
+          "success": true
+        },
+        {
+          "iteration": 7,
+          "status": 200,
+          "latencyMs": 25.182578,
+          "bodySnippet": "{\"variant_id\":\"variant_01M3Q974QF1HZECRQV1MK969WX\",\"sku\":\"CN-DEMO-PLC-DIN-420-MR1\",\"overall_satisfied\":true,\"evaluations",
+          "requestId": "ab1908a0-a4ec-4608-8b32-f034551e2fe6",
+          "success": true
+        },
+        {
+          "iteration": 8,
+          "status": 200,
+          "latencyMs": 13.453195,
+          "bodySnippet": "{\"variant_id\":\"variant_01M3Q974QF1HZECRQV1MK969WX\",\"sku\":\"CN-DEMO-PLC-DIN-420-MR1\",\"overall_satisfied\":true,\"evaluations",
+          "requestId": "235eec28-cc14-4a57-b735-2a70fc956a95",
+          "success": true
+        },
+        {
+          "iteration": 9,
+          "status": 200,
+          "latencyMs": 21.874701,
+          "bodySnippet": "{\"variant_id\":\"variant_01M3Q974QF1HZECRQV1MK969WX\",\"sku\":\"CN-DEMO-PLC-DIN-420-MR1\",\"overall_satisfied\":true,\"evaluations",
+          "requestId": "73e46735-8326-420b-b305-2fed3dbab6a9",
+          "success": true
+        },
+        {
+          "iteration": 10,
+          "status": 200,
+          "latencyMs": 15.793599,
+          "bodySnippet": "{\"variant_id\":\"variant_01M3Q974QF1HZECRQV1MK969WX\",\"sku\":\"CN-DEMO-PLC-DIN-420-MR1\",\"overall_satisfied\":true,\"evaluations",
+          "requestId": "4ab47a60-a282-4921-96ef-a1e900d43b2f",
+          "success": true
+        }
+      ]
+    }
+  ],
+  "overallSuccess": true
+}
