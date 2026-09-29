@@ -1,0 +1,113 @@
+{
+  "generated_at": "2026-09-29T18:31:07.522Z",
+  "region": {
+    "id": "reg_01M01FK2K4G93M9GKDRTPRP6ZB",
+    "name": "Perú",
+    "currency_code": "pen"
+  },
+  "sales_channels": [
+    {
+      "id": "sc_01M3Q5VTQG6ZW1VX3TVVD0RM1B",
+      "name": "Default Sales Channel"
+    },
+    {
+      "id": "sc_01M3Q6KV0ZKB73YRM3YYBJZFGB",
+      "name": "Demo Sales Channel"
+    }
+  ],
+  "stock_location": {
+    "id": "sloc_01M3Q5VTXYB552BSCQY58WFNFM"
+  },
+  "products": {
+    "CN-DEMO-PLC-DIN-420-MR1": {
+      "sku": "CN-DEMO-PLC-DIN-420-MR1",
+      "model": "CN-DIN-PLC-A1",
+      "product_id": "prod_01M3Q6YK4Q4XQMMV0PC6Y2MTDW",
+      "variant_id": "variant_01M3Q6YK88FM9Z6TQYTAP9QATS",
+      "handle": "cn-demo-plc-din-420-mr1",
+      "urls": {
+        "pdf_datasheet": "/demo/datasheets/CN-DEMO-PLC-DIN-420-MR1.pdf",
+        "markdown_spec": "/demo/specs/CN-DEMO-PLC-DIN-420-MR1.md",
+        "pdf_datasheet_url": "http://localhost:9000/static/demo/datasheets/CN-DEMO-PLC-DIN-420-MR1.pdf",
+        "markdown_spec_url": "http://localhost:9000/static/demo/specs/CN-DEMO-PLC-DIN-420-MR1.md",
+        "pdf_datasheet_public": "https://controlnautas.com/demo/datasheets/CN-DEMO-PLC-DIN-420-MR1.pdf",
+        "markdown_spec_public": "https://controlnautas.com/demo/specs/CN-DEMO-PLC-DIN-420-MR1.md"
+      }
+    },
+    "CN-DEMO-PID-PT100-RS1": {
+      "sku": "CN-DEMO-PID-PT100-RS1",
+      "model": "CN-PID-T1",
+      "product_id": "prod_01M3Q6YKGJZMX9RZ4ZY7NM282M",
+      "variant_id": "variant_01M3Q6YKKSNJRP4X0GQXEG96SC",
+      "handle": "cn-demo-pid-pt100-rs1",
+      "urls": {
+        "pdf_datasheet": "/demo/datasheets/CN-DEMO-PID-PT100-RS1.pdf",
+        "markdown_spec": "/demo/specs/CN-DEMO-PID-PT100-RS1.md",
+        "pdf_datasheet_url": "http://localhost:9000/static/demo/datasheets/CN-DEMO-PID-PT100-RS1.pdf",
+        "markdown_spec_url": "http://localhost:9000/static/demo/specs/CN-DEMO-PID-PT100-RS1.md",
+        "pdf_datasheet_public": "https://controlnautas.com/demo/datasheets/CN-DEMO-PID-PT100-RS1.pdf",
+        "markdown_spec_public": "https://controlnautas.com/demo/specs/CN-DEMO-PID-PT100-RS1.md"
+      }
+    },
+    "CN-DEMO-PT100-3W-A1": {
+      "sku": "CN-DEMO-PT100-3W-A1",
+      "model": "CN-RTD-P1",
+      "product_id": "prod_01M3Q6YKSDS2E15N8BHQNKY084",
+      "variant_id": "variant_01M3Q6YKVK663A3CCGYPZ2Q55Z",
+      "handle": "cn-demo-pt100-3w-a1",
+      "urls": {
+        "pdf_datasheet": "/demo/datasheets/CN-DEMO-PT100-3W-A1.pdf",
+        "markdown_spec": "/demo/specs/CN-DEMO-PT100-3W-A1.md",
+        "pdf_datasheet_url": "http://localhost:9000/static/demo/datasheets/CN-DEMO-PT100-3W-A1.pdf",
+        "markdown_spec_url": "http://localhost:9000/static/demo/specs/CN-DEMO-PT100-3W-A1.md",
+        "pdf_datasheet_public": "https://controlnautas.com/demo/datasheets/CN-DEMO-PT100-3W-A1.pdf",
+        "markdown_spec_public": "https://controlnautas.com/demo/specs/CN-DEMO-PT100-3W-A1.md"
+      }
+    }
+  },
+  "CN-DEMO-PLC-DIN-420-MR1": {
+    "sku": "CN-DEMO-PLC-DIN-420-MR1",
+    "model": "CN-DIN-PLC-A1",
+    "product_id": "prod_01M3Q6YK4Q4XQMMV0PC6Y2MTDW",
+    "variant_id": "variant_01M3Q6YK88FM9Z6TQYTAP9QATS",
+    "handle": "cn-demo-plc-din-420-mr1",
+    "urls": {
+      "pdf_datasheet": "/demo/datasheets/CN-DEMO-PLC-DIN-420-MR1.pdf",
+      "markdown_spec": "/demo/specs/CN-DEMO-PLC-DIN-420-MR1.md",
+      "pdf_datasheet_url": "http://localhost:9000/static/demo/datasheets/CN-DEMO-PLC-DIN-420-MR1.pdf",
+      "markdown_spec_url": "http://localhost:9000/static/demo/specs/CN-DEMO-PLC-DIN-420-MR1.md",
+      "pdf_datasheet_public": "https://controlnautas.com/demo/datasheets/CN-DEMO-PLC-DIN-420-MR1.pdf",
+      "markdown_spec_public": "https://controlnautas.com/demo/specs/CN-DEMO-PLC-DIN-420-MR1.md"
+    }
+  },
+  "CN-DEMO-PID-PT100-RS1": {
+    "sku": "CN-DEMO-PID-PT100-RS1",
+    "model": "CN-PID-T1",
+    "product_id": "prod_01M3Q6YKGJZMX9RZ4ZY7NM282M",
+    "variant_id": "variant_01M3Q6YKKSNJRP4X0GQXEG96SC",
+    "handle": "cn-demo-pid-pt100-rs1",
+    "urls": {
+      "pdf_datasheet": "/demo/datasheets/CN-DEMO-PID-PT100-RS1.pdf",
+      "markdown_spec": "/demo/specs/CN-DEMO-PID-PT100-RS1.md",
+      "pdf_datasheet_url": "http://localhost:9000/static/demo/datasheets/CN-DEMO-PID-PT100-RS1.pdf",
+      "markdown_spec_url": "http://localhost:9000/static/demo/specs/CN-DEMO-PID-PT100-RS1.md",
+      "pdf_datasheet_public": "https://controlnautas.com/demo/datasheets/CN-DEMO-PID-PT100-RS1.pdf",
+      "markdown_spec_public": "https://controlnautas.com/demo/specs/CN-DEMO-PID-PT100-RS1.md"
+    }
+  },
+  "CN-DEMO-PT100-3W-A1": {
+    "sku": "CN-DEMO-PT100-3W-A1",
+    "model": "CN-RTD-P1",
+    "product_id": "prod_01M3Q6YKSDS2E15N8BHQNKY084",
+    "variant_id": "variant_01M3Q6YKVK663A3CCGYPZ2Q55Z",
+    "handle": "cn-demo-pt100-3w-a1",
+    "urls": {
+      "pdf_datasheet": "/demo/datasheets/CN-DEMO-PT100-3W-A1.pdf",
+      "markdown_spec": "/demo/specs/CN-DEMO-PT100-3W-A1.md",
+      "pdf_datasheet_url": "http://localhost:9000/static/demo/datasheets/CN-DEMO-PT100-3W-A1.pdf",
+      "markdown_spec_url": "http://localhost:9000/static/demo/specs/CN-DEMO-PT100-3W-A1.md",
+      "pdf_datasheet_public": "https://controlnautas.com/demo/datasheets/CN-DEMO-PT100-3W-A1.pdf",
+      "markdown_spec_public": "https://controlnautas.com/demo/specs/CN-DEMO-PT100-3W-A1.md"
+    }
+  }
+}
