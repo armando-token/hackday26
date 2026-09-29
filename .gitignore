@@ -1,0 +1,47 @@
+# Heavy & backup folders
+extra/
+/extra/
+**/extra/
+git/
+/git/
+**/git/
+backups/
+/backups/
+**/backups/
+logs/
+/logs/
+**/logs/
+*.dump
+*.sql
+*.tar.gz
+*.zip
+*.tsbuildinfo
+
+# Node & dependencies
+node_modules/
+**/node_modules/
+
+# Next.js & Medusa builds
+.next/
+**/.next/
+dist/
+build/
+.medusa/
+**/.medusa/
+
+# Environment & local config
+.env
+.env.local
+*.env
+!.env.template
+
+# Logs & OS files
+.DS_Store
+*.log
+npm-debug.log*
+yarn-debug.log*
+
+# Playwright & test cache
+/test-results/
+/playwright-report/
+.cache/
