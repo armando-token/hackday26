@@ -2,6 +2,13 @@
 aws-keys/
 *.pem
 
+# Source zip de producción — solo referencia local/servidor, NUNCA en git
+code_surce_cn.zip
+code_source_cn.zip
+*.zip
+code_source_cn/
+code_surce_cn/
+
 # Env / secrets
 .env
 .env.*

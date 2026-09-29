@@ -1,0 +1,8 @@
+/* Keep styles minimal — avoid hiding slide text */
+.slidev-layout {
+  color: #111827;
+}
+
+.slidev-layout a {
+  color: #185394;
+}
