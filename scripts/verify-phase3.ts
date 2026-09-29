@@ -162,8 +162,8 @@ function psqlQuery<T = any>(sql: string): T[] {
   try {
     const wrapped = `SELECT json_agg(t) FROM (${sql.trim().replace(/;+$/, "")}) t;`;
     const stdout = execSync(
-      `PGPASSWORD=password psql -U postgres -h localhost -d medusa -t -A -c "${wrapped}"`,
-      { encoding: "utf8", stdio: ["pipe", "pipe", "pipe"] }
+      `PGPASSWORD=password psql -U postgres -h localhost -d medusa -t -A`,
+      { input: wrapped, encoding: "utf8", stdio: ["pipe", "pipe", "pipe"] }
     );
     const trimmed = stdout.trim();
     if (!trimmed || trimmed === "") return [];
@@ -176,8 +176,8 @@ function psqlQuery<T = any>(sql: string): T[] {
 // Helper: Execute SQL command (UPDATE/INSERT/DELETE)
 function psqlExec(sql: string): void {
   execSync(
-    `PGPASSWORD=password psql -U postgres -h localhost -d medusa -c "${sql.replace(/"/g, '\\"')}"`,
-    { encoding: "utf8", stdio: ["pipe", "pipe", "pipe"] }
+    `PGPASSWORD=password psql -U postgres -h localhost -d medusa`,
+    { input: sql, encoding: "utf8", stdio: ["pipe", "pipe", "pipe"] }
   );
 }
 

@@ -5,6 +5,10 @@ import {
   verifyMuseToken,
   extractBearerToken,
   museConfig,
+  MUSE_ALLOWED_CORS_ORIGINS,
+  MUSE_FORBIDDEN_CORS_ORIGINS,
+  isMuseOriginAllowed,
+  isForbiddenOrigin,
 } from "../muse/config"
 
 describe("muse/config", () => {
@@ -105,6 +109,44 @@ describe("muse/config", () => {
       expect(extractBearerToken(undefined)).toBeNull()
       expect(extractBearerToken(null)).toBeNull()
       expect(extractBearerToken("")).toBeNull()
+    })
+  })
+
+  describe("CORS Configuration", () => {
+    it("explicitly includes all required allowed origins", () => {
+      const required = [
+        "https://data.controlnautas.com",
+        "https://www.data.controlnautas.com",
+        "http://localhost:8000",
+        "http://127.0.0.1:8000",
+        "http://localhost:9000",
+        "http://127.0.0.1:9000",
+      ]
+      for (const origin of required) {
+        expect(MUSE_ALLOWED_CORS_ORIGINS).toContain(origin)
+        expect(isMuseOriginAllowed(origin)).toBe(true)
+      }
+    })
+
+    it("strictly prohibits apex domain and production URLs", () => {
+      const forbidden = [
+        "https://controlnautas.com",
+        "http://controlnautas.com",
+        "https://www.controlnautas.com",
+        "http://www.controlnautas.com",
+      ]
+      for (const origin of forbidden) {
+        expect(isForbiddenOrigin(origin)).toBe(true)
+        expect(isMuseOriginAllowed(origin)).toBe(false)
+        expect(MUSE_ALLOWED_CORS_ORIGINS).not.toContain(origin)
+      }
+    })
+
+    it("museConfig exposes CORS settings", () => {
+      expect(museConfig.allowedCorsOrigins).toBe(MUSE_ALLOWED_CORS_ORIGINS)
+      expect(museConfig.forbiddenCorsOrigins).toBe(MUSE_FORBIDDEN_CORS_ORIGINS)
+      expect(museConfig.isOriginAllowed("https://data.controlnautas.com")).toBe(true)
+      expect(museConfig.isOriginAllowed("https://controlnautas.com")).toBe(false)
     })
   })
 })

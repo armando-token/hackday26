@@ -28,10 +28,15 @@ interface DemoProductDef {
   }>
 }
 
+const DEMO_BASE_URL =
+  process.env.DEMO_BASE_URL ||
+  process.env.STOREFRONT_BASE_URL ||
+  "https://data.controlnautas.com"
+
 const DEMO_SOURCES = [
   {
     id: "SRC-CN-DIN-PLC-A1-DS-V1",
-    url: "http://52.20.66.203:8000/demo/datasheets/CN-DEMO-PLC-DIN-420-MR1.pdf",
+    url: `${DEMO_BASE_URL}/demo/datasheets/CN-DEMO-PLC-DIN-420-MR1.pdf`,
     kind: "datasheet",
     revision: "rev-2026.1",
     checksum: "8009da7ddf415884229b8570d75fd59e602aad1013caab851ac61d06c361e385",
@@ -39,7 +44,7 @@ const DEMO_SOURCES = [
   },
   {
     id: "SRC-CN-PID-T1-DS-V1",
-    url: "http://52.20.66.203:8000/demo/datasheets/CN-DEMO-PID-PT100-RS1.pdf",
+    url: `${DEMO_BASE_URL}/demo/datasheets/CN-DEMO-PID-PT100-RS1.pdf`,
     kind: "datasheet",
     revision: "rev-2026.1",
     checksum: "b695ef3318e840535601432acb197db1c007ae614673d657df472d9129abdeaf",
@@ -47,7 +52,7 @@ const DEMO_SOURCES = [
   },
   {
     id: "SRC-CN-RTD-P1-DS-V1",
-    url: "http://52.20.66.203:8000/demo/datasheets/CN-DEMO-PT100-3W-A1.pdf",
+    url: `${DEMO_BASE_URL}/demo/datasheets/CN-DEMO-PT100-3W-A1.pdf`,
     kind: "datasheet",
     revision: "rev-2026.1",
     checksum: "3c8e67e4e5b76baa787e9f91eb0546015a1e7afa1551b79f2a1fb417cca17fbf",
@@ -944,7 +949,7 @@ export default async function seedHackdayDemo({ container }: ExecArgs) {
       )
       const pimFields = [
         productId,
-        `http://52.20.66.203:8000/demo/datasheets/${pDef.sku}.pdf`,
+        `${DEMO_BASE_URL}/demo/datasheets/${pDef.sku}.pdf`,
         `/demo/specs/${pDef.sku}.md`,
         pDef.model,
         pDef.sku,
@@ -1022,11 +1027,11 @@ export default async function seedHackdayDemo({ container }: ExecArgs) {
         variant_id: variantId,
         handle: pDef.handle,
         urls: {
-          pdf_datasheet: `http://52.20.66.203:8000/demo/datasheets/${pDef.sku}.pdf`,
-          markdown_spec: `http://52.20.66.203:8000/demo/specs/${pDef.sku}.md`,
+          pdf_datasheet: `${DEMO_BASE_URL}/demo/datasheets/${pDef.sku}.pdf`,
+          markdown_spec: `${DEMO_BASE_URL}/demo/specs/${pDef.sku}.md`,
           pdf_datasheet_relative: `/demo/datasheets/${pDef.sku}.pdf`,
           markdown_spec_relative: `/demo/specs/${pDef.sku}.md`,
-          pdp_human: `http://52.20.66.203:8000/pe/products/${pDef.handle}`,
+          pdp_human: `${DEMO_BASE_URL}/pe/products/${pDef.handle}`,
           pdp_relative: `/pe/products/${pDef.handle}`,
         },
       }

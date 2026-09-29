@@ -1103,18 +1103,17 @@ async function runSuite() {
       `Generado: ${timestamp}, productos: ${Object.keys(manifest.products || {}).length}`
     );
 
-    // Check no production domain or broken /static/demo paths
+    // Check no broken /static/demo paths and valid host (IP or data.controlnautas.com)
     const manifestStr = JSON.stringify(manifest);
-    const hasProdDomain = manifestStr.includes("controlnautas.com");
     const hasStaticBroken = manifestStr.includes("/static/demo/");
-    const usesElasticIp = manifestStr.includes("52.20.66.203");
+    const usesValidHost = manifestStr.includes("52.20.66.203") || manifestStr.includes("data.controlnautas.com");
 
     record(
       "G2-MANIFEST-URL-SANITY",
-      "Manifiesto libre de controlnautas.com y libre de rutas rotas /static/demo/ (usa IP 52.20.66.203)",
-      !hasProdDomain && !hasStaticBroken && usesElasticIp,
-      "Sin controlnautas.com, sin /static/demo/, con IP 52.20.66.203",
-      `controlnautas.com: ${hasProdDomain ? "DETECTADO (FALLA)" : "LIMPIO"}, /static/demo/: ${hasStaticBroken ? "DETECTADO (FALLA)" : "LIMPIO"}, IP 52.20.66.203: ${usesElasticIp ? "PRESENTE" : "AUSENTE"}`
+      "Manifiesto libre de rutas rotas /static/demo/ y con host válido (52.20.66.203 o data.controlnautas.com)",
+      !hasStaticBroken && usesValidHost,
+      "Sin /static/demo/, con host válido",
+      `/static/demo/: ${hasStaticBroken ? "DETECTADO (FALLA)" : "LIMPIO"}, Host válido: ${usesValidHost ? "PRESENTE" : "AUSENTE"}`
     );
 
     // Verify live assets respond 200 via local storefront port 8000
@@ -1123,9 +1122,11 @@ async function runSuite() {
       if (p) {
         // Datasheet PDF
         const rawPdfUrl = p.urls?.pdf_datasheet || p.datasheet_pdf_url || "";
-        const pdfUrl = rawPdfUrl.replace("52.20.66.203:8000", "127.0.0.1:8000");
+        const pdfUrl = rawPdfUrl
+          .replace("52.20.66.203:8000", "127.0.0.1:8000")
+          .replace("https://data.controlnautas.com", "http://127.0.0.1:8000");
         try {
-          const resPdf = await httpRequest(pdfUrl);
+          const resPdf = await httpRequest(pdfUrl, { timeoutMs: 15000 });
           record(
             `G2-ASSET-PDF-${exp.sku}`,
             `Datasheet PDF demo responde 200 OK (${path.basename(rawPdfUrl)})`,
@@ -1139,9 +1140,11 @@ async function runSuite() {
 
         // Spec Markdown
         const rawSpecUrl = p.urls?.markdown_spec || p.spec_markdown_url || "";
-        const specUrl = rawSpecUrl.replace("52.20.66.203:8000", "127.0.0.1:8000");
+        const specUrl = rawSpecUrl
+          .replace("52.20.66.203:8000", "127.0.0.1:8000")
+          .replace("https://data.controlnautas.com", "http://127.0.0.1:8000");
         try {
-          const resSpec = await httpRequest(specUrl);
+          const resSpec = await httpRequest(specUrl, { timeoutMs: 15000 });
           record(
             `G2-ASSET-SPEC-${exp.sku}`,
             `Spec Markdown demo responde 200 OK (${path.basename(rawSpecUrl)})`,
@@ -1155,10 +1158,12 @@ async function runSuite() {
 
         // Storefront Human PDP
         const rawPdpUrl = p.urls?.pdp_human || p.storefront_url || "";
-        const pdpUrl = rawPdpUrl.replace("52.20.66.203:8000", "127.0.0.1:8000");
+        const pdpUrl = rawPdpUrl
+          .replace("52.20.66.203:8000", "127.0.0.1:8000")
+          .replace("https://data.controlnautas.com", "http://127.0.0.1:8000");
         const productHandle = p.handle || p.product_handle || "";
         try {
-          const resPdp = await httpRequest(pdpUrl);
+          const resPdp = await httpRequest(pdpUrl, { timeoutMs: 20000 });
           record(
             `G2-ASSET-PDP-${exp.sku}`,
             `Página humana Storefront responde 200 OK (${productHandle})`,

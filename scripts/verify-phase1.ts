@@ -683,16 +683,19 @@ async function runSuite() {
 
       // Check manifest URLs
       const manifestStr = fs.readFileSync(manifestPath, "utf8");
-      const hasBrokenPaths = manifestStr.includes("static/demo") || manifestStr.includes("controlnautas.com");
-      const hasElasticIpUrls = manifestStr.includes("http://52.20.66.203:8000/demo/datasheets/") &&
-                               manifestStr.includes("http://52.20.66.203:8000/demo/specs/");
+      const hasBrokenPaths = manifestStr.includes("static/demo");
+      const hasValidUrls =
+        (manifestStr.includes("http://52.20.66.203:8000/demo/datasheets/") ||
+          manifestStr.includes("https://data.controlnautas.com/demo/datasheets/")) &&
+        (manifestStr.includes("http://52.20.66.203:8000/demo/specs/") ||
+          manifestStr.includes("https://data.controlnautas.com/demo/specs/"));
 
       record(
         "G1-MANIFEST-VALID-URLS",
-        "URLs del manifiesto apuntan a rutas válidas de Elastic IP (sin /static/demo ni controlnautas.com)",
-        !hasBrokenPaths && hasElasticIpUrls,
-        "URLs usan http://52.20.66.203:8000/demo/... y no rutas rotas",
-        !hasBrokenPaths && hasElasticIpUrls ? "URLs válidas y verificadas" : "Rutas rotas o dominio no operativo detectado"
+        "URLs del manifiesto apuntan a rutas válidas (data.controlnautas.com o IP Elástica)",
+        !hasBrokenPaths && hasValidUrls,
+        "URLs usan https://data.controlnautas.com/demo/... o IP Elástica",
+        !hasBrokenPaths && hasValidUrls ? "URLs válidas y verificadas" : "Rutas rotas o dominio no operativo detectado"
       );
     } catch (err: any) {
       record(

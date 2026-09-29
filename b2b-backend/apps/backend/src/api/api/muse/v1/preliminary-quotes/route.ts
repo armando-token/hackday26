@@ -34,20 +34,31 @@ export const AUTHENTICATE = false
 const DEFAULT_DEMO_REGION_ID = "reg_01M01FK2K4G93M9GKDRTPRP6ZB"
 
 /**
- * Public backend base URL for PDF download links.
+ * Public base URL for Muse quote PDF downloads and product links.
+ * Supports PUBLIC_MUSE_BASE_URL environment variable with default 'https://data.controlnautas.com'.
  */
-const BACKEND_PUBLIC_BASE_URL =
-  process.env.MUSE_BACKEND_PUBLIC_URL ||
-  process.env.MEDUSA_BACKEND_URL ||
-  "http://52.20.66.203:9000"
+function getPublicMuseBaseUrl(): string {
+  const envUrl = process.env.PUBLIC_MUSE_BASE_URL?.trim()
+  if (envUrl) {
+    return envUrl.replace(/\/+$/, "")
+  }
+  return "https://data.controlnautas.com"
+}
 
 /**
  * Public storefront base URL for product links.
+ * Defaults to PUBLIC_MUSE_BASE_URL or 'https://data.controlnautas.com'.
  */
-const STOREFRONT_PUBLIC_BASE_URL =
-  process.env.STOREFRONT_BASE_URL ||
-  process.env.STOREFRONT_URL ||
-  "http://52.20.66.203:8000"
+function getProductBaseUrl(): string {
+  const envUrl =
+    process.env.PUBLIC_MUSE_BASE_URL?.trim() ||
+    process.env.STOREFRONT_BASE_URL?.trim() ||
+    process.env.STOREFRONT_URL?.trim()
+  if (envUrl) {
+    return envUrl.replace(/\/+$/, "")
+  }
+  return "https://data.controlnautas.com"
+}
 
 /**
  * Dynamically resolves the demo region ID from the project manifest if present.
@@ -98,7 +109,7 @@ function resolveDemoRegionId(): string {
  *       status: offer.state,
  *       observed_at: offer.observed_at,
  *       expires_at,
- *       pdf_url: `http://52.20.66.203:9000/api/muse/v1/quotes/${opaque_public_id}/pdf?token=${download_token}`,
+ *       pdf_url: `https://data.controlnautas.com/api/muse/v1/quotes/${opaque_public_id}/pdf?token=${download_token}`,
  *       summary: {
  *         sku: offer.sku,
  *         model: offer.model,
@@ -107,7 +118,8 @@ function resolveDemoRegionId(): string {
  *         currency: offer.currency,
  *         unit_price: offer.unit_price,
  *         subtotal: offer.subtotal,
- *         availability: offer.availability
+ *         availability: offer.availability,
+ *         product_url: `https://data.controlnautas.com/pe/products/${handle}`
  *       },
  *       request_id
  *     }
@@ -302,13 +314,14 @@ export const POST = async (
               typeof existing.availability_snapshot_json === "string"
                 ? JSON.parse(existing.availability_snapshot_json)
                 : existing.availability_snapshot_json,
+            product_url: existing.product_url,
           }
+        } else if (!existingSummary.product_url && existing.product_url) {
+          existingSummary.product_url = existing.product_url
         }
 
-        const existingPdfUrl = `${BACKEND_PUBLIC_BASE_URL.replace(
-          /\/+$/,
-          ""
-        )}/api/muse/v1/quotes/${existing.opaque_public_id}/pdf?token=${
+        const museBaseUrl = getPublicMuseBaseUrl()
+        const existingPdfUrl = `${museBaseUrl}/api/muse/v1/quotes/${existing.opaque_public_id}/pdf?token=${
           existing.download_token
         }`
 
@@ -405,11 +418,9 @@ export const POST = async (
   const expiresAtDate = new Date(now.getTime() + 24 * 60 * 60 * 1000)
   const expires_at = expiresAtDate.toISOString()
 
-  const productUrl = offer.product_handle
-    ? `${STOREFRONT_PUBLIC_BASE_URL.replace(/\/+$/, "")}/pe/products/${
-        offer.product_handle
-      }`
-    : `${STOREFRONT_PUBLIC_BASE_URL.replace(/\/+$/, "")}/pe/products/${offer.sku.toLowerCase()}`
+  const productBaseUrl = getProductBaseUrl()
+  const productHandle = offer.product_handle || offer.sku.toLowerCase()
+  const productUrl = `${productBaseUrl}/pe/products/${productHandle}`
 
   // 8. Generate PDF via generateQuotePdf
   let pdfStorageKey = `quotes/${opaque_public_id}.pdf`
@@ -455,10 +466,8 @@ export const POST = async (
   }
 
   // 9. Insert record into PostgreSQL 'preliminary_quote'
-  const pdf_url = `${BACKEND_PUBLIC_BASE_URL.replace(
-    /\/+$/,
-    ""
-  )}/api/muse/v1/quotes/${opaque_public_id}/pdf?token=${download_token}`
+  const baseMuseUrl = getPublicMuseBaseUrl()
+  const pdf_url = `${baseMuseUrl}/api/muse/v1/quotes/${opaque_public_id}/pdf?token=${download_token}`
 
   const summary = {
     sku: offer.sku,
@@ -469,6 +478,7 @@ export const POST = async (
     unit_price: offer.unit_price,
     subtotal: offer.subtotal,
     availability: offer.availability,
+    product_url: productUrl,
   }
 
   const metadata = {

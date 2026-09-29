@@ -15,12 +15,15 @@ describe("CORS & Network Security Specifications", () => {
     "http://localhost:9000",
     "http://127.0.0.1:9000",
     "http://52.20.66.203:9000",
+    "https://data.controlnautas.com",
+    "https://www.data.controlnautas.com",
   ]
 
   const forbiddenOrigins = [
     "https://controlnautas.com",
     "http://controlnautas.com",
     "https://www.controlnautas.com",
+    "http://www.controlnautas.com",
   ]
 
   describe("1. Environment Files (.env and .env.template)", () => {
@@ -219,6 +222,47 @@ describe("CORS & Network Security Specifications", () => {
       expect(endMock).toHaveBeenCalled()
       expect(next).not.toHaveBeenCalled()
       expect(headers["access-control-allow-origin"]).toBe("http://52.20.66.203:8000")
+      expect(headers["access-control-allow-headers"]).toContain("Authorization")
+      expect(headers["access-control-allow-headers"]).toContain("Content-Type")
+      expect(headers["access-control-allow-headers"]).toContain("X-Request-Id")
+    })
+
+    it("corsSecurityMiddleware handles preflight OPTIONS with 204 for https://data.controlnautas.com", () => {
+      const middlewaresModule = require("../../api/middlewares")
+      const routeConfig = middlewaresModule.default?.routes?.find((r: any) => r.matcher === "/*")
+      const corsMiddleware = routeConfig.middlewares[0]
+
+      const headers: Record<string, string> = {}
+      const req: any = {
+        headers: {
+          origin: "https://data.controlnautas.com",
+          "access-control-request-method": "GET",
+          "access-control-request-headers": "authorization,content-type,x-request-id",
+        },
+        method: "OPTIONS",
+        url: "/api/muse/v1/products/search",
+      }
+      let statusCode = 0
+      const endMock = jest.fn()
+      const res: any = {
+        setHeader: jest.fn((k, v) => {
+          headers[k.toLowerCase()] = v
+        }),
+        status: jest.fn((code) => {
+          statusCode = code
+          return {
+            end: endMock,
+          }
+        }),
+      }
+      const next = jest.fn()
+
+      corsMiddleware(req, res, next)
+
+      expect(statusCode).toBe(204)
+      expect(endMock).toHaveBeenCalled()
+      expect(next).not.toHaveBeenCalled()
+      expect(headers["access-control-allow-origin"]).toBe("https://data.controlnautas.com")
       expect(headers["access-control-allow-headers"]).toContain("Authorization")
       expect(headers["access-control-allow-headers"]).toContain("Content-Type")
       expect(headers["access-control-allow-headers"]).toContain("X-Request-Id")

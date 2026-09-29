@@ -13,6 +13,12 @@ import { getPool } from "../../../../../../lib/muse/db"
  */
 export const AUTHENTICATE = false
 
+const STOREFRONT_PUBLIC_BASE_URL =
+  process.env.STOREFRONT_BASE_URL ||
+  process.env.STOREFRONT_URL ||
+  process.env.PUBLIC_MUSE_BASE_URL ||
+  "https://data.controlnautas.com"
+
 export interface SearchProductItem {
   variant_id: string
   sku: string
@@ -161,7 +167,7 @@ export const GET = withMuseAuth(
         sku: row.sku,
         model: row.model,
         title: row.title,
-        product_url: `http://52.20.66.203:8000/pe/products/${row.handle}`,
+        product_url: `${STOREFRONT_PUBLIC_BASE_URL.replace(/\/+$/, "")}/pe/products/${row.handle}`,
         technical_summary: row.subtitle || row.description || "",
         demo: true,
       }))
