@@ -16,7 +16,7 @@ const STOREFRONT_BASE_URL =
   process.env.STOREFRONT_BASE_URL ||
   process.env.STOREFRONT_URL ||
   process.env.NEXT_PUBLIC_STOREFRONT_URL ||
-  "http://52.20.66.203:8000"
+  "https://data.controlnautas.com"
 
 /**
  * GET /api/muse/v1/products/[variantId]

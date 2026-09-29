@@ -51,7 +51,7 @@ export interface SearchProductsResponse {
  * - Matching: q contra sku, model, title y display_value de technical_fact.
  * - Sin q: retorna todas las variantes demo (hasta el límite).
  * - PROHIBICIÓN: NUNCA incluye precio cacheado ni stock en la respuesta.
- * - URLs: Usan la IP Elástica http://52.20.66.203:8000/pe/products/<handle>.
+ * - URLs: Usan la IP Elástica https://data.controlnautas.com/pe/products/<handle>.
  */
 export const GET = withMuseAuth(
   async (
