@@ -136,7 +136,7 @@ function resolveContext(): BenchmarkContext {
 
   // 3. Variant ID discovery from manifest
   let variantId = "variant_01M3Q80TB1MN6861FT63TR6BTP"; // Fallback demo PLC
-  let sku = "CN-DEMO-PLC-DIN-420-MR1";
+  let sku = "CN-X5PRIME-HE-XP5";
   const manifestPath = path.join(rootDir, "hackday-demo-manifest.json");
 
   if (fs.existsSync(manifestPath)) {

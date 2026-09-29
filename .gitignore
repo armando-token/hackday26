@@ -66,3 +66,6 @@ code_surce_cn.zip
 code_source_cn.zip
 code_source_cn/
 code_surce_cn/
+
+# Raw manufacturer folders (published copies live under docs/ and real-products-publish/)
+real-products-source/

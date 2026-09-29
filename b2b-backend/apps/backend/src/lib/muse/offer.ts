@@ -7,7 +7,7 @@ import { getPool } from "./db"
  * ============================================================================
  * 
  * Provides deterministic, atomic calculation of live commercial offers:
- * 1. Strict demonstration catalog isolation (demo = true, SKU LIKE 'CN-DEMO-%').
+ * 1. Strict demonstration catalog isolation (demo = true, SKU LIKE 'CN-%').
  * 2. Strict quantity validation (integer between 1 and 20).
  * 3. Direct Medusa pricing resolution (currency: 'pen', scale: 2, minor units).
  * 4. Real-time physical inventory calculation (stocked - reserved).
@@ -310,7 +310,7 @@ export function buildLiveOfferLimitations(
 /**
  * Core Live Offer Calculation Engine
  * 
- * @param variantId Medusa variant ID (e.g. 'variant_...') or demonstration SKU (e.g. 'CN-DEMO-...')
+ * @param variantId Medusa variant ID (e.g. 'variant_...') or demonstration SKU (e.g. 'CN-X5PRIME-HE-XP5')
  * @param quantity Desired quantity (integer between 1 and 20, default 1)
  * @param regionId Optional region ID filter for localized price rules
  * @param dbClient Optional pg Pool or PoolClient for dependency injection / test isolation
@@ -342,7 +342,7 @@ export async function getLiveOffer(
 
   // 4. Query PostgreSQL with demo catalog strict filter:
   //    - technical_profile.demo = true
-  //    - product_variant.sku LIKE 'CN-DEMO-%'
+  //    - product_variant.sku LIKE 'CN-%'
   //    - technical_profile.deleted_at IS NULL
   //    - product_variant.deleted_at IS NULL
   //    - product.deleted_at IS NULL
@@ -407,7 +407,7 @@ export async function getLiveOffer(
     WHERE (tp.variant_id = $1 OR pv.sku = $1)
       AND tp.demo = true
       AND tp.deleted_at IS NULL
-      AND pv.sku LIKE 'CN-DEMO-%'
+      AND pv.sku LIKE 'CN-%'
     LIMIT 1
   `
 

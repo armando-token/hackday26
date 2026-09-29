@@ -414,7 +414,7 @@
           "Gate 3 - Commercial Offers & Quotes"
         ],
         "summary": "Live commercial offer and real-time stock",
-        "description": "Fetches atomic live pricing (USD) and physical stock availability directly from Medusa modules.\n\n- **Strict Demo Isolation:** Only variants with `demo = true` and `SKU LIKE 'CN-DEMO-%'` are accessible.\n- **Zero Storefront Cache:** Bypasses any ISR or cached layers; guarantees fresh state (`Cache-Control: no-store`).\n- **State Resolution:** Returns `state: \"priced\"` when pricing and stock are determinable, or `state: \"manual_review\"` with `review_reason` if price is missing or unlisted. **Never invents a fake 0 price**.\n- **Monetary Scale:** Expressed in integer minor units (`unit_price_minor`, `subtotal_minor` in cents) and 2-decimal formatted floats (`unit_price`, `subtotal`).",
+        "description": "Fetches atomic live pricing (USD) and physical stock availability directly from Medusa modules.\n\n- **Strict Demo Isolation:** Only variants with `demo = true` and `SKU LIKE 'CN-%'` are accessible.\n- **Zero Storefront Cache:** Bypasses any ISR or cached layers; guarantees fresh state (`Cache-Control: no-store`).\n- **State Resolution:** Returns `state: \"priced\"` when pricing and stock are determinable, or `state: \"manual_review\"` with `review_reason` if price is missing or unlisted. **Never invents a fake 0 price**.\n- **Monetary Scale:** Expressed in integer minor units (`unit_price_minor`, `subtotal_minor` in cents) and 2-decimal formatted floats (`unit_price`, `subtotal`).",
         "operationId": "getLiveCommercialOffer",
         "security": [
           {
@@ -769,7 +769,7 @@
                 "description": "Inline disposition header with descriptive filename",
                 "schema": {
                   "type": "string",
-                  "example": "inline; filename=\"cotizacion-preliminar-CN-DEMO-PLC-DIN-420-MR1-pq_a4b9.pdf\""
+                  "example": "inline; filename=\"cotizacion-preliminar-CN-X5PRIME-HE-XP5-pq_a4b9.pdf\""
                 }
               },
               "Cache-Control": {
@@ -967,7 +967,7 @@
           "sku": {
             "type": "string",
             "description": "Unique product SKU",
-            "example": "CN-DEMO-PLC-DIN-420-MR1"
+            "example": "CN-X5PRIME-HE-XP5"
           },
           "model": {
             "type": [
@@ -1103,7 +1103,7 @@
           "sku": {
             "type": "string",
             "description": "Unique product SKU",
-            "example": "CN-DEMO-PT100-3W-A1"
+            "example": "CN-THT02"
           },
           "model": {
             "type": [
@@ -1371,7 +1371,7 @@
         "properties": {
           "sku": {
             "type": "string",
-            "example": "CN-DEMO-PLC-DIN-420-MR1"
+            "example": "CN-X5PRIME-HE-XP5"
           },
           "model": {
             "type": [
@@ -1430,7 +1430,7 @@
             "type": "string",
             "format": "uri",
             "description": "Canonical public storefront URL for this product",
-            "example": "https://data.controlnautas.com/us/products/cn-demo-plc-din-420-mr1"
+            "example": "https://data.controlnautas.com/us/products/cn-x5prime-he-xp5"
           },
           "scale": {
             "type": "integer",
@@ -1561,7 +1561,7 @@
         "properties": {
           "sku": {
             "type": "string",
-            "example": "CN-DEMO-PLC-DIN-420-MR1"
+            "example": "CN-X5PRIME-HE-XP5"
           },
           "model": {
             "type": "string",
@@ -1577,13 +1577,13 @@
           },
           "handle": {
             "type": "string",
-            "example": "cn-demo-plc-din-420-mr1"
+            "example": "cn-x5prime-he-xp5"
           },
           "product_url": {
             "type": "string",
             "format": "uri",
             "description": "Canonical public storefront URL for this product",
-            "example": "https://data.controlnautas.com/us/products/cn-demo-plc-din-420-mr1"
+            "example": "https://data.controlnautas.com/us/products/cn-x5prime-he-xp5"
           },
           "urls": {
             "type": "object",
@@ -1591,17 +1591,17 @@
               "pdf_datasheet": {
                 "type": "string",
                 "format": "uri",
-                "example": "https://data.controlnautas.com/demo/datasheets/CN-DEMO-PLC-DIN-420-MR1.pdf"
+                "example": "https://data.controlnautas.com/demo/datasheets/CN-X5PRIME-HE-XP5.pdf"
               },
               "markdown_spec": {
                 "type": "string",
                 "format": "uri",
-                "example": "https://data.controlnautas.com/demo/specs/CN-DEMO-PLC-DIN-420-MR1.md"
+                "example": "https://data.controlnautas.com/demo/specs/CN-X5PRIME-HE-XP5.md"
               },
               "pdp_human": {
                 "type": "string",
                 "format": "uri",
-                "example": "https://data.controlnautas.com/us/products/cn-demo-plc-din-420-mr1"
+                "example": "https://data.controlnautas.com/us/products/cn-x5prime-he-xp5"
               }
             }
           }
@@ -1626,7 +1626,7 @@
           },
           "sku": {
             "type": "string",
-            "example": "CN-DEMO-PLC-DIN-420-MR1"
+            "example": "CN-X5PRIME-HE-XP5"
           },
           "model": {
             "type": "string",
@@ -1642,13 +1642,13 @@
           },
           "handle": {
             "type": "string",
-            "example": "cn-demo-plc-din-420-mr1"
+            "example": "cn-x5prime-he-xp5"
           },
           "product_url": {
             "type": "string",
             "format": "uri",
             "description": "Canonical public storefront URL for this product",
-            "example": "https://data.controlnautas.com/us/products/cn-demo-plc-din-420-mr1"
+            "example": "https://data.controlnautas.com/us/products/cn-x5prime-he-xp5"
           },
           "revision": {
             "type": "string",
@@ -1760,7 +1760,7 @@
           "url": {
             "type": "string",
             "format": "uri",
-            "example": "https://data.controlnautas.com/demo/datasheets/CN-DEMO-PLC-DIN-420-MR1.pdf"
+            "example": "https://data.controlnautas.com/demo/datasheets/CN-X5PRIME-HE-XP5.pdf"
           },
           "revision": {
             "type": "string",
@@ -1857,7 +1857,7 @@
           },
           "sku": {
             "type": "string",
-            "example": "CN-DEMO-PLC-DIN-420-MR1"
+            "example": "CN-X5PRIME-HE-XP5"
           },
           "overall_satisfied": {
             "type": "boolean",

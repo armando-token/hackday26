@@ -278,7 +278,7 @@ function getDemoVariantMap(manifestPath: string): Record<string, string> {
       SELECT pv.sku, pv.id as variant_id
       FROM product_variant pv
       INNER JOIN technical_profile tp ON tp.variant_id = pv.id
-      WHERE tp.demo = true AND pv.sku LIKE 'CN-DEMO-%' AND pv.deleted_at IS NULL;
+      WHERE tp.demo = true AND pv.sku LIKE 'CN-%' AND sku NOT LIKE 'CN-DEMO-TEST-%' AND sku NOT LIKE 'CN-DEMO-INVENTED-%' AND pv.deleted_at IS NULL;
     `);
     for (const r of rows) {
       if (r.sku && r.variant_id) {
@@ -288,7 +288,7 @@ function getDemoVariantMap(manifestPath: string): Record<string, string> {
   } catch {}
 
   // 2. Fallback to manifest if DB query returned empty
-  if (!map["CN-DEMO-PLC-DIN-420-MR1"]) {
+  if (!map["CN-X5PRIME-HE-XP5"]) {
     try {
       if (fs.existsSync(manifestPath)) {
         const data = JSON.parse(fs.readFileSync(manifestPath, "utf8"));
@@ -383,9 +383,9 @@ async function runSuite() {
   console.log(`  ${BOLD}Manifiesto Path:${RESET}       ${MANIFEST_PATH}`);
 
   let variantMap = getDemoVariantMap(MANIFEST_PATH);
-  let plcVariantId = variantMap["CN-DEMO-PLC-DIN-420-MR1"] || "";
-  let pidVariantId = variantMap["CN-DEMO-PID-PT100-RS1"] || "";
-  let pt100VariantId = variantMap["CN-DEMO-PT100-3W-A1"] || "";
+  let plcVariantId = variantMap["CN-X5PRIME-HE-XP5"] || "";
+  let pidVariantId = variantMap["CN-N1200"] || "";
+  let pt100VariantId = variantMap["CN-THT02"] || "";
 
   console.log(`  ${BOLD}PLC Variant ID:${RESET}        ${plcVariantId}`);
   console.log(`  ${BOLD}PID Variant ID:${RESET}        ${pidVariantId}`);
@@ -929,7 +929,7 @@ async function runSuite() {
 
       const summary = quoteRes.data?.summary;
       const summaryOk =
-        summary?.sku === "CN-DEMO-PLC-DIN-420-MR1" &&
+        summary?.sku === "CN-X5PRIME-HE-XP5" &&
         summary?.unit_price === 890 &&
         summary?.subtotal === 890 &&
         summary?.currency?.toLowerCase() === "usd" &&
@@ -1219,9 +1219,9 @@ async function runSuite() {
     console.log(`\n${BOLD}[CRITERIO 12] PÁGINAS STOREFRONT (PDPs) Y ACTIVOS DEMO SOBRE HTTPS${RESET}`);
     try {
       const demoProducts = [
-        { sku: "CN-DEMO-PLC-DIN-420-MR1", handle: "cn-demo-plc-din-420-mr1" },
-        { sku: "CN-DEMO-PID-PT100-RS1", handle: "cn-demo-pid-pt100-rs1" },
-        { sku: "CN-DEMO-PT100-3W-A1", handle: "cn-demo-pt100-3w-a1" },
+        { sku: "CN-X5PRIME-HE-XP5", handle: "cn-x5prime-he-xp5" },
+        { sku: "CN-N1200", handle: "cn-n1200" },
+        { sku: "CN-THT02", handle: "cn-tht02" },
       ];
 
       for (const p of demoProducts) {

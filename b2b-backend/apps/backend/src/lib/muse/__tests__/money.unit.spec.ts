@@ -105,17 +105,17 @@ describe("Monetary Representation Audit & Arithmetic (Phase 3)", () => {
 
   describe("4. subtotal_minor = unit_price_minor * quantity", () => {
     it("computes exact integer multiplication for all demo SKUs and quantities", () => {
-      // CN-DEMO-PLC-DIN-420-MR1: 89000 centavos
+      // CN-X5PRIME-HE-XP5: 89000 centavos
       expect(calculateSubtotalMinor(89000n, 1)).toBe(89000n)
       expect(calculateSubtotalMinor(89000n, 2)).toBe(178000n)
       expect(calculateSubtotalMinor(89000n, 5)).toBe(445000n)
       expect(calculateSubtotalMinor(89000n, 20)).toBe(1780000n)
 
-      // CN-DEMO-PID-PT100-RS1: 48000 centavos
+      // CN-N1200: 48000 centavos
       expect(calculateSubtotalMinor(48000n, 1)).toBe(48000n)
       expect(calculateSubtotalMinor(48000n, 3)).toBe(144000n)
 
-      // CN-DEMO-PT100-3W-A1: 7500 centavos
+      // CN-THT02: 7500 centavos
       expect(calculateSubtotalMinor(7500n, 10)).toBe(75000n)
     })
 

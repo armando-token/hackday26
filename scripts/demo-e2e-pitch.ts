@@ -55,7 +55,7 @@ function parseCliArgs(): CliOptions {
     baseUrl: process.env.BASE_URL || "https://data.controlnautas.com",
     interactive: false,
     fast: false,
-    sku: "CN-DEMO-PLC-DIN-420-MR1",
+    sku: "CN-X5PRIME-HE-XP5",
     help: false,
   };
 
@@ -98,7 +98,7 @@ ${BOLD}OPTIONS:${RESET}
   -a, --auto                   Run automatically without pausing (default in non-TTY)
   -f, --fast                   Fast execution with 0ms pauses
   --base-url <url>             Base API gateway URL (default: https://data.controlnautas.com)
-  --sku <sku>                  Primary demo SKU to test (default: CN-DEMO-PLC-DIN-420-MR1)
+  --sku <sku>                  Primary demo SKU to test (default: CN-X5PRIME-HE-XP5)
   -h, --help                   Show this help message and exit
 
 ${BOLD}EXAMPLES:${RESET}

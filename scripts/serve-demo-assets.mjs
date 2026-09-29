@@ -127,6 +127,48 @@ function createRequestHandler(port) {
       return;
     }
 
+
+    // Docs: /demo/docs/:path
+    if (pathname.startsWith("/demo/docs/")) {
+      const rel = pathname.slice("/demo/docs/".length);
+      const base = path.join(ROOT_DIR, "docs/demo-docs");
+      const filePath = path.normalize(path.join(base, rel));
+      if (!filePath.startsWith(base) || !fs.existsSync(filePath) || !fs.statSync(filePath).isFile()) {
+        res.statusCode = 404;
+        res.setHeader("Content-Type", "application/json");
+        res.end(JSON.stringify({ error: "Doc not found", requested: rel }));
+        return;
+      }
+      const stat = fs.statSync(filePath);
+      res.statusCode = 200;
+      res.setHeader("Content-Type", filePath.endsWith(".md") ? "text/markdown; charset=utf-8" : "application/octet-stream");
+      res.setHeader("Content-Length", stat.size);
+      res.setHeader("Cache-Control", "public, max-age=3600");
+      if (req.method === "HEAD") { res.end(); return; }
+      fs.createReadStream(filePath).pipe(res);
+      return;
+    }
+
+    // Images: /demo/images/:file
+    if (pathname.startsWith("/demo/images/")) {
+      const filename = path.basename(pathname.slice("/demo/images/".length));
+      const filePath = path.join(ROOT_DIR, "docs/demo-images", filename);
+      if (!fs.existsSync(filePath) || !fs.statSync(filePath).isFile()) {
+        res.statusCode = 404;
+        res.setHeader("Content-Type", "application/json");
+        res.end(JSON.stringify({ error: "Image not found", requested: filename }));
+        return;
+      }
+      const stat = fs.statSync(filePath);
+      res.statusCode = 200;
+      res.setHeader("Content-Type", "image/png");
+      res.setHeader("Content-Length", stat.size);
+      res.setHeader("Cache-Control", "public, max-age=3600");
+      if (req.method === "HEAD") { res.end(); return; }
+      fs.createReadStream(filePath).pipe(res);
+      return;
+    }
+
     // 404 for unknown endpoints
     res.statusCode = 404;
     res.setHeader("Content-Type", "application/json");

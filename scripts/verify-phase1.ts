@@ -128,8 +128,8 @@ async function runSuite() {
 
   const EXPECTED_SKUS = [
     {
-      sku: "CN-DEMO-PLC-DIN-420-MR1",
-      model: "CN-DIN-PLC-A1",
+      sku: "CN-X5PRIME-HE-XP5",
+      model: "HE-XP5",
       priceUsd: 890,
       stock: 3,
       requiredProperties: ["mounting", "supply_voltage", "analog_input", "protocol", "interface"],
@@ -137,8 +137,8 @@ async function runSuite() {
       prohibitedFacts: ["Modbus TCP", "analog output", "salida analógica"],
     },
     {
-      sku: "CN-DEMO-PID-PT100-RS1",
-      model: "CN-PID-T1",
+      sku: "CN-N1200",
+      model: "N1200",
       priceUsd: 480,
       stock: 2,
       requiredProperties: ["mounting", "sensor_element", "analog_output", "control_function", "protocol"],
@@ -146,8 +146,8 @@ async function runSuite() {
       prohibitedFacts: ["DIN", "output ≠ input", "salida ≠ entrada"],
     },
     {
-      sku: "CN-DEMO-PT100-3W-A1",
-      model: "CN-RTD-P1",
+      sku: "CN-THT02",
+      model: "THT-02",
       priceUsd: 75,
       stock: 8,
       requiredProperties: ["sensor_element", "mounting"],
@@ -276,9 +276,9 @@ async function runSuite() {
 
   // Live HTTP check of PDPs on Storefront port 8000
   const PDP_TESTS = [
-    { handle: "cn-demo-plc-din-420-mr1", sku: "CN-DEMO-PLC-DIN-420-MR1" },
-    { handle: "cn-demo-pid-pt100-rs1", sku: "CN-DEMO-PID-PT100-RS1" },
-    { handle: "cn-demo-pt100-3w-a1", sku: "CN-DEMO-PT100-3W-A1" },
+    { handle: "cn-x5prime-he-xp5", sku: "CN-X5PRIME-HE-XP5" },
+    { handle: "cn-n1200", sku: "CN-N1200" },
+    { handle: "cn-tht02", sku: "CN-THT02" },
   ];
 
   for (const item of PDP_TESTS) {
@@ -503,7 +503,7 @@ async function runSuite() {
   console.log(`\n${BOLD}[5] IDEMPOTENCIA DEL SEED (EJECUCIÓN REPETIDA)${RESET}`);
 
   const countVariantsBefore = psqlQuery<{ count: string }>(`
-    SELECT count(*) as count FROM product_variant WHERE sku LIKE 'CN-DEMO-%' AND deleted_at IS NULL;
+    SELECT count(*) as count FROM product_variant WHERE sku LIKE 'CN-%' AND sku NOT LIKE 'CN-DEMO-TEST-%' AND sku NOT LIKE 'CN-DEMO-INVENTED-%' AND deleted_at IS NULL;
   `)[0]?.count || "0";
 
   const countProductsBefore = psqlQuery<{ count: string }>(`
@@ -522,7 +522,7 @@ async function runSuite() {
     });
 
     const countVariantsAfter = psqlQuery<{ count: string }>(`
-      SELECT count(*) as count FROM product_variant WHERE sku LIKE 'CN-DEMO-%' AND deleted_at IS NULL;
+      SELECT count(*) as count FROM product_variant WHERE sku LIKE 'CN-%' AND sku NOT LIKE 'CN-DEMO-TEST-%' AND sku NOT LIKE 'CN-DEMO-INVENTED-%' AND deleted_at IS NULL;
     `)[0]?.count || "0";
 
     const countProductsAfter = psqlQuery<{ count: string }>(`
@@ -569,7 +569,7 @@ async function runSuite() {
     });
 
     const demoVariantsAfterRevert = psqlQuery<{ count: string }>(`
-      SELECT count(*) as count FROM product_variant WHERE sku LIKE 'CN-DEMO-%' AND deleted_at IS NULL;
+      SELECT count(*) as count FROM product_variant WHERE sku LIKE 'CN-%' AND sku NOT LIKE 'CN-DEMO-TEST-%' AND sku NOT LIKE 'CN-DEMO-INVENTED-%' AND deleted_at IS NULL;
     `)[0]?.count || "0";
 
     const nonDemoProductsAfterRevert = psqlQuery<{ count: string }>(`

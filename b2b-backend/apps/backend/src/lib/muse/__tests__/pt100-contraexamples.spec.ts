@@ -1,6 +1,6 @@
 /**
  * PT100 RTD Sensor Contraexample & Mandatory Claims Test Suite
- * SKU: CN-DEMO-PT100-3W-A1 (Model: CN-RTD-P1)
+ * SKU: CN-THT02 (Model: CN-RTD-P1)
  *
  * Validaciones obligatorias:
  * 1. Afirmaciones técnicas obligatorias:
@@ -33,8 +33,8 @@ import {
   TechnicalSourceRecord,
 } from "../db"
 
-describe("SKU 3: CN-DEMO-PT100-3W-A1 (CN-RTD-P1) — Contraejemplos y Afirmaciones Obligatorias", () => {
-  const SKU = "CN-DEMO-PT100-3W-A1"
+describe("SKU 3: CN-THT02 (CN-RTD-P1) — Contraejemplos y Afirmaciones Obligatorias", () => {
+  const SKU = "CN-THT02"
   const MODEL = "CN-RTD-P1"
   const VARIANT_ID = "variant_01M3Q80V0NCKEV8GWYKETF7776"
   const SOURCE_ID = "SRC-CN-RTD-P1-DS-V1"
@@ -56,7 +56,7 @@ describe("SKU 3: CN-DEMO-PT100-3W-A1 (CN-RTD-P1) — Contraejemplos y Afirmacion
 
   const MOCK_SOURCE: TechnicalSourceRecord = {
     id: SOURCE_ID,
-    url: "http://52.20.66.203:8000/demo/datasheets/CN-DEMO-PT100-3W-A1.pdf",
+    url: "http://52.20.66.203:8000/demo/datasheets/CN-THT02.pdf",
     kind: "datasheet",
     revision: SOURCE_REVISION,
     checksum: EXPECTED_CHECKSUM,
@@ -794,7 +794,7 @@ describe("SKU 3: CN-DEMO-PT100-3W-A1 (CN-RTD-P1) — Contraejemplos y Afirmacion
   // BLOQUE 4: VERIFICACIÓN DE INTEGRACIÓN Y TRAZABILIDAD DOCUMENTAL
   // ==========================================================================
   describe("4. Trazabilidad Documental y Coherencia de Datos", () => {
-    it("Valida metadatos del perfil técnico de SKU 3 (CN-DEMO-PT100-3W-A1)", () => {
+    it("Valida metadatos del perfil técnico de SKU 3 (CN-THT02)", () => {
       const profile = getProfile()
       expect(profile.sku).toBe(SKU)
       expect(profile.model).toBe(MODEL)
@@ -830,7 +830,7 @@ describe("SKU 3: CN-DEMO-PT100-3W-A1 (CN-RTD-P1) — Contraejemplos y Afirmacion
       expect(sources.length).toBeGreaterThanOrEqual(1)
       const rtdSource = sources.find((s) => s.id === SOURCE_ID)
       expect(rtdSource).toBeDefined()
-      expect(rtdSource?.url).toContain("CN-DEMO-PT100-3W-A1.pdf")
+      expect(rtdSource?.url).toContain("CN-THT02.pdf")
       expect(rtdSource?.revision).toBe(SOURCE_REVISION)
       expect(rtdSource?.checksum).toBe(EXPECTED_CHECKSUM)
     })
@@ -852,7 +852,7 @@ describe("SKU 3: CN-DEMO-PT100-3W-A1 (CN-RTD-P1) — Contraejemplos y Afirmacion
       for (const ev of result.evaluations) {
         expect(ev.source_evidence).not.toBeNull()
         expect(ev.source_evidence?.source_id).toBe(SOURCE_ID)
-        expect(ev.source_evidence?.url).toContain("CN-DEMO-PT100-3W-A1.pdf")
+        expect(ev.source_evidence?.url).toContain("CN-THT02.pdf")
         expect(ev.source_evidence?.section).toMatch(/^Sección [1-6]:/)
         expect(typeof ev.source_evidence?.page).toBe("number")
         expect(ev.source_evidence?.excerpt).toBeTruthy()

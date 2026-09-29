@@ -68,7 +68,7 @@ describe("Muse Idempotency & Replay Verification", () => {
       const payload1 = {
         region_id: "reg_pe_lim",
         items: [
-          { sku: "CN-DEMO-PLC-DIN-420-MR1", quantity: 2, options: { z: 1, a: 2 } },
+          { sku: "CN-X5PRIME-HE-XP5", quantity: 2, options: { z: 1, a: 2 } },
         ],
         customer: {
           name: "Acme Corp",
@@ -82,7 +82,7 @@ describe("Muse Idempotency & Replay Verification", () => {
           name: "Acme Corp",
         },
         items: [
-          { options: { a: 2, z: 1 }, quantity: 2, sku: "CN-DEMO-PLC-DIN-420-MR1" },
+          { options: { a: 2, z: 1 }, quantity: 2, sku: "CN-X5PRIME-HE-XP5" },
         ],
         region_id: "reg_pe_lim",
       }
@@ -121,15 +121,15 @@ describe("Muse Idempotency & Replay Verification", () => {
 
     it("produces different hashes when payload values change", () => {
       const bodyOriginal = {
-        sku: "CN-DEMO-PT100-3W-A1",
+        sku: "CN-THT02",
         quantity: 1,
       }
       const bodyModifiedQuantity = {
-        sku: "CN-DEMO-PT100-3W-A1",
+        sku: "CN-THT02",
         quantity: 2,
       }
       const bodyModifiedSku = {
-        sku: "CN-DEMO-PID-PT100-RS1",
+        sku: "CN-N1200",
         quantity: 1,
       }
 
@@ -164,7 +164,7 @@ describe("Muse Idempotency & Replay Verification", () => {
   describe("handleIdempotencyCheck", () => {
     const samplePayload = {
       variant_id: "variant_01J8Y6Q8M2DINPLC420",
-      sku: "CN-DEMO-PLC-DIN-420-MR1",
+      sku: "CN-X5PRIME-HE-XP5",
       quantity: 3,
       region_id: "reg_default_pe",
     }
@@ -175,7 +175,7 @@ describe("Muse Idempotency & Replay Verification", () => {
       opaque_public_id: "pq_pub_98a72b1c",
       status: "preliminary",
       variant_id: "variant_01J8Y6Q8M2DINPLC420",
-      sku: "CN-DEMO-PLC-DIN-420-MR1",
+      sku: "CN-X5PRIME-HE-XP5",
       model: "CN-PLC-420-MR1",
       title: "Controlador Lógico Programable DIN 4-20mA",
       quantity: 3,
@@ -189,7 +189,7 @@ describe("Muse Idempotency & Replay Verification", () => {
       tax_amount_minor: 0,
       shipping_status: "to_be_confirmed",
       availability_snapshot_json: { lead_time_days: 3, in_stock: true },
-      product_url: "https://controlnautas.com/products/cn-demo-plc-din-420-mr1",
+      product_url: "https://controlnautas.com/products/cn-x5prime-he-xp5",
       observed_at: new Date("2026-09-29T18:00:00Z"),
       created_at: new Date("2026-09-29T18:00:00Z"),
       expires_at: new Date("2026-10-06T18:00:00Z"),
@@ -293,7 +293,7 @@ describe("Muse Idempotency & Replay Verification", () => {
         const reorderedPayload = {
           region_id: "reg_default_pe",
           quantity: 3,
-          sku: "CN-DEMO-PLC-DIN-420-MR1",
+          sku: "CN-X5PRIME-HE-XP5",
           variant_id: "variant_01J8Y6Q8M2DINPLC420",
         }
 
@@ -342,7 +342,7 @@ describe("Muse Idempotency & Replay Verification", () => {
         const alteredPayload = {
           ...samplePayload,
           variant_id: "variant_DIFFERENT_PT100",
-          sku: "CN-DEMO-PT100-3W-A1",
+          sku: "CN-THT02",
         }
 
         const mockPool = {

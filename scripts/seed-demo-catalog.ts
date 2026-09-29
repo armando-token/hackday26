@@ -50,7 +50,7 @@ export async function runSeedDemoCatalog(): Promise<void> {
       )
     }
 
-    const demoSkus = ["CN-DEMO-PLC-DIN-420-MR1", "CN-DEMO-PID-PT100-RS1", "CN-DEMO-PT100-3W-A1"]
+    const demoSkus = ["CN-X5PRIME-HE-XP5", "CN-N1200", "CN-THT02"]
     for (const sku of demoSkus) {
       const entry = manifest.products?.[sku] || manifest[sku]
       if (!entry) {

@@ -113,10 +113,10 @@ function resolveMuseToken(): string {
 }
 
 /**
- * Resolves PLC Variant ID (SKU: CN-DEMO-PLC-DIN-420-MR1)
+ * Resolves PLC Variant ID (SKU: CN-X5PRIME-HE-XP5)
  */
 function resolvePlcVariantId(): { variantId: string; sku: string; officialPrice: number } {
-  const TARGET_SKU = "CN-DEMO-PLC-DIN-420-MR1"
+  const TARGET_SKU = "CN-X5PRIME-HE-XP5"
   let variantId = ""
 
   if (cliVariantId && cliVariantId.trim().length > 0) {

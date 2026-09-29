@@ -15,7 +15,7 @@ describe("Deterministic Technical Evaluation Engine (evaluator.ts)", () => {
     model: "CN-DIN-PLC-A1",
     revision: "rev-2026.1",
     demo: true,
-    sku: "CN-DEMO-PLC-DIN-420-MR1",
+    sku: "CN-X5PRIME-HE-XP5",
     created_at: new Date(),
     updated_at: new Date(),
   }
@@ -23,7 +23,7 @@ describe("Deterministic Technical Evaluation Engine (evaluator.ts)", () => {
   const dummySources: TechnicalSourceRecord[] = [
     {
       id: "SRC-CN-DIN-PLC-A1-DS-V1",
-      url: "http://52.20.66.203:8000/demo/datasheets/CN-DEMO-PLC-DIN-420-MR1.pdf",
+      url: "http://52.20.66.203:8000/demo/datasheets/CN-X5PRIME-HE-XP5.pdf",
       kind: "datasheet",
       revision: "rev-2026.1",
       checksum: "8009da7ddf415884229b8570d75fd59e602aad1013caab851ac61d06c361e385",
@@ -327,7 +327,7 @@ describe("Deterministic Technical Evaluation Engine (evaluator.ts)", () => {
 
       expect(result.overall_satisfied).toBe(true)
       expect(result.variant_id).toBe("variant_plc_1")
-      expect(result.sku).toBe("CN-DEMO-PLC-DIN-420-MR1")
+      expect(result.sku).toBe("CN-X5PRIME-HE-XP5")
       expect(result.evaluations).toHaveLength(4)
       expect(result.evaluations.every((e) => e.satisfied)).toBe(true)
       expect(result.source_revision).toBe("rev-2026.1")

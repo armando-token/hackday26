@@ -235,7 +235,7 @@ function getDemoVariantMap(manifestPath: string): Record<string, string> {
       SELECT pv.sku, pv.id as variant_id
       FROM product_variant pv
       INNER JOIN technical_profile tp ON tp.variant_id = pv.id
-      WHERE tp.demo = true AND pv.sku LIKE 'CN-DEMO-%' AND pv.deleted_at IS NULL;
+      WHERE tp.demo = true AND pv.sku LIKE 'CN-%' AND sku NOT LIKE 'CN-DEMO-TEST-%' AND sku NOT LIKE 'CN-DEMO-INVENTED-%' AND pv.deleted_at IS NULL;
     `);
     for (const r of rows) {
       if (r.sku && r.variant_id) {
@@ -325,9 +325,9 @@ async function runSuite() {
   console.log(`  ${BOLD}Manifiesto Path:${RESET}       ${MANIFEST_PATH}`);
 
   const variantMap = getDemoVariantMap(MANIFEST_PATH);
-  const plcVariantId = variantMap["CN-DEMO-PLC-DIN-420-MR1"] || "";
-  const pidVariantId = variantMap["CN-DEMO-PID-PT100-RS1"] || "";
-  const pt100VariantId = variantMap["CN-DEMO-PT100-3W-A1"] || "";
+  const plcVariantId = variantMap["CN-X5PRIME-HE-XP5"] || "";
+  const pidVariantId = variantMap["CN-N1200"] || "";
+  const pt100VariantId = variantMap["CN-THT02"] || "";
 
   console.log(`  ${BOLD}PLC Variant ID:${RESET}        ${plcVariantId || "NO DETECTADO"}`);
   console.log(`  ${BOLD}PID Variant ID:${RESET}        ${pidVariantId || "NO DETECTADO"}`);
@@ -392,9 +392,9 @@ async function runSuite() {
     record(
       "OFFER-PLC-SKU",
       1,
-      "SKU corresponde a CN-DEMO-PLC-DIN-420-MR1",
-      data?.sku === "CN-DEMO-PLC-DIN-420-MR1",
-      "CN-DEMO-PLC-DIN-420-MR1",
+      "SKU corresponde a CN-X5PRIME-HE-XP5",
+      data?.sku === "CN-X5PRIME-HE-XP5",
+      "CN-X5PRIME-HE-XP5",
       String(data?.sku)
     );
 
@@ -462,7 +462,7 @@ async function runSuite() {
       `${data?.tax_status} / ${data?.shipping_status}`
     );
 
-    // PID Check (CN-DEMO-PID-PT100-RS1: 480 USD, 48000 minor units)
+    // PID Check (CN-N1200: 480 USD, 48000 minor units)
     if (pidVariantId) {
       const pidRes = await httpRequest(`${BACKEND_URL}/api/muse/v1/products/${pidVariantId}/offer?quantity=1`, {
         headers: authHeaders,
@@ -483,7 +483,7 @@ async function runSuite() {
       );
     }
 
-    // PT100 Check (CN-DEMO-PT100-3W-A1: 75 USD, 7500 minor units)
+    // PT100 Check (CN-THT02: 75 USD, 7500 minor units)
     if (pt100VariantId) {
       const pt100Res = await httpRequest(`${BACKEND_URL}/api/muse/v1/products/${pt100VariantId}/offer?quantity=1`, {
         headers: authHeaders,

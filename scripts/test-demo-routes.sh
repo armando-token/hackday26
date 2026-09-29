@@ -8,18 +8,18 @@ echo "================================================================="
 
 PORTS=(8000 9000)
 DATASHEETS=(
-  "CN-DEMO-PLC-DIN-420-MR1.pdf"
-  "CN-DEMO-PLC-DIN-420-MR1-datasheet.pdf"
-  "CN-DEMO-PID-PT100-RS1.pdf"
-  "CN-DEMO-PID-PT100-RS1-datasheet.pdf"
-  "CN-DEMO-PT100-3W-A1.pdf"
-  "CN-DEMO-PT100-3W-A1-datasheet.pdf"
+  "CN-X5PRIME-HE-XP5.pdf"
+  "CN-X5PRIME-HE-XP5-datasheet.pdf"
+  "CN-N1200.pdf"
+  "CN-N1200-datasheet.pdf"
+  "CN-THT02.pdf"
+  "CN-THT02-datasheet.pdf"
 )
 
 SPECS=(
-  "CN-DEMO-PLC-DIN-420-MR1.md"
-  "CN-DEMO-PID-PT100-RS1.md"
-  "CN-DEMO-PT100-3W-A1.md"
+  "CN-X5PRIME-HE-XP5.md"
+  "CN-N1200.md"
+  "CN-THT02.md"
 )
 
 for PORT in "${PORTS[@]}"; do
