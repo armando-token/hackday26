@@ -20,7 +20,6 @@ logs/
 # Node & dependencies
 node_modules/
 **/node_modules/
-
 # Next.js & Medusa builds
 .next/
 **/.next/
@@ -28,22 +27,37 @@ dist/
 build/
 .medusa/
 **/.medusa/
-
 # Environment & local config
 .env
 .env.local
 *.env
 !.env.template
-
 # Logs & OS files
 .DS_Store
 *.log
 npm-debug.log*
 yarn-debug.log*
-
 # Playwright & test cache
 /test-results/
 /playwright-report/
 .cache/
 __pycache__/
 *.pyc
+# AWS private keys — never commit
+aws-keys/
+*.pem
+# Env / secrets
+.env.*
+!.env.example
+# OS / editor
+.idea/
+.vscode/
+*.swp
+# Dependencies / build
+.venv/
+venv/
+# Hackday / secrets
+code_surce_cn.zip
+code_source_cn.zip
+code_source_cn/
+code_surce_cn/
