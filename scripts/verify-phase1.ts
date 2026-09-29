@@ -3,9 +3,9 @@
  * Controlnautas × Meta Muse (Hack Day 2026)
  *
  * Verifies 100% of Acceptance Criteria:
- *  1. 3 SKUs exist in Medusa with price and stock (PEN 890 / stock 3, PEN 480 / stock 2, PEN 75 / stock 8)
- *  2. Human pages open and display fiction notice ("PRODUCTO FICTICIO — DATOS DE DEMOSTRACIÓN")
- *  3. PDF datasheets open, contain simulation watermark ("SIMULACIÓN") + 6 citable numbered sections
+ *  1. 3 SKUs exist in Medusa with price and stock (USD 890 / stock 3, USD 480 / stock 2, USD 75 / stock 8)
+ *  2. Human pages open and display fiction notice ("FICTITIOUS PRODUCT — DEMONSTRATION DATA")
+ *  3. PDF datasheets open, contain simulation watermark ("SIMULATION") + 6 citable numbered sections
  *  4. Markdown specs formally cite fragments matching the PDF, strictly without embedded price or stock
  *  5. Seed idempotency (running seed multiple times does not duplicate products or change IDs)
  *  6. Revert isolation (revert removes only demo data, preserves foreign catalog 100%)
@@ -130,25 +130,28 @@ async function runSuite() {
     {
       sku: "CN-DEMO-PLC-DIN-420-MR1",
       model: "CN-DIN-PLC-A1",
-      pricePen: 890,
+      priceUsd: 890,
       stock: 3,
+      requiredProperties: ["mounting", "supply_voltage", "analog_input", "protocol", "interface"],
       requiredFacts: ["DIN 35 mm", "24 VDC", "4–20 mA", "RS-485", "Modbus RTU"],
-      prohibitedFacts: ["Modbus TCP", "salida analógica"],
+      prohibitedFacts: ["Modbus TCP", "analog output", "salida analógica"],
     },
     {
       sku: "CN-DEMO-PID-PT100-RS1",
       model: "CN-PID-T1",
-      pricePen: 480,
+      priceUsd: 480,
       stock: 2,
-      requiredFacts: ["panel", "Pt100 3 hilos", "PID", "SALIDA 4–20 mA", "Modbus RTU RS-485"],
-      prohibitedFacts: ["DIN", "salida ≠ entrada"],
+      requiredProperties: ["mounting", "sensor_element", "analog_output", "control_function", "protocol"],
+      requiredFacts: ["panel", "Pt100", "PID", "4–20 mA", "Modbus RTU"],
+      prohibitedFacts: ["DIN", "output ≠ input", "salida ≠ entrada"],
     },
     {
       sku: "CN-DEMO-PT100-3W-A1",
       model: "CN-RTD-P1",
-      pricePen: 75,
+      priceUsd: 75,
       stock: 8,
-      requiredFacts: ["Pt100 3 hilos pasivo", "sonda", "SIN transmisor integrado", "SIN interfaz digital"],
+      requiredProperties: ["sensor_element", "mounting"],
+      requiredFacts: ["Pt100", "probe", "AISI 316L"],
       prohibitedFacts: ["4–20 mA", "Modbus"],
     },
   ];
@@ -156,7 +159,7 @@ async function runSuite() {
   // -------------------------------------------------------------
   // TEST 1: Database Existence, Pricing, Stock & Technical Schema
   // -------------------------------------------------------------
-  console.log(`\n${BOLD}[1] VERIFICACIÓN EN MEDUSA: PRODUCTOS, PRECIOS, STOCK Y ESQUEMA TÉCNICO${RESET}`);
+  console.log(`\n${BOLD}[1] VERIFICACIÓN EN MEDUSA: PRODUCTOS, PRECIOS (USD), STOCK Y ESQUEMA TÉCNICO${RESET}`);
 
   for (const exp of EXPECTED_SKUS) {
     const variants = psqlQuery(`
@@ -178,24 +181,24 @@ async function runSuite() {
     if (varExists) {
       const v = variants[0];
 
-      // Price verification
+      // Price verification: Currency USD
       const prices = psqlQuery(`
         SELECT p.id, p.amount, p.currency_code
         FROM price p
         JOIN product_variant_price_set pvps ON pvps.price_set_id = p.price_set_id
-        WHERE pvps.variant_id = '${v.variant_id}' AND p.currency_code = 'pen' AND p.deleted_at IS NULL;
+        WHERE pvps.variant_id = '${v.variant_id}' AND p.currency_code = 'usd' AND p.deleted_at IS NULL;
       `);
 
       const priceMatches = prices.some(
-        (p) => Number(p.amount) === exp.pricePen || Number(p.amount) === exp.pricePen * 100
+        (p) => Number(p.amount) === exp.priceUsd || Number(p.amount) === exp.priceUsd * 100
       );
       const actualAmount = prices.length > 0 ? Number(prices[0].amount) : 0;
       record(
         "G1-DB-PRICE",
-        `Precio PEN de ${exp.sku} es ${exp.pricePen}`,
+        `Precio USD de ${exp.sku} es ${exp.priceUsd}`,
         priceMatches,
-        `${exp.pricePen} PEN`,
-        `${actualAmount} PEN (${prices.length} precios PEN registrados)`
+        `${exp.priceUsd} USD`,
+        `${actualAmount} USD (${prices.length} precios USD registrados)`
       );
 
       // Stock verification
@@ -223,12 +226,13 @@ async function runSuite() {
         FROM technical_profile
         WHERE variant_id = '${v.variant_id}' AND deleted_at IS NULL;
       `);
+      const profileValid = profiles.length > 0 && profiles[0].demo === true;
       record(
         "G1-DB-PROFILE",
         `technical_profile para variante ${exp.sku}`,
-        profiles.length > 0,
-        "1 technical_profile",
-        `${profiles.length} profiles encontrados`
+        profileValid,
+        "1 technical_profile con demo=true",
+        profiles.length > 0 ? `${profiles.length} profiles encontrados (demo=${profiles[0].demo})` : "0 profiles"
       );
 
       const facts = psqlQuery(`
@@ -236,12 +240,16 @@ async function runSuite() {
         FROM technical_fact
         WHERE variant_id = '${v.variant_id}' AND deleted_at IS NULL;
       `);
+      const factsCountValid = facts.length >= 4;
+      const propertiesPresent = exp.requiredProperties.every((reqProp) =>
+        facts.some((f) => f.property === reqProp)
+      );
       record(
         "G1-DB-FACTS",
-        `technical_fact registros para ${exp.sku}`,
-        facts.length >= 4,
-        ">= 4 hechos técnicos registrados",
-        `${facts.length} hechos registrados`
+        `technical_fact registros para ${exp.sku} (>= 4 hechos con propiedades clave)`,
+        factsCountValid && propertiesPresent,
+        `>= 4 hechos incluyendo [${exp.requiredProperties.join(", ")}]`,
+        `${facts.length} hechos registrados (propiedades: ${facts.map((f) => f.property).join(", ")})`
       );
     }
   }
@@ -256,11 +264,11 @@ async function runSuite() {
   let bannerInTemplate = false;
   if (fs.existsSync(hvacProductPath)) {
     const code = fs.readFileSync(hvacProductPath, "utf8");
-    bannerInTemplate = code.includes("PRODUCTO FICTICIO — DATOS DE DEMOSTRACIÓN");
+    bannerInTemplate = code.includes("FICTITIOUS PRODUCT — DEMONSTRATION DATA");
   }
   record(
     "G1-UI-BANNER-CODE",
-    "Banner 'PRODUCTO FICTICIO — DATOS DE DEMOSTRACIÓN' en plantilla Storefront",
+    "Banner 'FICTITIOUS PRODUCT — DEMONSTRATION DATA' en plantilla Storefront",
     bannerInTemplate,
     "Código incluye banner de advertencia para productos demo",
     bannerInTemplate ? "Banner implementado en HvacProductTemplate" : "Banner no encontrado en archivo"
@@ -275,19 +283,19 @@ async function runSuite() {
 
   for (const item of PDP_TESTS) {
     try {
-      const url = `http://127.0.0.1:8000/pe/products/${item.handle}`;
+      const url = `http://127.0.0.1:8000/us/products/${item.handle}`;
       const curlCmd = `curl -s -L -w "\\n%{http_code}" "${url}"`;
       const out = execSync(curlCmd, { encoding: "utf8", timeout: 15000 });
       const lines = out.trim().split("\n");
       const statusCode = lines[lines.length - 1];
       const body = lines.slice(0, -1).join("\n");
-      const hasBanner = body.includes("PRODUCTO FICTICIO — DATOS DE DEMOSTRACIÓN");
+      const hasBanner = body.includes("FICTITIOUS PRODUCT — DEMONSTRATION DATA");
 
       record(
         "G1-UI-PDP-LIVE",
         `PDP en vivo responde HTTP 200 y muestra aviso de ficción (${item.sku})`,
         statusCode === "200" && hasBanner,
-        "HTTP 200 con banner 'PRODUCTO FICTICIO — DATOS DE DEMOSTRACIÓN'",
+        "HTTP 200 con banner 'FICTITIOUS PRODUCT — DEMONSTRATION DATA'",
         `HTTP ${statusCode}, banner=${hasBanner ? "Detectado en HTML" : "Ausente"}`
       );
     } catch (err: any) {
@@ -303,7 +311,7 @@ async function runSuite() {
 
   // Live HTTP 404 test on Storefront port 8000
   try {
-    const fakePdpUrl = "http://127.0.0.1:8000/pe/products/sku-ficticio-no-existente-404";
+    const fakePdpUrl = "http://127.0.0.1:8000/us/products/sku-ficticio-no-existente-404";
     const out = execSync(`curl -s -o /dev/null -w "%{http_code}" "${fakePdpUrl}"`, {
       encoding: "utf8",
       timeout: 10000,
@@ -363,15 +371,6 @@ async function runSuite() {
   // -------------------------------------------------------------
   console.log(`\n${BOLD}[3] DATASHEETS PDF: MARCA DE SIMULACIÓN Y SECCIONES CITABLES${RESET}`);
 
-  const REQUIRED_SECTIONS = [
-    "Sección 1: Identificación y Modelo",
-    "Sección 2: Montaje Físico",
-    "Sección 3: Alimentación Eléctrica",
-    "Sección 4: Entradas / Salidas Analógicas y Sensores",
-    "Sección 5: Comunicaciones y Protocolos",
-    "Sección 6: Restricciones y Contraindicaciones de Diseño",
-  ];
-
   for (const exp of EXPECTED_SKUS) {
     const pdfPath = `/home/ubuntu/hackday26/docs/datasheets/${exp.sku}.pdf`;
     const pdfExists = fs.existsSync(pdfPath);
@@ -387,20 +386,25 @@ async function runSuite() {
       const pdfText = extractPdfText(pdfPath);
 
       // Simulation mark
-      const hasSimulacion = pdfText.includes("SIMULACIÓN") || pdfText.includes("SIMULACION");
+      const hasSimulacion =
+        pdfText.includes("SIMULATION") ||
+        pdfText.includes("SIMULACIÓN") ||
+        pdfText.includes("SIMULACION");
       record(
         "G1-PDF-SIMULATION",
-        `Marca 'SIMULACIÓN' en cabecera/pie del PDF ${exp.sku}`,
+        `Marca 'SIMULATION' en cabecera/pie del PDF ${exp.sku}`,
         hasSimulacion,
-        "Marca presente",
+        "Marca 'SIMULATION' presente",
         hasSimulacion ? "Presente en todas las páginas" : "No detectada"
       );
 
       // Fiction notice
-      const hasFiction = pdfText.includes("PRODUCTO FICTICIO");
+      const hasFiction =
+        pdfText.includes("FICTITIOUS PRODUCT — DEMONSTRATION DATA") ||
+        pdfText.includes("FICTITIOUS PRODUCT");
       record(
         "G1-PDF-FICTION",
-        `Aviso 'PRODUCTO FICTICIO' visible en PDF ${exp.sku}`,
+        `Aviso 'FICTITIOUS PRODUCT — DEMONSTRATION DATA' visible en PDF ${exp.sku}`,
         hasFiction,
         "Aviso presente",
         hasFiction ? "Presente" : "No detectado"
@@ -408,9 +412,8 @@ async function runSuite() {
 
       // Citable sections
       let allSectionsFound = true;
-      for (const sec of REQUIRED_SECTIONS) {
-        const secShort = sec.split(":")[0];
-        if (!pdfText.includes(secShort)) {
+      for (let secNum = 1; secNum <= 6; secNum++) {
+        if (!pdfText.includes(`Section ${secNum}`) && !pdfText.includes(`Sección ${secNum}`)) {
           allSectionsFound = false;
         }
       }
@@ -444,20 +447,25 @@ async function runSuite() {
       const mdContent = fs.readFileSync(mdPath, "utf8");
 
       // Fiction notice
-      const hasNotice = mdContent.includes("PRODUCTO FICTICIO — DATOS DE DEMOSTRACIÓN");
+      const hasNotice =
+        mdContent.includes("FICTITIOUS PRODUCT — DEMONSTRATION DATA") ||
+        mdContent.includes("PRODUCTO FICTICIO — DATOS DE DEMOSTRACIÓN");
+      const hasSimulation =
+        mdContent.includes("SIMULATION") ||
+        mdContent.includes("SIMULACIÓN");
       record(
         "G1-MD-NOTICE",
         `Marca de ficción en Markdown ${exp.sku}`,
-        hasNotice,
-        "Marca 'PRODUCTO FICTICIO — DATOS DE DEMOSTRACIÓN' en encabezado",
-        hasNotice ? "Presente" : "Ausente"
+        hasNotice && hasSimulation,
+        "Marca 'FICTITIOUS PRODUCT — DEMONSTRATION DATA' y 'SIMULATION' en encabezado",
+        hasNotice && hasSimulation ? "Presente" : "Ausente"
       );
 
       // Formal citation fields
       const hasCitations =
         mdContent.includes("source_id") &&
         mdContent.includes("revision") &&
-        mdContent.includes("URL") &&
+        (mdContent.includes("URL") || mdContent.includes("url")) &&
         mdContent.includes("excerpt");
       record(
         "G1-MD-CITATIONS",
@@ -468,13 +476,13 @@ async function runSuite() {
       );
 
       // Absence of commercial price & stock
-      // Strict prohibition: price numbers (PEN 890, 890, etc.) in a pricing context, or stock counts
+      // Strict prohibition: price numbers (USD 890, 890, etc.) in a pricing context, or stock counts
       const hasPriceContext =
-        /precio|price|tarifa|costo/i.test(mdContent) &&
+        /precio|price|tarifa|costo|cost|amount/i.test(mdContent) &&
         (mdContent.includes("890") || mdContent.includes("480") || mdContent.includes("75"));
       const hasStockContext =
-        /stock|inventario|disponibilidad/i.test(mdContent) &&
-        (mdContent.includes("unidades") || mdContent.includes("piezas"));
+        /stock|inventario|disponibilidad|inventory|availability/i.test(mdContent) &&
+        (mdContent.includes("unidades") || mdContent.includes("piezas") || mdContent.includes("units") || mdContent.includes("pcs"));
 
       const zeroPriceStock = !hasPriceContext && !hasStockContext;
       record(

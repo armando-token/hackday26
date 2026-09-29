@@ -1,10 +1,10 @@
 import { NextRequest, NextResponse } from "next/server"
 import { getLegacyRedirect } from "@lib/seo/redirects"
 
-const DEFAULT_REGION = process.env.NEXT_PUBLIC_DEFAULT_REGION || "pe"
+const DEFAULT_REGION = process.env.NEXT_PUBLIC_DEFAULT_REGION || "us"
 
-// Mercado exclusivo Perú (Bloque B & C)
-const KNOWN_COUNTRY_CODES = new Set(["pe"])
+// Mercados soportados: EE.UU. (default) y Perú
+const KNOWN_COUNTRY_CODES = new Set(["us", "pe"])
 
 const KNOWN_ROOT_ROUTES = new Set([
   "",
@@ -122,11 +122,16 @@ export async function middleware(request: NextRequest) {
     return NextResponse.next()
   }
 
-  // 5. Si la ruta raíz es válida (ej. /, /store, /nosotros), redirigir a /pe/...
+  // 5. Si la ruta raíz es válida (ej. /, /store, /nosotros), redirigir a /us/... (o permitir graceful si /pe/...)
   if (KNOWN_ROOT_ROUTES.has(firstSegment)) {
-    const targetCountry = DEFAULT_REGION || "pe"
     const queryString = request.nextUrl.search || ""
     const cleanPath = pathname === "/" ? "" : pathname
+
+    if (cleanPath.startsWith("/pe/") || cleanPath === "/pe") {
+      return NextResponse.redirect(`${request.nextUrl.origin}${cleanPath}${queryString}`, 307)
+    }
+
+    const targetCountry = DEFAULT_REGION || "us"
     const redirectTarget = `${request.nextUrl.origin}/${targetCountry}${cleanPath}${queryString}`
 
     return NextResponse.redirect(redirectTarget, 307)

@@ -151,7 +151,7 @@ describe("Database Integration: GET /api/muse/v1/quotes/[quoteId]/pdf", () => {
     expect(result.headers["Content-Type"]).toBe("application/pdf")
     expect(result.headers["Cache-Control"]).toBe("public, max-age=3600")
     expect(result.headers["Content-Disposition"]).toBe(
-      `inline; filename="cotizacion-preliminar-${TEST_SKU}-${TEST_OPAQUE_ID.slice(0, 8)}.pdf"`
+      `inline; filename="preliminary-quote-${TEST_SKU}-${TEST_OPAQUE_ID.slice(0, 8)}.pdf"`
     )
     expect(result.headers["X-Request-Id"]).toBeDefined()
     expect(result.body).toBeDefined()

@@ -170,7 +170,7 @@ export async function findPreliminaryQuoteByIdOrPublicId(
  * 5. Si el archivo PDF no existe en disco: HTTP 404 Not Found.
  * 6. Transmite el archivo con:
  *    - Content-Type: application/pdf
- *    - Content-Disposition: inline; filename="cotizacion-preliminar-${sku}-${opaque_public_id.slice(0,8)}.pdf"
+ *    - Content-Disposition: inline; filename="preliminary-quote-${sku}-${opaque_public_id.slice(0,8)}.pdf"
  *    - Cache-Control: public, max-age=3600
  */
 export async function GET(req: MedusaRequest, res: MedusaResponse): Promise<any> {
@@ -266,7 +266,7 @@ export async function GET(req: MedusaRequest, res: MedusaResponse): Promise<any>
     // 7. Preparar encabezados HTTP y transmitir el archivo binario PDF (Requisito 6)
     const sku = (quote.sku || "DEMO").replace(/[^a-zA-Z0-9_-]/g, "_")
     const shortOpaqueId = (quote.opaque_public_id || quote.id || "00000000").slice(0, 8)
-    const filename = `cotizacion-preliminar-${sku}-${shortOpaqueId}.pdf`
+    const filename = `preliminary-quote-${sku}-${shortOpaqueId}.pdf`
 
     res.setHeader("Content-Type", "application/pdf")
     res.setHeader("Content-Disposition", `inline; filename="${filename}"`)

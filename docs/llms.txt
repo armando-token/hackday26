@@ -1,0 +1,13 @@
+# Controlnautas Muse Commerce Demo API
+Base: https://data.controlnautas.com
+OpenAPI: https://data.controlnautas.com/openapi.yaml
+
+For stock and price questions, use:
+1) GET /api/muse/v1/products/search — returns demo products WITH compact live USD price/stock fields
+2) GET /api/muse/v1/products/{variantId} — technical facts + embedded live `offer`
+3) GET /api/muse/v1/products/{variantId}/offer?quantity=N — full live commercial offer
+4) POST /api/muse/v1/preliminary-quotes — immutable preliminary quote + PDF
+
+Auth: Authorization: Bearer <MUSE_API_TOKEN>
+Demo only: FICTITIOUS PRODUCT — DEMONSTRATION DATA. Currency: USD.
+Do not call /admin.

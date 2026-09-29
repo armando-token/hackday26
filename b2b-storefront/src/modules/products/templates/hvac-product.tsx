@@ -168,10 +168,10 @@ export default function HvacProductTemplate({
             </span>
             <div>
               <p className="font-bold text-[15px] tracking-wide uppercase">
-                PRODUCTO FICTICIO — DATOS DE DEMOSTRACIÓN
+                FICTITIOUS PRODUCT — DEMONSTRATION DATA
               </p>
               <p className="text-[12px] text-[#664d03] mt-0.5">
-                Este producto es un componente de prueba sintético generado para fines de demostración técnica. Los datos técnicos, esquemas y especificaciones son demostrativos.
+                This product is a synthetic benchmark component generated exclusively for technical demonstration. Technical specifications, schematics, and parameters are demonstrative.
               </p>
             </div>
           </div>
@@ -241,7 +241,7 @@ export default function HvacProductTemplate({
               data-testid="demo-product-badge"
               className="mb-3 inline-flex items-center gap-1.5 px-3 py-1 bg-amber-100 border border-amber-300 rounded text-amber-900 font-bold text-[12px] uppercase"
             >
-              <span>⚠️</span> PRODUCTO FICTICIO — DATOS DE DEMOSTRACIÓN
+              <span>⚠️</span> FICTITIOUS PRODUCT — DEMONSTRATION DATA
             </div>
           )}
           <div className="text-[12px] font-bold text-[#666] uppercase mb-1">

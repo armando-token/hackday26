@@ -65,14 +65,14 @@ describe("Demo PDP Banner and 404 Behavior", () => {
     expect(product.isDemo).toBe(true)
 
     // Simulación de comprobación de vista PDP
-    const DEMO_BANNER_TEXT = "PRODUCTO FICTICIO — DATOS DE DEMOSTRACIÓN"
+    const DEMO_BANNER_TEXT = "FICTITIOUS PRODUCT — DEMONSTRATION DATA"
     const hasDemoMarker =
       product.isDemo ||
       Boolean(product.metadata?.hackday_demo) ||
       product.primaryVariant.sku.startsWith("CN-DEMO-")
 
     expect(hasDemoMarker).toBe(true)
-    expect(DEMO_BANNER_TEXT).toBe("PRODUCTO FICTICIO — DATOS DE DEMOSTRACIÓN")
+    expect(DEMO_BANNER_TEXT).toBe("FICTITIOUS PRODUCT — DEMONSTRATION DATA")
   })
 
   it("verifica que URLs de datasheets y specs apunten a los endpoints demo accesibles", () => {

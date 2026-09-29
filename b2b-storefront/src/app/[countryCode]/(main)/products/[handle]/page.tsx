@@ -22,11 +22,18 @@ type Props = {
 
 export async function generateStaticParams() {
   try {
-    const products = await listAllCatalogProducts("pe")
-    return products.map((p) => ({
-      countryCode: "pe",
-      handle: p.handle,
-    }))
+    const countries = ["pe", "us"]
+    const params: { countryCode: string; handle: string }[] = []
+    for (const countryCode of countries) {
+      const products = await listAllCatalogProducts(countryCode)
+      for (const p of products) {
+        params.push({
+          countryCode,
+          handle: p.handle,
+        })
+      }
+    }
+    return params
   } catch {
     return []
   }

@@ -24,7 +24,7 @@ import tls from "tls";
 import http from "http";
 import https from "https";
 import crypto from "crypto";
-import { execSync } from "child_process";
+import { execSync, spawnSync } from "child_process";
 
 // ANSI Styling Constants
 const RESET = "\x1b[0m";
@@ -71,6 +71,7 @@ interface HttpResponse<T = any> {
   status: number;
   headers: Record<string, string>;
   rawBody: string;
+  buffer: Buffer;
   data: T | null;
   durationMs: number;
 }
@@ -121,7 +122,8 @@ function httpRequest<T = any>(
       const chunks: Buffer[] = [];
       res.on("data", (chunk) => chunks.push(chunk));
       res.on("end", () => {
-        const rawBody = Buffer.concat(chunks).toString("utf8");
+        const buffer = Buffer.concat(chunks);
+        const rawBody = buffer.toString("utf8");
         const lowerHeaders: Record<string, string> = {};
         for (const [k, v] of Object.entries(res.headers)) {
           if (v !== undefined) {
@@ -140,6 +142,7 @@ function httpRequest<T = any>(
           status: res.statusCode || 0,
           headers: lowerHeaders,
           rawBody,
+          buffer,
           data,
           durationMs: Date.now() - startTime,
         });
@@ -301,6 +304,61 @@ function getDemoVariantMap(manifestPath: string): Record<string, string> {
   }
 
   return map;
+}
+
+// Helper to decode text content from ReportLab PDF (decompresses flate / ASCII85 streams)
+function extractPdfText(pdfRawOrPath: string | Buffer): string {
+  let tmpPath = "";
+  let cleanup = false;
+  if (Buffer.isBuffer(pdfRawOrPath) || (typeof pdfRawOrPath === "string" && !fs.existsSync(pdfRawOrPath))) {
+    tmpPath = path.join("/tmp", `p4_pdf_${Date.now()}_${crypto.randomBytes(4).toString("hex")}.pdf`);
+    fs.writeFileSync(tmpPath, pdfRawOrPath);
+    cleanup = true;
+  } else {
+    tmpPath = pdfRawOrPath as string;
+  }
+  try {
+    const pyCode = [
+      "import sys, base64, zlib, re",
+      "with open(sys.argv[1], \"rb\") as f: data = f.read()",
+      "idx = 0",
+      "all_text = []",
+      "while True:",
+      "    pos = data.find(b\"stream\", idx)",
+      "    if pos == -1: break",
+      "    start = pos + 6",
+      "    if data[start:start+1] == b\"\\r\": start += 1",
+      "    if data[start:start+1] == b\"\\n\": start += 1",
+      "    endpos = data.find(b\"endstream\", start)",
+      "    if endpos == -1: break",
+      "    raw = data[start:endpos].strip()",
+      "    try:",
+      "        a85 = base64.a85decode(raw, adobe=True)",
+      "        all_text.append(zlib.decompress(a85).decode(\"latin1\", errors=\"ignore\"))",
+      "    except Exception:",
+      "        try:",
+      "            all_text.append(zlib.decompress(raw).decode(\"latin1\", errors=\"ignore\"))",
+      "        except Exception: pass",
+      "    idx = endpos + 9",
+      "full = \"\\n\".join(all_text)",
+      "extracted = []",
+      "for m in re.finditer(r\"\\((.*?)\\)\\s*Tj\", full):",
+      "    s = m.group(1)",
+      "    s = re.sub(r\"\\\\([0-7]{3})\", lambda match: chr(int(match.group(1), 8)), s)",
+      "    s = s.replace(\"\\\\(\", \"(\").replace(\"\\\\)\", \")\").replace(\"\\\\\\\\\", \"\\\\\")",
+      "    s = s.replace(\"\\x97\", \"—\").replace(\"\\x96\", \"–\")",
+      "    extracted.append(s)",
+      "print(\" \".join(extracted))"
+    ].join("\n");
+    const res = spawnSync("python3", ["-c", pyCode, tmpPath], { encoding: "utf8" });
+    return res.stdout || "";
+  } catch {
+    return "";
+  } finally {
+    if (cleanup && fs.existsSync(tmpPath)) {
+      try { fs.unlinkSync(tmpPath); } catch {}
+    }
+  }
 }
 
 // Main Verification Suite Execution
@@ -728,14 +786,16 @@ async function runSuite() {
         offerQ1Res.status === 200 &&
         offerQ1Res.data?.state === "priced" &&
         offerQ1Res.data?.unit_price === 890 &&
+        offerQ1Res.data?.unit_price_minor === 89000 &&
         offerQ1Res.data?.subtotal === 890 &&
-        offerQ1Res.data?.currency === "pen" &&
+        offerQ1Res.data?.subtotal_minor === 89000 &&
+        offerQ1Res.data?.currency?.toLowerCase() === "usd" &&
         offerQ1Res.data?.availability?.status === "in_stock" &&
         offerQ1Res.data?.availability?.stocked_quantity === 3;
       record(
         "OFFER-HTTPS-QTY-1",
         7,
-        "GET /products/{id}/offer?quantity=1 sobre HTTPS refleja precio Medusa 890 PEN y stock 3",
+        "GET /products/{id}/offer?quantity=1 sobre HTTPS refleja precio Medusa 890 USD y stock 3",
         q1Ok,
         "HTTP 200, state='priced', unit_price=890, subtotal=890, stock=3",
         `HTTP ${offerQ1Res.status}, state=${offerQ1Res.data?.state}, price=${offerQ1Res.data?.unit_price}, subtotal=${offerQ1Res.data?.subtotal}, stock=${offerQ1Res.data?.availability?.stocked_quantity}`
@@ -750,12 +810,15 @@ async function runSuite() {
       const q2Ok =
         offerQ2Res.status === 200 &&
         offerQ2Res.data?.unit_price === 890 &&
+        offerQ2Res.data?.unit_price_minor === 89000 &&
         offerQ2Res.data?.subtotal === 1780 &&
+        offerQ2Res.data?.subtotal_minor === 178000 &&
+        offerQ2Res.data?.currency?.toLowerCase() === "usd" &&
         offerQ2Res.data?.scale === 2;
       record(
         "OFFER-HTTPS-QTY-2-MULTIPLIER",
         7,
-        "GET /products/{id}/offer?quantity=2 sobre HTTPS calcula subtotal exacto 1780 PEN (2x unit_price)",
+        "GET /products/{id}/offer?quantity=2 sobre HTTPS calcula subtotal exacto 1780 USD (2x unit_price)",
         q2Ok,
         "HTTP 200, unit_price=890, subtotal=1780, scale=2",
         `HTTP ${offerQ2Res.status}, unit_price=${offerQ2Res.data?.unit_price}, subtotal=${offerQ2Res.data?.subtotal}, scale=${offerQ2Res.data?.scale}`
@@ -869,15 +932,16 @@ async function runSuite() {
         summary?.sku === "CN-DEMO-PLC-DIN-420-MR1" &&
         summary?.unit_price === 890 &&
         summary?.subtotal === 890 &&
+        summary?.currency?.toLowerCase() === "usd" &&
         summary?.availability?.status === "in_stock" &&
-        (summary?.product_url || "").startsWith(`https://${BASE_DOMAIN}/pe/products/`);
+        (summary?.product_url || "").startsWith(`https://${BASE_DOMAIN}/us/products/`);
       record(
         "QUOTE-HTTPS-SUMMARY-INTEGRITY",
         8,
-        "Resumen comercial inmutable contiene SKU, precios, stock y URL pública de PDP en Storefront",
+        "Resumen comercial inmutable contiene SKU, precios, stock y URL pública de PDP en Storefront (/us/products/)",
         summaryOk,
-        "Precios oficiales 890 PEN y product_url en https://data.controlnautas.com",
-        `unit_price=${summary?.unit_price}, subtotal=${summary?.subtotal}, product_url=${summary?.product_url}`
+        "Precios oficiales 890 USD y product_url en https://data.controlnautas.com/us/products/",
+        `unit_price=${summary?.unit_price}, subtotal=${summary?.subtotal}, currency=${summary?.currency}, product_url=${summary?.product_url}`
       );
     } catch (err: any) {
       record("QUOTE-HTTPS-CRITICAL", 8, "Creación de cotización preliminar sobre HTTPS", false, "Sin error", err.message);
@@ -933,6 +997,21 @@ async function runSuite() {
         pdfRes.rawBody.length > 1000,
         "> 1000 bytes",
         `${pdfRes.rawBody.length} bytes`
+      );
+
+      // Verificación de contenido en inglés y USD sobre HTTPS
+      const pdfText = extractPdfText(pdfRes.buffer);
+      const hasUsdOrDollar = pdfText.includes("$") || pdfText.includes("USD");
+      const hasEnglishDisclaimer = pdfText.includes("SIMULATION — NOT A VALID COMMERCIAL OFFER");
+      const hasNoPen = !pdfText.includes("PEN") && !pdfText.includes("S/.");
+
+      record(
+        "PDF-HTTPS-ENGLISH-DISCLAIMER-USD",
+        9,
+        "Documento PDF sobre HTTPS incluye disclaimer en inglés 'SIMULATION — NOT A VALID COMMERCIAL OFFER' y precios USD",
+        hasUsdOrDollar && hasEnglishDisclaimer && hasNoPen,
+        "USD/$ presente, Disclaimer en inglés presente, sin PEN ni S/.",
+        `USD=${hasUsdOrDollar}, disclaimer=${hasEnglishDisclaimer}, no_pen=${hasNoPen}`
       );
 
       // Security: Tampered download token returns 404
@@ -1085,7 +1164,7 @@ async function runSuite() {
         subtotal: 0.01,
         in_stock: 99999,
         stock: 99999,
-        currency: "USD",
+        currency: "EUR",
       };
 
       const tamperRes = await httpRequest(`${HTTPS_BASE_URL}/api/muse/v1/preliminary-quotes`, {
@@ -1099,16 +1178,16 @@ async function runSuite() {
         tamperRes.status === 201 &&
         summary?.unit_price === 890 &&
         summary?.subtotal === 890 &&
-        summary?.currency === "pen" &&
+        summary?.currency?.toLowerCase() === "usd" &&
         summary?.availability?.status === "in_stock" &&
         summary?.availability?.stocked_quantity === 3;
 
       record(
         "PRICE-TAMPERING-HTTPS-API",
         11,
-        "Los valores comerciales inyectados por el cliente son ignorados; la API devuelve precio Medusa 890 PEN",
+        "Los valores comerciales inyectados por el cliente son ignorados; la API devuelve precio Medusa 890 USD",
         immuneApi,
-        "unit_price=890, subtotal=890, currency='pen'",
+        "unit_price=890, subtotal=890, currency='usd'",
         `HTTP ${tamperRes.status}, unit_price=${summary?.unit_price}, subtotal=${summary?.subtotal}, currency=${summary?.currency}`
       );
 
@@ -1147,21 +1226,23 @@ async function runSuite() {
 
       for (const p of demoProducts) {
         // 1. Storefront PDP HTML over HTTPS
-        const pdpUrl = `${HTTPS_BASE_URL}/pe/products/${p.handle}`;
+        const pdpUrl = `${HTTPS_BASE_URL}/us/products/${p.handle}`;
         const pdpRes = await httpRequest(pdpUrl, { method: "GET", timeoutMs: 20000 });
 
         const pdpHasNotice =
-          pdpRes.rawBody.includes("PRODUCTO FICTICIO") ||
-          pdpRes.rawBody.includes("DEMOSTRACIÓN") ||
+          pdpRes.rawBody.includes("FICTITIOUS PRODUCT") ||
+          pdpRes.rawBody.includes("DEMONSTRATION") ||
           pdpRes.rawBody.includes("disclaimer") ||
-          pdpRes.rawBody.includes("ficticio");
+          pdpRes.rawBody.includes("fictitious") ||
+          pdpRes.rawBody.includes("PRODUCTO FICTICIO") ||
+          pdpRes.rawBody.includes("DEMOSTRACIÓN");
 
         record(
           `STOREFRONT-PDP-HTTPS-${p.sku}`,
           12,
           `Página humana Storefront responde HTTP 200 OK y muestra banner de ficción sobre HTTPS (${p.handle})`,
           pdpRes.status === 200 && pdpHasNotice,
-          "HTTP 200 con marca de producto ficticio",
+          "HTTP 200 con marca de producto ficticio en inglés",
           `HTTP ${pdpRes.status}, aviso_presente=${pdpHasNotice}`
         );
 
@@ -1191,9 +1272,11 @@ async function runSuite() {
         const isMd =
           specRes.status === 200 &&
           specRes.rawBody.length > 100 &&
-          (specRes.rawBody.includes("Ficha") ||
-            specRes.rawBody.includes("Especificación") ||
-            specRes.rawBody.includes("CN-DEMO"));
+          (specRes.rawBody.includes("Specification") ||
+            specRes.rawBody.includes("Datasheet") ||
+            specRes.rawBody.includes("CN-DEMO") ||
+            specRes.rawBody.includes("Ficha") ||
+            specRes.rawBody.includes("Especificación"));
 
         record(
           `DEMO-ASSET-SPEC-HTTPS-${p.sku}`,

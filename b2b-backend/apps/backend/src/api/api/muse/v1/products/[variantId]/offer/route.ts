@@ -20,9 +20,26 @@ import {
 export const AUTHENTICATE = false
 
 /**
- * Default fallback demo region ID from manifest (Perú / PEN).
+ * Default fallback demo region ID for US / USD demonstration catalog.
  */
-const DEFAULT_DEMO_REGION_ID = "reg_01M01FK2K4G93M9GKDRTPRP6ZB"
+const DEFAULT_DEMO_REGION_ID =
+  process.env.DEFAULT_DEMO_REGION_ID ||
+  process.env.DEMO_REGION_ID ||
+  "reg_01JUS00HACKDAY26DEMOUSD0000"
+
+/**
+ * Public storefront base URL for product links.
+ */
+function getProductBaseUrl(): string {
+  const envUrl =
+    process.env.PUBLIC_MUSE_BASE_URL?.trim() ||
+    process.env.STOREFRONT_BASE_URL?.trim() ||
+    process.env.STOREFRONT_URL?.trim()
+  if (envUrl) {
+    return envUrl.replace(/\/+$/, "")
+  }
+  return "https://data.controlnautas.com"
+}
 
 /**
  * Dynamically resolves the demo region ID from the project manifest if present.
@@ -153,9 +170,14 @@ export const GET = async (
     // Ensure security headers are present on successful response
     applySecurityHeaders(res, requestId)
 
+    const productBaseUrl = getProductBaseUrl()
+    const productHandle = offer.product_handle || offer.sku?.toLowerCase() || ""
+    const productUrl = offer.product_url || `${productBaseUrl}/us/products/${productHandle}`
+
     // 7. Return JSON response with status 200
     return res.status(200).json({
       ...offer,
+      product_url: productUrl,
       request_id: requestId,
     })
   } catch (err: any) {

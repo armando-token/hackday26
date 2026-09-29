@@ -1,114 +1,115 @@
-# PRODUCTO FICTICIO — DATOS DE DEMOSTRACIÓN
+# FICTITIOUS PRODUCT — DEMONSTRATION DATA
 
-> **AVISO IMPORTANTE DE CONFORMIDAD:**
-> Este equipo y sus especificaciones técnicas han sido generados sintéticamente de manera exclusiva para fines de demostración, pruebas funcionales y benchmarking de ingeniería de la Fase 1. No corresponde a un componente comercial físico activo.
-
----
-
-# Ficha de Especificaciones Técnicas
-
-## Identificación del Producto
-- **Código SKU:** `CN-DEMO-PT100-3W-A1`
-- **Modelo:** `CN-RTD-P1`
-- **Denominación Técnica:** Sonda Industrial de Temperatura RTD Pt100 Pasiva de 3 Hilos en Acero Inoxidable
-- **Línea de Producto:** Familia Sensor-Pro Inox Series (Entorno Demostración)
-- **Categoría:** Sensores de Temperatura Primarios / Termorresistencias (RTD)
+> **FICTITIOUS PRODUCT — DEMONSTRATION DATA**  
+> *SIMULATION — NOT A VALID COMMERCIAL OFFER*  
+> This specification represents a synthetic benchmark component for the Controlnautas × Meta Muse agent-commerce evaluation.
 
 ---
 
-## Fuente Técnica Primaria y Control Documental
-- **Identificador de Fuente (`source_id`):** `SRC-CN-RTD-P1-DS-V1`
-- **Revisión del Documento (`revision`):** `rev-2026.1`
-- **URL Primaria del Datasheet:** [http://52.20.66.203:8000/demo/datasheets/CN-DEMO-PT100-3W-A1.pdf](http://52.20.66.203:8000/demo/datasheets/CN-DEMO-PT100-3W-A1.pdf)
-- **URL Alternativa / Local:** `/demo/datasheets/CN-DEMO-PT100-3W-A1.pdf`
-- **Tipo de Fuente:** Hoja de Datos Técnicos Oficial en PDF (Sintético con numeración de secciones estables)
+# Technical Specification Sheet
+
+## Product Identification
+- **SKU Code:** `CN-DEMO-PT100-3W-A1`
+- **Model:** `CN-RTD-P1`
+- **Technical Designation:** Stainless Steel 3-Wire Passive Pt100 RTD Industrial Temperature Sensor Probe
+- **Product Line:** Sensor-Pro Inox Series (Demonstration Environment)
+- **Category:** Primary Temperature Sensors / Resistance Temperature Detectors (RTD)
 
 ---
 
-## Perfil Técnico Resumido (Vocabulario Normalizado)
+## Primary Technical Source and Document Control
+- **source_id:** `SRC-CN-RTD-P1-DS-V1`
+- **revision:** `rev-2026.1`
+- **Primary Datasheet URL:** [https://data.controlnautas.com/demo/datasheets/CN-DEMO-PT100-3W-A1.pdf](https://data.controlnautas.com/demo/datasheets/CN-DEMO-PT100-3W-A1.pdf)
+- **Alternative / Local URL:** `/demo/datasheets/CN-DEMO-PT100-3W-A1.pdf`
+- **Source Type:** Official Technical Datasheet in PDF (Synthetic with stable section numbering)
 
-| Propiedad (`property`) | Valor Normalizado (`normalized_value_json`) | Valor Mostrado (`display_value`) |
+---
+
+## Summary Technical Profile (Standardized Vocabulary)
+
+| Property (`property`) | Normalized Value (`normalized_value_json`) | Display Value (`display_value`) |
 | :--- | :--- | :--- |
-| `sensor_element` | `{"type": "RTD", "element": "Pt100", "wires": 3, "class": "A", "standard": "IEC 60751", "r0_ohm": 100.0, "alpha": 0.00385, "min_c": -50.0, "max_c": 350.0}` | Sensor termorresistencia Pt100 Clase A, 3 hilos (-50 a +350 °C) |
-| `mounting` | `{"type": "threaded probe", "thread": "1/2 NPT", "material": "AISI 316L", "diameter_mm": 6.0, "length_mm": 150}` | Sonda de inmersión roscada 1/2" NPT, vaina AISI 316L 6×150 mm |
-| `supply_voltage` | `{"type": "passive", "external_power": false, "nominal_v": 0, "excitation_current_ma_min": 0.1, "excitation_current_ma_max": 1.0}` | SIN ALIMENTACIÓN PROPIA (componente Pt100 3 hilos pasivo) |
-| `analog_input` | `{"direction": "input", "channels": 0, "available": false}` | 0 canales (No aplica) |
-| `analog_output` | `{"direction": "output", "channels": 0, "available": false, "notes": "No 4-20 mA por sí solo ni voltaje"}` | 0 canales (Sin transmisor integrado; No 4–20 mA por sí solo) |
-| `interface` | `{"type": "none", "digital_interface": false, "cable_length_m": 2.0, "cable_wires": 3}` | SIN INTERFAZ DIGITAL (0 interfaces; cable flexible 3 hilos) |
-| `protocol` | `{"name": "none", "supported": false, "notes": "NO MODBUS POR SÍ SOLO"}` | Ninguno (NO MODBUS POR SÍ SOLO) |
+| `sensor_element` | `{"type": "RTD", "element": "Pt100", "wires": 3, "class": "A", "standard": "IEC 60751", "r0_ohm": 100.0, "alpha": 0.00385, "min_c": -50.0, "max_c": 350.0}` | Class A Pt100 RTD sensor, 3-wire (-50 to +350 °C) |
+| `mounting` | `{"type": "threaded probe", "thread": "1/2 NPT", "material": "AISI 316L", "diameter_mm": 6.0, "length_mm": 150}` | 1/2" NPT threaded immersion probe, AISI 316L sheath 6×150 mm |
+| `supply_voltage` | `{"type": "passive", "external_power": false, "nominal_v": 0, "excitation_current_ma_min": 0.1, "excitation_current_ma_max": 1.0}` | NO SELF-POWER (passive 3-wire Pt100 component) |
+| `analog_input` | `{"direction": "input", "channels": 0, "available": false}` | 0 channels (Not applicable) |
+| `analog_output` | `{"direction": "output", "channels": 0, "available": false, "notes": "No 4-20 mA on its own nor voltage"}` | 0 channels (No integrated transmitter; No 4–20 mA on its own) |
+| `interface` | `{"type": "none", "digital_interface": false, "cable_length_m": 2.0, "cable_wires": 3}` | NO DIGITAL INTERFACE (0 interfaces; flexible 3-wire cable) |
+| `protocol` | `{"name": "none", "supported": false, "notes": "NO MODBUS ON ITS OWN"}` | None (NO MODBUS ON ITS OWN) |
 
 ---
 
-## Especificaciones Detalladas con Citación Formal
+## Detailed Specifications with Formal Citation
 
-### Sección 1: Identificación y Modelo
+## Section 1: Identification and Model Overview
 - **source_id:** `SRC-CN-RTD-P1-DS-V1`
 - **revision:** `rev-2026.1`
-- **URL:** [http://52.20.66.203:8000/demo/datasheets/CN-DEMO-PT100-3W-A1.pdf](http://52.20.66.203:8000/demo/datasheets/CN-DEMO-PT100-3W-A1.pdf)
-- **página:** Pág. 1
-- **sección:** Sección 1: Identificación y Modelo
-- **excerpt descripción:** `"El sensor primario de temperatura modelo CN-RTD-P1 (código SKU: CN-DEMO-PT100-3W-A1) es una sonda pasiva Pt100 3 hilos con elemento termorresistivo de platino bobinado para inserción en fluidos térmicos y procesos industriales. Cumple rigurosamente con la relación resistencia-temperatura internacional bajo norma IEC 60751."`
-- **excerpt clasificación:** `"Sonda de inmersión / Pt100 3 hilos pasivo (SIN transmisor integrado, SIN interfaz digital)"`
-- **excerpt principio físico:** `"Termorresistencia de platino puro con variación de resistencia eléctrica dependiente de la temperatura"`
-- **excerpt aplicación:** `"Medición directa en líneas de tubería, intercambiadores de calor, tanques y termopozos"`
+- **URL:** [https://data.controlnautas.com/demo/datasheets/CN-DEMO-PT100-3W-A1.pdf](https://data.controlnautas.com/demo/datasheets/CN-DEMO-PT100-3W-A1.pdf)
+- **page:** Page 1
+- **section:** Section 1: Identification and Model Overview (Datasheet: Section 1: Identificación y Modelo)
+- **description excerpt:** `"The primary temperature sensor model CN-RTD-P1 (SKU code: CN-DEMO-PT100-3W-A1) is a passive 3-wire Pt100 probe featuring a wire-wound platinum resistance element designed for immersion in thermal fluids and industrial processes. It rigorously conforms to the international resistance-temperature relationship defined by IEC 60751."`
+- **classification excerpt:** `"Immersion probe / Passive 3-wire Pt100 (WITHOUT integrated transmitter, WITHOUT digital interface)"`
+- **physical principle excerpt:** `"Pure platinum resistance thermometry with temperature-dependent electrical resistance variation"`
+- **application excerpt:** `"Direct measurement in pipeline conduits, heat exchangers, storage tanks, and thermowells"`
 
-### Sección 2: Montaje Físico
+## Section 2: Physical Mounting and Mechanical Form Factor
 - **source_id:** `SRC-CN-RTD-P1-DS-V1`
 - **revision:** `rev-2026.1`
-- **URL:** [http://52.20.66.203:8000/demo/datasheets/CN-DEMO-PT100-3W-A1.pdf](http://52.20.66.203:8000/demo/datasheets/CN-DEMO-PT100-3W-A1.pdf)
-- **página:** Pág. 1
-- **sección:** Sección 2: Montaje Físico
-- **excerpt fijación:** `"Montaje roscado directo a proceso mediante racor fijo macho de 1/2 pulgada NPT"`
-- **excerpt material de vaina:** `"Sonda en vaina de acero inoxidable austenítico grado AISI 316L (1.4404) de alta pureza química"`
-- **excerpt dimensiones:** `"Diámetro exterior: 6.0 mm | Longitud útil sumergible en proceso: 150 mm"`
-- **excerpt presión:** `"Presión hidrostática de servicio admisible hasta 40 bar a 20 °C (25 bar a 200 °C)"`
-- **excerpt cable:** `"Manguera apantallada flexible de 2.0 metros con cubierta de teflón / silicona resistente a aceite y calor"`
-- **excerpt terminales:** `"3 conductores flexibles con punteras de cobre estañado (ferrules): 2 rojos (retorno común) y 1 blanco"`
+- **URL:** [https://data.controlnautas.com/demo/datasheets/CN-DEMO-PT100-3W-A1.pdf](https://data.controlnautas.com/demo/datasheets/CN-DEMO-PT100-3W-A1.pdf)
+- **page:** Page 1
+- **section:** Section 2: Physical Mounting and Mechanical Form Factor (Datasheet: Section 2: Montaje Físico)
+- **mounting fitting excerpt:** `"Direct process threaded mounting via fixed 1/2-inch NPT male connector"`
+- **sheath material excerpt:** `"Probe sheath fabricated from high-purity austenitic stainless steel grade AISI 316L (1.4404)"`
+- **dimensions excerpt:** `"Outer diameter: 6.0 mm | Process insertion length: 150 mm"`
+- **pressure rating excerpt:** `"Allowable hydrostatic working pressure up to 40 bar at 20 °C (25 bar at 200 °C)"`
+- **cable excerpt:** `"2.0-meter flexible shielded multicore cable with heat- and oil-resistant silicone/PTFE outer jacket"`
+- **terminations excerpt:** `"3 flexible stranded conductors with tinned copper ferrules: 2 red (common return) and 1 white"`
 
-### Sección 3: Alimentación Eléctrica
+## Section 3: Electrical Power Supply & Operational Tolerances
 - **source_id:** `SRC-CN-RTD-P1-DS-V1`
 - **revision:** `rev-2026.1`
-- **URL:** [http://52.20.66.203:8000/demo/datasheets/CN-DEMO-PT100-3W-A1.pdf](http://52.20.66.203:8000/demo/datasheets/CN-DEMO-PT100-3W-A1.pdf)
-- **página:** Pág. 1
-- **sección:** Sección 3: Alimentación Eléctrica
-- **excerpt pasividad eléctrica:** `"SIN ALIMENTACIÓN PROPIA (0 VDC / 0 VAC). Es un componente Pt100 3 hilos pasivo"`
-- **excerpt excitación nominal:** `"0.1 mA a 1.0 mA DC constante (suministrada externamente por el puente de medición o PLC/PID)"`
-- **excerpt corriente máxima:** `"2.0 mA DC (límite térmico estricto para prevenir el error por autocalentamiento Joule)"`
-- **excerpt aislamiento:** `"Resistencia de aislamiento > 100 MΩ a 500 VDC entre los conductores internos y la vaina metálica"`
-- **excerpt prohibición tensión:** `"PROHIBIDA LA APLICACIÓN DE TENSIÓN DIRECTA. Toda tensión fija quema el elemento"`
+- **URL:** [https://data.controlnautas.com/demo/datasheets/CN-DEMO-PT100-3W-A1.pdf](https://data.controlnautas.com/demo/datasheets/CN-DEMO-PT100-3W-A1.pdf)
+- **page:** Page 1
+- **section:** Section 3: Electrical Power Supply & Operational Tolerances (Datasheet Section 3: Electrical Power Supply)
+- **electrical passivity excerpt:** `"NO SELF-POWER (0 VDC / 0 VAC). Operates as a passive 3-wire Pt100 component"`
+- **nominal excitation excerpt:** `"0.1 mA to 1.0 mA DC constant current (supplied externally by measurement bridge or PLC/PID input circuit)"`
+- **maximum current excerpt:** `"2.0 mA DC (strict thermal ceiling to prevent self-heating Joule error)"`
+- **isolation excerpt:** `"Insulation resistance > 100 MΩ at 500 VDC between internal conductors and metallic sheath"`
+- **voltage prohibition excerpt:** `"DIRECT VOLTAGE APPLICATION PROHIBITED. Applying fixed voltage burns the platinum element"`
 
-### Sección 4: Entradas / Salidas Analógicas y Sensores
+## Section 4: Analog & Discrete I/O Interfaces and Sensors
 - **source_id:** `SRC-CN-RTD-P1-DS-V1`
 - **revision:** `rev-2026.1`
-- **URL:** [http://52.20.66.203:8000/demo/datasheets/CN-DEMO-PT100-3W-A1.pdf](http://52.20.66.203:8000/demo/datasheets/CN-DEMO-PT100-3W-A1.pdf)
-- **página:** Pág. 2
-- **sección:** Sección 4: Entradas / Salidas Analógicas y Sensores
-- **excerpt elemento sensor:** `"Platino puro bobinado / película delgada Pt100 según norma europea DIN EN 60751"`
-- **excerpt resistencia base:** `"R0 = 100.00 Ω nominal a 0.00 °C (coeficiente térmico alfa α = 0.003850 Ω/Ω/°C)"`
-- **excerpt precisión metrológica:** `"Clase A según IEC 60751: Tolerancia ±(0.15 + 0.002·|t|) °C (ej. ±0.15 °C a 0 °C, ±0.35 °C a 100 °C)"`
-- **excerpt rango térmico continuo:** `"-50.0 °C a +350.0 °C de temperatura continua sobre la vaina de acero inoxidable AISI 316L"`
-- **excerpt cableado 3 hilos:** `"Pt100 3 hilos pasivo con doble hilo común para compensación de resistencia de línea"`
-- **excerpt ausencia transmisor:** `"SIN TRANSMISOR INTEGRADO (0 transmisores). No incluye electrónica de acondicionamiento"`
-- **excerpt salida eléctrica:** `"Resistencia óhmica pura pasiva dependiente de la temperatura. No 4–20 mA por sí solo"`
+- **URL:** [https://data.controlnautas.com/demo/datasheets/CN-DEMO-PT100-3W-A1.pdf](https://data.controlnautas.com/demo/datasheets/CN-DEMO-PT100-3W-A1.pdf)
+- **page:** Page 2
+- **section:** Section 4: Analog & Discrete I/O Interfaces and Sensors (Datasheet: Section 4: Entradas / Salidas Analógicas y Sensores)
+- **sensor element excerpt:** `"Pure platinum wire-wound / thin-film Pt100 conforming to European standard DIN EN 60751"`
+- **base resistance excerpt:** `"R0 = 100.00 Ω nominal at 0.00 °C (temperature coefficient alpha α = 0.003850 Ω/Ω/°C)"`
+- **metrological accuracy excerpt:** `"Class A per IEC 60751: Tolerance ±(0.15 + 0.002·|t|) °C (e.g., ±0.15 °C at 0 °C, ±0.35 °C at 100 °C)"`
+- **continuous thermal range excerpt:** `"-50.0 °C to +350.0 °C continuous operating temperature on AISI 316L stainless steel sheath"`
+- **3-wire cabling excerpt:** `"Passive 3-wire Pt100 with dual common conductors for line resistance cancellation"`
+- **absence of transmitter excerpt:** `"WITHOUT INTEGRATED TRANSMITTER (0 transmitters). Contains no active signal conditioning electronics"`
+- **electrical output excerpt:** `"Pure passive temperature-dependent ohmic resistance. No 4–20 mA on its own"`
 
-### Sección 5: Comunicaciones y Protocolos
+## Section 5: Communications, Fieldbus and Protocol Specifications
 - **source_id:** `SRC-CN-RTD-P1-DS-V1`
 - **revision:** `rev-2026.1`
-- **URL:** [http://52.20.66.203:8000/demo/datasheets/CN-DEMO-PT100-3W-A1.pdf](http://52.20.66.203:8000/demo/datasheets/CN-DEMO-PT100-3W-A1.pdf)
-- **página:** Pág. 2
-- **sección:** Sección 5: Comunicaciones y Protocolos
-- **excerpt interfaz digital:** `"SIN INTERFAZ DIGITAL (0 interfaces). La sonda carece de microprocesador, UART, circuito integrado o puerto serie"`
-- **excerpt protocolo bus:** `"NO APLICA / NO MODBUS POR SÍ SOLO. No posee capacidad de comunicación digital por bus de datos"`
-- **excerpt modulación de bus:** `"No soportado de manera nativa (dispositivo sin modulación digital de señal)"`
-- **excerpt integración con PLC/PID:** `"Para leer esta sonda en un bus Modbus o PLC, se requiere cablearla a la entrada directa RTD de un regulador (como el modelo CN-PID-T1) o asociarla a un transmisor de cabezal/riel externo conversor de RTD a Modbus / 4–20 mA"`
+- **URL:** [https://data.controlnautas.com/demo/datasheets/CN-DEMO-PT100-3W-A1.pdf](https://data.controlnautas.com/demo/datasheets/CN-DEMO-PT100-3W-A1.pdf)
+- **page:** Page 2
+- **section:** Section 5: Communications, Fieldbus and Protocol Specifications (Datasheet: Section 5: Comunicaciones y Protocolos)
+- **digital interface excerpt:** `"NO DIGITAL INTERFACE (0 interfaces). Probe lacks microprocessor, UART, integrated circuit, or serial port"`
+- **bus protocol excerpt:** `"NOT APPLICABLE / NO MODBUS ON ITS OWN. Has no digital communication or fieldbus capability"`
+- **bus modulation excerpt:** `"Not natively supported (passive device without digital signal modulation)"`
+- **PLC/PID integration excerpt:** `"To acquire this probe on a Modbus network or PLC, wire directly into the RTD input of a dedicated controller (such as model CN-PID-T1) or pair with an external head/DIN rail transmitter converting RTD to Modbus or 4–20 mA"`
 
-### Sección 6: Restricciones y Contraindicaciones de Diseño
+## Section 6: Engineering Constraints and Design Contraindications
 - **source_id:** `SRC-CN-RTD-P1-DS-V1`
 - **revision:** `rev-2026.1`
-- **URL:** [http://52.20.66.203:8000/demo/datasheets/CN-DEMO-PT100-3W-A1.pdf](http://52.20.66.203:8000/demo/datasheets/CN-DEMO-PT100-3W-A1.pdf)
-- **página:** Pág. 2
-- **sección:** Sección 6: Restricciones y Contraindicaciones de Diseño
-- **excerpt contraindicación 4–20 mA:** `"El modelo CN-RTD-P1 es una sonda resistiva pasiva SIN TRANSMISOR INTEGRADO. Bajo ninguna circunstancia genera señal: No 4–20 mA por sí solo ni emite tensión normalizada. Está terminantemente prohibido conectar directamente esta sonda a las entradas analógicas 4–20 mA de un PLC (como las de CN-DIN-PLC-A1) sin interponer previamente un transmisor o acondicionador de señal específico para RTD Pt100."`
-- **excerpt contraindicación Modbus / digital:** `"El sensor posee SIN INTERFAZ DIGITAL y NO MODBUS POR SÍ SOLO. No puede ser interrogado, direccionado ni conectado a pares trenzados RS-485. Intentar conectarlo a una red Modbus por sí solo resultará en falla total."`
-- **excerpt peligro de tensión directa:** `"Jamás aplique tensión de red (220 VAC, 110 VAC) ni fuentes continuas (24 VDC, 12 VDC) a los hilos de la sonda. Una corriente superior a unos pocos miliamperios fundirá instantáneamente el filamento de platino de 100 Ω, destruyendo el sensor de forma irreversible."`
-- **excerpt conexión 3 hilos:** `"Conectar siempre los dos hilos de igual color (rojos) a las bornas de compensación del lector para asegurar la anulación del error por longitud de cable."`
+- **URL:** [https://data.controlnautas.com/demo/datasheets/CN-DEMO-PT100-3W-A1.pdf](https://data.controlnautas.com/demo/datasheets/CN-DEMO-PT100-3W-A1.pdf)
+- **page:** Page 2
+- **section:** Section 6: Engineering Constraints and Design Contraindications (Datasheet: Section 6: Restricciones y Contraindicaciones de Diseño)
+- **4–20 mA contraindication excerpt:** `"Model CN-RTD-P1 is a passive resistive probe WITHOUT INTEGRATED TRANSMITTER. Under no circumstances does it generate an active signal: No 4–20 mA on its own and no standard voltage output. It is strictly prohibited to connect this probe directly to 4–20 mA analog inputs of a PLC (such as CN-DIN-PLC-A1) without prior interposition of a dedicated RTD Pt100 transmitter or signal conditioner."`
+- **Modbus / digital contraindication excerpt:** `"The sensor features NO DIGITAL INTERFACE and NO MODBUS ON ITS OWN. It cannot be polled, addressed, or wired directly to RS-485 twisted pairs. Attempting to connect it directly to a Modbus network on its own will result in total operational failure."`
+- **direct voltage hazard excerpt:** `"Never apply AC line voltage (220 VAC, 110 VAC) or DC power sources (24 VDC, 12 VDC) to probe wire terminals. Currents exceeding a few milliamperes will instantaneously fuse the delicate 100 Ω platinum filament, permanently and irreversibly destroying the sensor."`
+- **3-wire wiring excerpt:** `"Always terminate the two identically colored wires (red) to the compensation terminals of the measurement instrument to ensure effective cancellation of lead wire resistance errors."`

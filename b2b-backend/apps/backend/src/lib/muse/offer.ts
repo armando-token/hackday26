@@ -18,7 +18,7 @@ import { getPool } from "./db"
 
 export const MIN_OFFER_QUANTITY = 1
 export const MAX_OFFER_QUANTITY = 20
-export const CANONICAL_CURRENCY = "pen"
+export const CANONICAL_CURRENCY = "usd"
 export const DECIMAL_SCALE = 2
 
 export type LiveOfferState = "priced" | "manual_review"
@@ -72,6 +72,7 @@ export interface LiveOfferResult {
   region_id?: string | null
   product_id?: string
   product_handle?: string
+  product_url?: string
 }
 
 /**
@@ -236,11 +237,11 @@ export function calculateLiveOfferPricing(
     }
   }
 
-  // Case 3: Invalid currency (must be 'pen')
+  // Case 3: Invalid currency (must be 'usd')
   if (normCurrency !== CANONICAL_CURRENCY) {
     return {
       state: "manual_review",
-      review_reason: `Unsupported currency '${currencyCode}', expected '${CANONICAL_CURRENCY}'`,
+      review_reason: `Currency '${normCurrency}' does not match canonical demonstration currency (usd)`,
       currency: normCurrency || CANONICAL_CURRENCY,
       unit_price_minor: null,
       unit_price: null,
@@ -300,7 +301,7 @@ export function buildLiveOfferLimitations(
     limitations.push("Stock: Item available on backorder; delivery lead time subject to factory scheduling")
   }
 
-  limitations.push("Taxes: Prices are tax-excluded (IGV 18% applied upon formal billing)")
+  limitations.push("Taxes: Prices are tax-excluded (sales tax calculated upon formal billing)")
   limitations.push("Shipping: Freight terms to be confirmed upon delivery location specification")
 
   return limitations
@@ -483,5 +484,10 @@ export async function getLiveOffer(
     region_id: regionId || null,
     product_id: row.product_id,
     product_handle: row.product_handle,
+    product_url: `${(
+      process.env.PUBLIC_MUSE_BASE_URL?.trim() ||
+      process.env.STOREFRONT_BASE_URL?.trim() ||
+      "https://data.controlnautas.com"
+    ).replace(/\/+$/, "")}/us/products/${row.product_handle || row.sku?.toLowerCase() || ""}`,
   }
 }

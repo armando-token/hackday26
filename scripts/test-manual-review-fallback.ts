@@ -508,12 +508,15 @@ async function runManualReviewSuite(): Promise<boolean> {
 
         const text1 = decodePdfText(pdfPath1)
 
+        const hasManualReviewHeader1 =
+          text1.includes("UNDER MANUAL REVIEW — NO COMMERCIAL PRICE AVAILABLE") ||
+          text1.includes("EN REVISIÓN MANUAL — SIN IMPORTE")
         assertCheck(
           "1.14",
-          "Generated PDF contains mandatory header 'EN REVISIÓN MANUAL — SIN IMPORTE'",
-          text1.includes("EN REVISIÓN MANUAL — SIN IMPORTE"),
-          "contains 'EN REVISIÓN MANUAL — SIN IMPORTE'",
-          text1.includes("EN REVISIÓN MANUAL — SIN IMPORTE") ? "FOUND" : "NOT FOUND"
+          "Generated PDF contains mandatory header 'UNDER MANUAL REVIEW — NO COMMERCIAL PRICE AVAILABLE'",
+          hasManualReviewHeader1,
+          "contains 'UNDER MANUAL REVIEW — NO COMMERCIAL PRICE AVAILABLE' or 'EN REVISIÓN MANUAL — SIN IMPORTE'",
+          hasManualReviewHeader1 ? "FOUND" : "NOT FOUND"
         )
 
         // Verify no false 0.00 currency amount in pricing table / totals
@@ -521,6 +524,9 @@ async function runManualReviewSuite(): Promise<boolean> {
           /Total Preliminar.*0\.00/i.test(text1) ||
           /Subtotal Neto.*0\.00/i.test(text1) ||
           /P\.\s*Unitario.*0\.00/i.test(text1) ||
+          /Estimated Total.*0\.00/i.test(text1) ||
+          /Unit Price.*0\.00/i.test(text1) ||
+          /USD\s*0\.00/i.test(text1) ||
           /PEN\s*0\.00/i.test(text1)
 
         assertCheck(
@@ -531,12 +537,15 @@ async function runManualReviewSuite(): Promise<boolean> {
           hasPricedZero1 ? "FALSE ZERO FOUND" : "CLEAN (NO FALSE ZERO)"
         )
 
+        const hasZeroPolicy1 =
+          text1.includes("does not issue false zero prices") ||
+          text1.includes("NO emite precios cero")
         assertCheck(
           "1.16",
           "Generated PDF explains zero-price immunity policy in disclaimer",
-          text1.includes("NO emite precios cero"),
-          "contains policy note 'NO emite precios cero'",
-          text1.includes("NO emite precios cero") ? "FOUND" : "NOT FOUND"
+          hasZeroPolicy1,
+          "contains policy note 'does not issue false zero prices'",
+          hasZeroPolicy1 ? "FOUND" : "NOT FOUND"
         )
       }
 
@@ -697,18 +706,24 @@ async function runManualReviewSuite(): Promise<boolean> {
       if (pdfExists2) {
         const text2 = decodePdfText(pdfPath2)
 
+        const hasManualReviewHeader2 =
+          text2.includes("UNDER MANUAL REVIEW — NO COMMERCIAL PRICE AVAILABLE") ||
+          text2.includes("EN REVISIÓN MANUAL — SIN IMPORTE")
         assertCheck(
           "2.10",
-          "Generated PDF contains header 'EN REVISIÓN MANUAL — SIN IMPORTE'",
-          text2.includes("EN REVISIÓN MANUAL — SIN IMPORTE"),
-          "contains 'EN REVISIÓN MANUAL — SIN IMPORTE'",
-          text2.includes("EN REVISIÓN MANUAL — SIN IMPORTE") ? "FOUND" : "NOT FOUND"
+          "Generated PDF contains header 'UNDER MANUAL REVIEW — NO COMMERCIAL PRICE AVAILABLE'",
+          hasManualReviewHeader2,
+          "contains 'UNDER MANUAL REVIEW — NO COMMERCIAL PRICE AVAILABLE' or 'EN REVISIÓN MANUAL — SIN IMPORTE'",
+          hasManualReviewHeader2 ? "FOUND" : "NOT FOUND"
         )
 
         const hasPricedZero2 =
           /Total Preliminar.*0\.00/i.test(text2) ||
           /Subtotal Neto.*0\.00/i.test(text2) ||
           /P\.\s*Unitario.*0\.00/i.test(text2) ||
+          /Estimated Total.*0\.00/i.test(text2) ||
+          /Unit Price.*0\.00/i.test(text2) ||
+          /USD\s*0\.00/i.test(text2) ||
           /PEN\s*0\.00/i.test(text2)
 
         assertCheck(
@@ -846,18 +861,24 @@ async function runManualReviewSuite(): Promise<boolean> {
       if (pdfExists3) {
         const text3 = decodePdfText(pdfPath3)
 
+        const hasManualReviewHeader3 =
+          text3.includes("UNDER MANUAL REVIEW — NO COMMERCIAL PRICE AVAILABLE") ||
+          text3.includes("EN REVISIÓN MANUAL — SIN IMPORTE")
         assertCheck(
           "3.9",
-          "Generated PDF contains header 'EN REVISIÓN MANUAL — SIN IMPORTE'",
-          text3.includes("EN REVISIÓN MANUAL — SIN IMPORTE"),
-          "contains 'EN REVISIÓN MANUAL — SIN IMPORTE'",
-          text3.includes("EN REVISIÓN MANUAL — SIN IMPORTE") ? "FOUND" : "NOT FOUND"
+          "Generated PDF contains header 'UNDER MANUAL REVIEW — NO COMMERCIAL PRICE AVAILABLE'",
+          hasManualReviewHeader3,
+          "contains 'UNDER MANUAL REVIEW — NO COMMERCIAL PRICE AVAILABLE' or 'EN REVISIÓN MANUAL — SIN IMPORTE'",
+          hasManualReviewHeader3 ? "FOUND" : "NOT FOUND"
         )
 
         const hasPricedZero3 =
           /Total Preliminar.*0\.00/i.test(text3) ||
           /Subtotal Neto.*0\.00/i.test(text3) ||
           /P\.\s*Unitario.*0\.00/i.test(text3) ||
+          /Estimated Total.*0\.00/i.test(text3) ||
+          /Unit Price.*0\.00/i.test(text3) ||
+          /USD\s*0\.00/i.test(text3) ||
           /PEN\s*0\.00/i.test(text3)
 
         assertCheck(
@@ -952,13 +973,15 @@ async function runManualReviewSuite(): Promise<boolean> {
       )
 
       const directText = decodePdfText(directPdfResult.filePath)
-
+      const hasDirectManualReviewHeader =
+        directText.includes("UNDER MANUAL REVIEW — NO COMMERCIAL PRICE AVAILABLE") ||
+        directText.includes("EN REVISIÓN MANUAL — SIN IMPORTE")
       assertCheck(
         "4.4",
-        "Direct PDF contains 'EN REVISIÓN MANUAL — SIN IMPORTE'",
-        directText.includes("EN REVISIÓN MANUAL — SIN IMPORTE"),
-        "contains 'EN REVISIÓN MANUAL — SIN IMPORTE'",
-        directText.includes("EN REVISIÓN MANUAL — SIN IMPORTE") ? "FOUND" : "NOT FOUND"
+        "Direct PDF contains 'UNDER MANUAL REVIEW — NO COMMERCIAL PRICE AVAILABLE'",
+        hasDirectManualReviewHeader,
+        "contains 'UNDER MANUAL REVIEW — NO COMMERCIAL PRICE AVAILABLE' or 'EN REVISIÓN MANUAL — SIN IMPORTE'",
+        hasDirectManualReviewHeader ? "FOUND" : "NOT FOUND"
       )
 
       assertCheck(
@@ -973,6 +996,9 @@ async function runManualReviewSuite(): Promise<boolean> {
         /Total Preliminar.*0\.00/i.test(directText) ||
         /Subtotal Neto.*0\.00/i.test(directText) ||
         /P\.\s*Unitario.*0\.00/i.test(directText) ||
+        /Estimated Total.*0\.00/i.test(directText) ||
+        /Unit Price.*0\.00/i.test(directText) ||
+        /USD\s*0\.00/i.test(directText) ||
         /PEN\s*0\.00/i.test(directText)
 
       assertCheck(

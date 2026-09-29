@@ -3,7 +3,7 @@
  * Controlnautas × Meta Muse (Hack Day 2026)
  *
  * Verifies 100% of Acceptance Criteria across all 12 Gate 3 requirements:
- *  1. Offer PLC quantity=1 reflects current Medusa price (890 PEN) and stock (3).
+ *  1. Offer PLC quantity=1 reflects current Medusa price (890 USD) and stock (3).
  *  2. Dynamic price change: update price -> new offer/quote reflects new price; previous snapshot retains original price.
  *  3. Dynamic inventory change: inventory reflects in offer.
  *  4. quantity=2 -> subtotal is 2x unit_price, correct scale.
@@ -22,7 +22,7 @@ import path from "path";
 import http from "http";
 import https from "https";
 import crypto from "crypto";
-import { execSync } from "child_process";
+import { execSync, spawnSync } from "child_process";
 
 // ANSI Styling Constants
 const RESET = "\x1b[0m";
@@ -69,6 +69,7 @@ interface HttpResponse<T = any> {
   status: number;
   headers: Record<string, string>;
   rawBody: string;
+  buffer: Buffer;
   data: T | null;
   durationMs: number;
 }
@@ -119,7 +120,8 @@ function httpRequest<T = any>(
       const chunks: Buffer[] = [];
       res.on("data", (chunk) => chunks.push(chunk));
       res.on("end", () => {
-        const rawBody = Buffer.concat(chunks).toString("utf8");
+        const buffer = Buffer.concat(chunks);
+        const rawBody = buffer.toString("utf8");
         const lowerHeaders: Record<string, string> = {};
         for (const [k, v] of Object.entries(res.headers)) {
           if (v !== undefined) {
@@ -138,6 +140,7 @@ function httpRequest<T = any>(
           status: res.statusCode || 0,
           headers: lowerHeaders,
           rawBody,
+          buffer,
           data,
           durationMs: Date.now() - startTime,
         });
@@ -251,6 +254,61 @@ function normalizeDownloadUrl(urlStr: string, localBase: string = "http://127.0.
     .replace(/http:\/\/localhost:9000/g, localBase);
 }
 
+// Helper to decode text content from ReportLab PDF (decompresses flate / ASCII85 streams)
+function extractPdfText(pdfRawOrPath: string | Buffer): string {
+  let tmpPath = "";
+  let cleanup = false;
+  if (Buffer.isBuffer(pdfRawOrPath) || (typeof pdfRawOrPath === "string" && !fs.existsSync(pdfRawOrPath))) {
+    tmpPath = path.join("/tmp", `p3_pdf_${Date.now()}_${crypto.randomBytes(4).toString("hex")}.pdf`);
+    fs.writeFileSync(tmpPath, pdfRawOrPath);
+    cleanup = true;
+  } else {
+    tmpPath = pdfRawOrPath as string;
+  }
+  try {
+    const pyCode = [
+      "import sys, base64, zlib, re",
+      "with open(sys.argv[1], \"rb\") as f: data = f.read()",
+      "idx = 0",
+      "all_text = []",
+      "while True:",
+      "    pos = data.find(b\"stream\", idx)",
+      "    if pos == -1: break",
+      "    start = pos + 6",
+      "    if data[start:start+1] == b\"\\r\": start += 1",
+      "    if data[start:start+1] == b\"\\n\": start += 1",
+      "    endpos = data.find(b\"endstream\", start)",
+      "    if endpos == -1: break",
+      "    raw = data[start:endpos].strip()",
+      "    try:",
+      "        a85 = base64.a85decode(raw, adobe=True)",
+      "        all_text.append(zlib.decompress(a85).decode(\"latin1\", errors=\"ignore\"))",
+      "    except Exception:",
+      "        try:",
+      "            all_text.append(zlib.decompress(raw).decode(\"latin1\", errors=\"ignore\"))",
+      "        except Exception: pass",
+      "    idx = endpos + 9",
+      "full = \"\\n\".join(all_text)",
+      "extracted = []",
+      "for m in re.finditer(r\"\\((.*?)\\)\\s*Tj\", full):",
+      "    s = m.group(1)",
+      "    s = re.sub(r\"\\\\([0-7]{3})\", lambda match: chr(int(match.group(1), 8)), s)",
+      "    s = s.replace(\"\\\\(\", \"(\").replace(\"\\\\)\", \")\").replace(\"\\\\\\\\\", \"\\\\\")",
+      "    s = s.replace(\"\\x97\", \"—\").replace(\"\\x96\", \"–\")",
+      "    extracted.append(s)",
+      "print(\" \".join(extracted))"
+    ].join("\n");
+    const res = spawnSync("python3", ["-c", pyCode, tmpPath], { encoding: "utf8" });
+    return res.stdout || "";
+  } catch {
+    return "";
+  } finally {
+    if (cleanup && fs.existsSync(tmpPath)) {
+      try { fs.unlinkSync(tmpPath); } catch {}
+    }
+  }
+}
+
 async function runSuite() {
   console.log(`${BOLD}${CYAN}==============================================================================${RESET}`);
   console.log(`${BOLD}${CYAN}  CONTROLNAUTAS × META MUSE — AUDITORÍA AUTOMATIZADA DE FASE 3 (PUERTA 3)     ${RESET}`);
@@ -286,9 +344,9 @@ async function runSuite() {
   };
 
   // ============================================================================
-  // CRITERION 1: Offer PLC quantity=1 reflects current Medusa price (890) and stock (3)
+  // CRITERION 1: Offer PLC quantity=1 reflects current Medusa price (890 USD) and stock (3)
   // ============================================================================
-  console.log(`\n${BOLD}[CRITERIO 1] OFERTA VIVA PLC QUANTITY=1 (PRECIO MEDUSA 890 PEN Y STOCK 3)${RESET}`);
+  console.log(`\n${BOLD}[CRITERIO 1] OFERTA VIVA PLC QUANTITY=1 (PRECIO MEDUSA 890 USD Y STOCK 3)${RESET}`);
   try {
     const res = await httpRequest(`${BACKEND_URL}/api/muse/v1/products/${plcVariantId}/offer?quantity=1`, {
       headers: authHeaders,
@@ -352,16 +410,16 @@ async function runSuite() {
     record(
       "OFFER-PLC-CURRENCY",
       1,
-      "Moneda comercial es PEN",
-      data?.currency?.toLowerCase() === "pen",
-      "pen",
+      "Moneda comercial es USD",
+      data?.currency?.toLowerCase() === "usd",
+      "usd",
       String(data?.currency)
     );
 
     record(
       "OFFER-PLC-UNIT-PRICE",
       1,
-      "Precio unitario refleja exactamente 890 PEN (89000 minor)",
+      "Precio unitario refleja exactamente 890 USD (89000 minor)",
       data?.unit_price === 890 && data?.unit_price_minor === 89000,
       "unit_price=890, unit_price_minor=89000",
       `unit_price=${data?.unit_price}, unit_price_minor=${data?.unit_price_minor}`
@@ -370,7 +428,7 @@ async function runSuite() {
     record(
       "OFFER-PLC-SUBTOTAL",
       1,
-      "Subtotal para quantity=1 refleja exactamente 890 PEN (89000 minor)",
+      "Subtotal para quantity=1 refleja exactamente 890 USD (89000 minor)",
       data?.subtotal === 890 && data?.subtotal_minor === 89000,
       "subtotal=890, subtotal_minor=89000",
       `subtotal=${data?.subtotal}, subtotal_minor=${data?.subtotal_minor}`
@@ -403,6 +461,48 @@ async function runSuite() {
       "tax_excluded / to_be_confirmed",
       `${data?.tax_status} / ${data?.shipping_status}`
     );
+
+    // PID Check (CN-DEMO-PID-PT100-RS1: 480 USD, 48000 minor units)
+    if (pidVariantId) {
+      const pidRes = await httpRequest(`${BACKEND_URL}/api/muse/v1/products/${pidVariantId}/offer?quantity=1`, {
+        headers: authHeaders,
+      });
+      const pidData = pidRes.data;
+      record(
+        "OFFER-PID-PRICE-MINOR",
+        1,
+        "PID Controller refleja 480 USD y 48000 minor units (cents)",
+        pidRes.status === 200 &&
+          pidData?.currency?.toLowerCase() === "usd" &&
+          pidData?.unit_price === 480 &&
+          pidData?.unit_price_minor === 48000 &&
+          pidData?.subtotal === 480 &&
+          pidData?.subtotal_minor === 48000,
+        "HTTP 200, currency=usd, unit_price=480, unit_price_minor=48000",
+        `HTTP ${pidRes.status}, currency=${pidData?.currency}, unit_price=${pidData?.unit_price}, minor=${pidData?.unit_price_minor}`
+      );
+    }
+
+    // PT100 Check (CN-DEMO-PT100-3W-A1: 75 USD, 7500 minor units)
+    if (pt100VariantId) {
+      const pt100Res = await httpRequest(`${BACKEND_URL}/api/muse/v1/products/${pt100VariantId}/offer?quantity=1`, {
+        headers: authHeaders,
+      });
+      const pt100Data = pt100Res.data;
+      record(
+        "OFFER-PT100-PRICE-MINOR",
+        1,
+        "PT100 Probe refleja 75 USD y 7500 minor units (cents)",
+        pt100Res.status === 200 &&
+          pt100Data?.currency?.toLowerCase() === "usd" &&
+          pt100Data?.unit_price === 75 &&
+          pt100Data?.unit_price_minor === 7500 &&
+          pt100Data?.subtotal === 75 &&
+          pt100Data?.subtotal_minor === 7500,
+        "HTTP 200, currency=usd, unit_price=75, unit_price_minor=7500",
+        `HTTP ${pt100Res.status}, currency=${pt100Data?.currency}, unit_price=${pt100Data?.unit_price}, minor=${pt100Data?.unit_price_minor}`
+      );
+    }
   } catch (err: any) {
     record("OFFER-PLC-CRITICAL", 1, "Excepción al consultar oferta viva PLC", false, "200 OK", err.message);
   }
@@ -417,7 +517,7 @@ async function runSuite() {
   let originalPlcPriceAmount = 890;
 
   try {
-    // 1. Crear cotización preliminar A con precio actual (890 PEN)
+    // 1. Crear cotización preliminar A con precio actual (890 USD)
     const quoteARes = await httpRequest(`${BACKEND_URL}/api/muse/v1/preliminary-quotes`, {
       method: "POST",
       headers: authHeaders,
@@ -443,7 +543,7 @@ async function runSuite() {
     record(
       "QUOTE-A-DATA",
       2,
-      "Cotización A refleja precio original 890 PEN y estado 'priced'",
+      "Cotización A refleja precio original 890 USD y estado 'priced'",
       quoteARes.data?.status === "priced" && quoteARes.data?.summary?.unit_price === 890,
       "status=priced, unit_price=890",
       `status=${quoteARes.data?.status}, unit_price=${quoteARes.data?.summary?.unit_price}`
@@ -454,7 +554,8 @@ async function runSuite() {
       SELECT p.id, p.amount
       FROM price p
       INNER JOIN product_variant_price_set pvps ON pvps.price_set_id = p.price_set_id
-      WHERE pvps.variant_id = '${plcVariantId}' AND p.currency_code = 'pen' AND p.deleted_at IS NULL
+      WHERE pvps.variant_id = '${plcVariantId}' AND (p.currency_code = 'usd' OR p.currency_code = 'pen') AND p.deleted_at IS NULL
+      ORDER BY (p.currency_code = 'usd') DESC
       LIMIT 1;
     `);
 
@@ -472,10 +573,10 @@ async function runSuite() {
       originalPlcPriceId || "No encontrado"
     );
 
-    // 3. Modificar precio dinámicamente a 950 PEN
+    // 3. Modificar precio dinámicamente a 950 USD
     psqlExec(`UPDATE price SET amount = 950 WHERE id = '${originalPlcPriceId}';`);
 
-    // 4. Consultar oferta en vivo -> debe reflejar inmediatamente 950 PEN
+    // 4. Consultar oferta en vivo -> debe reflejar inmediatamente 950 USD
     const newOfferRes = await httpRequest(`${BACKEND_URL}/api/muse/v1/products/${plcVariantId}/offer?quantity=1`, {
       headers: authHeaders,
     });
@@ -483,13 +584,13 @@ async function runSuite() {
     record(
       "OFFER-DYNAMIC-PRICE-REFLECTED",
       2,
-      "Oferta viva refleja dinámicamente el nuevo precio (950 PEN)",
+      "Oferta viva refleja dinámicamente el nuevo precio (950 USD)",
       newOfferRes.data?.unit_price === 950 && newOfferRes.data?.unit_price_minor === 95000,
       "unit_price=950, unit_price_minor=95000",
       `unit_price=${newOfferRes.data?.unit_price}, unit_price_minor=${newOfferRes.data?.unit_price_minor}`
     );
 
-    // 5. Crear cotización preliminar B -> debe reflejar el nuevo precio (950 PEN)
+    // 5. Crear cotización preliminar B -> debe reflejar el nuevo precio (950 USD)
     const quoteBRes = await httpRequest(`${BACKEND_URL}/api/muse/v1/preliminary-quotes`, {
       method: "POST",
       headers: authHeaders,
@@ -503,13 +604,13 @@ async function runSuite() {
     record(
       "QUOTE-B-NEW-PRICE",
       2,
-      "Nueva cotización B refleja nuevo precio actualizado (950 PEN)",
+      "Nueva cotización B refleja nuevo precio actualizado (950 USD)",
       quoteBRes.status === 201 && quoteBRes.data?.summary?.unit_price === 950,
       "HTTP 201, unit_price=950",
       `HTTP ${quoteBRes.status}, unit_price=${quoteBRes.data?.summary?.unit_price}`
     );
 
-    // 6. Verificar inmutabilidad de la Cotización A (debe conservar 890 PEN en PostgreSQL)
+    // 6. Verificar inmutabilidad de la Cotización A (debe conservar 890 USD en PostgreSQL)
     const quoteASnapshotRows = psqlQuery<{
       id: string;
       status: string;
@@ -527,9 +628,9 @@ async function runSuite() {
     record(
       "QUOTE-A-IMMUTABILITY-DB",
       2,
-      "Snapshot previo (Cotización A) retiene inmutablemente precio original 890 PEN",
+      "Snapshot previo (Cotización A) retiene inmutablemente precio original 890 USD",
       quoteARecord?.unit_price_minor === 89000 || Number(quoteARecord?.unit_price_decimal) === 890,
-      "unit_price_minor=89000 (890 PEN)",
+      "unit_price_minor=89000 (890 USD)",
       `unit_price_minor=${quoteARecord?.unit_price_minor}, decimal=${quoteARecord?.unit_price_decimal}`
     );
 
@@ -557,7 +658,7 @@ async function runSuite() {
     // Restaurar precio original de Medusa de forma garantizada
     if (originalPlcPriceId) {
       psqlExec(`UPDATE price SET amount = ${originalPlcPriceAmount} WHERE id = '${originalPlcPriceId}';`);
-      console.log(`    ${GRAY}[Cleanup] Precio de PLC restaurado a ${originalPlcPriceAmount} PEN en PostgreSQL.${RESET}`);
+      console.log(`    ${GRAY}[Cleanup] Precio de PLC restaurado a ${originalPlcPriceAmount} USD en PostgreSQL.${RESET}`);
     }
   }
 
@@ -655,7 +756,7 @@ async function runSuite() {
     record(
       "QTY2-OFFER-UNIT-PRICE",
       4,
-      "Precio unitario constante en 890 PEN (89000 minor)",
+      "Precio unitario constante en 890 USD (89000 minor)",
       q2Data?.unit_price === 890 && q2Data?.unit_price_minor === 89000,
       "unit_price=890, minor=89000",
       `unit_price=${q2Data?.unit_price}, minor=${q2Data?.unit_price_minor}`
@@ -664,7 +765,7 @@ async function runSuite() {
     record(
       "QTY2-OFFER-SUBTOTAL-MATH",
       4,
-      "Subtotal es exactamente 2x unit_price = 1780 PEN (178000 minor)",
+      "Subtotal es exactamente 2x unit_price = 1780 USD (178000 minor)",
       q2Data?.subtotal === 1780 && q2Data?.subtotal_minor === 178000,
       "subtotal=1780, subtotal_minor=178000",
       `subtotal=${q2Data?.subtotal}, subtotal_minor=${q2Data?.subtotal_minor}`
@@ -701,7 +802,7 @@ async function runSuite() {
     record(
       "QTY2-QUOTE-SUBTOTAL",
       4,
-      "Cotización con quantity=2 contiene subtotal 1780 PEN en summary",
+      "Cotización con quantity=2 contiene subtotal 1780 USD en summary",
       quoteQty2Res.data?.summary?.subtotal === 1780,
       "subtotal=1780",
       `subtotal=${quoteQty2Res.data?.summary?.subtotal}`
@@ -737,7 +838,8 @@ async function runSuite() {
       SELECT p.id, p.amount
       FROM price p
       INNER JOIN product_variant_price_set pvps ON pvps.price_set_id = p.price_set_id
-      WHERE pvps.variant_id = '${pt100VariantId}' AND p.currency_code = 'pen' AND p.deleted_at IS NULL
+      WHERE pvps.variant_id = '${pt100VariantId}' AND (p.currency_code = 'usd' OR p.currency_code = 'pen') AND p.deleted_at IS NULL
+      ORDER BY (p.currency_code = 'usd') DESC
       LIMIT 1;
     `);
 
@@ -836,12 +938,19 @@ async function runSuite() {
       );
 
       // Inspección de contenido de texto del PDF para verificar ausencia de "0.00"
-      const pdfRaw = pdfRes.rawBody;
+      const pdfText = extractPdfText(pdfRes.buffer);
       const hasFalseZero =
-        pdfRaw.includes("S/. 0.00") ||
-        pdfRaw.includes("PEN 0.00") ||
-        pdfRaw.includes("Total: 0.00") ||
-        pdfRaw.includes("Subtotal: 0.00");
+        pdfText.includes("S/. 0.00") ||
+        pdfText.includes("S/.0.00") ||
+        pdfText.includes("PEN 0.00") ||
+        pdfText.includes("PEN 0") ||
+        pdfText.includes("$ 0.00") ||
+        pdfText.includes("$0.00") ||
+        pdfText.includes("USD 0.00") ||
+        pdfText.includes("Total: 0.00") ||
+        pdfText.includes("Total: $0.00") ||
+        pdfText.includes("Subtotal: 0.00") ||
+        pdfText.includes("Subtotal: $0.00");
 
       record(
         "MANUAL-REVIEW-PDF-NO-ZERO-TEXT",
@@ -850,6 +959,22 @@ async function runSuite() {
         !hasFalseZero,
         "Sin ocurrencias de '0.00' falso",
         hasFalseZero ? "Se detectó '0.00' en el PDF" : "Libre de importes falsos 0.00"
+      );
+
+      const hasManualReviewNotice =
+        pdfText.includes("MANUAL REVIEW") ||
+        pdfText.includes("REVISIÓN MANUAL") ||
+        pdfText.includes("UNDER MANUAL REVIEW") ||
+        pdfText.includes("PENDING") ||
+        pdfText.includes("NO COMMERCIAL");
+
+      record(
+        "MANUAL-REVIEW-PDF-NOTICE",
+        5,
+        "El PDF en manual_review contiene aviso explícito de revisión técnica y sin importe comercial",
+        hasManualReviewNotice,
+        "Contiene aviso de revisión manual en el PDF",
+        hasManualReviewNotice ? "Aviso verificado en PDF" : "Aviso no encontrado en texto del PDF"
       );
     }
   } catch (err: any) {
@@ -893,7 +1018,7 @@ async function runSuite() {
       body: maliciousPayload,
     });
 
-    // El servidor puede o bien rechazar (400) o ignorar y re-leer de Medusa (201 con 890 PEN)
+    // El servidor puede o bien rechazar (400) o ignorar y re-leer de Medusa (201 con 890 USD)
     const isImmune =
       tamperRes.status === 400 ||
       (tamperRes.status === 201 &&
@@ -906,7 +1031,7 @@ async function runSuite() {
       6,
       "Valores comerciales enviados por el cliente son completamente ignorados / rechazados",
       isImmune,
-      "HTTP 400 o HTTP 201 con precio real de Medusa 890 PEN (nunca 0.01)",
+      "HTTP 400 o HTTP 201 con precio real de Medusa 890 USD (nunca 0.01)",
       `HTTP ${tamperRes.status}, unit_price=${tamperRes.data?.summary?.unit_price}`
     );
 
@@ -1081,6 +1206,7 @@ async function runSuite() {
 
     const generatedPdfUrl = pdfQuoteRes.data?.pdf_url || "";
     const publicId = pdfQuoteRes.data?.opaque_public_id || "";
+    const productUrl = pdfQuoteRes.data?.summary?.product_url || "";
 
     record(
       "PDF-URL-STRUCTURE-EXISTS",
@@ -1089,6 +1215,15 @@ async function runSuite() {
       Boolean(generatedPdfUrl && generatedPdfUrl.startsWith("http")),
       "URL HTTP válida",
       generatedPdfUrl || "ausente"
+    );
+
+    record(
+      "QUOTE-SUMMARY-PDP-URL",
+      8,
+      "Resumen comercial de cotización contiene URL pública de Storefront en inglés '/us/products/'",
+      Boolean(productUrl && productUrl.includes("/us/products/")),
+      "URL contiene '/us/products/'",
+      productUrl || "ausente"
     );
 
     // 2. Prohibición estricta: NO Bearer token en URL o query string
@@ -1156,6 +1291,55 @@ async function runSuite() {
       pdfFetchRes.rawBody.length > 1000,
       "> 1000 bytes",
       `${pdfFetchRes.rawBody.length} bytes`
+    );
+
+    // 5. Verificación de contenido del PDF (USD, Título en inglés, Disclaimer en inglés, ausencia de PEN y S/.)
+    const pdfDecodedText = extractPdfText(pdfFetchRes.buffer);
+    const hasUsdOrDollar = pdfDecodedText.includes("$") || pdfDecodedText.includes("USD");
+    const hasEnglishTitle =
+      pdfDecodedText.includes("Preliminary quote — simulation") ||
+      pdfDecodedText.includes("Preliminary quote");
+    const hasEnglishDisclaimer =
+      pdfDecodedText.includes("SIMULATION — NOT A VALID COMMERCIAL OFFER");
+    const hasPenOrSoles =
+      pdfDecodedText.includes("PEN") ||
+      pdfDecodedText.includes("S/.") ||
+      pdfDecodedText.includes("S/ ");
+
+    record(
+      "PDF-CONTENT-CURRENCY-USD",
+      8,
+      "Contenido del PDF refleja moneda comercial en USD ('$' o 'USD')",
+      hasUsdOrDollar,
+      "Contiene '$' o 'USD'",
+      hasUsdOrDollar ? "Identificador USD / $ presente" : "Símbolo USD no encontrado"
+    );
+
+    record(
+      "PDF-CONTENT-ENGLISH-TITLE",
+      8,
+      "Contenido del PDF muestra título oficial en inglés 'Preliminary quote — simulation'",
+      hasEnglishTitle,
+      "Contiene 'Preliminary quote — simulation'",
+      hasEnglishTitle ? "Título verificado" : "Título no encontrado"
+    );
+
+    record(
+      "PDF-CONTENT-ENGLISH-DISCLAIMER",
+      8,
+      "Contenido del PDF estampa disclaimer obligatorio en inglés 'SIMULATION — NOT A VALID COMMERCIAL OFFER'",
+      hasEnglishDisclaimer,
+      "Contiene 'SIMULATION — NOT A VALID COMMERCIAL OFFER'",
+      hasEnglishDisclaimer ? "Disclaimer en inglés verificado" : "Disclaimer no encontrado"
+    );
+
+    record(
+      "PDF-CONTENT-NO-PEN-SOLES",
+      8,
+      "PROHIBICIÓN ESTRICTA: El PDF no contiene 'PEN' ni 'S/.' en precios ni textos",
+      !hasPenOrSoles,
+      "Ausencia total de 'PEN' y 'S/.'",
+      hasPenOrSoles ? "Se detectó 'PEN' o 'S/.' en el PDF" : "Libre de menciones PEN / S/."
     );
 
     // 5. Negativo: Parámetro token adulterado retorna HTTP 404

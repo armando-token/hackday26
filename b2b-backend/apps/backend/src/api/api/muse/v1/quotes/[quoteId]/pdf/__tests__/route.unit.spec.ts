@@ -328,7 +328,7 @@ describe("GET /api/muse/v1/quotes/[quoteId]/pdf", () => {
       expect(response.headers["Content-Type"]).toBe("application/pdf")
 
       // opaque_public_id es "pq_a4b9c1d2e3f405162738495a6b7c8d9e", slice(0, 8) es "pq_a4b9c"
-      const expectedFilename = `cotizacion-preliminar-CN-DEMO-PID-PT100-RS1-pq_a4b9c.pdf`
+      const expectedFilename = `preliminary-quote-CN-DEMO-PID-PT100-RS1-pq_a4b9c.pdf`
       expect(response.headers["Content-Disposition"]).toBe(
         `inline; filename="${expectedFilename}"`
       )
