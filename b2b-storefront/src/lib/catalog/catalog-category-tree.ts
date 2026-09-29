@@ -149,5 +149,5 @@ export function flattenCategoryTree(
 }
 
 export function getL1Families(root: CnCategoryNode): CnCategoryNode[] {
-  return root.children ?? []
+  return (root.children ?? []).filter((c) => (c.productCount ?? 0) > 0)
 }

@@ -5,8 +5,7 @@ import { familyImage } from "@lib/cn-catalog"
 import type { CnCategoryNode } from "@lib/cn-catalog/taxonomy"
 
 /**
- * B2B catalog hub — L1 family tiles only.
- * No Technical View dump of the entire catalog.
+ * B2B catalog hub — L1 family tiles only (non-empty).
  */
 export default function StoreTemplate({
   countryCode,
@@ -20,9 +19,9 @@ export default function StoreTemplate({
   catalogRoot: CnCategoryNode
   l1Families: CnCategoryNode[]
 }) {
-  const children = [...l1Families].sort((a, b) =>
-    a.name.localeCompare(b.name)
-  )
+  const children = [...l1Families]
+    .filter((c) => (c.productCount ?? 0) > 0)
+    .sort((a, b) => a.name.localeCompare(b.name))
 
   return (
     <div className="w-full bg-white font-[Arial,Helvetica,sans-serif] text-[#333] min-h-screen pb-16">
@@ -43,10 +42,19 @@ export default function StoreTemplate({
           Product categories
         </h1>
         <p className="text-[12px] sm:text-[13px] text-[#666666] mb-2">
-          {(catalogRoot.productCount ?? 0).toLocaleString()} productos industriales disponibles
+          {(catalogRoot.productCount ?? 0).toLocaleString()} industrial products available
         </p>
-        <p className="text-[12px] sm:text-[13px] text-[#333] leading-relaxed max-w-4xl mb-6 sm:mb-8">
+        <p className="text-[12px] sm:text-[13px] text-[#333] leading-relaxed max-w-4xl mb-4">
           {catalogRoot.description}
+        </p>
+        <p className="text-[13px] mb-6">
+          Quick link:{" "}
+          <LocalizedClientLink
+            href="/store/automatizacion-control"
+            className="text-[#0066CC] font-bold hover:underline"
+          >
+            Automation & Control — Hack Day demo products
+          </LocalizedClientLink>
         </p>
 
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 border-t border-l border-[#CCCCCC] mb-10">
@@ -68,12 +76,7 @@ export default function StoreTemplate({
                 {sub.name}
                 {sub.productCount != null ? (
                   <span className="block text-[11px] text-[#666] mt-1">
-                    {sub.productCount.toLocaleString()} productos
-                  </span>
-                ) : null}
-                {sub.description ? (
-                  <span className="block text-[11px] text-[#666] mt-1 font-normal leading-snug">
-                    {sub.description}
+                    {sub.productCount.toLocaleString()} products
                   </span>
                 ) : null}
               </span>
@@ -85,6 +88,5 @@ export default function StoreTemplate({
   )
 }
 
-/** Kept for imports that still reference card row — prefer TechnicalListing. */
 export { TechnicalListing as TechnicalTable } from "./technical-listing"
 export { HvacProductRow } from "./product-row"

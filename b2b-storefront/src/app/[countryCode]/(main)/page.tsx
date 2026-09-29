@@ -26,14 +26,21 @@ export default async function Home(props: {
       img: c.imageUrl || familyImage(c.slug),
     }))
 
+  const featured = products
+    .filter((p) =>
+      ["cn-x5prime-he-xp5", "cn-n1200", "cn-tht02"].includes(p.handle)
+    )
+    .sort((a, b) => a.title.localeCompare(b.title))
+
   return (
     <HomeTemplate
       productCount={products.length}
       countryCode={params.countryCode}
       categories={categories}
       catalogDescription={tree.description}
+      featuredProducts={featured}
     />
   )
 }
 
-export const revalidate = 900
+export const revalidate = 60

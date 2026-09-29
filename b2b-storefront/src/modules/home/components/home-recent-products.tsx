@@ -7,7 +7,7 @@ import RecentProductCard from "@modules/home/components/recent-product-card"
 
 export default function HomeRecentProducts({
   excludeHandle,
-  countryCode = "pe",
+  countryCode = "us",
   limit = 10,
 }: {
   excludeHandle?: string
@@ -78,7 +78,7 @@ export default function HomeRecentProducts({
     <section className="w-full mb-3 sm:mb-4 select-none">
       <div className="pt-0 pb-1 mb-1.5">
         <h2 className="text-[18px] sm:text-[20px] font-bold text-[#111111] font-[Roboto,Arial,Helvetica,sans-serif]">
-          Products vistos recientemente
+          Recently viewed products
         </h2>
       </div>
 
@@ -87,7 +87,7 @@ export default function HomeRecentProducts({
           <button
             onClick={() => scroll("left")}
             className="absolute left-1 top-1/2 -translate-y-1/2 z-20 w-8 h-8 rounded-full bg-white border border-[#D3D2D3] shadow-md flex items-center justify-center text-black font-bold text-lg hover:bg-gray-100 transition-all opacity-90 group-hover:opacity-100 cursor-pointer"
-            aria-label="Anterior"
+            aria-label="Previous"
           >
             ‹
           </button>
@@ -97,7 +97,7 @@ export default function HomeRecentProducts({
           <button
             onClick={() => scroll("right")}
             className="absolute right-1 top-1/2 -translate-y-1/2 z-20 w-8 h-8 rounded-full bg-white border border-[#D3D2D3] shadow-md flex items-center justify-center text-black font-bold text-lg hover:bg-gray-100 transition-all opacity-90 group-hover:opacity-100 cursor-pointer"
-            aria-label="Siguiente"
+            aria-label="Next"
           >
             ›
           </button>

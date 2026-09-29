@@ -2,6 +2,7 @@
 
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import HomeRecentProducts from "@modules/home/components/home-recent-products"
+import type { CatalogProduct } from "@lib/catalog/catalog-types"
 
 type HomeCategory = {
   name: string
@@ -10,16 +11,26 @@ type HomeCategory = {
   img: string
 }
 
+function priceLabel(p: CatalogProduct): string {
+  if (p.display?.priceLabel) return p.display.priceLabel
+  const amount = p.primaryVariant?.calculatedPrice?.amount
+  const currency = (p.primaryVariant?.calculatedPrice?.currencyCode || "usd").toUpperCase()
+  if (amount == null) return "Request quote"
+  return `${currency} ${Number(amount).toFixed(2)}`
+}
+
 export default function HomeTemplate({
   productCount,
-  countryCode = "pe",
+  countryCode = "us",
   categories,
   catalogDescription,
+  featuredProducts = [],
 }: {
   productCount: number
   countryCode?: string
   categories: HomeCategory[]
   catalogDescription?: string
+  featuredProducts?: CatalogProduct[]
 }) {
   return (
     <div className="w-full bg-white font-[Arial,Helvetica,sans-serif]">
@@ -28,20 +39,67 @@ export default function HomeTemplate({
       </div>
 
       <div className="max-w-[1440px] mx-auto px-4 lg:px-6 pt-1 pb-8">
+        {featuredProducts.length > 0 ? (
+          <section className="mb-10">
+            <div className="flex items-center justify-between mb-3">
+              <h2 className="text-[20px] font-bold text-[#222222]">
+                Hack Day demo products
+              </h2>
+              <LocalizedClientLink
+                href="/store/automatizacion-control"
+                className="text-[13px] text-[#0066CC] hover:underline font-bold"
+              >
+                View all ›
+              </LocalizedClientLink>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              {featuredProducts.map((p) => {
+                const img =
+                  p.thumbnail ||
+                  p.images?.[0]?.url ||
+                  "/demo/images/CN-X5PRIME-HE-XP5.png"
+                return (
+                  <LocalizedClientLink
+                    key={p.handle}
+                    href={`/products/${p.handle}`}
+                    className="border border-[#E0E0E0] p-4 hover:border-[#0066CC] transition-colors"
+                  >
+                    <div className="h-[160px] flex items-center justify-center mb-3 bg-[#FAFAFA]">
+                      <img
+                        src={img}
+                        alt={p.title}
+                        className="max-h-[150px] max-w-full object-contain"
+                      />
+                    </div>
+                    <div className="text-[11px] text-[#666] mb-1">
+                      SKU {p.pim?.itemNumber || p.primaryVariant?.sku || p.handle}
+                    </div>
+                    <div className="text-[14px] font-bold text-[#111] leading-snug mb-2 min-h-[40px]">
+                      {p.title}
+                    </div>
+                    <div className="text-[15px] font-bold text-[#B12704]">
+                      {priceLabel(p)}
+                    </div>
+                  </LocalizedClientLink>
+                )
+              })}
+            </div>
+          </section>
+        ) : null}
+
         <div className="flex items-center justify-between w-full mb-3 sm:mb-4">
-          <h2 className="text-[18px] sm:text-[20px] font-bold text-[#222222] font-[Arial,Helvetica,sans-serif]">
-            {productCount} productos
+          <h2 className="text-[18px] sm:text-[20px] font-bold text-[#222222]">
+            {productCount} products
           </h2>
           <LocalizedClientLink
             href="/store"
             className="text-[13px] sm:text-[14px] text-[#0066CC] hover:underline font-bold flex items-center gap-1 ml-auto text-right"
           >
-            <span>Ver todo</span>
+            <span>View all</span>
             <span>›</span>
           </LocalizedClientLink>
         </div>
 
-        {/* 6-column Grid Desktop Parity */}
         <div className="grid grid-cols-2 md:grid-cols-6 mb-12">
           {categories.map((cat) => (
             <LocalizedClientLink
@@ -57,8 +115,11 @@ export default function HomeTemplate({
                   loading="lazy"
                 />
               </div>
-              <span className="text-[13px] sm:text-[14px] font-normal text-[#000000] font-[Roboto,Arial,Helvetica,sans-serif] text-center leading-snug mt-auto group-hover:text-[#0066CC] group-hover:underline">
+              <span className="text-[13px] sm:text-[14px] font-normal text-[#000000] text-center leading-snug mt-auto group-hover:text-[#0066CC] group-hover:underline">
                 {cat.name}
+                {cat.count != null ? (
+                  <span className="block text-[11px] text-[#666] mt-1">{cat.count} products</span>
+                ) : null}
               </span>
             </LocalizedClientLink>
           ))}
@@ -69,105 +130,21 @@ export default function HomeTemplate({
             Heat, control & industrial instrumentation
           </h2>
           <p className="text-[16px] text-white max-w-3xl mb-6">
-            Control Nautas solutions: electric heating,
-            heat tracing, PID controllers, sensors, environmental monitoring, PLC, and industrial insulation.
+            Control Nautas solutions: electric heating, heat tracing, PID controllers,
+            sensors, environmental monitoring, PLC, and industrial insulation.
           </p>
           <LocalizedClientLink
-            href="/store/calefaccion-electrica"
+            href="/store/automatizacion-control"
             className="inline-block bg-white text-[#185394] font-bold text-[14px] px-6 py-3 rounded-sm hover:bg-gray-100 transition-colors"
           >
-            Explore heating
+            Browse demo catalog
           </LocalizedClientLink>
         </div>
 
-        {/* Supplies and Solutions Section */}
-        <div className="mb-10">
-          <h2 className="text-[20px] font-bold text-[#222222] mb-4 font-['Roboto']">
-            Suministros y Soluciones para Cada Industria
-          </h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-            {/* Card 1: Case Studies */}
-            <div className="bg-[#F4F5F7] p-6 border border-[#E0E0E0] rounded-none flex flex-col justify-between">
-              <div>
-                <div className="flex items-center justify-between mb-2">
-                  <LocalizedClientLink href="/casos-de-exito" className="font-bold text-[16px] text-[#222222] hover:text-[#0066CC] flex items-center gap-1 font-['Roboto']">
-                    <span>Industrial Case Studies</span>
-                    <span className="text-[#0066CC]">›</span>
-                  </LocalizedClientLink>
-                  <div className="w-[32px] h-[32px] bg-[#CC0000] text-white flex items-center justify-center font-bold text-xs rounded-none">
-                    C
-                  </div>
-                </div>
-                <p className="text-[13px] text-[#444444] mb-4">
-                  Solutions applied in power generation, mining, and data centers.
-                </p>
-              </div>
-              <div className="text-[12px] text-[#0066CC] font-normal flex flex-wrap gap-2 pt-4 border-t border-[#E0E0E0]">
-                <LocalizedClientLink href="/casos-de-exito/resistencias-electricas-prevenir-cortocircuitos" className="hover:underline font-['Roboto']">Power generation</LocalizedClientLink>
-                <span>|</span>
-                <LocalizedClientLink href="/casos-de-exito/heat-tracing-evitar-congelamiento" className="hover:underline font-['Roboto']">Mining</LocalizedClientLink>
-                <span>|</span>
-                <LocalizedClientLink href="/casos-de-exito/control-temperatura-datacenters-akcp" className="hover:underline font-['Roboto']">Datacenters</LocalizedClientLink>
-              </div>
-            </div>
-
-            {/* Card 2: Product Lines */}
-            <div className="bg-[#F4F5F7] p-6 border border-[#E0E0E0] rounded-none flex flex-col justify-between">
-              <div>
-                <div className="flex items-center justify-between mb-2">
-                  <LocalizedClientLink href="/store" className="font-bold text-[16px] text-[#222222] hover:text-[#0066CC] flex items-center gap-1 font-['Roboto']">
-                    <span>Product Lines</span>
-                    <span className="text-[#0066CC]">›</span>
-                  </LocalizedClientLink>
-                  <div className="w-[32px] h-[32px] bg-[#CC0000] text-white flex items-center justify-center font-bold text-xs rounded-none">
-                    L
-                  </div>
-                </div>
-                <p className="text-[13px] text-[#444444] mb-4">
-                  Certified thermal insulation, electric heat tracing, sensors, and process instrumentation.
-                </p>
-              </div>
-              <div className="text-[12px] text-[#0066CC] font-normal flex flex-wrap gap-2 pt-4 border-t border-[#E0E0E0]">
-                <LocalizedClientLink href="/store/aislamiento-termico" className="hover:underline font-['Roboto']">Lana de Roca</LocalizedClientLink>
-                <span>|</span>
-                <LocalizedClientLink href="/store/trazado-termico" className="hover:underline font-['Roboto']">Heat Tracing</LocalizedClientLink>
-                <span>|</span>
-                <LocalizedClientLink href="/store/monitoreo-ambiental" className="hover:underline font-['Roboto']">Sensores</LocalizedClientLink>
-              </div>
-            </div>
-
-            {/* Card 3: Soporte y Cobertura */}
-            <div className="bg-[#F4F5F7] p-6 border border-[#E0E0E0] rounded-none flex flex-col justify-between">
-              <div>
-                <div className="flex items-center justify-between mb-2">
-                  <LocalizedClientLink href="/contacto" className="font-bold text-[16px] text-[#222222] hover:text-[#0066CC] flex items-center gap-1 font-['Roboto']">
-                    <span>Technical Support & Shipping</span>
-                    <span className="text-[#0066CC]">›</span>
-                  </LocalizedClientLink>
-                  <div className="w-[32px] h-[32px] bg-[#CC0000] text-white flex items-center justify-center font-bold text-xs rounded-none">
-                    S
-                  </div>
-                </div>
-                <p className="text-[13px] text-[#444444] mb-4">
-                  Sizing support, fast B2B quotes, and shipping across the United States.
-                </p>
-              </div>
-              <div className="text-[12px] text-[#0066CC] font-normal flex flex-wrap gap-2 pt-4 border-t border-[#E0E0E0]">
-                <LocalizedClientLink href="/nosotros" className="hover:underline font-['Roboto']">About Us</LocalizedClientLink>
-                <span>|</span>
-                <LocalizedClientLink href="/contacto" className="hover:underline font-['Roboto']">Technical Advisory</LocalizedClientLink>
-                <span>|</span>
-                <LocalizedClientLink href="/entregas-y-devoluciones" className="hover:underline font-['Roboto']">Fulfillment Nacional</LocalizedClientLink>
-              </div>
-            </div>
-          </div>
-
-          {/* SEO Footer Text */}
-          <p className="text-[11px] text-[#666666] leading-relaxed border-t border-[#E0E0E0] pt-6">
-            Control Nautas specializes in process control, electric heating, heat tracing, industrial instrumentation, sensors, and automation — backed by expert technical support to keep your plant running efficiently.
-          </p>
-        </div>
+        <p className="text-[11px] text-[#666666] leading-relaxed border-t border-[#E0E0E0] pt-6">
+          {catalogDescription ||
+            "Control Nautas specializes in process control, electric heating, heat tracing, industrial instrumentation, sensors, and automation."}
+        </p>
       </div>
     </div>
   )
