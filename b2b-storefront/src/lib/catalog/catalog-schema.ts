@@ -107,6 +107,8 @@ export const medusaStoreProductSchema = z
     variants: z.array(variantSchema).nullable().optional(),
     brand: brandSchema.nullable().optional(),
     pim_info: pimInfoSchema.nullable().optional(),
+    metadata: z.record(z.string(), z.unknown()).nullable().optional(),
+    tags: z.array(z.union([z.string(), z.record(z.string(), z.unknown())])).nullable().optional(),
   })
   .passthrough()
 

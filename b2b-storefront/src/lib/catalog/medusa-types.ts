@@ -80,6 +80,7 @@ export type MedusaStoreProduct = {
   created_at?: string
   updated_at?: string
   metadata?: Record<string, unknown> | null
+  tags?: Array<{ id?: string; value?: string }> | string[] | null
   images?: MedusaStoreImage[] | null
   categories?: MedusaStoreCategory[] | null
   variants?: MedusaStoreVariant[] | null

@@ -320,4 +320,39 @@ describe("mapMedusaStoreProductToCatalogProduct", () => {
     expect(mapped.primaryVariant.id).toBe("variant_barata")
     expect(mapped.display.price?.amount).toBe(120)
   })
+
+  it("identifica producto demo si tiene metadata.hackday_demo", () => {
+    const mapped = mapMedusaStoreProductToCatalogProduct({
+      ...producto,
+      metadata: { hackday_demo: true },
+    })
+    expect(mapped.isDemo).toBe(true)
+  })
+
+  it("identifica producto demo si tiene SKU con prefijo CN-DEMO-", () => {
+    const mapped = mapMedusaStoreProductToCatalogProduct({
+      ...producto,
+      variants: [
+        {
+          ...producto.variants[0],
+          sku: "CN-DEMO-PLC-DIN-420-MR1",
+        },
+      ],
+    })
+    expect(mapped.isDemo).toBe(true)
+  })
+
+  it("identifica producto demo si tiene tag hackday_demo", () => {
+    const mapped = mapMedusaStoreProductToCatalogProduct({
+      ...producto,
+      tags: [{ id: "tag_1", value: "hackday_demo" }],
+    } as any)
+    expect(mapped.isDemo).toBe(true)
+  })
+
+  it("marca isDemo false para productos regulares", () => {
+    const mapped = mapMedusaStoreProductToCatalogProduct(producto)
+    expect(mapped.isDemo).toBe(false)
+  })
 })
+

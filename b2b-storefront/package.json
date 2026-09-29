@@ -48,6 +48,7 @@
     "@babel/core": "^7.17.5",
     "@medusajs/types": "latest",
     "@medusajs/ui-preset": "latest",
+    "@swc/core": "^1.16.12",
     "@swc/jest": "^0.2.39",
     "@types/jest": "^30.0.0",
     "@types/lodash": "^4.14.195",

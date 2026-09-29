@@ -104,6 +104,9 @@ export type CatalogProduct = {
   legacy?: {
     wcId?: number
   }
+  metadata?: Record<string, unknown> | null
+  tags?: Array<{ id?: string; value?: string } | string> | null
+  isDemo?: boolean
 }
 
 export type CatalogProductList = {

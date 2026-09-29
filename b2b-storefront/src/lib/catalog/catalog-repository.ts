@@ -18,7 +18,7 @@ import type { MedusaStoreProductListResponse } from "./medusa-types"
  * Alias pim_info confirmado en contrato de la Fase 1.
  */
 export const MEDUSA_CATALOG_FIELDS =
-  "id,title,subtitle,description,handle,status,thumbnail,created_at,updated_at,metadata,*images,*categories,*categories.parent_category,*variants,*variants.options,+variants.inventory_quantity,*variants.calculated_price,+brand.*,+pim_info.*"
+  "id,title,subtitle,description,handle,status,thumbnail,created_at,updated_at,metadata,*tags,*images,*categories,*categories.parent_category,*variants,*variants.options,+variants.inventory_quantity,*variants.calculated_price,+brand.*,+pim_info.*"
 
 const PAGE_SIZE = 100
 
@@ -134,12 +134,27 @@ export async function getMedusaCatalogProductByHandle(
   const page = await fetchMedusaProductPage(regionId, 0, { handle, limit: 1 })
 
   const raw = page.products[0]
-  if (!raw || raw.handle !== handle) {
-    return null
+  if (raw && raw.handle === handle) {
+    return mapMedusaStoreProductToCatalogProduct(parseMedusaProduct(raw))
   }
 
-  const product = mapMedusaStoreProductToCatalogProduct(parseMedusaProduct(raw))
-  return product
+  // Fallback: búsqueda por SKU o coincidencia case-insensitive en catálogo
+  try {
+    const all = await getCachedCatalogProducts(countryCode)
+    const normalized = handle.toLowerCase().trim()
+    const matched = all.find(
+      (p) =>
+        p.handle.toLowerCase() === normalized ||
+        p.primaryVariant?.sku?.toLowerCase() === normalized ||
+        p.variants?.some((v) => v.sku?.toLowerCase() === normalized) ||
+        p.pim?.itemNumber?.toLowerCase() === normalized
+    )
+    if (matched) {
+      return matched
+    }
+  } catch {}
+
+  return null
 }
 
 export async function searchMedusaCatalogProducts(

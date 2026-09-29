@@ -41,6 +41,18 @@ export default function HvacProductTemplate({
   const onList = list.includes(product.handle)
   const crumbs = getCatalogCategoryPath(product)
 
+  const isDemo = Boolean(
+    product.isDemo ||
+    product.metadata?.hackday_demo ||
+    (product as any).tags?.some?.((t: any) => {
+      const val = typeof t === "string" ? t : (t?.value || t?.name || "")
+      return val === "hackday_demo" || val.includes?.("hackday_demo")
+    }) ||
+    product.primaryVariant?.sku?.toUpperCase().startsWith("CN-DEMO-") ||
+    product.variants?.some((v) => v.sku?.toUpperCase().startsWith("CN-DEMO-")) ||
+    product.pim?.itemNumber?.toUpperCase().startsWith("CN-DEMO-")
+  )
+
   useEffect(() => {
     trackView(product.handle)
     if (typeof window !== "undefined" && (window as any).dataLayer) {
@@ -144,6 +156,27 @@ export default function HvacProductTemplate({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }}
       />
+      {isDemo && (
+        <div
+          role="alert"
+          data-testid="demo-product-banner"
+          className="w-full bg-[#FFF3CD] border-b-2 border-[#FFEEBA] text-[#856404] px-6 py-4 shadow-sm"
+        >
+          <div className="max-w-[1440px] mx-auto flex items-center gap-3">
+            <span className="text-xl font-bold bg-[#856404] text-white rounded-full w-7 h-7 flex items-center justify-center shrink-0">
+              !
+            </span>
+            <div>
+              <p className="font-bold text-[15px] tracking-wide uppercase">
+                PRODUCTO FICTICIO — DATOS DE DEMOSTRACIÓN
+              </p>
+              <p className="text-[12px] text-[#664d03] mt-0.5">
+                Este producto es un componente de prueba sintético generado para fines de demostración técnica. Los datos técnicos, esquemas y especificaciones son demostrativos.
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
       <div className="border-b border-[#CCCCCC]">
         <div className="max-w-[1440px] mx-auto px-6 py-3 text-[12px] text-[#666] flex flex-wrap gap-1.5">
           <LocalizedClientLink
@@ -203,6 +236,14 @@ export default function HvacProductTemplate({
         </div>
 
         <div className="lg:col-span-7">
+          {isDemo && (
+            <div
+              data-testid="demo-product-badge"
+              className="mb-3 inline-flex items-center gap-1.5 px-3 py-1 bg-amber-100 border border-amber-300 rounded text-amber-900 font-bold text-[12px] uppercase"
+            >
+              <span>⚠️</span> PRODUCTO FICTICIO — DATOS DE DEMOSTRACIÓN
+            </div>
+          )}
           <div className="text-[12px] font-bold text-[#666] uppercase mb-1">
             {product.brand?.name}
           </div>
@@ -328,6 +369,36 @@ export default function HvacProductTemplate({
                 ))}
               </tbody>
             </table>
+            {(product.pim.technicalPdf || product.pim.manualPdf || isDemo) && (
+              <div className="p-4 bg-[#FAFAFA] border-t border-[#CCCCCC] flex flex-wrap gap-3">
+                {(product.pim.technicalPdf || isDemo) && (
+                  <a
+                    href={
+                      product.pim.technicalPdf ||
+                      `/demo/datasheets/${product.primaryVariant.sku || product.handle}.pdf`
+                    }
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-4 py-2 text-[13px] font-bold text-white bg-[#C8102E] hover:bg-[#9B0C24] rounded transition-colors"
+                  >
+                    📄 Descargar Ficha Técnica (PDF)
+                  </a>
+                )}
+                {(product.pim.manualPdf || isDemo) && (
+                  <a
+                    href={
+                      product.pim.manualPdf ||
+                      `/demo/specs/${product.primaryVariant.sku || product.handle}.md`
+                    }
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-4 py-2 text-[13px] font-bold text-[#333] bg-[#EAEAEA] hover:bg-[#DDD] rounded transition-colors"
+                  >
+                    📘 Ver Especificaciones (MD)
+                  </a>
+                )}
+              </div>
+            )}
           </div>
         </div>
       </div>

@@ -450,6 +450,18 @@ export function mapMedusaStoreProductToCatalogProduct(
   const legacy =
     wcId && Number.isFinite(wcId) && wcId > 0 ? { wcId } : undefined
 
+  const isDemo = Boolean(
+    raw.metadata?.hackday_demo === true ||
+    raw.metadata?.hackday_demo === "true" ||
+    (raw.metadata && "hackday_demo" in raw.metadata) ||
+    (raw as any).tags?.some?.((t: any) => {
+      const val = typeof t === "string" ? t : (t?.value || t?.name || "")
+      return val === "hackday_demo" || (typeof val === "string" && val.includes("hackday_demo"))
+    }) ||
+    variants.some((v) => v.sku?.toUpperCase().startsWith("CN-DEMO-")) ||
+    pimRaw.item_number?.toUpperCase().startsWith("CN-DEMO-")
+  )
+
   return {
     id: raw.id,
     handle: raw.handle,
@@ -489,5 +501,8 @@ export function mapMedusaStoreProductToCatalogProduct(
     primaryVariant,
     display,
     legacy,
+    metadata: raw.metadata ?? null,
+    tags: (raw as any).tags ?? null,
+    isDemo,
   }
 }
