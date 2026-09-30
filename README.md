@@ -12,6 +12,7 @@
 
 <p align="center">
   <a href="https://data.controlnautas.com/us"><img src="https://img.shields.io/badge/Demo-Live-C8102E?style=for-the-badge" alt="Live demo" /></a>
+  <a href="docs/pitch/Controlnautas-Muse-API-Pitch.pdf"><img src="https://img.shields.io/badge/Pitch%20deck-PDF-111111?style=for-the-badge" alt="Pitch deck PDF" /></a>
   <a href="https://data.controlnautas.com/openapi.yaml"><img src="https://img.shields.io/badge/OpenAPI-muse%2Fv1-185394?style=for-the-badge" alt="OpenAPI" /></a>
   <a href="https://data.controlnautas.com/healthz"><img src="https://img.shields.io/badge/Healthz-OK-0B7A3E?style=for-the-badge" alt="Healthz" /></a>
   <img src="https://img.shields.io/badge/License-Private%20demo-111111?style=for-the-badge" alt="License" />
@@ -30,6 +31,7 @@
 
 <p align="center">
   <a href="https://data.controlnautas.com/us">Live demo</a> ·
+  <a href="docs/pitch/Controlnautas-Muse-API-Pitch.pdf"><strong>Pitch deck (PDF)</strong></a> ·
   <a href="https://data.controlnautas.com/openapi.yaml">OpenAPI</a> ·
   <a href="#what-this-project-is">Overview</a> ·
   <a href="#agent-commerce-api-apimusev1">API</a> ·
@@ -147,6 +149,9 @@ Branch for this work: `hackday-2026-controlnautas-muse`
 
 ## Judge / reviewer quick path
 
+**Pitch deck (PDF):** [docs/pitch/Controlnautas-Muse-API-Pitch.pdf](docs/pitch/Controlnautas-Muse-API-Pitch.pdf)  
+([raw download](https://github.com/armando-token/hackday26/raw/main/docs/pitch/Controlnautas-Muse-API-Pitch.pdf))
+
 1. Open the storefront and confirm the three demo products with real images.  
 2. `curl -s https://data.controlnautas.com/healthz`  
 3. Authenticated `search` → English titles, `currency: usd`, live stock.  
@@ -169,10 +174,11 @@ Verification suites live under `scripts/verify-phase*.ts` and `scripts/demo-e2e-
 
 ## Team & event
 
-Built for **Hack Day 2026** as a deployable product demo for Controlnautas × Meta Muse — not slides.
+Built for **Hack Day 2026** as a deployable product demo for Controlnautas × Meta Muse.
 
 **Demo:** https://data.controlnautas.com/us  
-**API docs:** https://data.controlnautas.com/openapi.yaml
+**API docs:** https://data.controlnautas.com/openapi.yaml  
+**Pitch deck (PDF):** [docs/pitch/Controlnautas-Muse-API-Pitch.pdf](docs/pitch/Controlnautas-Muse-API-Pitch.pdf)
 
 ---
 
